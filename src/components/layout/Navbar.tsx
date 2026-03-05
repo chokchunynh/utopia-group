@@ -16,13 +16,20 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-[backdrop-filter] duration-300 ${
-        scrolled ? "bg-elevated/90 backdrop-blur-xl border-b border-border-subtle" : "bg-transparent"
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-[var(--color-border)] shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="font-heading text-2xl md:text-3xl font-[900] gradient-text">
+          <a
+            href="#"
+            className={`font-heading text-2xl md:text-3xl font-[900] ${
+              scrolled ? "gradient-text" : "gradient-text-light"
+            }`}
+          >
             UTOPIA
           </a>
 
@@ -32,7 +39,11 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-text-secondary hover:text-text-primary transition-colors text-sm font-medium"
+                className={`text-sm font-medium transition-colors ${
+                  scrolled
+                    ? "text-[var(--color-text-body)] hover:text-[var(--color-text-dark)]"
+                    : "text-white/70 hover:text-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -41,7 +52,7 @@ export default function Navbar() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-cta hover:bg-cta/90 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-opacity"
+              className="bg-[var(--color-brand)] hover:bg-[var(--color-brand-light)] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
             >
               Get Started
             </a>
@@ -54,19 +65,19 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-text-primary transition-transform duration-300 ${
-                mobileOpen ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-transform duration-300 ${
+                scrolled ? "bg-[var(--color-text-dark)]" : "bg-white"
+              } ${mobileOpen ? "rotate-45 translate-y-2" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-text-primary transition-opacity duration-300 ${
-                mobileOpen ? "opacity-0" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-opacity duration-300 ${
+                scrolled ? "bg-[var(--color-text-dark)]" : "bg-white"
+              } ${mobileOpen ? "opacity-0" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-text-primary transition-transform duration-300 ${
-                mobileOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`block w-6 h-0.5 transition-transform duration-300 ${
+                scrolled ? "bg-[var(--color-text-dark)]" : "bg-white"
+              } ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
@@ -78,13 +89,13 @@ export default function Navbar() {
           mobileOpen ? "max-h-80" : "max-h-0"
         }`}
       >
-        <div className="bg-elevated/95 backdrop-blur-xl border-t border-border-subtle px-4 py-4 space-y-3">
+        <div className="bg-white/95 backdrop-blur-xl border-t border-[var(--color-border)] px-4 py-4 space-y-3">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block text-text-secondary hover:text-text-primary py-2 text-base"
+              className="block text-[var(--color-text-body)] hover:text-[var(--color-text-dark)] py-2 text-base"
             >
               {link.label}
             </a>
@@ -93,7 +104,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="block bg-cta text-white text-center px-5 py-3 rounded-lg font-semibold mt-2"
+            className="block bg-[var(--color-brand)] text-white text-center px-5 py-3 rounded-lg font-semibold mt-2"
           >
             Get Started
           </a>
