@@ -53,14 +53,14 @@ export default function OperatorCredibility() {
             <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-5">
               {OPERATOR_RESULTS.map((result, i) => (
                 <ScrollReveal key={result.industry} delay={i * 120}>
-                  <div className="p-6 rounded-3xl border border-white/10 bg-white/[0.05]">
+                  <div className="p-6 rounded-3xl border border-white/10 bg-white/[0.05] h-full flex flex-col">
                     <div className="font-bold text-3xl text-[var(--color-brand-light)] mb-2 tracking-tight">
                       {result.stat}
                     </div>
                     <div className="font-semibold text-white text-[15px] mb-1">
                       {result.industry}
                     </div>
-                    <p className="text-[#b0bec5] text-[14px] leading-relaxed">
+                    <p className="text-[#b0bec5] text-[14px] leading-relaxed mt-auto">
                       {result.description}
                     </p>
                   </div>

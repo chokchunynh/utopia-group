@@ -1,59 +1,36 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import {
   TRUEAI_FEATURES,
-  TRUEAI_DEMO_CHAT,
   whatsappUrl,
 } from "@/lib/constants";
-import { Zap, ToggleRight, Server, Brain, ArrowRight, Image as ImageIcon } from "lucide-react";
+import { Zap, ToggleRight, Server, Brain, ArrowRight, User } from "lucide-react";
 
 const FEATURE_ICONS = [Zap, ToggleRight, Server, Brain];
 
-function TypingText({ text, delay = 0 }: { text: string; delay?: number }) {
-  const [displayed, setDisplayed] = useState("");
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const startTimer = setTimeout(() => setStarted(true), delay);
-    return () => clearTimeout(startTimer);
-  }, [delay]);
-
-  useEffect(() => {
-    if (!started) return;
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayed(text.slice(0, i + 1));
-      i++;
-      if (i >= text.length) clearInterval(interval);
-    }, 18);
-    return () => clearInterval(interval);
-  }, [started, text]);
-
-  if (!started) return null;
-  return <>{displayed}</>;
-}
+const CHAT_MESSAGES = [
+  { from: "customer", text: "Hi, I saw your ad for aircon servicing. How much for 5 units?", time: "9:14 AM" },
+  { from: "ai", text: "Hi! For 5 units, full servicing is RM80/unit = RM400 total. Includes gas top-up, filter cleaning, and drainage check. Our earliest slot is tomorrow at 10am — want me to book it?", time: "9:14 AM" },
+  { from: "customer", text: "That's fast! Yes, 10am works. Can you also check one unit that's leaking?", time: "9:15 AM" },
+  { from: "ai", text: "Booked! Tomorrow 10am, 5 units service + 1 leak inspection. For the leak, our technician will diagnose on-site — if it's a drainage issue, it's included free.", time: "9:15 AM" },
+  { from: "ai", text: "Here's your assigned technician — Ahmad from our KL team. He'll arrive between 9:45-10am.", time: "9:16 AM", showTech: true },
+  { from: "ai", text: "I've sent a confirmation SMS to your number. Anything else I can help with?", time: "9:16 AM" },
+];
 
 export default function TrueAISection() {
   const [showDemo, setShowDemo] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState(0);
-  const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!showDemo) return;
-    let i = 0;
-    const delays = [0, 1500, 4000, 5500, 8000, 9500];
+    const delays = [0, 800, 2000, 3000, 4200, 5400];
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     delays.forEach((delay, idx) => {
       timers.push(
-        setTimeout(() => {
-          setVisibleMessages(idx + 1);
-          if (chatRef.current) {
-            chatRef.current.scrollTop = chatRef.current.scrollHeight;
-          }
-        }, delay)
+        setTimeout(() => setVisibleMessages(idx + 1), delay)
       );
     });
 
@@ -110,7 +87,7 @@ export default function TrueAISection() {
                 </div>
               </ScrollReveal>
 
-              {/* Live demo — WhatsApp mockup with typing animation */}
+              {/* WhatsApp demo — bubble animation, all fits in one view */}
               <ScrollReveal delay={200}>
                 <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                   {/* WhatsApp header */}
@@ -134,45 +111,37 @@ export default function TrueAISection() {
                     </div>
                   </div>
 
-                  {/* Chat area */}
-                  <div
-                    ref={chatRef}
-                    className="bg-[#ECE5DD] p-4 space-y-3 min-h-[360px] max-h-[420px] overflow-y-auto"
-                  >
+                  {/* Chat area — fixed height, no scroll */}
+                  <div className="bg-[#ECE5DD] p-3 space-y-2">
                     {!showDemo ? (
-                      <div className="flex flex-col items-center justify-center h-[320px] text-center">
-                        <div className="w-16 h-16 rounded-full bg-[var(--color-whatsapp)]/20 flex items-center justify-center mb-4">
-                          <Zap className="w-8 h-8 text-[var(--color-whatsapp)]" />
+                      <div className="flex flex-col items-center justify-center py-16 text-center">
+                        <div className="w-14 h-14 rounded-full bg-[var(--color-whatsapp)]/20 flex items-center justify-center mb-4">
+                          <Zap className="w-7 h-7 text-[var(--color-whatsapp)]" />
                         </div>
                         <p className="text-sm text-gray-600 mb-1 font-medium">
                           Real conversation from Daikin Aircond KL
                         </p>
                         <p className="text-xs text-gray-400 mb-5">
-                          Watch TrueAI handle a customer enquiry in real-time
+                          Watch TrueAI handle a customer enquiry
                         </p>
                         <button
                           type="button"
                           onClick={() => setShowDemo(true)}
-                          className="btn-primary !text-sm !bg-[var(--color-whatsapp)]"
+                          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-[var(--color-whatsapp)] text-white"
                         >
                           ▶ Play Demo
                         </button>
                       </div>
                     ) : (
                       <>
-                        {TRUEAI_DEMO_CHAT.map((msg, i) => {
+                        {CHAT_MESSAGES.map((msg, i) => {
                           if (i >= visibleMessages) return null;
-
-                          const isImage = msg.type === "image";
-                          const cumulativeDelay =
-                            i === 0
-                              ? 0
-                              : [0, 1500, 4000, 5500, 8000, 9500][i] || 0;
 
                           return (
                             <div
                               key={i}
                               className={`flex ${msg.from === "customer" ? "justify-start" : "justify-end"}`}
+                              style={{ opacity: 0, animation: "bubble-in 0.3s ease-out forwards" }}
                             >
                               <div
                                 className={`rounded-2xl px-3 py-2 max-w-[85%] shadow-sm ${
@@ -186,28 +155,26 @@ export default function TrueAISection() {
                                     TrueAI
                                   </span>
                                 )}
-                                {isImage ? (
-                                  <div className="bg-gray-100 rounded-xl p-4 mb-1 flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-full bg-[var(--color-brand)]/10 flex items-center justify-center shrink-0">
-                                      <ImageIcon className="w-6 h-6 text-[var(--color-brand)]" />
+                                {/* Technician card */}
+                                {"showTech" in msg && msg.showTech && (
+                                  <div className="bg-gray-50 rounded-xl p-3 mb-1.5 flex items-center gap-3">
+                                    <div className="w-11 h-11 rounded-full bg-amber-100 flex items-center justify-center shrink-0 overflow-hidden">
+                                      <User className="w-6 h-6 text-amber-700" />
                                     </div>
                                     <div>
-                                      <p className="text-xs font-medium text-gray-700">
-                                        Ahmad R. — Lead Technician
+                                      <p className="text-xs font-semibold text-gray-800">
+                                        Ahmad R.
                                       </p>
-                                      <p className="text-[10px] text-gray-400">
-                                        ⭐ 4.9 rating · 200+ jobs
+                                      <p className="text-[10px] text-gray-500">
+                                        Lead Technician · KL Team
                                       </p>
                                     </div>
                                   </div>
-                                ) : null}
-                                <p className="text-sm">
-                                  <TypingText
-                                    text={msg.text}
-                                    delay={100}
-                                  />
+                                )}
+                                <p className="text-[13px] leading-relaxed">
+                                  {msg.text}
                                 </p>
-                                <span className="text-[10px] text-gray-400 float-right mt-1">
+                                <span className="text-[10px] text-gray-400 float-right mt-0.5 ml-2">
                                   {msg.time}
                                 </span>
                               </div>
@@ -215,12 +182,15 @@ export default function TrueAISection() {
                           );
                         })}
 
-                        {visibleMessages >= TRUEAI_DEMO_CHAT.length && (
-                          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-3 mt-2">
-                            <p className="text-xs text-[var(--color-brand)] font-medium">
+                        {visibleMessages >= CHAT_MESSAGES.length && (
+                          <div
+                            className="bg-blue-50 border border-blue-200 rounded-2xl p-2.5 mt-1"
+                            style={{ opacity: 0, animation: "bubble-in 0.3s ease-out 0.3s forwards" }}
+                          >
+                            <p className="text-[11px] text-[var(--color-brand)] font-medium">
                               ⚡ Replied in 3 seconds. Booked the appointment.
-                              Upsold leak inspection. Sent technician profile
-                              with photo. Your sales team was asleep.
+                              Upsold leak inspection. Sent technician profile.
+                              Your sales team was asleep.
                             </p>
                           </div>
                         )}
@@ -229,7 +199,7 @@ export default function TrueAISection() {
                   </div>
 
                   {/* CTA below demo */}
-                  <div className="p-4 bg-white border-t border-gray-200">
+                  <div className="p-3 bg-white border-t border-gray-200">
                     <a
                       href={whatsappUrl(
                         "Hi! I want to see TrueAI for my business. How do I get started?"
@@ -248,6 +218,14 @@ export default function TrueAISection() {
           </div>
         </div>
       </div>
+
+      {/* Bubble animation keyframe */}
+      <style>{`
+        @keyframes bubble-in {
+          from { opacity: 0; transform: translateY(8px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+      `}</style>
     </section>
   );
 }
