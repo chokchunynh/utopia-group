@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description:
       "We run AI across 35+ companies with 400+ staff. Now we implement it for yours. From RM3,000/month.",
   },
-  icons: { icon: "/favicon.svg", apple: "/favicon.png" },
+  icons: { icon: "/favicon.png", apple: "/favicon.png" },
 };
 
 export default function RootLayout({

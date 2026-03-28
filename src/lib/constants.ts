@@ -126,9 +126,9 @@ export const DEPARTMENTS = [
     name: "Accounting & Finance",
     icon: "calculator",
     tools: [
-      { name: "SlipMatch", url: "https://slipmatch.my", logo: "/images/client-logos/slipmatch-logo.webp", desc: "AI bank reconciliation — match payment slips to invoices in 3 minutes, not 3 hours." },
-      { name: "GetBill", url: "https://getbill.my", logo: "/images/client-logos/getbill-logo.webp", desc: "Extract utility bills (TNB, Air Selangor) automatically. No more manual data entry." },
-      { name: "RecurPay", url: "https://recurpay.my", logo: "/images/client-logos/recurpay-logo.webp", desc: "Track recurring payments and collections. Know who owes what, when, and how much — automatically." },
+      { name: "SlipMatch", url: "https://slipmatch.my", logo: "/images/client-logos/slipmatch-favicon.svg", desc: "AI bank reconciliation — match payment slips to invoices in 3 minutes, not 3 hours." },
+      { name: "GetBill", url: "https://getbill.my", logo: "/images/client-logos/getbill-favicon.svg", desc: "Extract utility bills (TNB, Air Selangor) automatically. No more manual data entry." },
+      { name: "RecurPay", url: "https://recurpay.my", logo: "/images/client-logos/recurpay-favicon.svg", desc: "Track recurring payments and collections. Know who owes what, when, and how much — automatically." },
     ],
     description: "Bank reconciliation in 3 minutes, automatic invoice matching, utility bill extraction. No more manual data entry.",
     color: "#116dff",
