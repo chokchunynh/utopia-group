@@ -91,10 +91,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* ===== SECTION WRAPPER ===== */
 .section-padding {
-  padding: 56px 12px;
-}
-@media (min-width: 480px) {
-  .section-padding { padding: 56px 16px; }
+  padding: 56px 20px;
 }
 @media (min-width: 768px) {
   .section-padding { padding: 112px 40px; }
