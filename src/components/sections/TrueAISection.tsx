@@ -18,6 +18,7 @@ const CHAT_MESSAGES = [
   { from: "ai", text: "Booked! Tomorrow 10am, 5 units service + 1 leak inspection. For the leak, our technician will diagnose on-site — if it's a drainage issue, it's included free.", time: "9:15 AM" },
   { from: "ai", text: "Here's your assigned technician — Ahmad from our KL team. He'll arrive between 9:45-10am.", time: "9:16 AM", showTech: true },
   { from: "ai", text: "I've sent a confirmation SMS to your number. Anything else I can help with?", time: "9:16 AM" },
+  { from: "customer", text: "Thanks for the fast reply! See you tomorrow 👍", time: "9:17 AM" },
 ];
 
 export default function TrueAISection() {
@@ -26,7 +27,7 @@ export default function TrueAISection() {
 
   useEffect(() => {
     if (!showDemo) return;
-    const delays = [0, 800, 2000, 3000, 4200, 5400];
+    const delays = [0, 800, 2000, 3000, 4200, 5400, 6600];
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     delays.forEach((delay, idx) => {
@@ -99,7 +100,7 @@ export default function TrueAISection() {
                       </div>
                       <div>
                         <p className="text-white text-sm font-semibold">
-                          Daikin Aircond KL
+                          Encik Beku Aircond
                         </p>
                         <p className="text-white/60 text-xs">
                           Powered by TrueAI
@@ -120,7 +121,7 @@ export default function TrueAISection() {
                           <Zap className="w-7 h-7 text-[var(--color-whatsapp)]" />
                         </div>
                         <p className="text-sm text-gray-600 mb-1 font-medium">
-                          Real conversation from Daikin Aircond KL
+                          Real conversation from Encik Beku Aircond
                         </p>
                         <p className="text-xs text-gray-400 mb-5">
                           Watch TrueAI handle a customer enquiry
