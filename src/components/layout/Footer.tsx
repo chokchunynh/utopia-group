@@ -4,8 +4,8 @@ import { FOOTER_LINKS } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--color-border)]">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-14">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
           {/* Logo + tagline */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-1">
@@ -39,10 +39,10 @@ export default function Footer() {
 
           {/* Navigate */}
           <div>
-            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-4 uppercase tracking-wide">
+            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
               Explore
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {FOOTER_LINKS.navigate.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -58,10 +58,10 @@ export default function Footer() {
 
           {/* Tools */}
           <div>
-            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-4 uppercase tracking-wide">
+            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
               Our Tools
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {FOOTER_LINKS.tools.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -77,10 +77,10 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-4 uppercase tracking-wide">
+            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
               Company
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {FOOTER_LINKS.company.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -96,10 +96,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-4 uppercase tracking-wide">
+            <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
               Contact
             </h4>
-            <ul className="space-y-2.5 text-sm text-[var(--color-text-soft)]">
+            <ul className="space-y-1.5 text-sm text-[var(--color-text-soft)]">
               <li>
                 <a
                   href="https://wa.me/60146869468"
@@ -130,7 +130,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[13px] text-[var(--color-text-soft)]">
             Built in Malaysia for Malaysian businesses.
           </p>
