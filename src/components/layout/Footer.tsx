@@ -47,7 +47,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-1.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-1.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-1.5 inline-block"
                   >
                     {link.label}
                   </Link>

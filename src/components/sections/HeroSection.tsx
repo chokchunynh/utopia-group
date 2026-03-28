@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { WHATSAPP_URL } from "@/lib/constants";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -57,14 +58,27 @@ export default function HeroSection() {
           </div>
 
           {/* Trust line */}
-          <p className="text-[13px] text-white/60 mb-12 md:mb-16">
+          <p className="text-[13px] text-white/60 mb-10 md:mb-14">
             No credit card. No sign-up. See AI work before you pay a single
             ringgit.
           </p>
         </ScrollReveal>
 
-        {/* Bottom spacer — cloud bg fades into next section */}
-        <div className="h-16 md:h-24" />
+        {/* Product screenshot — proof the AI is real */}
+        <ScrollReveal delay={300}>
+          <div className="relative mx-auto max-w-3xl mb-[-40px] md:mb-[-60px]">
+            <div className="rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-white/5 backdrop-blur-sm">
+              <Image
+                src="/images/hero-dashboard.webp"
+                alt="Utopia AI Dashboard — real-time business intelligence"
+                width={1200}
+                height={675}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

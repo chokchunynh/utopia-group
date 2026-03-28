@@ -202,40 +202,72 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-8">
-            {COMPANIES.map((c, i) => (
-              <ScrollReveal key={c.name} delay={i * 50}>
+          {/* Top 5 companies — large bento cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-4">
+            {COMPANIES.slice(0, 3).map((c, i) => (
+              <ScrollReveal key={c.name} delay={i * 80}>
                 <a
                   href={c.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card h-full flex flex-col items-center text-center gap-3 hover:border-[var(--color-brand)]"
+                  className="card h-full flex items-center gap-4 hover:border-[var(--color-brand)]"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden">
-                    <Image
-                      src={c.logo}
-                      alt={c.name}
-                      width={32}
-                      height={32}
-                      className="object-contain"
-                      unoptimized
-                    />
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0">
+                    <Image src={c.logo} alt={c.name} width={36} height={36} className="object-contain" unoptimized />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-[14px] text-[var(--color-text-primary)]">
-                      {c.name}
-                    </h3>
-                    <p className="text-[12px] text-[var(--color-text-muted)]">
-                      {c.industry}
-                    </p>
-                    <span
-                      className="text-[11px] font-semibold mt-1 inline-block"
-                      style={{ color: c.color }}
-                    >
-                      {c.sites} {c.sites === 1 ? "business" : "businesses"}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
+                    <p className="text-[12px] text-[var(--color-text-muted)]">{c.industry}</p>
+                    <span className="text-[12px] font-semibold mt-0.5 inline-block" style={{ color: c.color }}>
+                      {c.sites} businesses
                     </span>
                   </div>
-                  <ExternalLink className="w-3 h-3 text-[var(--color-text-soft)]" />
+                  <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-soft)] shrink-0" />
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-4 max-w-5xl mx-auto mb-4">
+            {COMPANIES.slice(3, 5).map((c, i) => (
+              <ScrollReveal key={c.name} delay={(i + 3) * 80}>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card h-full flex items-center gap-4 hover:border-[var(--color-brand)]"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0">
+                    <Image src={c.logo} alt={c.name} width={36} height={36} className="object-contain" unoptimized />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
+                    <p className="text-[12px] text-[var(--color-text-muted)]">{c.industry}</p>
+                    <span className="text-[12px] font-semibold mt-0.5 inline-block" style={{ color: c.color }}>
+                      {c.sites} businesses
+                    </span>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-soft)] shrink-0" />
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+          {/* Remaining companies — compact grid */}
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-3 max-w-5xl mx-auto mb-8">
+            {COMPANIES.slice(5).map((c, i) => (
+              <ScrollReveal key={c.name} delay={(i + 5) * 40}>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-flat h-full flex flex-col items-center text-center gap-2 py-4 px-3 hover:shadow-md transition-shadow"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden">
+                    <Image src={c.logo} alt={c.name} width={24} height={24} className="object-contain" unoptimized />
+                  </div>
+                  <span className="font-medium text-[12px] text-[var(--color-text-primary)] leading-tight">{c.name}</span>
+                  <span className="text-[10px] font-semibold" style={{ color: c.color }}>
+                    {c.sites} {c.sites === 1 ? "business" : "businesses"}
+                  </span>
                 </a>
               </ScrollReveal>
             ))}
