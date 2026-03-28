@@ -38,8 +38,11 @@ const STEPS = [
 
 export default function HowWeWork() {
   return (
-    <section className="bg-white">
-      <div className="section-padding">
+    <section className="relative bg-white overflow-hidden">
+      {/* Ambient gradient orb */}
+      <div className="ambient-orb -top-40 -right-40 md:top-10 md:right-[-100px]" aria-hidden="true" />
+
+      <div className="relative z-[1] section-padding">
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-14">
@@ -58,7 +61,7 @@ export default function HowWeWork() {
               const isLeft = i % 2 === 0;
 
               return (
-                <ScrollReveal key={step.number} delay={i * 100}>
+                <ScrollReveal key={step.number} delay={i * 100} direction={isLeft ? "left" : "right"}>
                   <div className="flex gap-5 md:gap-8 mb-10 last:mb-0">
                     {/* Timeline line */}
                     <div className="flex flex-col items-center">

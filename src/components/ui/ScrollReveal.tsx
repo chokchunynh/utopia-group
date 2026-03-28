@@ -6,12 +6,20 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  direction?: "up" | "left" | "right";
 }
+
+const DIRECTION_CLASS = {
+  up: "reveal-blur",
+  left: "reveal-left",
+  right: "reveal-right",
+} as const;
 
 export default function ScrollReveal({
   children,
   delay = 0,
   className = "",
+  direction = "up",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -48,7 +56,7 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`reveal-blur ${className}`}
+      className={`${DIRECTION_CLASS[direction]} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

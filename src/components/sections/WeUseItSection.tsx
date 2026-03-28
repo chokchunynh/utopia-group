@@ -16,7 +16,7 @@ export default function WeUseItSection() {
             {/* ── Split Layout: Stats Left | Proof Right ── */}
             <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
               {/* LEFT — Big stats */}
-              <ScrollReveal>
+              <ScrollReveal direction="left">
                 <div>
                   <span className="pill mb-6 inline-block">Why Us</span>
 
@@ -55,7 +55,7 @@ export default function WeUseItSection() {
               </ScrollReveal>
 
               {/* RIGHT — Headline + proof points */}
-              <ScrollReveal delay={150}>
+              <ScrollReveal direction="right" delay={150}>
                 <div>
                   <h2 className="heading-lg text-[24px] md:text-[32px] mb-3 leading-tight">
                     {OWN_RESULTS.headline}

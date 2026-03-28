@@ -249,6 +249,44 @@ h1, h2, h3 { text-wrap: balance; }
   transform: translateY(0);
 }
 
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== AMBIENT ORB ===== */
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+.ambient-orb {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(17, 109, 255, 0.07) 0%, transparent 70%);
+  animation: float-orb 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* ===== GRADIENT CTA BAND (Mintlify footer) ===== */
 .gradient-cta-band {
   background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-white) 100%);
@@ -329,7 +367,8 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
-  .reveal-up, .reveal-blur { opacity: 1; transform: none; transition: none; }
+  .reveal-up, .reveal-blur, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+  .ambient-orb { animation: none; }
 }
 
 /* ===== RANGE SLIDER (brand-styled) ===== */

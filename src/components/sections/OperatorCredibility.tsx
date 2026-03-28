@@ -26,7 +26,7 @@ export default function OperatorCredibility() {
       <div className="relative z-[1] section-padding">
         <div className="section-inner">
           {/* ── Left-aligned heading ── */}
-          <ScrollReveal>
+          <ScrollReveal direction="left">
             <div className="max-w-4xl mx-auto mb-12">
               <div className="md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 md:items-end">
                 <div>
