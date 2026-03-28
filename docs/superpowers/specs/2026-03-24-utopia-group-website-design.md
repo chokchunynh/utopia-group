@@ -2,6 +2,7 @@
 **Date:** 2026-03-24
 **Status:** Approved by CY
 **Pipeline Mode:** LITE (landing/brochure site, no user accounts)
+**Spec Review:** Issues resolved 2026-03-24 (see Appendix A)
 **Project Dir:** ~/utopia-group/
 **Domain:** utopiagroup.com.my
 **Vercel Project:** utopia-group
@@ -355,3 +356,45 @@ Reusing existing ~/utopia-group project. Clean rebuild of all components with ne
 - E-commerce / payment processing
 - Multi-language toggle (English only for now)
 - Google Analytics (add post-launch)
+
+---
+
+## Appendix A — Spec Review Resolutions (2026-03-24)
+
+### Critical Items Resolved
+
+**1.1 Pricing model:** Old SaaS pricing (Starter/Pro/Enterprise from constants.ts) is REPLACED ENTIRELY. The new model is implementation-based (Free tools / RM12K+RM3K / RM68K). Individual tools (SlipMatch, AutoViral) retain their own free tiers accessible via /automate.
+
+**1.2 "Pricing" nav link:** Scrolls to homepage anchor `/#pricing`. No dedicated /pricing page.
+
+**1.3 Contact form backend:** API route at `/api/contact/route.ts`. Sends email via Resend to hello@utopiagroup.com.my. Fields: name (required), company (required), email (required, validated), phone (optional), message (required). Success state: "Thanks! We'll WhatsApp you within 1 hour." Error state: "Something went wrong. WhatsApp us directly at +60146869468." No Supabase. Rate limit: 3 submissions per IP per hour.
+
+### Important Items Resolved
+
+**2.1 CTA color:** Fuchsia #D946EF is DROPPED. CTAs use brand blue #116dff (primary) and WhatsApp green #25D366 (WhatsApp buttons). Outline variant for secondary CTAs.
+
+**2.2 Body text color:** #334155 (spec value wins, slate-700).
+
+**2.3 Secondary text color:** #64748b (spec value wins, slate-500).
+
+**2.4 Tool count:** Corrected to "9 AI Tools Built" (SlipMatch, RecurPay, GetBill, Utopia Payroll, Ask Toppie, AutoViral, Kreativ, TrueAI, U-Stay).
+
+**2.5 Product name:** SlipMatch is the canonical name. BankMatch was the old name — remove all references.
+
+**2.6 Breakpoints:** Use Tailwind 4 default breakpoints (sm: 640px, md: 768px, lg: 1024px, xl: 1280px). No custom breakpoints.
+
+**2.7 /automate sub-pages:** DEFERRED to P2. Ship /automate as a single tabbed page first. Department sub-pages are a fast follow post-launch since they're templated.
+
+**2.8 /results page:** Card layout. Each case study is a horizontal card with industry badge, challenge, implementation, and result. Same 6 entries as homepage but with expanded narrative.
+
+### Scope Note
+Homepage (13 sections) + /automate (tabbed) + /results + /about + /contact = 5 routes for P0/P1. Department sub-pages deferred to P2. This is within LITE scope.
+
+### Additional Cleanup
+- Remove @splinetool/react-spline and @splinetool/runtime from package.json
+- Remove Spline component from src/components/ui/
+- FAQ: Write 10 questions (copy doc has all 10)
+- Schema markup: Organization + LocalBusiness on layout, FAQ on homepage, Product on /automate
+- OG images: Placeholder for now, generate with Satori post-launch
+- Google Maps on /contact: iframe embed (no API key needed)
+- Testimonials: EXCLUDED from homepage. Using real case study results instead. No fake testimonials.

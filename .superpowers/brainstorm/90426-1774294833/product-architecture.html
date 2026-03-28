@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updated: Product Architecture by Department</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 28px 0 12px; color: #0f172a; border-bottom: 2px solid #116dff; padding-bottom: 6px; }
+  p { margin-bottom: 10px; color: #475569; font-size: 15px; }
+  .badge { display: inline-block; background: #116dff; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+  .dept-row { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: #f8fafc; border-radius: 12px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+  .dept-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .dept-content { flex: 1; }
+  .dept-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .dept-content .desc { font-size: 13px; color: #64748b; margin-bottom: 10px; }
+  .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid #e2e8f0; background: white; }
+  .chip.live { border-color: #10b981; color: #059669; }
+  .chip.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
+  .chip.soon { border-color: #f59e0b; color: #b45309; }
+  .chip.soon::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+  .highlight { background: #f0f7ff; border-left: 4px solid #116dff; padding: 16px; border-radius: 0 12px 12px 0; margin: 16px 0; }
+  .page-flow { display: flex; flex-direction: column; gap: 8px; }
+  .page-item { display: flex; align-items: center; gap: 12px; background: #f8fafc; padding: 14px 16px; border-radius: 10px; border: 1px solid #e2e8f0; }
+  .page-item .icon { width: 36px; height: 36px; border-radius: 8px; background: #116dff; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .page-item .info h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin: 0; }
+  .page-item .info p { font-size: 12px; color: #64748b; margin: 0; }
+  .wireframe { background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 12px; padding: 20px; margin: 12px 0; }
+  .tab-bar { display: flex; gap: 0; background: #f1f5f9; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .tab { flex: 1; padding: 12px; text-align: center; font-size: 13px; font-weight: 600; color: #64748b; border-bottom: 3px solid transparent; cursor: pointer; }
+  .tab.active { background: white; color: #116dff; border-bottom-color: #116dff; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  table th { background: #f1f5f9; padding: 8px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
+  table td { padding: 8px 12px; border-bottom: 1px solid #f1f5f9; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Updated Design: Products by Business Function</h1>
+<span class="badge">What Can You Automate?</span>
+<p>Visitors browse by department, not product name. Each department shows live tools + coming-soon tools. This becomes a living portfolio that grows.</p>
+
+<!-- ============================================ -->
+<h2>The 5 Departments</h2>
+<!-- ============================================ -->
+<div class="section">
+
+  <!-- Accounting -->
+  <div class="dept-row">
+    <div class="dept-icon" style="background: #dbeafe; color: #2563eb;">$</div>
+    <div class="dept-content">
+      <h3>Accounting & Finance</h3>
+      <div class="desc">Automate reconciliation, collections, bill extraction, and invoicing</div>
+      <div class="tool-chips">
+        <span class="chip live">SlipMatch — Bank Reconciliation AI</span>
+        <span class="chip live">RecurPay — Payment Collection Tracker</span>
+        <span class="chip live">GetBill — Utility Bill Extractor</span>
+        <span class="chip soon">AI Invoice Matching</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HR -->
+  <div class="dept-row">
+    <div class="dept-icon" style="background: #fce7f3; color: #db2777;">H</div>
+    <div class="dept-content">
+      <h3>HR & People</h3>
+      <div class="desc">Payroll, attendance, employee queries, KPI tracking</div>
+      <div class="tool-chips">
+        <span class="chip live">Utopia Payroll — GPS+QR Attendance & Auto Payroll</span>
+        <span class="chip live">Ask Toppie — AI Assistant for Staff Queries</span>
+        <span class="chip soon">KPI Dashboard AI</span>
+        <span class="chip soon">AI Leave & Scheduling</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marketing -->
+  <div class="dept-row">
+    <div class="dept-icon" style="background: #d1fae5; color: #059669;">M</div>
+    <div class="dept-content">
+      <h3>Marketing & Content</h3>
+      <div class="desc">Social media, SEO, graphic design, website creation, ad management</div>
+      <div class="tool-chips">
+        <span class="chip live">AutoViral — AI Social Media Content</span>
+        <span class="chip live">Kreativ — AI Graphic Design</span>
+        <span class="chip soon">AutoRank — SEO Content Engine</span>
+        <span class="chip soon">AI Website Builder</span>
+        <span class="chip soon">AI Ad Manager</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sales -->
+  <div class="dept-row">
+    <div class="dept-icon" style="background: #fef3c7; color: #d97706;">S</div>
+    <div class="dept-content">
+      <h3>Sales & Customer Service</h3>
+      <div class="desc">WhatsApp AI sales agent, lead scoring, CRM automation, customer support</div>
+      <div class="tool-chips">
+        <span class="chip live">TrueAI&#8482; — WhatsApp Sales Agent</span>
+        <span class="chip soon">AI Lead Scoring</span>
+        <span class="chip soon">AI CRM</span>
+        <span class="chip soon">Customer Support Bot</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operations -->
+  <div class="dept-row">
+    <div class="dept-icon" style="background: #ede9fe; color: #7c3aed;">O</div>
+    <div class="dept-content">
+      <h3>Operations & Logistics</h3>
+      <div class="desc">Fleet management, trip assignment, inventory, scheduling, supply chain</div>
+      <div class="tool-chips">
+        <span class="chip live">U-Stay — Property & Tenant Management</span>
+        <span class="chip soon">AI Trip Assignment</span>
+        <span class="chip soon">GPS Journey Optimizer</span>
+        <span class="chip soon">AI Inventory Management</span>
+        <span class="chip soon">Smart Scheduling</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>Updated Site Architecture</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="page-flow">
+    <div class="page-item">
+      <div class="icon">/</div>
+      <div class="info">
+        <h4>Homepage</h4>
+        <p>Full story + department overview (5 icons with counts) + pricing + CTA</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon" style="background: #2563eb;">A</div>
+      <div class="info">
+        <h4>/automate</h4>
+        <p>"What Can You Automate?" — tabbed view of all 5 departments. Each tab shows tools, descriptions, screenshots. This is the living portfolio page.</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon" style="background: #7c3aed;">T</div>
+      <div class="info">
+        <h4>/automate/accounting &nbsp;/automate/hr &nbsp;/automate/marketing &nbsp;etc.</h4>
+        <p>Deep-dive sub-pages for each department. Individual tool details, screenshots, "Try Free" links.</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon" style="background: #059669;">R</div>
+      <div class="info">
+        <h4>/results</h4>
+        <p>Case studies with real numbers — organized by industry</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon" style="background: #db2777;">Ab</div>
+      <div class="info">
+        <h4>/about</h4>
+        <p>Founder story, team, 30+ companies, timeline</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon" style="background: #d97706;">C</div>
+      <div class="info">
+        <h4>/contact</h4>
+        <p>WhatsApp CTA, office address, contact form</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>Homepage "What Can You Automate?" Section</h2>
+<!-- ============================================ -->
+<div class="section">
+  <p style="font-size: 13px; color: #64748b;">This section appears on the homepage as a scrollable preview. Click any department to go to /automate/[dept].</p>
+  <div class="wireframe">
+    <div style="text-align:center; margin-bottom: 16px;">
+      <div style="font-size: 11px; color: #116dff; font-weight: 700; letter-spacing: 1px;">WHAT CAN YOU AUTOMATE?</div>
+      <div style="font-size: 22px; font-weight: 800; color: #0f172a;">Every Department. One AI Partner.</div>
+      <div style="font-size: 13px; color: #64748b;">Click a department to explore our tools</div>
+    </div>
+
+    <!-- Tab-style department selector -->
+    <div class="tab-bar">
+      <div class="tab active">Accounting</div>
+      <div class="tab">HR</div>
+      <div class="tab">Marketing</div>
+      <div class="tab">Sales</div>
+      <div class="tab">Operations</div>
+    </div>
+
+    <!-- Preview content for selected tab -->
+    <div class="grid-2">
+      <div style="background:white;padding:16px;border-radius:10px;border:1px solid #e2e8f0;">
+        <div style="font-size: 14px; font-weight: 700;">SlipMatch</div>
+        <div style="font-size: 12px; color: #64748b; margin: 4px 0;">Upload bank slips, AI matches payments automatically. Supports 8 Malaysian banks.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;">
+          <span style="background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;">Live</span>
+          <span style="background:#dbeafe;color:#2563eb;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;">Try Free</span>
+        </div>
+      </div>
+      <div style="background:white;padding:16px;border-radius:10px;border:1px solid #e2e8f0;">
+        <div style="font-size: 14px; font-weight: 700;">RecurPay</div>
+        <div style="font-size: 12px; color: #64748b; margin: 4px 0;">Track Direct Debit collections. Auto-sync PayEx mandates, flag defaults.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;">
+          <span style="background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;">Live</span>
+          <span style="background:#dbeafe;color:#2563eb;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;">Try Free</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:12px;">
+      <span style="background:#116dff;color:white;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;">See All Accounting Tools &rarr;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>Key Insight: Living Portfolio</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="highlight">
+    <p style="margin: 0;"><strong>This page grows with you.</strong> Every time you build a new AI tool, you add it to the relevant department. "Coming Soon" tools create anticipation. Live tools build credibility. Visitors see an ever-expanding ecosystem — not a static product page.</p>
+  </div>
+  <table>
+    <thead><tr><th>Now (Launch)</th><th>3 Months</th><th>6 Months</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>8 live tools + 10 coming soon</td>
+        <td>12 live tools + 8 coming soon</td>
+        <td>18+ live tools across all departments</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

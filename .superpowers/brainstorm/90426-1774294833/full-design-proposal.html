@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utopia Group — Full Design Proposal</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
+  h2 { font-size: 22px; font-weight: 700; margin: 32px 0 12px; color: #0f172a; border-bottom: 2px solid #116dff; padding-bottom: 6px; }
+  h3 { font-size: 17px; font-weight: 700; margin: 16px 0 8px; color: #334155; }
+  p { margin-bottom: 10px; color: #475569; font-size: 15px; }
+  .badge { display: inline-block; background: #116dff; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .highlight { background: #f0f7ff; border-left: 4px solid #116dff; padding: 16px; border-radius: 0 12px 12px 0; margin: 12px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .card { background: #f8fafc; border-radius: 12px; padding: 16px; border: 1px solid #e2e8f0; }
+  .card h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+  .card p { font-size: 13px; margin-bottom: 0; }
+  .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag.green { background: #dcfce7; color: #15803d; }
+  .tag.purple { background: #f3e8ff; color: #7c3aed; }
+  .tag.amber { background: #fef3c7; color: #b45309; }
+  .wireframe { background: #f1f5f9; border: 2px dashed #cbd5e1; border-radius: 12px; padding: 20px; margin: 12px 0; }
+  .wireframe-nav { background: #0f172a; color: white; padding: 12px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .wireframe-hero { background: linear-gradient(135deg, #116dff 0%, #0055d4 100%); color: white; padding: 40px 24px; border-radius: 12px; text-align: center; margin-bottom: 12px; }
+  .wireframe-hero h2 { color: white; border: none; margin: 0 0 8px; font-size: 26px; }
+  .wireframe-hero p { color: rgba(255,255,255,0.85); }
+  .wireframe-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .wireframe-stat { background: white; padding: 16px 8px; border-radius: 8px; text-align: center; border: 1px solid #e2e8f0; }
+  .wireframe-stat .num { font-size: 24px; font-weight: 800; color: #116dff; }
+  .wireframe-stat .label { font-size: 11px; color: #64748b; }
+  .pricing-card { background: white; border-radius: 12px; padding: 20px; border: 2px solid #e2e8f0; text-align: center; }
+  .pricing-card.featured { border-color: #116dff; box-shadow: 0 4px 12px rgba(17,109,255,0.15); }
+  .pricing-card h4 { font-size: 16px; font-weight: 700; }
+  .pricing-card .price { font-size: 28px; font-weight: 800; color: #116dff; margin: 8px 0; }
+  .pricing-card .price small { font-size: 14px; color: #94a3b8; font-weight: 400; }
+  .pricing-card ul { list-style: none; text-align: left; margin: 12px 0; }
+  .pricing-card ul li { font-size: 13px; padding: 4px 0; color: #475569; }
+  .pricing-card ul li::before { content: "✓ "; color: #10b981; font-weight: 700; }
+  .page-list { display: flex; flex-direction: column; gap: 8px; }
+  .page-item { display: flex; align-items: center; gap: 12px; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border: 1px solid #e2e8f0; }
+  .page-item .icon { width: 36px; height: 36px; border-radius: 8px; background: #116dff; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .page-item .info h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin: 0; }
+  .page-item .info p { font-size: 12px; color: #64748b; margin: 0; }
+  .mac-mini-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 32px; border-radius: 16px; text-align: center; margin: 16px 0; }
+  .mac-mini-section h3 { color: white; font-size: 20px; margin-bottom: 8px; }
+  .mac-mini-section p { color: #94a3b8; }
+  .mac-mini-icon { font-size: 48px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  table th { background: #f1f5f9; padding: 8px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #e2e8f0; }
+  table td { padding: 8px 12px; border-bottom: 1px solid #f1f5f9; }
+  .approve-btn { display: block; width: 100%; padding: 16px; background: #116dff; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 24px; text-align: center; }
+  .approve-btn:hover { background: #0055d4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Utopia Group — Website Design Proposal</h1>
+<span class="badge">Approach A: Operator-First</span>
+<p>Multi-page website with strong homepage. English. Clean white design. Mobile-first.</p>
+
+<!-- ============================================ -->
+<h2>1. Site Architecture — Pages</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="page-list">
+    <div class="page-item">
+      <div class="icon">/</div>
+      <div class="info">
+        <h4>Homepage</h4>
+        <p>Full story: Hero → Stats → Problem → Mac Mini → TrueAI → Product Showcase → Results → Pricing → CTA</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon">P</div>
+      <div class="info">
+        <h4>/products</h4>
+        <p>All 8 SaaS tools with descriptions, screenshots, and live demo links</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon">A</div>
+      <div class="info">
+        <h4>/about</h4>
+        <p>Founder story (CY), team, 30+ companies, timeline, office locations</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon">R</div>
+      <div class="info">
+        <h4>/results</h4>
+        <p>Case studies with real numbers — transport, healthcare, co-living, construction</p>
+      </div>
+    </div>
+    <div class="page-item">
+      <div class="icon">C</div>
+      <div class="info">
+        <h4>/contact</h4>
+        <p>WhatsApp CTA, office address (Jalan Putra KL), contact form, map</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>2. Homepage Wireframe — Section Flow</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="wireframe">
+
+    <!-- Nav -->
+    <div class="wireframe-nav">
+      <span>UTOPIA GROUP</span>
+      <span>Products &nbsp; Results &nbsp; About &nbsp; Pricing &nbsp; <span style="background:#25D366;padding:4px 12px;border-radius:20px;color:white;">WhatsApp Us</span></span>
+    </div>
+
+    <!-- Hero -->
+    <div class="wireframe-hero">
+      <p style="font-size: 13px; opacity: 0.7; margin-bottom: 4px;">Malaysia's Only AI Partner That Actually Operates Businesses</p>
+      <h2 style="font-size: 28px; line-height: 1.2;">We Run AI Across 30 Companies.<br/>Now We'll Run It For Yours.</h2>
+      <p style="font-size: 14px;">We don't just consult. We set up a machine in your office, build your AI dashboard, and automate your operations. From day one.</p>
+      <div style="margin-top: 16px; display: flex; gap: 12px; justify-content: center;">
+        <span style="background:white;color:#116dff;padding:10px 24px;border-radius:24px;font-weight:700;font-size:14px;">Try Our Tools Free</span>
+        <span style="background:#25D366;color:white;padding:10px 24px;border-radius:24px;font-weight:700;font-size:14px;">WhatsApp Us</span>
+      </div>
+      <p style="font-size: 11px; margin-top: 12px; opacity: 0.5;">[CY photo / team photo / Mac Mini setup photo placeholder]</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="wireframe-stats">
+      <div class="wireframe-stat"><div class="num">30+</div><div class="label">Companies Run</div></div>
+      <div class="wireframe-stat"><div class="num">300+</div><div class="label">Staff</div></div>
+      <div class="wireframe-stat"><div class="num">8</div><div class="label">AI Tools Built</div></div>
+      <div class="wireframe-stat"><div class="num">70%</div><div class="label">Earnings Improved</div></div>
+    </div>
+
+    <!-- Sections list -->
+    <div style="font-size: 13px; color: #64748b; line-height: 2.2;">
+      <strong style="color:#0f172a;">Section Flow:</strong><br/>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">1. Hero</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">2. Stats Bar</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">3. The Problem</span>
+      <span style="background:#fef3c7;padding:3px 8px;border-radius:6px;margin:2px;">4. Mac Mini Section</span>
+      <span style="background:#dcfce7;padding:3px 8px;border-radius:6px;margin:2px;">5. TrueAI Feature</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">6. Product Showcase</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">7. AI Results</span>
+      <span style="background:#f3e8ff;padding:3px 8px;border-radius:6px;margin:2px;">8. Pricing</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">9. Why Utopia</span>
+      <span style="background:#e0f2fe;padding:3px 8px;border-radius:6px;margin:2px;">10. FAQ</span>
+      <span style="background:#dcfce7;padding:3px 8px;border-radius:6px;margin:2px;">11. Final CTA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>3. The Mac Mini Section (Unique Differentiator)</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="mac-mini-section">
+    <div class="mac-mini-icon">&#9654;</div>
+    <h3>We Don't Just Send Software. We Set Up a Machine.</h3>
+    <p>A dedicated Mac Mini in your office. Your AI dashboard on screen. Your operations automated. We physically show up, install, configure, and train your team.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 20px;">
+      <div style="background:rgba(255,255,255,0.08);padding:16px;border-radius:10px;">
+        <div style="font-size: 24px; font-weight: 800; color: #60a5fa;">Day 1</div>
+        <div style="font-size: 12px; color: #94a3b8;">Machine installed, dashboard live</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);padding:16px;border-radius:10px;">
+        <div style="font-size: 24px; font-weight: 800; color: #60a5fa;">Week 1</div>
+        <div style="font-size: 12px; color: #94a3b8;">5+ processes automated</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);padding:16px;border-radius:10px;">
+        <div style="font-size: 24px; font-weight: 800; color: #60a5fa;">Month 1</div>
+        <div style="font-size: 12px; color: #94a3b8;">Full AI operations running</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size: 13px; color: #64748b; margin-top: 8px;">This is a dark section — the ONLY dark section on the site. It creates visual contrast and makes the Mac Mini feel premium/tech-forward. Rest of the site stays clean white.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>4. TrueAI&trade; — Branded Feature</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="highlight">
+    <h3>TrueAI&trade; — Malaysia's First 100% Autonomous AI System</h3>
+    <p><strong>Positioning:</strong> Not a chatbot. Not a copilot. A fully autonomous AI that runs your business operations — toggle it on after training, toggle it off anytime.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <h4>Instant WhatsApp Link</h4>
+      <p>Connect your WhatsApp. AI takes over sales conversations immediately.</p>
+    </div>
+    <div class="card">
+      <h4>Self-Building Knowledge</h4>
+      <p>Learns your business. Creates its own knowledge base. Gets smarter daily.</p>
+    </div>
+    <div class="card">
+      <h4>Toggle On/Off</h4>
+      <p>After 6 months of training, switch to fully autonomous mode. You're in control.</p>
+    </div>
+  </div>
+  <div class="highlight" style="margin-top: 12px;">
+    <p style="margin: 0; font-size: 13px;"><strong>Cost Comparison:</strong> Building this yourself = RM300+/mo for database alone (Supabase, hosting, API). With Utopia = included in your plan. We run at scale across 30+ companies, so you benefit from shared infrastructure.</p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>5. Product Showcase — 3-Tier Layout</h2>
+<!-- ============================================ -->
+<div class="section">
+  <h3>Tier 1 — Featured (with screenshots + live links)</h3>
+  <div class="grid-3">
+    <div class="card" style="border-color: #116dff;">
+      <span class="tag">Fintech</span>
+      <h4>SlipMatch</h4>
+      <p>AI bank reconciliation. Upload slips, auto-match payments. 8 Malaysian banks supported.</p>
+    </div>
+    <div class="card" style="border-color: #116dff;">
+      <span class="tag green">Content</span>
+      <h4>AutoViral</h4>
+      <p>AI social media generator. Multi-platform posts in seconds. Free tier available.</p>
+    </div>
+    <div class="card" style="border-color: #116dff;">
+      <span class="tag purple">Payments</span>
+      <h4>RecurPay</h4>
+      <p>PayEx collection tracker. Auto-sync mandates, flag defaults, analyze patterns.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 20px;">Tier 2 — Card Grid (description + link)</h3>
+  <div class="grid-3">
+    <div class="card"><span class="tag amber">Property</span><h4>U-Stay</h4><p>Tenant management for co-living</p></div>
+    <div class="card"><span class="tag">HR</span><h4>Utopia Payroll</h4><p>GPS+QR attendance, auto payroll</p></div>
+    <div class="card"><span class="tag green">Internal</span><h4>Ask Toppie</h4><p>Private RAG AI for your company</p></div>
+    <div class="card"><span class="tag purple">Finance</span><h4>GetBill</h4><p>Auto-extract utility bills (TNB, SYABAS)</p></div>
+    <div class="card"><span class="tag amber">Design</span><h4>Kreativ</h4><p>AI graphic design platform</p></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>6. AI Results Section</h2>
+<!-- ============================================ -->
+<div class="section">
+  <p>Real business transformations across CY's 30+ companies:</p>
+  <table>
+    <thead>
+      <tr><th>Business</th><th>AI Implementation</th><th>Before</th><th>After</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Transport (Rev Move)</strong></td><td>Automated trip assignment + GPS journey AI</td><td>Manual dispatch, 2hr/day</td><td>Auto-assigned in seconds, 40% fuel savings</td></tr>
+      <tr><td><strong>Co-Living (Utopia)</strong></td><td>AI tenant matching + auto-collections</td><td>RM50K/mo revenue</td><td>RM450K+/mo, +800% growth</td></tr>
+      <tr><td><strong>Healthcare (Ibnu Sina)</strong></td><td>AI lead scoring + WhatsApp automation</td><td>1 oxygen machine</td><td>RM1.3M in 6 months</td></tr>
+      <tr><td><strong>Construction (Scaffolding)</strong></td><td>Inventory AI + demand forecasting</td><td>Zero revenue</td><td>RM450K/mo in scaffolding rentals</td></tr>
+      <tr><td><strong>Home Services (Encik Beku)</strong></td><td>AI scheduling + KPI management</td><td>Manual scheduling, missed jobs</td><td>42,000+ WhatsApp enquiries, zero missed</td></tr>
+      <tr><td><strong>All Companies</strong></td><td>Driver efficiency + operations AI</td><td>70% manual operations</td><td>70% earnings improvement across group</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================ -->
+<h2>7. Pricing — Transparent (Only AI Company in MY to Show This)</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="grid-3">
+    <div class="pricing-card">
+      <h4>Try Our Tools</h4>
+      <div class="price">Free<small> to start</small></div>
+      <ul>
+        <li>Access to SlipMatch, AutoViral, RecurPay</li>
+        <li>No credit card required</li>
+        <li>See AI in action first</li>
+        <li>Upgrade when ready</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <span class="tag" style="margin-bottom: 8px;">MOST POPULAR</span>
+      <h4>AI Starter</h4>
+      <div class="price">RM12,000<small> setup</small></div>
+      <p style="font-size: 13px; color: #64748b;">+ RM3,000/month</p>
+      <ul>
+        <li>Mac Mini installed in your office</li>
+        <li>Custom AI dashboard</li>
+        <li>5+ areas of improvement</li>
+        <li>WhatsApp AI sales agent</li>
+        <li>TrueAI&trade; enabled</li>
+        <li>Monthly optimization</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <span class="tag purple" style="margin-bottom: 8px;">ALL-IN</span>
+      <h4>Full Transformation</h4>
+      <div class="price">RM68,000<small> /6 months</small></div>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>15+ areas of improvement</li>
+        <li>3 critical areas (sales, inventory, purchasing)</li>
+        <li>Dedicated AI team on-site</li>
+        <li>Full 6-month implementation</li>
+        <li>Custom AI tools built for you</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight" style="margin-top: 12px;">
+    <p style="margin: 0; font-size: 13px;"><strong>ROI Argument:</strong> "We help SMEs save RM180,000/year. Large companies save RM3 million+. Setup feels expensive — but maintenance is cheap. And the ROI pays for itself in Month 1."</p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>8. Design System</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="grid-2">
+    <div>
+      <h3>Colors</h3>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+        <div style="width:48px;height:48px;background:#116dff;border-radius:8px;" title="#116dff Brand"></div>
+        <div style="width:48px;height:48px;background:#0f172a;border-radius:8px;" title="#0f172a Dark"></div>
+        <div style="width:48px;height:48px;background:#25D366;border-radius:8px;" title="#25D366 WhatsApp"></div>
+        <div style="width:48px;height:48px;background:#10B981;border-radius:8px;" title="#10B981 Success"></div>
+        <div style="width:48px;height:48px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;" title="#f8fafc Background"></div>
+      </div>
+      <p style="font-size: 12px;">Brand Blue #116dff | Dark (Mac Mini section only) #0f172a | WhatsApp #25D366 | All other backgrounds white/gray-50</p>
+    </div>
+    <div>
+      <h3>Typography</h3>
+      <p style="font-size: 12px;"><strong>Headings:</strong> Bricolage Grotesque, weight 700-800<br/>
+      <strong>Body:</strong> Plus Jakarta Sans, weight 400-500<br/>
+      <strong>Buttons:</strong> Plus Jakarta Sans, weight 700, pill-shaped (rounded-full)</p>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top: 16px;">
+    <div>
+      <h3>Visual Rules</h3>
+      <ul style="font-size: 13px; color: #475569; list-style: disc; padding-left: 20px;">
+        <li>Mobile-first (80-90% mobile users)</li>
+        <li>Clean white backgrounds throughout</li>
+        <li>ONE dark section only (Mac Mini)</li>
+        <li>Real photos when available, placeholder slots designed</li>
+        <li>No 3D elements, no abstract graphics</li>
+        <li>Extrabold headings, bold buttons</li>
+        <li>Scroll-reveal animations (subtle)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Components</h3>
+      <ul style="font-size: 13px; color: #475569; list-style: disc; padding-left: 20px;">
+        <li>WhatsApp FAB (always visible on scroll)</li>
+        <li>Mobile CTA bar (sticky bottom)</li>
+        <li>Product cards with live links</li>
+        <li>Stats counters (animated on scroll)</li>
+        <li>Before/After comparison rows</li>
+        <li>Pricing toggle (monthly vs setup)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<h2>9. Tech Stack</h2>
+<!-- ============================================ -->
+<div class="section">
+  <div class="grid-2">
+    <div class="card">
+      <h4>Framework</h4>
+      <p>Next.js 16 (App Router) + TypeScript + Tailwind CSS 4</p>
+    </div>
+    <div class="card">
+      <h4>Animations</h4>
+      <p>Motion (Framer Motion) for scroll reveals + counters</p>
+    </div>
+    <div class="card">
+      <h4>Icons</h4>
+      <p>Lucide React</p>
+    </div>
+    <div class="card">
+      <h4>Deployment</h4>
+      <p>Vercel → utopiagroup.com.my</p>
+    </div>
+  </div>
+  <p style="margin-top: 12px; font-size: 13px; color: #64748b;">Reusing the existing ~/utopia-group project. Clean rebuild of all components with new architecture. Keep existing Vercel project link.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>10. Decisions Summary</h2>
+<!-- ============================================ -->
+<div class="section">
+  <table>
+    <thead><tr><th>Decision</th><th>Answer</th></tr></thead>
+    <tbody>
+      <tr><td>Approach</td><td><strong>A — Operator-First</strong> ("We Run AI Across 30 Companies")</td></tr>
+      <tr><td>Language</td><td><strong>English</strong></td></tr>
+      <tr><td>Structure</td><td><strong>Multi-page</strong> (Home, /products, /about, /results, /contact)</td></tr>
+      <tr><td>Photos</td><td><strong>Placeholder slots</strong> — CY provides real photos later</td></tr>
+      <tr><td>Products</td><td><strong>3-tier</strong>: Featured (SlipMatch, AutoViral, RecurPay) → Cards (5 others) → TrueAI as branded feature</td></tr>
+      <tr><td>Pricing</td><td><strong>Visible</strong>: Free tools → RM12K+RM3K/mo → RM68K All-In</td></tr>
+      <tr><td>Mac Mini</td><td><strong>Hero differentiator</strong> — dedicated dark section, physical machine angle</td></tr>
+      <tr><td>Case Studies</td><td><strong>Real numbers</strong> + AI-specific results (creative freedom)</td></tr>
+      <tr><td>Design</td><td><strong>Clean white</strong>, brand #116dff, one dark section, mobile-first</td></tr>
+      <tr><td>CTA</td><td><strong>WhatsApp primary</strong> (#25D366), "Try Free" secondary</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</body>
+</html>

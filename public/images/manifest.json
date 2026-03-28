@@ -1,0 +1,84 @@
+{
+  "generated": "2026-03-24",
+  "source": "Unsplash (free license)",
+  "note": "No AI image generation API keys available. Images sourced from Unsplash free photos. Replace with AI-generated or custom photography when possible. Current images use Western faces — project guidelines prefer Malaysian diversity.",
+  "images": [
+    {
+      "filename": "hero-dashboard.webp",
+      "fallback": "hero-dashboard.jpg",
+      "description": "Business woman analyst using KPI data dashboard on large curved monitor, professional office setting with charts and analytics",
+      "dimensions": "1080x720",
+      "size_webp": "76KB",
+      "photographer": "Getty Images",
+      "unsplash_url": "https://unsplash.com/photos/premium_photo-1682126293045-9933c943b060",
+      "usage": "Hero section — right side visual, or hero background",
+      "loading": "priority"
+    },
+    {
+      "filename": "mac-mini-setup.webp",
+      "fallback": "mac-mini-setup.jpg",
+      "description": "Mac Mini on a wooden desk shelf with monitor, keyboard, mouse, and books — clean modern desk setup",
+      "dimensions": "1080x675 (cropped from portrait)",
+      "size_webp": "69KB",
+      "photographer": "Matus Gocman",
+      "unsplash_url": "https://unsplash.com/photos/photo-1760278041626-050187ffa287",
+      "usage": "MacMiniSection — 'We Set Up a Machine' visual",
+      "loading": "lazy"
+    },
+    {
+      "filename": "dept-accounting.webp",
+      "fallback": "dept-accounting.jpg",
+      "description": "Financial business analytics dashboard with analyst viewing dual monitors showing charts, data visualization, and financial metrics",
+      "dimensions": "1080x570",
+      "size_webp": "64KB",
+      "photographer": "Getty Images",
+      "unsplash_url": "https://unsplash.com/photos/premium_photo-1682126272530-66eff2e1755d",
+      "usage": "AutomateTabs — Accounting department tab visual",
+      "loading": "lazy"
+    },
+    {
+      "filename": "dept-hr.webp",
+      "fallback": "dept-hr.jpg",
+      "description": "Three colleagues collaborating around a laptop in a modern glass meeting room, professional team discussion",
+      "dimensions": "1080x720",
+      "size_webp": "52KB",
+      "photographer": "Marcel Petzold",
+      "unsplash_url": "https://unsplash.com/photos/photo-1757405930202-b2c3e11570fc",
+      "usage": "AutomateTabs — HR department tab visual",
+      "loading": "lazy"
+    },
+    {
+      "filename": "dept-marketing.webp",
+      "fallback": "dept-marketing.jpg",
+      "description": "Hand holding smartphone showing social media app folder with YouTube, Instagram, Facebook, LinkedIn, TikTok, Canva icons",
+      "dimensions": "1080x720",
+      "size_webp": "32KB",
+      "photographer": "dlxmedia.hu",
+      "unsplash_url": "https://unsplash.com/photos/photo-1745848413099-13adc3aaf308",
+      "usage": "AutomateTabs — Marketing department tab visual",
+      "loading": "lazy"
+    },
+    {
+      "filename": "dept-sales.webp",
+      "fallback": "dept-sales.jpg",
+      "description": "Happy young woman working at computer with headset, customer support and sales communication",
+      "dimensions": "1080x719",
+      "size_webp": "36KB",
+      "photographer": "Getty Images",
+      "unsplash_url": "https://unsplash.com/photos/premium_photo-1658506646178-e4ef5810361b",
+      "usage": "AutomateTabs — Sales department tab visual",
+      "loading": "lazy"
+    },
+    {
+      "filename": "dept-operations.webp",
+      "fallback": "dept-operations.jpg",
+      "description": "Warehouse operations with GPS vehicle tracking dashboard on monitor, printed charts on desk, workers in safety vests",
+      "dimensions": "1080x720",
+      "size_webp": "84KB",
+      "photographer": "Getty Images",
+      "unsplash_url": "https://unsplash.com/photos/premium_photo-1661574732567-6a434ae6569f",
+      "usage": "AutomateTabs — Operations department tab visual",
+      "loading": "lazy"
+    }
+  ]
+}

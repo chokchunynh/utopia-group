@@ -1,40 +1,43 @@
 import type { Metadata } from "next";
-import { Rubik, Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
+import MobileCTABar from "@/components/layout/MobileCTABar";
+import GoogleAnalytics from "@/components/layout/GoogleAnalytics";
+import JsonLd from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
-const rubik = Rubik({
-  variable: "--font-heading",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Utopia Group — AI Implementation Partner for Malaysian Businesses",
+  metadataBase: new URL("https://utopiagroup.com.my"),
+  title: {
+    default: "Utopia Group — Malaysia's #1 AI Implementation Partner",
+    template: "%s | Utopia Group",
+  },
   description:
-    "We built AI for our own 30+ companies. Now we help yours cut costs, increase efficiency, and eliminate errors. BankMatch, AutoViral, and more — battle-tested AI tools built in Malaysia.",
+    "Malaysia's only AI partner that actually operates 35+ companies. From RM3,000/month. Free tools available. WhatsApp us today.",
   openGraph: {
     type: "website",
     url: "https://utopiagroup.com.my",
-    title: "Utopia Group — AI That Actually Works for Malaysian Businesses",
+    title: "Utopia Group — Malaysia's #1 AI Implementation Partner",
     description:
-      "Battle-tested AI tools used by 30+ companies daily. Bank reconciliation, social media marketing, and more. Built in Malaysia.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      "We run AI across 35+ companies with 400+ staff. Now we implement it for yours. From RM3,000/month.",
     locale: "en_MY",
     siteName: "Utopia Group",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Utopia Group — AI Implementation Partner for Malaysian Businesses",
-    description: "We built AI for our own 30+ companies. Now we help yours.",
-    images: ["/og-image.png"],
+    title: "Utopia Group — Malaysia's #1 AI Implementation Partner",
+    description:
+      "We run AI across 35+ companies with 400+ staff. Now we implement it for yours. From RM3,000/month.",
   },
   icons: { icon: "/favicon.svg" },
 };
@@ -46,10 +49,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${rubik.variable} ${outfit.variable} antialiased`}
-      >
+      <head>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
+      </head>
+      <body className={`${inter.variable} antialiased`}>
+        <GoogleAnalytics />
+        <Navbar />
         {children}
+        <Footer />
+        <WhatsAppFAB />
+        <MobileCTABar />
       </body>
     </html>
   );

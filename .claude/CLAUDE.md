@@ -11,19 +11,21 @@ Read `~/utopia-brain/SOUL.md` at session start. Observe CY's decisions for patte
 
 ## Lifecycle
 - Status: Active
-- Last Active: 2026-03-05
+- Last Active: 2026-03-28
 
 ## Overview
 Utopia Group flagship landing page. Positioning as Malaysia's leading AI implementation partner.
 Stack: Next.js 16 + Tailwind 4 + TypeScript. Deployed on Vercel.
 
 ## Design System
-- Theme: "AI Nebula" — dark base with blue/violet/cyan accents
-- Base: #06060F, Surface: #0C0C1D, Elevated: #14142B
-- Accents: Blue #3B82F6, Cyan #06B6D4, Violet #8B5CF6, Emerald #10B981, Amber #F59E0B
+- Theme: Clean white — all white/gray-50 backgrounds, no dark sections
+- Brand: #116dff (original Utopia blue from utopiagroup.com.my)
+- Brand Light: #3d8bff, Brand Dark: #0055d4
+- Accents: Cyan #06B6D4, Violet #8B5CF6, Emerald #10B981, Amber #F59E0B
 - CTA: Fuchsia #D946EF, WhatsApp: #25D366
-- Fonts: Rubik (headings 700-900) + Outfit (body 400-700)
-- Glass cards, scroll-reveal animations, grain texture overlay
+- Fonts: Bricolage Grotesque (headings, weight 700) + Plus Jakarta Sans (body)
+- .card class: white bg, 16px radius, #E2E8F0 border, subtle shadow, hover lift
+- Pill-shaped buttons (rounded-full), dot-pattern backgrounds, scroll-reveal animations
 
 ## Key Files
 - `src/lib/constants.ts` — All site content (testimonials, FAQ, apps, pricing)
@@ -46,4 +48,7 @@ Stack: Next.js 16 + Tailwind 4 + TypeScript. Deployed on Vercel.
 - [ ] Blog section for AI content marketing
 
 ## Changelog
-- 2026-03-05: Initial build — 13-section landing page with all components, deployed to Vercel
+- 2026-03-05: Initial build — 13-section landing page with dark theme, deployed to Vercel
+- 2026-03-05: Multiple redesign iterations — CY rejected dark, navy, indigo themes
+- 2026-03-06: Complete white redesign — brand #116dff, Bricolage+Jakarta fonts, real photos (no Spline), BankMatch/AutoViral style. 11 sections. Deployed.
+- 2026-03-06: Project paused by CY (low priority)

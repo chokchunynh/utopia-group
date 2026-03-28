@@ -1,271 +1,287 @@
-export const WHATSAPP_NUMBER = "60123456789";
-export const WHATSAPP_MESSAGE = "Hi Utopia! I'm interested in learning more about your AI solutions for my business.";
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+// ─── Site Identity ───────────────────────────────────────────────
+export const SITE_NAME = "UTOPIA GROUP";
+export const TAGLINE = "#1 AI Implementation Partner in Malaysia";
+export const WHATSAPP_NUMBER = "+60146869468";
 
-export const COMPANY_STATS = {
-  companies: "30+",
-  hoursSaved: "10,000+",
-  accuracy: "99.9%",
-  tools: "6+",
-};
-
-export const ROTATING_USPS = [
-  {
-    text: "Cut Costs & Reduce Expenses",
-    color: "#06B6D4",
-    iconPath: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
-  },
-  {
-    text: "Increase Speed & Efficiency",
-    color: "#8B5CF6",
-    iconPath: "M13 2L3 14h9l-1 10 10-12h-9l1-10z",
-  },
-  {
-    text: "Reduce Errors & Mistakes",
-    color: "#10B981",
-    iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  },
-];
-
-export const PAIN_POINTS = [
-  {
-    title: "Drowning in Manual Work",
-    description: "Your staff spends hours on tasks that AI completes in seconds. Every manual hour is money wasted.",
-    icon: "clock",
-    color: "#EF4444",
-  },
-  {
-    title: "Costly Human Errors",
-    description: "Mistakes in reconciliation, invoicing, and data entry are silently costing you thousands every month.",
-    icon: "alert",
-    color: "#F97316",
-  },
-  {
-    title: "Losing to Faster Competitors",
-    description: "Your competitors respond to customers instantly with AI. You're still taking days. They win.",
-    icon: "trending-down",
-    color: "#EF4444",
-  },
-  {
-    title: "No Idea Where to Start",
-    description: "AI sounds great, but you're overwhelmed by options and scared of complexity. We get it.",
-    icon: "help",
-    color: "#F97316",
-  },
-];
-
-export const APPROACH_STEPS = [
-  {
-    step: 1,
-    title: "Audit",
-    description: "We analyse your operations to find exactly where AI saves the most money.",
-    icon: "search",
-  },
-  {
-    step: 2,
-    title: "Plan",
-    description: "Custom AI roadmap built for your business — not a generic template.",
-    icon: "map",
-  },
-  {
-    step: 3,
-    title: "Implement",
-    description: "We deploy, configure, and integrate everything. You don't need to be technical.",
-    icon: "code",
-  },
-  {
-    step: 4,
-    title: "Optimise",
-    description: "Monthly reviews to ensure your ROI keeps growing quarter after quarter.",
-    icon: "chart",
-  },
-];
-
-export type AppCategory = "make-money" | "save-money";
-export type AppStatus = "live" | "coming-soon";
-
-export interface AIApp {
-  name: string;
-  description: string;
-  category: AppCategory;
-  status: AppStatus;
-  price?: string;
-  url?: string;
-  icon: string;
-  color: string;
+export function whatsappUrl(message: string) {
+  return `https://wa.me/60146869468?text=${encodeURIComponent(message)}`;
 }
 
-export const AI_APPS: AIApp[] = [
+export const WHATSAPP_URL = whatsappUrl(
+  "Hi! I'm interested in AI implementation for my business."
+);
+export const WHATSAPP_FAB_URL = whatsappUrl(
+  "Hi! I visited utopiagroup.com.my and I'd like to learn more."
+);
+
+// ─── Navigation ─────────────────────────────────────────────────
+export const NAV_LINKS = [
+  { label: "What We Automate", href: "#tools" },
+  { label: "Results", href: "#results" },
+  { label: "About", href: "/about" },
+  { label: "Career", href: "/career", newTab: true },
+] as const;
+
+export const MORE_DROPDOWN = {
+  label: "More",
+  items: [
+    { label: "How We Charge", href: "/how-we-charge", description: "Transparent pricing — start free" },
+    {
+      label: "AI Masterclass",
+      href: "/masterclass",
+      description: "AI training programs",
+      children: [
+        { label: "For Companies", href: "/masterclass", description: "On-site team training" },
+        { label: "For Individuals", href: "/masterclass/individual", description: "RM299/session × 8" },
+      ],
+    },
+  ],
+} as const;
+
+export const INDIVIDUAL_PRICING = {
+  pricePerSession: 299,
+  sessions: 8,
+  totalPrice: 2392,
+  sessionDuration: "2 hours",
+  frequency: "Weekly",
+  currency: "RM",
+} as const;
+
+// ─── Proof Bar Stats ────────────────────────────────────────────
+export const PROOF_STATS = [
+  { number: "RM130M+", label: "Group revenue" },
+  { number: "35+", label: "Companies under the group" },
+  { number: "173", label: "Business units" },
+  { number: "400+", label: "Staff across all companies" },
+] as const;
+
+// ─── TrueAI Product ─────────────────────────────────────────────
+export const TRUEAI_FEATURES = [
   {
-    name: "BankMatch",
-    description: "Bank reconciliation in seconds, not hours. Match thousands of transactions automatically.",
-    category: "save-money",
-    status: "live",
-    price: "RM49/mo",
-    url: "https://recon-x-eight.vercel.app",
-    icon: "bank",
+    title: "100% True AI",
+    description: "Not a chatbot with scripts. Fully autonomous AI that learns your business, handles conversations, and closes deals.",
+  },
+  {
+    title: "Toggle On. That's It.",
+    description: "Link your WhatsApp. Turn on AI mode. We take over your chats. Auto-creates knowledge base from your business data.",
+  },
+  {
+    title: "Infrastructure Included",
+    description: "Database, hosting, AI compute — all included. Building this yourself costs RM400+/month minimum. We handle it at scale.",
+  },
+  {
+    title: "Train Once, Run Forever",
+    description: "After 6 months of training, toggle AI on or off anytime. Your AI keeps learning and improving.",
+  },
+] as const;
+
+export const TRUEAI_DEMO_CHAT = [
+  { from: "customer", type: "text" as const, text: "Hi, I saw your ad for aircon servicing. How much for 5 units?", time: "9:14 AM" },
+  { from: "ai", type: "text" as const, text: "Hi! Great question. For 5 units, full servicing is RM80/unit = RM400 total. Includes gas top-up, filter cleaning, and drainage check. Our earliest slot is tomorrow at 10am — want me to book it for you?", time: "9:14 AM" },
+  { from: "customer", type: "text" as const, text: "That's fast! Yes, 10am works. Can you also check one unit that's leaking?", time: "9:15 AM" },
+  { from: "ai", type: "text" as const, text: "Booked! Tomorrow 10am, 5 units service + 1 leak inspection. For the leak, our technician will diagnose on-site — if it's a drainage issue, it's included free.", time: "9:15 AM" },
+  { from: "ai", type: "image" as const, text: "📸 Here's your assigned technician — Ahmad from our KL team. He'll arrive between 9:45-10am.", time: "9:16 AM", imageAlt: "Technician profile card" },
+  { from: "ai", type: "text" as const, text: "I've sent a confirmation SMS to your number. Anything else I can help with?", time: "9:16 AM" },
+] as const;
+
+// ─── ROI / Savings ──────────────────────────────────────────────
+export const SAVINGS_TIERS = [
+  { type: "SME", label: "SMEs (10-50 staff)", savings: "RM180,000", period: "/year" },
+  { type: "Enterprise", label: "Large companies (50+ staff)", savings: "RM3,000,000", period: "/year" },
+] as const;
+
+// ─── We Practice What We Preach ─────────────────────────────────
+export const OWN_RESULTS = {
+  headline: "We don't just sell AI. We run our entire company on it.",
+  subheadline: "We improved our own earnings by 70%. We're not a software company pretending to understand business — we're an actual company that built AI to solve our own problems first.",
+  metrics: [
+    { label: "Earnings improvement", value: "70%", detail: "across our own companies" },
+    { label: "Companies we operate", value: "35+", detail: "all AI-powered" },
+    { label: "Staff using AI daily", value: "400+", detail: "from sales to accounting" },
+  ],
+  points: [
+    "We manage 35+ real businesses — co-living, healthcare, home services, scaffolding",
+    "Every tool we sell you, our own teams use every single day",
+    "We don't guess what works. We know — because we measured the results on ourselves first",
+  ],
+};
+
+// ─── Department / Areas of AI Improvement ───────────────────────
+export const DEPARTMENTS = [
+  {
+    id: "sales",
+    name: "Sales & WhatsApp",
+    icon: "message-circle",
+    tools: [
+      { name: "TrueAI Agent", url: "#trueai" },
+      { name: "Lead Scoring", url: "#trueai" },
+      { name: "Conversation Audit", url: "#trueai" },
+    ],
+    description: "AI takes over WhatsApp chats, replies in seconds, qualifies leads, upsells, and closes — 24/7. Our #1 tool.",
+    color: "#25D366",
+  },
+  {
+    id: "accounting",
+    name: "Accounting & Finance",
+    icon: "calculator",
+    tools: [
+      { name: "SlipMatch", url: "https://slipmatch.my" },
+      { name: "GetBill", url: "https://getbill.my" },
+      { name: "RecurPay", url: "https://recurpay.my" },
+    ],
+    description: "Bank reconciliation in 3 minutes, automatic invoice matching, utility bill extraction. No more manual data entry.",
+    color: "#116dff",
+  },
+  {
+    id: "inventory",
+    name: "Inventory & Purchasing",
+    icon: "package",
+    tools: [
+      { name: "Stock AI", url: "#tools" },
+      { name: "PO Automation", url: "#tools" },
+    ],
+    description: "AI predicts stock needs, auto-generates purchase orders, alerts for low stock. Never overstock or run out again.",
     color: "#06B6D4",
   },
   {
-    name: "AutoViral",
-    description: "AI-powered social media content that drives engagement and brings customers to your door.",
-    category: "make-money",
-    status: "live",
-    price: "RM599/mo",
-    url: "https://autopost-web-amber.vercel.app",
+    id: "marketing",
+    name: "Marketing & Content",
     icon: "megaphone",
+    tools: [
+      { name: "AutoViral", url: "https://autopost-web-amber.vercel.app" },
+      { name: "Kreativ", url: "https://kreativstudio.my" },
+    ],
+    description: "AI video ads, social media automation, SEO content at scale. One click to generate a month of content.",
     color: "#8B5CF6",
   },
   {
-    name: "AI Invoice Matcher",
-    description: "Automatically match invoices to purchase orders. Eliminate manual data entry forever.",
-    category: "save-money",
-    status: "coming-soon",
-    icon: "receipt",
-    color: "#10B981",
-  },
-  {
-    name: "AI Sales Forecaster",
-    description: "Predict your revenue with AI accuracy. Know what's coming before it happens.",
-    category: "make-money",
-    status: "coming-soon",
-    icon: "chart-up",
+    id: "hr",
+    name: "HR & Payroll",
+    icon: "users",
+    tools: [
+      { name: "Utopia Payroll", url: "#tools" },
+      { name: "Ask Toppie", url: "#tools" },
+    ],
+    description: "GPS attendance, auto payroll calculation, AI scheduling, internal knowledge base. HR on autopilot.",
     color: "#F59E0B",
   },
   {
-    name: "AI Customer Bot",
-    description: "24/7 WhatsApp customer support that sounds human. Never miss a lead again.",
-    category: "make-money",
-    status: "coming-soon",
-    icon: "bot",
-    color: "#3B82F6",
+    id: "operations",
+    name: "Operations & Logistics",
+    icon: "settings",
+    tools: [
+      { name: "U-Stay", url: "https://u-stay.vercel.app" },
+      { name: "Trip AI", url: "#tools" },
+    ],
+    description: "Tenant management, trip assignment, GPS tracking. AI handles the complexity so your team handles the customers.",
+    color: "#EC4899",
   },
-  {
-    name: "AI HR Assistant",
-    description: "Automate leave applications, payroll calculations, and compliance. HR on autopilot.",
-    category: "save-money",
-    status: "coming-soon",
-    icon: "users",
-    color: "#D946EF",
-  },
-];
+] as const;
 
-export const PRICING_TIERS = [
+// ─── Operator Credibility ───────────────────────────────────────
+export const OPERATOR_RESULTS = [
   {
-    name: "Starter",
+    industry: "Co-Living",
+    stat: "RM450K+/mo",
+    description: "+800% growth using AI operations",
+  },
+  {
+    industry: "Healthcare",
+    stat: "RM1.3M",
+    description: "In 6 months with AI-driven marketing",
+  },
+  {
+    industry: "Scaffolding",
+    stat: "RM450K/mo",
+    description: "From zero with AI sales automation",
+  },
+] as const;
+
+// ─── Pricing ────────────────────────────────────────────────────
+export const PRICING = [
+  {
+    name: "Start Free",
     price: "RM0",
-    period: "forever",
-    description: "Try any tool free with limited usage",
-    highlighted: false,
+    priceDetail: "No credit card required",
+    badge: "Try First",
+    description: "Access our live AI tools — no commitment. See AI work on real data before you pay a single ringgit.",
     features: [
-      "Access to all live AI tools",
-      "Limited monthly usage",
-      "Email support",
-      "Basic analytics dashboard",
-      "Community access",
+      "SlipMatch — AI bank reconciliation",
+      "AutoViral — AI social media content",
+      "RecurPay — Collection tracking",
+      "No time limit",
+      "No credit card needed",
     ],
-    cta: "Start Free",
-    ctaStyle: "outline" as const,
+    sellingPoint: "Try the same tools our 35+ companies use daily. When you're ready, upgrade to get AI implemented across your entire business.",
+    cta: "Try Free Tools",
+    ctaStyle: "brand" as const,
+    ctaUrl: "#tools",
   },
   {
-    name: "Pro",
-    price: "RM499",
-    originalPrice: "RM999",
-    period: "/month",
-    description: "Full access to all tools with priority support",
-    highlighted: true,
+    name: "AI Starter",
+    price: "From RM12,000",
+    priceDetail: "setup + RM3,000/month",
     badge: "Most Popular",
+    description: "We find at least 5 areas where AI can improve your business. Average client gets 6.",
     features: [
-      "Unlimited usage on all tools",
-      "Priority WhatsApp support",
-      "Advanced analytics & reporting",
-      "API access",
-      "Custom integrations",
-      "Monthly AI audit call",
+      "Full business AI audit",
+      "At least 5 areas of AI improvement identified",
+      "TrueAI WhatsApp deployed",
+      "AI reply handling for your sales team",
+      "Custom knowledge base created",
+      "Database & infrastructure included",
+      "Monthly optimization & support",
     ],
-    cta: "Get Pro",
-    ctaStyle: "primary" as const,
+    sellingPoint: "High setup cost, but RM3K/month is cheaper than one junior staff. AI never sleeps, never takes leave.",
+    cta: "WhatsApp Us to Start",
+    ctaStyle: "whatsapp" as const,
+    ctaUrl: whatsappUrl(
+      "Hi! I'm interested in the AI Starter plan (RM12K setup + RM3K/month). My company has about [X] staff in [industry]."
+    ),
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "White-label solutions with dedicated support",
-    highlighted: false,
+    name: "All-In Implementation",
+    price: "From RM68,000",
+    priceDetail: "6 months, fully managed",
+    badge: "Maximum Impact",
+    description: "We work closely with your team for 6 months. Usually finds 15 areas of improvement with 3 critical ones.",
     features: [
-      "Everything in Pro",
-      "White-label branding",
-      "Dedicated account manager",
-      "Custom AI tool development",
-      "On-site implementation",
-      "SLA guarantee",
+      "Everything in AI Starter",
+      "15+ areas of AI improvement (avg.)",
+      "3 critical areas deep implementation (Sales, Inventory, Purchasing)",
+      "All departments covered",
+      "Dedicated AI team working with your staff",
+      "Custom AI tools built for your workflows",
+      "Full handover with documentation & training",
     ],
-    cta: "Talk to Us",
-    ctaStyle: "outline" as const,
+    sellingPoint: "RM68K sounds expensive. But we save SMEs RM180K/year and large companies RM3M/year. ROI in under 6 months.",
+    cta: "Let's Talk",
+    ctaStyle: "whatsapp" as const,
+    ctaUrl: whatsappUrl(
+      "Hi! I'm interested in the All-In AI Implementation (RM68K). My company is in [industry] with about [X] staff."
+    ),
   },
-];
+] as const;
 
-export const TESTIMONIALS = [
-  { name: "Ahmad Razif", role: "CEO", company: "TechVenture Sdn Bhd", quote: "Utopia's BankMatch saved our accounts team 3 full days every month. We used to reconcile manually — now it's done in minutes.", avatar: "https://randomuser.me/api/portraits/men/1.jpg" },
-  { name: "Siti Nurhaliza", role: "Finance Director", company: "Meridian Corp", quote: "The AI invoice matching tool caught discrepancies our team missed for months. Already saved us RM45,000 in the first quarter.", avatar: "https://randomuser.me/api/portraits/women/2.jpg" },
-  { name: "David Tan", role: "Managing Director", company: "Apex Trading", quote: "AutoViral tripled our social media engagement. Our sales team now gets 5x more inbound leads from social channels.", avatar: "https://randomuser.me/api/portraits/men/3.jpg" },
-  { name: "Nurul Aina", role: "Operations Manager", company: "FastLogix", quote: "We were spending RM8,000/month on data entry staff. Utopia's AI tools brought that down to near zero.", avatar: "https://randomuser.me/api/portraits/women/4.jpg" },
-  { name: "Jason Lim", role: "Founder", company: "CloudBridge Solutions", quote: "Finally, an AI company that actually implements. Not just slides and proposals — they deploy real tools that work.", avatar: "https://randomuser.me/api/portraits/men/5.jpg" },
-  { name: "Farah Wahab", role: "HR Manager", company: "BuildRight Construction", quote: "Leave management used to be a nightmare across 5 branches. Utopia automated the entire process in 2 weeks.", avatar: "https://randomuser.me/api/portraits/women/6.jpg" },
-  { name: "Kelvin Wong", role: "CFO", company: "Pinnacle Group", quote: "The bank reconciliation accuracy is unbelievable. 99.9% match rate — our auditors were impressed.", avatar: "https://randomuser.me/api/portraits/men/7.jpg" },
-  { name: "Aminah Rashid", role: "Business Owner", company: "Dapur Aminah F&B", quote: "I'm not tech-savvy at all, but Utopia made AI simple for my restaurant chain. Our costs dropped 30% in 2 months.", avatar: "https://randomuser.me/api/portraits/women/8.jpg" },
-  { name: "Marcus Chen", role: "Sales Director", company: "GreenField Properties", quote: "AI Sales Forecaster predicted our Q1 revenue within 3% accuracy. Game-changer for resource planning.", avatar: "https://randomuser.me/api/portraits/men/9.jpg" },
-  { name: "Priya Shankar", role: "COO", company: "Lotus Healthcare", quote: "Utopia understood our Malaysian regulatory requirements. Their AI tools are built for how we actually do business here.", avatar: "https://randomuser.me/api/portraits/women/10.jpg" },
-  { name: "Hafiz Abdullah", role: "IT Manager", company: "Sigma Manufacturing", quote: "Deployed across 3 factories in under a month. The implementation team knows what they're doing.", avatar: "https://randomuser.me/api/portraits/men/11.jpg" },
-  { name: "Christine Lee", role: "Partner", company: "Lee & Associates CPA", quote: "As an accounting firm, accuracy is everything. BankMatch handles our clients' reconciliation with zero errors.", avatar: "https://randomuser.me/api/portraits/women/12.jpg" },
-  { name: "Rizal Karim", role: "General Manager", company: "Heritage Hotels", quote: "Our customer response time went from 4 hours to 4 minutes with the AI chatbot. Guest satisfaction scores shot up.", avatar: "https://randomuser.me/api/portraits/men/13.jpg" },
-  { name: "Mei Ling Tan", role: "Marketing Head", company: "FreshMart", quote: "AutoViral creates content in seconds that used to take our team a full day. And it performs better too.", avatar: "https://randomuser.me/api/portraits/women/14.jpg" },
-  { name: "Azman Ismail", role: "Director", company: "Mutiara Logistics", quote: "ROI was visible in week one. Not month one — week one. That's how fast these AI tools pay for themselves.", avatar: "https://randomuser.me/api/portraits/men/15.jpg" },
-  { name: "Sarah Abdullah", role: "Entrepreneur", company: "Bloom & Co", quote: "I run 4 businesses. Utopia's tools let me manage all of them without hiring more people. That's the real power.", avatar: "https://randomuser.me/api/portraits/women/16.jpg" },
-  { name: "Raj Kumar", role: "CTO", company: "DataStream Asia", quote: "We evaluated 6 AI vendors. Utopia was the only one with tools they actually use themselves daily. That's trust.", avatar: "https://randomuser.me/api/portraits/men/17.jpg" },
-  { name: "Zainab Omar", role: "Accounts Manager", company: "Al-Hijrah Trading", quote: "Bank reconciliation for 5 companies used to take our team a full week. Now it's done before lunch on Monday.", avatar: "https://randomuser.me/api/portraits/women/18.jpg" },
-  { name: "Tommy Yap", role: "CEO", company: "YapTech Solutions", quote: "What impressed me most is they didn't just sell us software — they sat with our team and implemented everything.", avatar: "https://randomuser.me/api/portraits/men/19.jpg" },
-  { name: "Aishah Binti Hassan", role: "Admin Head", company: "Cahaya Education", quote: "Our school admin went from 8 staff handling paperwork to 3 staff with AI. The savings fund our student programmes.", avatar: "https://randomuser.me/api/portraits/women/20.jpg" },
-];
-
-export const FAQ_ITEMS = [
-  {
-    question: "Do I need technical skills to use your AI tools?",
-    answer: "Not at all. We implement everything for you. Our tools are designed for business owners, not programmers. If you can use WhatsApp, you can use our AI tools.",
-  },
-  {
-    question: "How long does it take to see results?",
-    answer: "Most businesses see measurable ROI within the first 2-4 weeks. Bank reconciliation savings are immediate — literally from day one. Marketing tools typically show results within 2 weeks.",
-  },
-  {
-    question: "Is my business data safe?",
-    answer: "Absolutely. We're PDPA-compliant and process data client-side where possible. Your financial data never leaves your control. We follow bank-grade security practices.",
-  },
-  {
-    question: "Can I try before I commit?",
-    answer: "Yes! Every tool has a free tier. Start with zero cost, see the results, then upgrade when you're ready. No credit card required to start.",
-  },
-  {
-    question: "Do you work with companies outside Malaysia?",
-    answer: "We're currently focused exclusively on Malaysian businesses. This means our tools are built for Malaysian banking systems, regulations, and business practices — not generic global solutions.",
-  },
-  {
-    question: "What if the AI makes mistakes?",
-    answer: "Every tool includes human review checkpoints. AI handles the heavy lifting at 99.9% accuracy, and you maintain final approval on critical decisions. It's AI-assisted, not AI-replaced.",
-  },
-  {
-    question: "How is this different from using ChatGPT?",
-    answer: "ChatGPT is a general chatbot. Our tools are purpose-built for specific business tasks — bank reconciliation, social media marketing, invoice matching. Think of it as the difference between a Swiss Army knife and a power drill. Both useful, but one is made for the job.",
-  },
-  {
-    question: "Can you build custom AI tools for my industry?",
-    answer: "Yes — that's our consulting service. We've built custom AI solutions for construction, F&B, logistics, education, and more. WhatsApp us to discuss your specific needs.",
-  },
-];
-
-export const NAV_LINKS = [
-  { label: "Tools", href: "#tools" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#why-utopia" },
-  { label: "FAQ", href: "#faq" },
-];
+// ─── Footer Links ───────────────────────────────────────────────
+export const FOOTER_LINKS = {
+  navigate: [
+    { label: "TrueAI", href: "#trueai" },
+    { label: "Results", href: "#results" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "About", href: "/about" },
+  ],
+  tools: [
+    { label: "SlipMatch", href: "https://slipmatch.my" },
+    { label: "AutoViral", href: "https://autopost-web-amber.vercel.app" },
+    { label: "U-Stay", href: "#tools" },
+    { label: "Utopia Payroll", href: "#tools" },
+  ],
+  company: [
+    { label: "About Us", href: "/about" },
+    { label: "Career", href: "/career" },
+    { label: "How We Charge", href: "/how-we-charge" },
+    { label: "AI Masterclass", href: "/masterclass" },
+    { label: "Contact", href: "/contact" },
+  ],
+} as const;

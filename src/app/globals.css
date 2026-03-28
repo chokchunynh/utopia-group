@@ -1,103 +1,297 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Deep navy — hero & dark sections only */
-  --color-navy: #0A0F1E;
-  --color-navy-light: #111836;
-  --color-navy-lighter: #1A2347;
+  /* ── Writer × Mintlify Design System (Inter Edition) ── */
 
-  /* Light backgrounds — main content */
-  --color-white: #FFFFFF;
-  --color-gray-50: #F8FAFC;
-  --color-gray-100: #F1F5F9;
-  --color-gray-200: #E2E8F0;
-  --color-gray-300: #CBD5E1;
-
-  /* Brand accents */
-  --color-brand: #3B5BDB;
-  --color-brand-light: #4C6EF5;
-  --color-brand-dark: #2B4ACB;
-  --color-accent-cyan: #22D3EE;
-  --color-accent-violet: #8B5CF6;
-  --color-accent-emerald: #10B981;
-  --color-accent-amber: #F59E0B;
-  --color-cta: #D946EF;
+  /* Brand */
+  --color-brand: #116dff;
+  --color-brand-light: #5b9aff;
+  --color-brand-dark: #0055d4;
   --color-whatsapp: #25D366;
 
+  /* Surfaces (Mintlify-clean) */
+  --color-white: #FFFFFF;
+  --color-bg-soft: #f8fafc;
+  --color-bg-muted: #f3f5ff;
+  --color-dark: #0a0a0a;
+
   /* Text */
-  --color-text-dark: #0F172A;
-  --color-text-body: #334155;
-  --color-text-muted: #64748B;
-  --color-text-light: #F1F5F9;
+  --color-text-primary: #0a0a0a;
+  --color-text-body: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-soft: #9ca3af;
+  --color-text-invert: #ffffff;
 
-  /* Borders */
-  --color-border: #E2E8F0;
-  --color-border-dark: rgba(255,255,255,0.1);
+  /* Border (Mintlify-style subtle) */
+  --color-border: #e5e7eb;
+  --color-border-soft: #f0f0f0;
 
-  /* Fonts */
-  --font-heading: 'Rubik', sans-serif;
-  --font-body: 'Outfit', sans-serif;
+  /* Status */
+  --color-error: #ef4444;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
+  /* Font — Inter only, like Mintlify */
+  --font-sans: 'Inter', sans-serif;
+
+  /* Radius */
+  --radius-pill: 9999px;
+  --radius-card: 24px;
+  --radius-sm: 12px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--color-white);
   color: var(--color-text-body);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Scroll Reveal */
+/* ===== TYPOGRAPHY (all Inter, like Mintlify) ===== */
+.heading-display {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+.heading-lg {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.heading-md {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+/* ===== SECTION WRAPPER ===== */
+.section-padding {
+  padding: 48px 16px;
+}
+@media (min-width: 768px) {
+  .section-padding { padding: 96px 32px; }
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== BUTTONS (Writer pill style) ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  background: var(--color-text-primary);
+  color: var(--color-text-invert);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  min-height: 48px;
+}
+.btn-primary:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  min-height: 48px;
+}
+.btn-secondary:hover {
+  background: var(--color-bg-soft);
+  border-color: transparent;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  background: var(--color-whatsapp);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  min-height: 48px;
+}
+.btn-whatsapp:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ===== PILL BADGE ===== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--color-bg-muted);
+  color: var(--color-brand);
+}
+
+/* ===== CARDS (Mintlify rounded-3xl, flat) ===== */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.card-flat {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+}
+
+/* ===== DARK SECTION ===== */
+.dark-section {
+  background: var(--color-dark);
+  color: #f8fafc;
+}
+
+/* ===== HERO BACKGROUND (cloud image via CSS) ===== */
+.bg-image-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/hero/bg-light.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%, rgba(0,0,0,.99) 18%, rgba(0,0,0,.95) 34%,
+    rgba(0,0,0,.89) 48%, rgba(0,0,0,.82) 58%, rgba(0,0,0,.74) 67%,
+    rgba(0,0,0,.65) 75%, rgba(0,0,0,.55) 80%, rgba(0,0,0,.45) 85%,
+    rgba(0,0,0,.35) 88%, rgba(0,0,0,.26) 91%, rgba(0,0,0,.18) 93%,
+    rgba(0,0,0,.10) 95%, rgba(0,0,0,.05) 97%, transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%, rgba(0,0,0,.99) 18%, rgba(0,0,0,.95) 34%,
+    rgba(0,0,0,.89) 48%, rgba(0,0,0,.82) 58%, rgba(0,0,0,.74) 67%,
+    rgba(0,0,0,.65) 75%, rgba(0,0,0,.55) 80%, rgba(0,0,0,.45) 85%,
+    rgba(0,0,0,.35) 88%, rgba(0,0,0,.26) 91%, rgba(0,0,0,.18) 93%,
+    rgba(0,0,0,.10) 95%, rgba(0,0,0,.05) 97%, transparent 100%
+  );
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .reveal-blur {
   opacity: 0;
-  filter: blur(6px);
   transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-blur.visible {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0);
 }
 
-.stagger-1 { transition-delay: 0.06s; }
-.stagger-2 { transition-delay: 0.12s; }
-.stagger-3 { transition-delay: 0.18s; }
-.stagger-4 { transition-delay: 0.24s; }
-.stagger-5 { transition-delay: 0.30s; }
-.stagger-6 { transition-delay: 0.36s; }
-
-/* Rotating Text */
-.rotating-text-enter {
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(16px);
-}
-.rotating-text-active {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-  transition: opacity 0.5s ease-out, filter 0.5s ease-out, transform 0.5s ease-out;
-}
-.rotating-text-exit {
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(-16px);
-  transition: opacity 0.5s ease-out, filter 0.5s ease-out, transform 0.5s ease-out;
+/* ===== GRADIENT CTA BAND (Mintlify footer) ===== */
+.gradient-cta-band {
+  background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-white) 100%);
 }
 
-/* WhatsApp Pulse */
+/* ===== WHATSAPP PULSE ===== */
 @keyframes whatsapp-pulse {
   0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
   70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Testimonial Scroll */
+/* ===== COUNTER ANIMATION ===== */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ANIMATED GRADIENT TEXT (shimmer) ===== */
+.gradient-text {
+  background: linear-gradient(90deg, #116dff, #8b5cf6, #ec4899, #116dff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 4s ease infinite;
+}
+.gradient-text-hero {
+  background: linear-gradient(90deg, #93c5fd, #a78bfa, #f0abfc, #93c5fd);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 4s ease infinite;
+}
+@keyframes gradient-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== SUBTLE DOT PATTERN (break monotony) ===== */
+.bg-dotted {
+  background-image: radial-gradient(circle, #d1d5db 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* ===== AUTO-SCROLLING MARQUEE ===== */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -106,113 +300,38 @@ body {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
 }
-
-/* FAQ Accordion */
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
 }
-.faq-open .faq-answer {
-  max-height: 400px;
+.animate-scroll-right {
+  animation: scroll-right 45s linear infinite;
 }
-.faq-chevron {
-  transition: transform 0.3s ease;
-}
-.faq-open .faq-chevron {
-  transform: rotate(180deg);
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
 }
 
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #3B5BDB 0%, #4C6EF5 40%, #22D3EE 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* ===== FOCUS ===== */
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
 
-.gradient-text-light {
-  background: linear-gradient(135deg, #93C5FD 0%, #A5B4FC 40%, #67E8F9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* ===== SELECTION ===== */
+::selection { background: rgba(17, 109, 255, 0.12); color: var(--color-text-primary); }
 
-/* Glass Card (dark contexts) */
-.glass-card-dark {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-.glass-card-dark:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-/* Card (light contexts) */
-.card-light {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 1.25rem;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.03);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-.card-light:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06), 0 8px 32px rgba(15, 23, 42, 0.04);
-  transform: translateY(-2px);
-}
-
-/* Hero mesh gradient */
-.hero-mesh {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(59, 91, 219, 0.3) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    var(--color-navy);
-}
-
-/* Grid pattern */
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Scrollbar */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #F1F5F9; }
-::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+::-webkit-scrollbar-track { background: var(--color-bg-soft); }
+::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
 
-/* Selection */
-::selection {
-  background: rgba(59, 91, 219, 0.2);
-  color: #0F172A;
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up, .reveal-blur { opacity: 1; transform: none; transition: none; }
 }
 
-/* Shine button effect */
-@keyframes shine {
-  0% { left: -100%; }
-  100% { left: 200%; }
+/* ===== LIVE / SOON BADGES ===== */
+.badge-live {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 9999px;
+  font-size: 11px; font-weight: 600;
+  background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;
 }
-.btn-shine {
-  position: relative;
-  overflow: hidden;
-}
-.btn-shine::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: none;
-}
-.btn-shine:hover::after {
-  animation: shine 0.8s ease-out;
-}
+.badge-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
