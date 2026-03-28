@@ -81,7 +81,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden">
         <div
           className="bg-image-hero"
-          style={{ backgroundImage: "url('/hero/bg-team.png')" }}
+          style={{ backgroundImage: "url('/images/photos/team-working.webp')" }}
         />
         <div className="absolute inset-0 z-[1] bg-[#0f2027]/40" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
@@ -334,8 +334,19 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* LinkedIn CTA only — no individual names */}
+          {/* Team photo + LinkedIn CTA */}
           <ScrollReveal delay={100}>
+            <div className="max-w-3xl mx-auto mb-8 rounded-2xl overflow-hidden border border-[var(--color-border)]">
+              <Image
+                src="/images/photos/team-working.webp"
+                alt="Utopia Group AI team collaborating in KL office"
+                width={1200}
+                height={675}
+                className="w-full h-auto"
+              />
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
             <div className="text-center">
               <a
                 href="https://www.linkedin.com/company/utopiagroupmy/"
@@ -371,6 +382,18 @@ export default function AboutPage() {
                 Offices &{" "}
                 <span className="gradient-text font-extrabold">Warehouses</span>
               </h2>
+            </div>
+          </ScrollReveal>
+
+          {/* Photo strip */}
+          <ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10">
+              <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] h-48">
+                <Image src="/images/photos/office-kl.webp" alt="Utopia Group KL office with city skyline" width={600} height={340} className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] h-48">
+                <Image src="/images/photos/warehouse.webp" alt="Utopia Group warehouse operations" width={600} height={340} className="w-full h-full object-cover" />
+              </div>
             </div>
           </ScrollReveal>
 

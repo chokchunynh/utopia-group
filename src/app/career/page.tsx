@@ -178,7 +178,7 @@ export default function CareerPage() {
     <main>
       {/* ─── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="bg-image-hero" style={{ backgroundImage: "url('/hero/bg-career.png')" }} />
+        <div className="bg-image-hero" style={{ backgroundImage: "url('/images/photos/team-working.webp')" }} />
         <div className="absolute inset-0 z-[1] bg-[#0f2027]/35" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
           <div className="section-inner text-center">

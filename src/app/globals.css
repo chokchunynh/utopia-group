@@ -7,6 +7,8 @@
   --color-brand: #116dff;
   --color-brand-light: #5b9aff;
   --color-brand-dark: #0055d4;
+  --color-accent: #06B6D4;
+  --color-accent-light: #22d3ee;
   --color-whatsapp: #25D366;
 
   /* Surfaces (Mintlify-clean) */
@@ -282,7 +284,7 @@ h1, h2, h3 { text-wrap: balance; }
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(17, 109, 255, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, rgba(17, 109, 255, 0.04) 50%, transparent 70%);
   animation: float-orb 15s ease-in-out infinite;
   pointer-events: none;
 }
@@ -307,7 +309,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* ===== ANIMATED GRADIENT TEXT (shimmer) ===== */
 .gradient-text {
-  background: linear-gradient(90deg, #116dff, #8b5cf6, #ec4899, #116dff);
+  background: linear-gradient(90deg, #116dff, #06B6D4, #8b5cf6, #116dff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -315,7 +317,7 @@ h1, h2, h3 { text-wrap: balance; }
   animation: gradient-shimmer 4s ease infinite;
 }
 .gradient-text-hero {
-  background: linear-gradient(90deg, #93c5fd, #a78bfa, #f0abfc, #93c5fd);
+  background: linear-gradient(90deg, #93c5fd, #22d3ee, #a78bfa, #93c5fd);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
