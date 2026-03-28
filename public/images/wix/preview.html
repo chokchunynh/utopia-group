@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wix Media — Utopia Group</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #fff; padding: 24px; }
+  h1 { font-size: 28px; margin-bottom: 8px; }
+  .subtitle { color: #888; margin-bottom: 32px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #333; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .card { background: #1a1a1a; border-radius: 12px; overflow: hidden; border: 1px solid #222; }
+  .card:hover { border-color: #116dff; }
+  .card .img-wrap { height: 180px; display: flex; align-items: center; justify-content: center; padding: 12px; }
+  .card .img-wrap.photo { padding: 0; }
+  .card .img-wrap.photo img { width: 100%; height: 180px; object-fit: cover; }
+  .card .img-wrap.dark { background: #000; }
+  .card .img-wrap.checker { background: repeating-conic-gradient(#222 0% 25%, #1a1a1a 0% 50%) 50% / 16px 16px; }
+  .card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .card .info { padding: 10px 12px; font-size: 12px; }
+  .card .name { font-weight: 600; color: #ddd; word-break: break-all; }
+  .card .meta { color: #666; margin-top: 4px; }
+  .gif-section .card .img-wrap { height: 240px; }
+</style>
+</head>
+<body>
+<h1>Wix Media — Utopia Group</h1>
+<p class="subtitle">44 images extracted from utopiagroup.com.my | Renamed for clarity</p>
+
+<h2>Logos & Branding (24)</h2>
+<div class="grid" id="logos"></div>
+
+<h2>Photos (16)</h2>
+<div class="grid" id="photos"></div>
+
+<h2>Animated GIFs (4)</h2>
+<div class="grid gif-section" id="gifs"></div>
+
+<script>
+const logos = [
+  { file: 'logo-utopia-group.png', name: 'Utopia Group of Companies', bg: 'checker' },
+  { file: 'logo-utopia-group-white.png', name: 'Utopia Group (White)', bg: 'dark' },
+  { file: 'logo-utopia-coliving.png', name: 'Utopia Co-Living', bg: 'checker' },
+  { file: 'logo-encik-beku.png', name: 'Encik Beku Aircond', bg: 'dark' },
+  { file: 'logo-scaffolding.png', name: 'Scaffolding Rental', bg: 'checker' },
+  { file: 'logo-revbike.png', name: 'RevBike Motor Rental', bg: 'checker' },
+  { file: 'logo-pulse-pilates.png', name: 'Pulse Pilates Reformers', bg: 'checker' },
+  { file: 'logo-medbed.png', name: 'MedBed Hospital Bed Rental', bg: 'checker' },
+  { file: 'logo-merry-elderly-care.png', name: 'Merry Elderly Care Center', bg: 'checker' },
+  { file: 'logo-potong-pokok.png', name: 'PotongPokok.my Tree Cutting', bg: 'dark' },
+  { file: 'logo-lampu-jaundice.png', name: 'Lampu Jaundice', bg: 'checker' },
+  { file: 'logo-kakkenduri.png', name: 'KakKenduri Table Chair Rental', bg: 'checker' },
+  { file: 'logo-coldtruck.png', name: 'ColdTruck.my', bg: 'checker' },
+  { file: 'logo-motor-rental-penang.png', name: 'Motor Rental Penang', bg: 'dark' },
+  { file: 'logo-car-rental-penang.png', name: 'Car Rental Penang', bg: 'dark' },
+  { file: 'logo-tukar-nombor-plat.png', name: 'Tukar Nombor Plat.my', bg: 'checker' },
+  { file: 'logo-rev-city-tour.png', name: 'Rev City Tour', bg: 'checker' },
+  { file: 'logo-motorhome-rental.png', name: 'Motorhome Malaysia Rental', bg: 'dark' },
+  { file: 'logo-batu-ringan.png', name: 'BatuRingan Lightweight Block', bg: 'checker' },
+  { file: 'logo-yumtruck.png', name: 'YumTruck Food Truck', bg: 'checker' },
+  { file: 'logo-kak-liah-gula-melaka.png', name: 'Kak Liah Gula Melaka', bg: 'dark' },
+  { file: 'logo-glass-house.png', name: 'Glass House Event Space', bg: 'checker' },
+  { file: 'logo-butik-glam.png', name: 'Butik Glam', bg: 'checker' },
+  { file: 'logo-ice-cream-mascot.png', name: 'Ice Cream Mascot', bg: 'checker' },
+];
+
+const photos = [
+  { file: 'photo-team-group-hands-up.jpg', name: 'Team Group Photo (hands up)' },
+  { file: 'photo-encik-beku-team-3guys.jpg', name: 'Encik Beku Team (3 technicians)' },
+  { file: 'photo-pulse-studio-3women.png', name: 'Pulse Studio (3 women)' },
+  { file: 'photo-revbike-showroom-girl.png', name: 'RevBike Showroom' },
+  { file: 'photo-coliving-girl-laptop.png', name: 'Co-Living (girl with laptop)' },
+  { file: 'photo-reno-technician-fan.png', name: 'Reno Technician (ceiling fan)' },
+  { file: 'photo-coliving-bedroom.jpeg', name: 'Co-Living Bedroom' },
+  { file: 'photo-coliving-room-tour.jpg', name: 'Co-Living Room Tour' },
+  { file: 'photo-ibnu-sina-bed-setup.jpg', name: 'Ibnu Sina Bed Setup' },
+  { file: 'photo-ibnu-sina-showroom.jpg', name: 'Ibnu Sina Showroom' },
+  { file: 'photo-ibnu-sina-showroom-small.png', name: 'Ibnu Sina Showroom (small)' },
+  { file: 'photo-pulse-straps.jpg', name: 'Pulse Branded Straps' },
+  { file: 'photo-payment-terminal.jpg', name: 'Payment Terminal (card/QR)' },
+  { file: 'photo-scaffolding-warehouse.jpg', name: 'Scaffolding Warehouse' },
+  { file: 'photo-revbike-warehouse.jpg', name: 'RevBike Warehouse' },
+  { file: 'bg-blue-gradient.jpg', name: 'Blue Gradient Background' },
+];
+
+const gifs = [
+  { file: 'anim-1.gif', name: 'Animation 1 (22 MB)' },
+  { file: 'anim-2.gif', name: 'Animation 2 (9.7 MB)' },
+  { file: 'anim-3.gif', name: 'Animation 3 (20 MB)' },
+  { file: 'anim-4.gif', name: 'Animation 4 (23 MB)' },
+];
+
+function renderCards(items, containerId, isPhoto = false) {
+  const container = document.getElementById(containerId);
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const bgClass = isPhoto ? 'photo' : (item.bg || 'checker');
+    card.innerHTML = `
+      <div class="img-wrap ${bgClass}">
+        <img src="${item.file}" alt="${item.name}" loading="lazy">
+      </div>
+      <div class="info">
+        <div class="name">${item.name}</div>
+        <div class="meta">${item.file}</div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+renderCards(logos, 'logos');
+renderCards(photos, 'photos', true);
+renderCards(gifs, 'gifs', true);
+</script>
+</body>
+</html>
