@@ -28,7 +28,7 @@ export default function HeroSection() {
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white backdrop-blur-sm border border-[var(--color-accent)]/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] inline-block" />
-              Malaysia&apos;s Only AI Partner That Actually Operates 173 Business Units
+              We Operate 173 Business Units on AI
             </span>
           </div>
 
