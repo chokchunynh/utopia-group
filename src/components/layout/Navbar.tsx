@@ -18,9 +18,24 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    // iOS Safari needs both body AND the scroll container locked
+    const scrollWrapper = document.body.firstElementChild as HTMLElement;
+    if (open) {
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.inset = "0";
+      if (scrollWrapper) scrollWrapper.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.inset = "";
+      if (scrollWrapper) scrollWrapper.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.inset = "";
+      if (scrollWrapper) scrollWrapper.style.overflow = "";
     };
   }, [open]);
 
@@ -31,9 +46,11 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-[background,border,backdrop-filter] duration-300 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-[var(--color-border)]"
-          : "bg-transparent"
+        open
+          ? "bg-transparent border-b-0"
+          : scrolled
+            ? "bg-white/90 backdrop-blur-xl border-b border-[var(--color-border)]"
+            : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
@@ -45,14 +62,22 @@ export default function Navbar() {
         >
           <span
             className={`font-bold text-lg tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-[var(--color-text-primary)]" : "text-white"
+              open
+                ? "text-white"
+                : scrolled
+                  ? "text-[var(--color-text-primary)]"
+                  : "text-white"
             }`}
           >
             UTOPIA
           </span>
           <span
             className={`font-normal text-lg tracking-tight transition-colors duration-300 ${
-              scrolled ? "text-[var(--color-text-muted)]" : "text-white/70"
+              open
+                ? "text-white/60"
+                : scrolled
+                  ? "text-[var(--color-text-muted)]"
+                  : "text-white/70"
             }`}
           >
             GROUP
@@ -185,10 +210,12 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <button
           type="button"
-          className={`md:hidden p-3 transition-colors ${
-            scrolled
-              ? "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]"
-              : "text-white/80 hover:text-white"
+          className={`md:hidden p-3 transition-colors relative z-50 ${
+            open
+              ? "text-white/80 hover:text-white"
+              : scrolled
+                ? "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]"
+                : "text-white/80 hover:text-white"
           }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
