@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Prevent mobile overscroll bounce */
+html {
+  overscroll-behavior: none;
+}
+
 @theme inline {
   /* ── Writer × Mintlify Design System (Inter Edition) ── */
 
