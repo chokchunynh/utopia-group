@@ -95,7 +95,7 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* Masterclass Dropdown */}
+          {/* More Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setDropdownOpen(true)}
@@ -115,7 +115,7 @@ export default function Navbar() {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 pt-3">
                 <div className="bg-white rounded-2xl border border-[var(--color-border)] shadow-xl p-2 min-w-[240px]">
                   {MORE_DROPDOWN.items.map((item) => (
                     <div key={item.label} className="relative group/nested">
@@ -251,27 +251,62 @@ export default function Navbar() {
 
         {/* Nav links */}
         <div className="flex-1 flex flex-col justify-center px-8">
-          {[...NAV_LINKS, { label: MORE_DROPDOWN.label, href: "#more" }].map(
-            (link, i) => (
-              <a
-                key={`menu-${i}`}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={`text-[32px] font-bold tracking-[-1px] py-2.5 transition-all duration-500 ${
-                  open
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-5"
-                } text-white/35 hover:text-white`}
-                style={{
-                  transitionDelay: open ? `${100 + i * 50}ms` : "0ms",
-                }}
-              >
-                <span className="text-[12px] font-medium text-[var(--color-accent)] mr-3 align-super tracking-normal">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                {link.label}
-              </a>
-            )
+          {NAV_LINKS.map((link, i) => (
+            <a
+              key={`menu-${i}`}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className={`text-[32px] font-bold tracking-[-1px] py-2.5 transition-all duration-500 ${
+                open
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-5"
+              } text-white/35 hover:text-white`}
+              style={{
+                transitionDelay: open ? `${100 + i * 50}ms` : "0ms",
+              }}
+            >
+              <span className="text-[12px] font-medium text-[var(--color-accent)] mr-3 align-super tracking-normal">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {link.label}
+            </a>
+          ))}
+          {/* More section — expand dropdown items inline */}
+          <button
+            type="button"
+            onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+            className={`text-left text-[32px] font-bold tracking-[-1px] py-2.5 transition-all duration-500 ${
+              open
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-5"
+            } text-white/35 hover:text-white`}
+            style={{
+              transitionDelay: open ? `${100 + NAV_LINKS.length * 50}ms` : "0ms",
+            }}
+          >
+            <span className="text-[12px] font-medium text-[var(--color-accent)] mr-3 align-super tracking-normal">
+              {String(NAV_LINKS.length + 1).padStart(2, "0")}
+            </span>
+            {MORE_DROPDOWN.label}
+            <ChevronDown
+              className={`inline-block w-6 h-6 ml-2 transition-transform duration-200 ${
+                mobileDropdownOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+          {mobileDropdownOpen && (
+            <div className="pl-12 flex flex-col gap-1 pb-2">
+              {MORE_DROPDOWN.items.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="text-[18px] font-semibold py-2 text-white/40 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           )}
         </div>
 
