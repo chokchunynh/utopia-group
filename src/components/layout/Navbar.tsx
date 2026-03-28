@@ -18,34 +18,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const scrollWrapper = document.body.firstElementChild as HTMLElement;
     if (open) {
-      // Save scroll position before locking
-      const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.inset = "0";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.dataset.scrollY = String(scrollY);
-      if (scrollWrapper) scrollWrapper.style.overflow = "hidden";
     } else {
-      // Restore scroll position after unlocking
-      const savedY = parseInt(document.body.dataset.scrollY || "0", 10);
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.inset = "";
-      document.body.style.top = "";
-      if (scrollWrapper) scrollWrapper.style.overflow = "";
-      window.scrollTo(0, savedY);
     }
     return () => {
-      const savedY = parseInt(document.body.dataset.scrollY || "0", 10);
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.inset = "";
-      document.body.style.top = "";
-      if (scrollWrapper) scrollWrapper.style.overflow = "";
-      window.scrollTo(0, savedY);
     };
   }, [open]);
 
