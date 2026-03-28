@@ -5,6 +5,7 @@ import TrueAISection from "@/components/sections/TrueAISection";
 import WeUseItSection from "@/components/sections/WeUseItSection";
 import MidFunnelCTA from "@/components/sections/MidFunnelCTA";
 import DepartmentReveal from "@/components/sections/DepartmentReveal";
+import HowWeWork from "@/components/sections/HowWeWork";
 import ROICalculator from "@/components/sections/ROICalculator";
 import TestimonialScroll from "@/components/sections/TestimonialScroll";
 import OperatorCredibility from "@/components/sections/OperatorCredibility";
@@ -43,6 +44,8 @@ export default function Home() {
       <MidFunnelCTA />
       {/* 6. Departments — areas of AI improvement */}
       <DepartmentReveal />
+      {/* 6b. How We Work — 4-step process */}
+      <HowWeWork />
       {/* 7. ROI calculator */}
       <ROICalculator />
       {/* 8. Testimonials — Sierra-style auto-scrolling marquee */}

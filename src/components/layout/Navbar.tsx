@@ -71,7 +71,7 @@ export default function Navbar() {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className={`text-[14px] font-medium transition-colors duration-150 ${linkColor}`}
+              className={`text-[14px] font-medium transition-colors duration-150 py-2 px-1 ${linkColor}`}
             >
               {link.label}
             </a>
@@ -85,7 +85,7 @@ export default function Navbar() {
           >
             <button
               type="button"
-              className={`flex items-center gap-1 text-[14px] font-medium transition-colors duration-150 ${linkColor}`}
+              className={`flex items-center gap-1 text-[14px] font-medium transition-colors duration-150 py-2 px-1 ${linkColor}`}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
               {MORE_DROPDOWN.label}
@@ -160,7 +160,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/how-we-charge"
-            className={`inline-flex items-center justify-center gap-2 py-2 px-5 rounded-full font-semibold text-[13px] transition-colors duration-150 ${
+            className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 ${
               scrolled
                 ? "bg-white text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-soft)]"
                 : "bg-white/15 text-white border border-white/20 hover:bg-white/25"
@@ -172,7 +172,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center gap-2 py-2 px-5 rounded-full font-semibold text-[13px] transition-colors duration-150 ${
+            className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 ${
               scrolled
                 ? "bg-[var(--color-text-primary)] text-white hover:opacity-85"
                 : "bg-white text-[var(--color-text-primary)] hover:bg-white/90"

@@ -26,10 +26,10 @@ export default function ProofBar() {
               {PROOF_STATS.map((stat, i) => (
                 <ScrollReveal key={stat.label} delay={i * 80}>
                   <div className="text-center">
-                    <div className="font-bold text-2xl md:text-3xl text-[var(--color-text-primary)] tracking-tight">
+                    <div className="font-extrabold text-[40px] md:text-[56px] text-[var(--color-text-primary)] tracking-tighter leading-none">
                       <AnimatedCounter value={stat.number} />
                     </div>
-                    <p className="text-[var(--color-text-muted)] text-[13px] mt-1">
+                    <p className="text-[var(--color-text-muted)] text-[13px] md:text-[14px] mt-2 font-medium">
                       {stat.label}
                     </p>
                   </div>

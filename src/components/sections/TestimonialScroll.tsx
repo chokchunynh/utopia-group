@@ -193,8 +193,8 @@ export default function TestimonialScroll() {
       </div>
 
       {/* Scrolling row 1 — left to right */}
-      <div className="relative mb-4">
-        <div className="flex gap-4 animate-scroll-left">
+      <div className="relative mb-4 overflow-hidden">
+        <div className="flex gap-4 animate-scroll-left w-max">
           {[...TESTIMONIALS.slice(0, 6), ...TESTIMONIALS.slice(0, 6)].map(
             (t, i) => (
               <TestimonialCard key={`row1-${i}`} t={t} />
@@ -204,8 +204,8 @@ export default function TestimonialScroll() {
       </div>
 
       {/* Scrolling row 2 — right to left */}
-      <div className="relative mb-12 md:mb-16">
-        <div className="flex gap-4 animate-scroll-right">
+      <div className="relative mb-12 md:mb-16 overflow-hidden">
+        <div className="flex gap-4 animate-scroll-right w-max">
           {[...TESTIMONIALS.slice(6), ...TESTIMONIALS.slice(6)].map((t, i) => (
             <TestimonialCard key={`row2-${i}`} t={t} />
           ))}
