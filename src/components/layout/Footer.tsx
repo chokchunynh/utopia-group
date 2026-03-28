@@ -63,7 +63,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-1">
               {FOOTER_LINKS.tools.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-2 inline-block"
