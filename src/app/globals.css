@@ -3,7 +3,9 @@
 /* Prevent mobile overscroll bounce + horizontal scroll */
 html {
   overscroll-behavior: none;
-  overflow-x: hidden;
+}
+body {
+  overflow-x: clip;
 }
 
 @theme inline {
