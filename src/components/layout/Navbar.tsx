@@ -296,16 +296,29 @@ export default function Navbar() {
           </button>
           {mobileDropdownOpen && (
             <div className="pl-12 flex flex-col gap-1 pb-2">
-              {MORE_DROPDOWN.items.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="text-[18px] font-semibold py-2 text-white/40 hover:text-white transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {MORE_DROPDOWN.items.flatMap((item) =>
+                "children" in item && item.children
+                  ? item.children.map((child) => (
+                      <a
+                        key={child.label}
+                        href={child.href}
+                        onClick={() => setOpen(false)}
+                        className="text-[18px] font-semibold py-2 text-white/40 hover:text-white transition-colors"
+                      >
+                        {child.label}
+                      </a>
+                    ))
+                  : [(
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="text-[18px] font-semibold py-2 text-white/40 hover:text-white transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    )]
+              )}
             </div>
           )}
         </div>
