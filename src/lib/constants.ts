@@ -16,8 +16,8 @@ export const WHATSAPP_FAB_URL = whatsappUrl(
 
 // ─── Navigation ─────────────────────────────────────────────────
 export const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "What We Automate", href: "/automate" },
-  { label: "Results", href: "/#results" },
   { label: "About", href: "/about" },
   { label: "Career", href: "/career" },
 ] as const;
@@ -268,7 +268,6 @@ export const PRICING = [
 export const FOOTER_LINKS = {
   navigate: [
     { label: "TrueAI", href: "#trueai" },
-    { label: "Results", href: "/#results" },
     { label: "Pricing", href: "#pricing" },
     { label: "About", href: "/about" },
   ],
