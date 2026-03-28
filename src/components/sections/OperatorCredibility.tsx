@@ -89,7 +89,7 @@ export default function OperatorCredibility() {
                     rel="noopener noreferrer"
                     className="flex flex-col items-center gap-2 p-3 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] hover:border-white/15 transition-colors"
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden ${c.dark ? "bg-white/5" : "bg-white/10"}`}>
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden bg-white">
                       <Image
                         src={c.logo}
                         alt={c.name}

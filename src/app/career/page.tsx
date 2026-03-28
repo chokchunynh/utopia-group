@@ -244,11 +244,11 @@ export default function CareerPage() {
               { src: "/images/team/feed-17.jpg", alt: "Team group photo" },
               { src: "/images/wix/photo-encik-beku-team-3guys.jpg", alt: "Encik Beku aircond technicians" },
               { src: "/images/team/feed-01.jpg", alt: "CNY celebration at office" },
-              { src: "/images/wix/photo-pulse-studio-3women.png", alt: "Pulse Pilates studio team" },
+              { src: "/images/wix/photo-pulse-straps.jpg", alt: "Pulse Pilates equipment" },
               { src: "/images/team/feed-44.jpg", alt: "Team outing in matching tees" },
-              { src: "/images/wix/photo-coliving-bedroom.jpeg", alt: "Utopia Co-Living room" },
+              { src: "/images/wix/photo-coliving-room-tour.jpg", alt: "Utopia Co-Living room tour" },
               { src: "/images/team/feed-09.jpg", alt: "Company football team" },
-              { src: "/images/wix/photo-ibnu-sina-showroom.jpg", alt: "Ibnu Sina Care showroom" },
+              { src: "/images/team/feed-46.jpg", alt: "Team on-site visit" },
             ].map((photo, i) => (
               <ScrollReveal key={photo.src} delay={i * 60}>
                 <div className="team-photo aspect-square border border-[var(--color-border)]">
@@ -277,12 +277,12 @@ export default function CareerPage() {
           </ScrollReveal>
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { src: "/images/wix/photo-revbike-showroom-girl.png", label: "RevBike — 150K+ rentals", alt: "RevBike motorcycle fleet" },
-              { src: "/images/wix/photo-pulse-studio-3women.png", label: "Pulse — 10K+ sessions", alt: "Pulse Pilates studio" },
+              { src: "/images/wix/photo-encik-beku-team-3guys.jpg", label: "Encik Beku — 27 businesses", alt: "Encik Beku aircond technicians" },
+              { src: "/images/wix/photo-coliving-bedroom.jpeg", label: "Co-Living — 10K+ rooms", alt: "Utopia Co-Living styled room" },
+              { src: "/images/wix/photo-ibnu-sina-bed-setup.jpg", label: "Ibnu Sina — Healthcare", alt: "Hospital bed delivery and setup" },
+              { src: "/images/wix/photo-revbike-warehouse.jpg", label: "RevBike — 150K+ rentals", alt: "RevBike fleet warehouse" },
+              { src: "/images/wix/photo-ibnu-sina-showroom-small.png", label: "MedBed — #1 Hospital Bed", alt: "MedBed showroom" },
               { src: "/images/wix/photo-reno-technician-fan.png", label: "Reno.my — 50K+ projects", alt: "Technician installing fan" },
-              { src: "/images/wix/photo-coliving-girl-laptop.png", label: "Co-Living — 10K+ rooms", alt: "Co-living resident working" },
-              { src: "/images/wix/photo-ibnu-sina-showroom.jpg", label: "Ibnu Sina — Healthcare", alt: "Medical equipment showroom" },
-              { src: "/images/wix/photo-scaffolding-warehouse.jpg", label: "Scaffolding — RM450K/mo", alt: "Scaffolding warehouse" },
             ].map((item, i) => (
               <ScrollReveal key={item.src} delay={i * 60}>
                 <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] group">
