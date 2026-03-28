@@ -32,8 +32,8 @@ export const MORE_DROPDOWN = {
       href: "/masterclass",
       description: "AI training programs",
       children: [
-        { label: "For Companies", href: "/masterclass", description: "On-site team training" },
-        { label: "For Individuals", href: "/masterclass/individual", description: "RM299/session × 8" },
+        { label: "AI Masterclass — Companies", href: "/masterclass", description: "On-site team training" },
+        { label: "AI Masterclass — Individuals", href: "/masterclass/individual", description: "RM299/session × 8" },
       ],
     },
   ],
