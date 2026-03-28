@@ -16,7 +16,7 @@ export const WHATSAPP_FAB_URL = whatsappUrl(
 
 // ─── Navigation ─────────────────────────────────────────────────
 export const NAV_LINKS = [
-  { label: "What We Automate", href: "#tools" },
+  { label: "What We Automate", href: "/automate" },
   { label: "Results", href: "#results" },
   { label: "About", href: "/about" },
   { label: "Career", href: "/career", newTab: true },
@@ -25,6 +25,7 @@ export const NAV_LINKS = [
 export const MORE_DROPDOWN = {
   label: "More",
   items: [
+    { label: "AI Tools", href: "/automate", description: "8+ live AI products — SlipMatch, TrueAI, GetBill & more" },
     { label: "How We Charge", href: "/how-we-charge", description: "Transparent pricing — start free" },
     {
       label: "AI Masterclass",

@@ -107,7 +107,7 @@ export default function DepartmentReveal() {
 
             {/* ── Bento Grid — remaining departments with rich expansion ── */}
             <ScrollReveal delay={100}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-4">
                 {restDepts.map((dept) => {
                   const Icon = ICONS[dept.icon] || MessageCircle;
                   const isActive = activeId === dept.id;
@@ -117,8 +117,8 @@ export default function DepartmentReveal() {
                       key={dept.id}
                       className={`text-left rounded-3xl border bg-white transition-transform transition-shadow duration-200 ${
                         isActive
-                          ? "border-[var(--color-brand)] shadow-lg md:col-span-3"
-                          : "border-[var(--color-border)] hover:shadow-md hover:scale-[1.01]"
+                          ? "border-[var(--color-brand)] shadow-lg w-full"
+                          : "border-[var(--color-border)] hover:shadow-md hover:scale-[1.01] w-full md:w-[calc(33.333%-11px)]"
                       }`}
                     >
                       {/* Card header — always visible */}
@@ -180,15 +180,15 @@ export default function DepartmentReveal() {
                                 className="flex items-start gap-3 p-4 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-brand-light)] hover:shadow-sm transition-shadow"
                               >
                                 <div
-                                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 overflow-hidden"
-                                  style={{ background: `${dept.color}10` }}
+                                  className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-[var(--color-border-soft)]"
+                                  style={{ background: `${dept.color}08` }}
                                 >
                                   {tool.logo ? (
                                     <Image
                                       src={tool.logo}
                                       alt={tool.name}
-                                      width={24}
-                                      height={24}
+                                      width={32}
+                                      height={32}
                                       className="object-contain"
                                       unoptimized
                                     />
