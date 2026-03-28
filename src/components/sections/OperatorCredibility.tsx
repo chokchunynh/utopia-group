@@ -81,15 +81,15 @@ export default function OperatorCredibility() {
                 Our companies powered by AI
               </p>
               <div className="grid grid-cols-4 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
-                {OUR_COMPANIES.map((c) => (
+                {OUR_COMPANIES.map((c, i) => (
                   <a
                     key={c.name}
                     href={c.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-2 p-3 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] hover:border-white/15 transition-colors"
+                    className={`flex flex-col items-center gap-2 p-3 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] hover:border-white/15 transition-colors ${i >= 8 ? "hidden md:flex" : ""}`}
                   >
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden bg-white">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden bg-cyan-50">
                       <Image
                         src={c.logo}
                         alt={c.name}
@@ -105,6 +105,9 @@ export default function OperatorCredibility() {
                   </a>
                 ))}
               </div>
+              <p className="text-center text-[11px] text-white/30 mt-3 md:hidden">
+                +{OUR_COMPANIES.length - 8} more companies
+              </p>
             </div>
           </ScrollReveal>
         </div>

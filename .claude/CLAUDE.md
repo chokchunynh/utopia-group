@@ -11,7 +11,7 @@ Read `~/utopia-brain/SOUL.md` at session start. Observe CY's decisions for patte
 
 ## Lifecycle
 - Status: Active
-- Last Active: 2026-03-29
+- Last Active: 2026-03-29 (session 3)
 
 ## Overview
 Utopia Group flagship landing page. Positioning as Malaysia's leading AI implementation partner.
@@ -55,3 +55,4 @@ Stack: Next.js 16 + Tailwind 4 + TypeScript. Deployed on Vercel.
 - 2026-03-28: 8 pages rebuilt, 30+ components, LinkedIn MCP installed, cloud hero images, company logos scraped
 - 2026-03-29 (session 1): Full design audit (gstack /design-review) + inspiration research (Sierra, Stripe, Linear, Anduril, AssemblyAI). 15/15 audit items fixed: layout variety (split/bento/staggered), stats 56px, text-wrap balance, range slider, section spacing 112px, nav touch targets, testimonials fixed, dark transitions, HowWeWork 4-step section, ambient orb, scroll animation variety (reveal-left/right), cyan accent #06B6D4, 4 Malaysian AI photos, asymmetric bento About page, footer targets. WhatsApp demo rebuilt (Encik Beku, bubble animation, Ahmad headshot). All tool icons populated (favicons from live sites + colored letter-marks). ROI calculator always visible. CTAs consolidated. 25+ commits.
 - 2026-03-29 (session 2): Fixed broken Johor flag (was HTML file, replaced with real PNG). Removed duplicate WhatsApp/email CTAs from About page warehouses section. Changed all emails to devteam.utopia@gmail.com. Deployed to production.
+- 2026-03-29 (session 3): Fixed hamburger menu close animation — was scrolling page behind overlay instead of lightbox behavior. Delayed overflow:hidden removal + added overscroll-contain. Deployed.
