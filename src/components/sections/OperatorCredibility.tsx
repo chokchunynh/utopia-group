@@ -31,9 +31,9 @@ export default function OperatorCredibility() {
               <div className="md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 md:items-end">
                 <div>
                   <h2 className="text-[28px] md:text-[40px] font-bold tracking-tight leading-tight text-white mb-4 md:mb-0">
-                    We&apos;re not consultants.{" "}
+                    We&apos;re not consultants. We&apos;re not software developers.{" "}
                     <span className="gradient-text-hero font-extrabold">
-                      We&apos;re operators.
+                      We&apos;re business owners.
                     </span>
                   </h2>
                 </div>

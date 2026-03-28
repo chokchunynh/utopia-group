@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { DEPARTMENTS } from "@/lib/constants";
 import {
@@ -11,6 +12,8 @@ import {
   Users,
   Settings,
   ArrowRight,
+  ExternalLink,
+  ChevronDown,
 } from "lucide-react";
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -102,7 +105,7 @@ export default function DepartmentReveal() {
               </div>
             </ScrollReveal>
 
-            {/* ── Bento Grid — remaining departments ── */}
+            {/* ── Bento Grid — remaining departments with rich expansion ── */}
             <ScrollReveal delay={100}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {restDepts.map((dept) => {
@@ -112,67 +115,105 @@ export default function DepartmentReveal() {
                   return (
                     <div
                       key={dept.id}
-                      role="button"
-                      tabIndex={0}
-                      onClick={() =>
-                        setActiveId(isActive ? null : dept.id)
-                      }
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          setActiveId(isActive ? null : dept.id);
-                        }
-                      }}
-                      className={`text-left p-5 rounded-3xl border cursor-pointer transition-transform transition-shadow duration-200 ${
+                      className={`text-left rounded-3xl border bg-white transition-transform transition-shadow duration-200 ${
                         isActive
-                          ? "border-[var(--color-brand)] shadow-lg scale-[1.02] bg-white"
-                          : "border-[var(--color-border)] bg-white hover:shadow-md hover:scale-[1.01]"
+                          ? "border-[var(--color-brand)] shadow-lg md:col-span-3"
+                          : "border-[var(--color-border)] hover:shadow-md hover:scale-[1.01]"
                       }`}
                     >
-                      <div
-                        className="w-10 h-10 rounded-2xl flex items-center justify-center mb-3"
-                        style={{
-                          background: `${dept.color}12`,
-                          color: dept.color,
-                        }}
+                      {/* Card header — always visible */}
+                      <button
+                        type="button"
+                        onClick={() => setActiveId(isActive ? null : dept.id)}
+                        className="w-full text-left p-5 flex items-start justify-between gap-3"
                       >
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)] mb-1.5">
-                        {dept.name}
-                      </h3>
-                      {dept.tools.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mb-2">
-                          {dept.tools.map((tool) => (
-                            <a
-                              key={tool.name}
-                              href={tool.url}
-                              target={tool.url.startsWith("http") ? "_blank" : undefined}
-                              rel={tool.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-[11px] font-medium px-2.5 py-0.5 rounded-full hover:opacity-80 transition-opacity"
-                              style={{
-                                background: `${dept.color}10`,
-                                color: dept.color,
-                              }}
-                            >
-                              {tool.name}
-                            </a>
-                          ))}
+                        <div className="flex-1">
+                          <div
+                            className="w-10 h-10 rounded-2xl flex items-center justify-center mb-3"
+                            style={{
+                              background: `${dept.color}12`,
+                              color: dept.color,
+                            }}
+                          >
+                            <Icon className="w-5 h-5" />
+                          </div>
+                          <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)] mb-1.5">
+                            {dept.name}
+                          </h3>
+                          {!isActive && dept.tools.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5">
+                              {dept.tools.map((tool) => (
+                                <span
+                                  key={tool.name}
+                                  className="text-[11px] font-medium px-2.5 py-0.5 rounded-full"
+                                  style={{
+                                    background: `${dept.color}10`,
+                                    color: dept.color,
+                                  }}
+                                >
+                                  {tool.name}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <ChevronDown
+                          className={`w-4 h-4 mt-1 shrink-0 text-[var(--color-text-soft)] transition-transform duration-200 ${
+                            isActive ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {/* Expanded tool details */}
+                      {isActive && (
+                        <div className="px-5 pb-5 border-t border-[var(--color-border)]">
+                          <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed py-4">
+                            {dept.description}
+                          </p>
+                          <div className="grid md:grid-cols-3 gap-3">
+                            {dept.tools.map((tool) => (
+                              <a
+                                key={tool.name}
+                                href={tool.url}
+                                target={tool.url.startsWith("http") ? "_blank" : undefined}
+                                rel={tool.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                                className="flex items-start gap-3 p-4 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-brand-light)] hover:shadow-sm transition-shadow"
+                              >
+                                <div
+                                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 overflow-hidden"
+                                  style={{ background: `${dept.color}10` }}
+                                >
+                                  {tool.logo ? (
+                                    <Image
+                                      src={tool.logo}
+                                      alt={tool.name}
+                                      width={24}
+                                      height={24}
+                                      className="object-contain"
+                                      unoptimized
+                                    />
+                                  ) : (
+                                    <span style={{ color: dept.color }}><Icon className="w-5 h-5" /></span>
+                                  )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-1.5 mb-1">
+                                    <span className="font-semibold text-[14px] text-[var(--color-text-primary)]">
+                                      {tool.name}
+                                    </span>
+                                    {tool.url.startsWith("http") && (
+                                      <ExternalLink className="w-3 h-3 text-[var(--color-text-soft)]" />
+                                    )}
+                                  </div>
+                                  <p className="text-[12px] text-[var(--color-text-muted)] leading-relaxed">
+                                    {tool.desc}
+                                  </p>
+                                </div>
+                              </a>
+                            ))}
+                          </div>
                         </div>
                       )}
-
-                      <div
-                        className={`overflow-hidden transition-[max-height,opacity] duration-300 ${
-                          isActive
-                            ? "max-h-32 opacity-100 mt-2"
-                            : "max-h-0 opacity-0"
-                        }`}
-                      >
-                        <p className="text-[13px] text-[var(--color-text-muted)] leading-relaxed">
-                          {dept.description}
-                        </p>
-                      </div>
                     </div>
                   );
                 })}

@@ -1,11 +1,16 @@
 import { WHATSAPP_URL } from "@/lib/constants";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import DashedGrid from "@/components/ui/DashedGrid";
 
 export default function FinalCTASection() {
   return (
-    <section className="relative gradient-cta-band overflow-hidden">
-      <DashedGrid />
+    <section className="relative overflow-hidden">
+      {/* Cloud hero background — variation of the main hero */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/hero/bg-light.png')" }}
+      />
+      <div className="absolute inset-0 z-[1] bg-white/80" />
+
       <div className="relative z-10 section-padding !py-20 md:!py-28">
         <div className="section-inner text-center">
           <ScrollReveal>
@@ -30,8 +35,6 @@ export default function FinalCTASection() {
               WhatsApp Us — Let&apos;s Talk AI
             </a>
             <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-[13px] text-[var(--color-text-soft)]">
-              <span>MDEC Recognised</span>
-              <span className="w-1 h-1 rounded-full bg-[var(--color-text-soft)] hidden sm:block" />
               <span>30-Day Money-Back Guarantee</span>
               <span className="w-1 h-1 rounded-full bg-[var(--color-text-soft)] hidden sm:block" />
               <span>No Lock-In</span>

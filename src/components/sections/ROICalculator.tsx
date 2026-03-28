@@ -3,12 +3,20 @@
 import { useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { whatsappUrl } from "@/lib/constants";
+import {
+  Wrench,
+  Package,
+  Building2,
+  HeartPulse,
+  UtensilsCrossed,
+  Briefcase,
+} from "lucide-react";
 
 const BUSINESS_TYPES = [
   {
     id: "service",
     label: "Service Business",
-    emoji: "🔧",
+    icon: Wrench,
     desc: "Aircond, plumbing, cleaning, repair",
     savingsPerStaff: 18000,
     enterpriseMultiplier: 3.5,
@@ -16,7 +24,7 @@ const BUSINESS_TYPES = [
   {
     id: "trading",
     label: "Trading Business",
-    emoji: "📦",
+    icon: Package,
     desc: "Wholesale, retail, distribution",
     savingsPerStaff: 12000,
     enterpriseMultiplier: 4,
@@ -24,7 +32,7 @@ const BUSINESS_TYPES = [
   {
     id: "asset",
     label: "Asset & Investment",
-    emoji: "🏢",
+    icon: Building2,
     desc: "Property, co-living, rental",
     savingsPerStaff: 25000,
     enterpriseMultiplier: 3,
@@ -32,7 +40,7 @@ const BUSINESS_TYPES = [
   {
     id: "healthcare",
     label: "Healthcare",
-    emoji: "🏥",
+    icon: HeartPulse,
     desc: "Clinics, medical equipment, pharmacy",
     savingsPerStaff: 22000,
     enterpriseMultiplier: 3.2,
@@ -40,7 +48,7 @@ const BUSINESS_TYPES = [
   {
     id: "fnb",
     label: "F&B / Events",
-    emoji: "🍽️",
+    icon: UtensilsCrossed,
     desc: "Restaurants, catering, food trucks",
     savingsPerStaff: 14000,
     enterpriseMultiplier: 3,
@@ -48,7 +56,7 @@ const BUSINESS_TYPES = [
   {
     id: "other",
     label: "Other",
-    emoji: "💼",
+    icon: Briefcase,
     desc: "Tell us about your business",
     savingsPerStaff: 15000,
     enterpriseMultiplier: 3,
@@ -102,7 +110,7 @@ export default function ROICalculator() {
                             : "border-[var(--color-border)] hover:border-[var(--color-brand-light)] hover:shadow-sm"
                         }`}
                       >
-                        <span className="text-[18px] block mb-1">{btype.emoji}</span>
+                        <btype.icon className={`w-5 h-5 mb-1 ${selectedType === btype.id ? "text-[var(--color-brand)]" : "text-[var(--color-text-muted)]"}`} />
                         <span className="text-[13px] font-semibold text-[var(--color-text-primary)] block">
                           {btype.label}
                         </span>
