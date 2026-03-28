@@ -197,79 +197,91 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-white border-b border-[var(--color-border)] px-4 pb-6 pt-2">
-          <div className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
+      {/* Mobile Fullscreen Menu */}
+      <div
+        className={`md:hidden fixed inset-0 z-40 bg-[#0f1729] flex flex-col transition-opacity duration-400 ${
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Menu header */}
+        <div className="flex items-center justify-between px-4 h-16 shrink-0">
+          <Link
+            href="/"
+            className="flex items-center gap-1"
+            onClick={() => setOpen(false)}
+          >
+            <span className="font-bold text-lg tracking-tight text-white">
+              UTOPIA
+            </span>
+            <span className="font-normal text-lg tracking-tight text-white/60">
+              GROUP
+            </span>
+          </Link>
+          <button
+            type="button"
+            className="p-3 text-white/80 hover:text-white"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <div className="flex-1 flex flex-col justify-center px-8">
+          {[...NAV_LINKS, { label: MORE_DROPDOWN.label, href: "/about" }].map(
+            (link, i) => (
               <a
                 key={link.href}
                 href={link.href}
-                target={
-                  "newTab" in link && link.newTab ? "_blank" : undefined
-                }
-                rel={
-                  "newTab" in link && link.newTab
-                    ? "noopener noreferrer"
-                    : undefined
-                }
                 onClick={() => setOpen(false)}
-                className="text-[15px] font-medium text-[var(--color-text-body)] hover:text-[var(--color-text-primary)] py-3 border-b border-[var(--color-border-soft)] transition-colors"
+                className={`text-[32px] font-bold tracking-[-1px] py-2.5 transition-all duration-500 ${
+                  open
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-5"
+                } text-white/35 hover:text-white`}
+                style={{
+                  transitionDelay: open ? `${100 + i * 50}ms` : "0ms",
+                }}
               >
+                <span className="text-[12px] font-medium text-[var(--color-accent)] mr-3 align-super tracking-normal">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 {link.label}
               </a>
-            ))}
-
-            {/* Mobile Masterclass Dropdown */}
-            <button
-              type="button"
-              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-              className="flex items-center justify-between text-[15px] font-medium text-[var(--color-text-body)] py-3 border-b border-[var(--color-border-soft)]"
-            >
-              {MORE_DROPDOWN.label}
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${
-                  mobileDropdownOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-            {mobileDropdownOpen && (
-              <div className="pl-4 space-y-1 pb-2">
-                {MORE_DROPDOWN.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-2.5 text-[14px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors"
-                  >
-                    {item.label}
-                    <span className="block text-[11px] text-[var(--color-text-soft)]">
-                      {item.description}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col gap-3 mt-5">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary w-full text-center !text-[14px]"
-            >
-              Start Free
-            </a>
-            <a
-              href="#pricing"
-              onClick={() => setOpen(false)}
-              className="btn-secondary w-full text-center !text-[14px]"
-            >
-              Contact Sales
-            </a>
-          </div>
+            )
+          )}
         </div>
-      )}
+
+        {/* CTAs */}
+        <div
+          className={`px-8 pb-12 flex flex-col gap-3 transition-all duration-500 ${
+            open
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-5"
+          }`}
+          style={{ transitionDelay: open ? "350ms" : "0ms" }}
+        >
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-center py-4 bg-[var(--color-brand)] text-white font-semibold text-[15px] rounded-[14px]"
+          >
+            Start Free
+          </a>
+          <Link
+            href="/how-we-charge"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-center py-4 bg-white/[0.08] text-white/70 font-semibold text-[15px] rounded-[14px] border border-white/10"
+          >
+            How We Charge
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }
