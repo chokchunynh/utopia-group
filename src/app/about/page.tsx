@@ -48,10 +48,10 @@ const COMPANIES = [
 ];
 
 const AI_PRODUCTS = [
-  { name: "SlipMatch", logo: "/images/client-logos/slipmatch-my.png", url: "https://slipmatch.my", desc: "AI Bank Reconciliation" },
-  { name: "RecurPay", logo: "/images/client-logos/recurpay-my.png", url: "https://recurpay.my", desc: "Collection Tracking" },
-  { name: "GetBill", logo: "/images/client-logos/getbill-my.png", url: "https://getbill.my", desc: "Utility Bill Extraction" },
-  { name: "Kreativ", logo: "/images/client-logos/kreative-my.png", url: "https://kreative.my", desc: "AI Design Platform" },
+  { name: "SlipMatch", logo: "/images/client-logos/slipmatch-logo.webp", url: "https://slipmatch.my", desc: "AI Bank Reconciliation" },
+  { name: "RecurPay", logo: "/images/client-logos/recurpay-logo.webp", url: "https://recurpay.my", desc: "Collection Tracking" },
+  { name: "GetBill", logo: "/images/client-logos/getbill-logo.webp", url: "https://getbill.my", desc: "Utility Bill Extraction" },
+  { name: "Kreativ", logo: "/images/client-logos/kreative-logo.webp", url: "https://kreative.my", desc: "AI Design Platform" },
 ];
 
 const OFFICES = [

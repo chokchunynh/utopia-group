@@ -126,9 +126,9 @@ export const DEPARTMENTS = [
     name: "Accounting & Finance",
     icon: "calculator",
     tools: [
-      { name: "SlipMatch", url: "https://slipmatch.my", logo: "/images/client-logos/slipmatch-my.png", desc: "AI bank reconciliation — match payment slips to invoices in 3 minutes, not 3 hours." },
-      { name: "GetBill", url: "https://getbill.my", logo: "/images/client-logos/getbill-my.png", desc: "Extract utility bills (TNB, Air Selangor) automatically. No more manual data entry." },
-      { name: "RecurPay", url: "https://recurpay.my", logo: "/images/client-logos/recurpay-my.png", desc: "Track recurring payments and collections. Know who owes what, when, and how much — automatically." },
+      { name: "SlipMatch", url: "https://slipmatch.my", logo: "/images/client-logos/slipmatch-logo.webp", desc: "AI bank reconciliation — match payment slips to invoices in 3 minutes, not 3 hours." },
+      { name: "GetBill", url: "https://getbill.my", logo: "/images/client-logos/getbill-logo.webp", desc: "Extract utility bills (TNB, Air Selangor) automatically. No more manual data entry." },
+      { name: "RecurPay", url: "https://recurpay.my", logo: "/images/client-logos/recurpay-logo.webp", desc: "Track recurring payments and collections. Know who owes what, when, and how much — automatically." },
     ],
     description: "Bank reconciliation in 3 minutes, automatic invoice matching, utility bill extraction. No more manual data entry.",
     color: "#116dff",
@@ -150,7 +150,7 @@ export const DEPARTMENTS = [
     icon: "megaphone",
     tools: [
       { name: "AutoViral", url: "https://autopost-web-amber.vercel.app", logo: null, desc: "AI generates and schedules social media content across all platforms. One click for a month of posts." },
-      { name: "Kreativ", url: "https://kreativstudio.my", logo: "/images/client-logos/kreative-my.png", desc: "AI design platform — generate marketing visuals, ads, and branded content in seconds." },
+      { name: "Kreativ", url: "https://kreativstudio.my", logo: "/images/client-logos/kreative-logo.webp", desc: "AI design platform — generate marketing visuals, ads, and branded content in seconds." },
     ],
     description: "AI video ads, social media automation, SEO content at scale. One click to generate a month of content.",
     color: "#8B5CF6",
