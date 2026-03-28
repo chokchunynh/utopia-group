@@ -9,7 +9,7 @@ export default function WhatsAppFAB() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-24 md:bottom-8 right-4 md:right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-105 transition-transform text-white"
+      className="fixed bottom-6 right-4 md:bottom-8 md:right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-105 transition-transform text-white"
       style={{ animation: "whatsapp-pulse 2s infinite" }}
     >
       <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">

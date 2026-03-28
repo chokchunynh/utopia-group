@@ -48,7 +48,7 @@ export default function ProofBar() {
         <div className="section-inner">
           {/* Stats */}
           <ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-10">
               {PROOF_STATS.map((stat, i) => (
                 <ScrollReveal key={stat.label} delay={i * 80}>
                   <div className="text-center">
@@ -70,7 +70,7 @@ export default function ProofBar() {
               <p className="text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-text-soft)] mb-5">
                 We build with the tools that matter
               </p>
-              <div className="flex items-center justify-center gap-x-5 gap-y-3 md:gap-6 flex-wrap px-2">
+              <div className="flex items-center justify-center gap-x-4 gap-y-3 md:gap-6 flex-wrap">
                 {AI_TOOLS.map((tool) => (
                   <div
                     key={tool.name}
