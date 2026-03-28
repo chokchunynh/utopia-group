@@ -236,7 +236,7 @@ export default function Navbar() {
 
       {/* Mobile Fullscreen Menu */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-[#0f1729] flex flex-col transition-opacity duration-400 ${
+        className={`md:hidden fixed inset-0 z-[60] bg-[#0f1729] flex flex-col transition-opacity duration-400 ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -268,10 +268,10 @@ export default function Navbar() {
 
         {/* Nav links */}
         <div className="flex-1 flex flex-col justify-center px-8">
-          {[...NAV_LINKS, { label: MORE_DROPDOWN.label, href: "/about" }].map(
+          {[...NAV_LINKS, { label: MORE_DROPDOWN.label, href: "#more" }].map(
             (link, i) => (
               <a
-                key={link.href}
+                key={`menu-${i}`}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className={`text-[32px] font-bold tracking-[-1px] py-2.5 transition-all duration-500 ${
