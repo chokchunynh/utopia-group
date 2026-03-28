@@ -1,53 +1,54 @@
 # Next Session Spec
-## Context: Massive Utopia Group website redesign — 8 pages built, LinkedIn MCP installed
-## Task: Test LinkedIn MCP + pull team photos + remaining polish
+## Context: Added AI video hero (Kling 3) + Ken Burns mobile animation
+## Task: Push Ken Burns CSS change, then resume Priority 1
 
-## Priority 1: LinkedIn MCP
-- MCP is in settings.json, session authenticated at ~/.linkedin-mcp/profile
-- Test `get_company_profile`, `search_people`, `get_person_profile` tools
-- Pull team member photos from LinkedIn company page (utopiagroupmy)
-- Download photos and spread across relevant pages (About, Career)
-- DO NOT list individual team member names publicly — just "Meet the full team on LinkedIn"
-- Future: Build auto LinkedIn posting tool
+## Immediate (1 min — Ken Burns not yet pushed):
+```bash
+cd ~/utopia-group && git add src/app/globals.css && git commit -m "Add Ken Burns zoom on mobile hero" && git push
+```
 
-## Priority 2: Remaining Polish
-- Layout variety — break center-aligned monotony (alternating left/right sections, bento grids from Linear/Stripe/Clerk inspiration)
-- "We don't just sell AI" section — CY said it's dull, needs redesign
-- Illustration image pack — generate consistent illustrations using image-director (golden-cloud color palette)
-- Real testimonial quotes — CY to provide actual quotes (current ones are placeholders)
+## Priority 1: Custom Domain + GA4 (15 min, makes the site "real")
+- Connect utopiagroup.com.my to Vercel (currently on Wix)
+- Update metadataBase, OG URLs, sitemap to utopiagroup.com.my
+- Set up www → non-www redirect
+- Add GA4: get measurement ID from CY, set NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel env vars
 
-## Priority 3: SEO & Meta
-- Schema markup for all pages
-- OG images (1200x630) for each page
-- Sitemap for new pages
-- Google Analytics wiring
+## Priority 2: LinkedIn MCP Team Photos
+- Fresh session reconnects MCP — test get_company_profile for utopiagroupmy
+- Pull team member photos, wire into About and Career pages
+- DO NOT list individual names — just "Meet the full team on LinkedIn"
 
-## Files to touch:
-- src/app/about/page.tsx — add LinkedIn photos to team section
-- src/components/sections/* — layout variety updates
-- src/components/sections/WeUseItSection.tsx — redesign (currently dull)
-- public/images/team/ — downloaded LinkedIn photos go here
+## Priority 3: Lead Funnel (Supabase + Resend)
+- Connect Supabase for lead storage (API route at /api/leads exists)
+- Connect Resend for ebook email delivery
+- Create actual AI ebook PDF (lead magnet content)
+- Wire the "Try Our Tools Free" CTA to capture emails
+
+## Priority 4: Content
+- Real testimonial quotes from CY (current ones are AI placeholders)
+- Real office/team/warehouse photos to replace AI-generated ones
+- Case study pages for top 3 companies (Encik Beku, Ibnu Sina, Scaffolding)
+
+## Priority 5: Blog + Thought Leadership
+- Blog section for AI content marketing
+- 3-5 seed articles (AI implementation guides, ROI stories, Malaysian SME AI adoption)
+- SEO-optimized, bilingual if CY wants BM versions
 
 ## Decisions already made:
-- 35+ companies, 400+ staff, 173 business units, RM130M+ revenue (source of truth)
-- Inter font only (Mintlify-style)
-- 5 cloud hero backgrounds (one per page)
-- Team section: NO individual names listed, just LinkedIn CTA
-- Pricing moved to /how-we-charge (not on homepage)
-- Nav: What We Automate | Results | About | Career | More (dropdown: How We Charge, AI Masterclass → nested: Companies/Individuals)
-- Offices: HQ at Sunway Putra Tower, Sales at Jalan Putra, 8 warehouses (Shah Alam ×3, Penang ×2, Johor, Melaka, Ipoh)
-- AI Masterclass: Company (on-site, RM5K-25K) + Individual (RM299×8 sessions)
+- Hero video: Kling 3 generated, 730KB compressed, desktop only
+- Ken Burns: 20s scale(1)→scale(1.08) alternate, mobile only (.bg-image-hero)
+- Font: Inter (CY chose A)
+- Accent: Cyan #06B6D4 (CY chose B)
+- ROI: always visible, grayed out until selection
+- CTAs: consolidated to single final CTA
+- Demo: Encik Beku Aircond, ends with customer reply
+- All tool icons: real favicons + colored letter-marks
+- All company logos: 192x192 PNGs from live Wix sites
+- MDEC badge: removed (CY said remove)
 
-## Open questions:
-- CY needs to provide real testimonial quotes to replace placeholders
-- CY needs to provide office photos for About page
-- LinkedIn auto-posting tool design (read vs write access)
-
-## Live pages:
-- / (homepage)
-- /about (company story, portfolio, team, offices)
-- /career (positions, benefits, apply)
-- /how-we-charge (pricing + FAQ)
-- /masterclass (company training)
-- /masterclass/individual (individual training)
-- /team (redirects to /about#team)
+## Open questions for CY:
+- GA4 measurement ID for utopiagroup.com.my
+- Domain cutover timing (when to switch DNS from Wix)
+- Real testimonial quotes
+- Real photos (office, team, warehouse)
+- Ebook content topic (AI implementation guide? ROI calculator breakdown?)

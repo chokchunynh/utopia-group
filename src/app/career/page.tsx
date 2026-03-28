@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { whatsappUrl } from "@/lib/constants";
 import {
@@ -210,6 +211,42 @@ export default function CareerPage() {
               Learn more about us →
             </Link>
           </p>
+        </div>
+      </section>
+
+      {/* ─── Life at Utopia ─────────────────────────────────── */}
+      <section className="section-padding bg-white">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <span className="pill mb-4 inline-block">Life at Utopia</span>
+              <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
+                More than just{" "}
+                <span className="gradient-text font-extrabold">a workplace</span>
+              </h2>
+              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
+                Team dinners, sports nights, birthday celebrations, and building things that matter — together.
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { src: "/images/team/feed-17.jpg", alt: "Team group photo" },
+              { src: "/images/team/feed-07.jpg", alt: "Team dinner outing" },
+              { src: "/images/team/feed-01.jpg", alt: "CNY celebration at office" },
+              { src: "/images/team/feed-25.jpg", alt: "Developers coding at monitors" },
+              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching tees" },
+              { src: "/images/team/feed-22.jpg", alt: "Birthday celebration" },
+              { src: "/images/team/feed-09.jpg", alt: "Company football team" },
+              { src: "/images/team/feed-46.jpg", alt: "Site visit" },
+            ].map((photo, i) => (
+              <ScrollReveal key={photo.src} delay={i * 60}>
+                <div className="team-photo aspect-square border border-[var(--color-border)]">
+                  <Image src={photo.src} alt={photo.alt} width={400} height={400} className="w-full h-full object-cover" unoptimized />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 

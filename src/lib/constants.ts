@@ -19,7 +19,7 @@ export const NAV_LINKS = [
   { label: "What We Automate", href: "/automate" },
   { label: "Results", href: "#results" },
   { label: "About", href: "/about" },
-  { label: "Career", href: "/career", newTab: true },
+  { label: "Career", href: "/career" },
 ] as const;
 
 export const MORE_DROPDOWN = {

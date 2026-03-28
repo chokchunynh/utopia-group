@@ -81,9 +81,9 @@ export default function AboutPage() {
       <section className="relative overflow-hidden">
         <div
           className="bg-image-hero"
-          style={{ backgroundImage: "url('/images/photos/team-working.webp')" }}
+          style={{ backgroundImage: "url('/hero/bg-team.png')" }}
         />
-        <div className="absolute inset-0 z-[1] bg-[#0f2027]/40" />
+        <div className="absolute inset-0 z-[1] bg-[#0f2027]/35" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
           <div className="section-inner text-center">
             <ScrollReveal>
@@ -334,18 +334,25 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Team photo + LinkedIn CTA */}
-          <ScrollReveal delay={100}>
-            <div className="max-w-3xl mx-auto mb-8 rounded-2xl overflow-hidden border border-[var(--color-border)]">
-              <Image
-                src="/images/photos/team-working.webp"
-                alt="Utopia Group AI team collaborating in KL office"
-                width={1200}
-                height={675}
-                className="w-full h-auto"
-              />
-            </div>
-          </ScrollReveal>
+          {/* Team photo gallery — 4x2 grid, no orphans */}
+          <div className="max-w-4xl mx-auto mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { src: "/images/team/feed-13.jpg", alt: "Creative & marketing team at Utopia office" },
+              { src: "/images/team/feed-23.jpg", alt: "Dev team with laptops in office" },
+              { src: "/images/team/feed-05.jpg", alt: "Team group outing at restaurant" },
+              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching company tees" },
+              { src: "/images/team/feed-15.jpg", alt: "Team members working at Utopia office" },
+              { src: "/images/team/feed-07.jpg", alt: "Team dinner together" },
+              { src: "/images/team/feed-22.jpg", alt: "Office birthday celebration" },
+              { src: "/images/team/feed-17.jpg", alt: "Team photo at doodle wall" },
+            ].map((photo, i) => (
+              <ScrollReveal key={photo.src} delay={i * 60}>
+                <div className="team-photo aspect-[4/3] border border-[var(--color-border)]">
+                  <Image src={photo.src} alt={photo.alt} width={400} height={300} className="w-full h-full object-cover" unoptimized />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
           <ScrollReveal delay={200}>
             <div className="text-center">
               <a
@@ -388,11 +395,11 @@ export default function AboutPage() {
           {/* Photo strip */}
           <ScrollReveal>
             <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10">
-              <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] h-48">
-                <Image src="/images/photos/office-kl.webp" alt="Utopia Group KL office with city skyline" width={600} height={340} className="w-full h-full object-cover" />
+              <div className="team-photo h-48 border border-[var(--color-border)]">
+                <Image src="/images/team/feed-25.jpg" alt="Utopia Group KL office — developers at work" width={600} height={340} className="w-full h-full object-cover" unoptimized />
               </div>
-              <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] h-48">
-                <Image src="/images/photos/warehouse.webp" alt="Utopia Group warehouse operations" width={600} height={340} className="w-full h-full object-cover" />
+              <div className="team-photo h-48 border border-[var(--color-border)]">
+                <Image src="/images/team/feed-46.jpg" alt="Utopia Group team on site visit" width={600} height={340} className="w-full h-full object-cover" unoptimized />
               </div>
             </div>
           </ScrollReveal>
