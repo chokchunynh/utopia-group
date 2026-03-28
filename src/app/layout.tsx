@@ -60,10 +60,12 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
       </head>
       <body className={`${inter.variable} antialiased`}>
-        <GoogleAnalytics />
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="overflow-x-hidden w-full">
+          <GoogleAnalytics />
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
         <WhatsAppFAB />
       </body>
     </html>
