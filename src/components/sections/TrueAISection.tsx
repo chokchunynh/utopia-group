@@ -6,7 +6,8 @@ import {
   TRUEAI_FEATURES,
   whatsappUrl,
 } from "@/lib/constants";
-import { Zap, ToggleRight, Server, Brain, ArrowRight, User } from "lucide-react";
+import Image from "next/image";
+import { Zap, ToggleRight, Server, Brain, ArrowRight } from "lucide-react";
 
 const FEATURE_ICONS = [Zap, ToggleRight, Server, Brain];
 
@@ -158,8 +159,8 @@ export default function TrueAISection() {
                                 {/* Technician card */}
                                 {"showTech" in msg && msg.showTech && (
                                   <div className="bg-gray-50 rounded-xl p-3 mb-1.5 flex items-center gap-3">
-                                    <div className="w-11 h-11 rounded-full bg-amber-100 flex items-center justify-center shrink-0 overflow-hidden">
-                                      <User className="w-6 h-6 text-amber-700" />
+                                    <div className="w-11 h-11 rounded-full shrink-0 overflow-hidden">
+                                      <Image src="/images/photos/technician-ahmad.webp" alt="Ahmad R." width={44} height={44} className="w-full h-full object-cover" unoptimized />
                                     </div>
                                     <div>
                                       <p className="text-xs font-semibold text-gray-800">

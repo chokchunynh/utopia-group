@@ -110,11 +110,11 @@ export default function ROICalculator() {
                             : "border-[var(--color-border)] hover:border-[var(--color-brand-light)] hover:shadow-sm"
                         }`}
                       >
-                        <btype.icon className={`w-5 h-5 mb-1.5 ${selectedType === btype.id ? "text-[var(--color-brand)]" : "text-[var(--color-text-muted)]"}`} />
-                        <span className="text-[13px] font-semibold text-[var(--color-text-primary)] block">
+                        <btype.icon className={`w-5 h-5 mb-2 ${selectedType === btype.id ? "text-[var(--color-brand)]" : "text-[var(--color-text-muted)]"}`} />
+                        <span className="text-[13px] font-semibold text-[var(--color-text-primary)] block leading-tight min-h-[32px] flex items-center">
                           {btype.label}
                         </span>
-                        <span className="text-[11px] text-[var(--color-text-muted)] mt-auto">
+                        <span className="text-[11px] text-[var(--color-text-muted)] mt-1 leading-snug">
                           {btype.desc}
                         </span>
                       </button>
