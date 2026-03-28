@@ -21,7 +21,11 @@ export default function Navbar() {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
+      // Delay re-enabling scroll until close transition (400ms) finishes
+      const timer = setTimeout(() => {
+        document.body.style.overflow = "";
+      }, 400);
+      return () => clearTimeout(timer);
     }
     return () => {
       document.body.style.overflow = "";
@@ -215,7 +219,7 @@ export default function Navbar() {
 
       {/* Mobile Fullscreen Menu */}
       <div
-        className={`md:hidden fixed inset-0 z-[60] bg-[#0f1729] flex flex-col transition-opacity duration-400 ${
+        className={`md:hidden fixed inset-0 z-[60] bg-[#0f1729] flex flex-col transition-opacity duration-400 overscroll-contain ${
           open
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
