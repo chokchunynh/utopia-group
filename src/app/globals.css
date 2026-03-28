@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-/* Prevent mobile overscroll bounce */
+/* Prevent mobile overscroll bounce + horizontal scroll */
 html {
   overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 @theme inline {
