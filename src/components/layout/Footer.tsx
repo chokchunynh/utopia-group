@@ -112,10 +112,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@utopiagroup.com.my"
+                  href="mailto:devteam.utopia@gmail.com"
                   className="hover:text-[var(--color-text-primary)] transition-colors duration-150 break-all"
                 >
-                  hello@utopiagroup.com.my
+                  devteam.utopia@gmail.com
                 </a>
               </li>
               <li className="leading-relaxed">

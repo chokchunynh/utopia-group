@@ -18,7 +18,7 @@ export const organizationSchema = {
     "@type": "ContactPoint",
     telephone: "+60146869468",
     contactType: "sales",
-    email: "hello@utopiagroup.com.my",
+    email: "devteam.utopia@gmail.com",
     availableLanguage: ["English", "Malay"],
   },
   address: {

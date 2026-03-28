@@ -5,7 +5,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Utopia Group. WhatsApp us at +60146869468 or email hello@utopiagroup.com.my. Office: Sunway Putra Tower, Kuala Lumpur.",
+    "Get in touch with Utopia Group. WhatsApp us at +60146869468 or email devteam.utopia@gmail.com. Office: Sunway Putra Tower, Kuala Lumpur.",
   openGraph: {
     title: "Contact Utopia Group — WhatsApp, Email, Visit",
     description:
