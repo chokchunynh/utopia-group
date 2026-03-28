@@ -229,20 +229,69 @@ export default function CareerPage() {
               </p>
             </div>
           </ScrollReveal>
+          {/* Wide team group photo */}
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto mb-4">
+              <div className="team-photo aspect-[21/9] border border-[var(--color-border)] overflow-hidden">
+                <Image src="/images/wix/photo-team-group-hands-up.jpg" alt="Full Utopia Group team celebration" width={1200} height={500} className="w-full h-full object-cover" unoptimized />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Mix of team life + real business operations */}
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { src: "/images/team/feed-17.jpg", alt: "Team group photo" },
-              { src: "/images/team/feed-07.jpg", alt: "Team dinner outing" },
+              { src: "/images/wix/photo-encik-beku-team-3guys.jpg", alt: "Encik Beku aircond technicians" },
               { src: "/images/team/feed-01.jpg", alt: "CNY celebration at office" },
-              { src: "/images/team/feed-25.jpg", alt: "Developers coding at monitors" },
+              { src: "/images/wix/photo-pulse-studio-3women.png", alt: "Pulse Pilates studio team" },
               { src: "/images/team/feed-44.jpg", alt: "Team outing in matching tees" },
-              { src: "/images/team/feed-22.jpg", alt: "Birthday celebration" },
+              { src: "/images/wix/photo-coliving-bedroom.jpeg", alt: "Utopia Co-Living room" },
               { src: "/images/team/feed-09.jpg", alt: "Company football team" },
-              { src: "/images/team/feed-46.jpg", alt: "Site visit" },
+              { src: "/images/wix/photo-ibnu-sina-showroom.jpg", alt: "Ibnu Sina Care showroom" },
             ].map((photo, i) => (
               <ScrollReveal key={photo.src} delay={i * 60}>
                 <div className="team-photo aspect-square border border-[var(--color-border)]">
                   <Image src={photo.src} alt={photo.alt} width={400} height={400} className="w-full h-full object-cover" unoptimized />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── What You'll Work On ─────────────────────────────── */}
+      <section className="section-padding bg-[var(--color-bg-soft)]">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <span className="pill mb-4 inline-block">What You&apos;ll Work On</span>
+              <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
+                Real businesses.{" "}
+                <span className="gradient-text font-extrabold">Real impact.</span>
+              </h2>
+              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
+                Your work powers 35+ companies across healthcare, transport, construction, fitness, co-living, and more.
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { src: "/images/wix/photo-revbike-showroom-girl.png", label: "RevBike — 150K+ rentals", alt: "RevBike motorcycle fleet" },
+              { src: "/images/wix/photo-pulse-studio-3women.png", label: "Pulse — 10K+ sessions", alt: "Pulse Pilates studio" },
+              { src: "/images/wix/photo-reno-technician-fan.png", label: "Reno.my — 50K+ projects", alt: "Technician installing fan" },
+              { src: "/images/wix/photo-coliving-girl-laptop.png", label: "Co-Living — 10K+ rooms", alt: "Co-living resident working" },
+              { src: "/images/wix/photo-ibnu-sina-showroom.jpg", label: "Ibnu Sina — Healthcare", alt: "Medical equipment showroom" },
+              { src: "/images/wix/photo-scaffolding-warehouse.jpg", label: "Scaffolding — RM450K/mo", alt: "Scaffolding warehouse" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.src} delay={i * 60}>
+                <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] group">
+                  <div className="aspect-[4/3]">
+                    <Image src={item.src} alt={item.alt} width={500} height={375} className="w-full h-full object-cover" unoptimized />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8">
+                    <span className="text-white text-[13px] font-semibold">{item.label}</span>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}

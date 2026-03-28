@@ -3,21 +3,26 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { OPERATOR_RESULTS } from "@/lib/constants";
 
 const OUR_COMPANIES = [
-  { name: "Utopia Co-Living", logo: "/images/client-logos/utopiacoliving-com.png", url: "https://utopiacoliving.com", sites: 2 },
-  { name: "Encik Beku", logo: "/images/client-logos/aircondmalaysia-my.png", url: "https://aircondmalaysia.my", sites: 27 },
-  { name: "Ibnu Sina Care", logo: "/images/client-logos/ibnusinacare-com-my.png", url: "https://ibnusinacare.com.my", sites: 30 },
-  { name: "Scaffolding MY", logo: "/images/client-logos/scaffolding-my.png", url: "https://scaffolding.my", sites: 25 },
-  { name: "Rev Move", logo: "/images/client-logos/sewamotor-my.png", url: "https://sewamotor.my", sites: 22 },
-  { name: "Kak Kenduri", logo: "/images/client-logos/katering-my.png", url: "https://katering.my", sites: 8 },
-  { name: "Cold Truck MY", logo: "/images/client-logos/coldroom-my.png", url: "https://coldroom.my", sites: 3 },
-  { name: "Mobile Wheeler", logo: "/images/client-logos/foodtruck-com-my.png", url: "https://foodtruck.com.my", sites: 4 },
-  { name: "Pulse Pilates", logo: "/images/client-logos/pilatesreformer-my.png", url: "https://pilatesreformer.my", sites: 3 },
-  { name: "Merry Elderly", logo: "/images/client-logos/elderlycare-my.png", url: "https://elderlycare.my", sites: 1 },
-  { name: "Gula Melaka", logo: "/images/client-logos/gulamelaka-my.png", url: "https://gulamelaka.my", sites: 1 },
-  { name: "Jom Vend", logo: "/images/client-logos/vendingmachinemalaysia-my.png", url: "https://vendingmachinemalaysia.my", sites: 1 },
-  { name: "SlipMatch", logo: "/images/client-logos/slipmatch-my.png", url: "https://slipmatch.my", sites: 1 },
-  { name: "RecurPay", logo: "/images/client-logos/recurpay-my.png", url: "https://recurpay.my", sites: 1 },
-  { name: "GetBill", logo: "/images/client-logos/getbill-my.png", url: "https://getbill.my", sites: 1 },
+  { name: "Utopia Co-Living", logo: "/images/wix/logo-utopia-coliving.png", url: "https://utopiacoliving.com", dark: false },
+  { name: "Encik Beku", logo: "/images/wix/logo-encik-beku.png", url: "https://aircondmalaysia.my", dark: true },
+  { name: "Ibnu Sina Care", logo: "/images/wix/logo-medbed.png", url: "https://ibnusinacare.com.my", dark: false },
+  { name: "Scaffolding MY", logo: "/images/wix/logo-scaffolding.png", url: "https://scaffolding.my", dark: false },
+  { name: "RevBike", logo: "/images/wix/logo-revbike.png", url: "https://sewamotor.my", dark: false },
+  { name: "Kak Kenduri", logo: "/images/wix/logo-kakkenduri.png", url: "https://katering.my", dark: false },
+  { name: "Cold Truck MY", logo: "/images/wix/logo-coldtruck.png", url: "https://coldroom.my", dark: false },
+  { name: "YumTruck", logo: "/images/wix/logo-yumtruck.png", url: "https://foodtruck.com.my", dark: false },
+  { name: "Pulse Pilates", logo: "/images/wix/logo-pulse-pilates.png", url: "https://pilatesreformer.my", dark: false },
+  { name: "Merry Elderly", logo: "/images/wix/logo-merry-elderly-care.png", url: "https://elderlycare.my", dark: false },
+  { name: "Gula Melaka", logo: "/images/wix/logo-kak-liah-gula-melaka.png", url: "https://gulamelaka.my", dark: true },
+  { name: "PotongPokok", logo: "/images/wix/logo-potong-pokok.png", url: "https://cuttree.my", dark: true },
+  { name: "Motorhome MY", logo: "/images/wix/logo-motorhome-rental.png", url: "https://motorhome.my", dark: true },
+  { name: "Motor Penang", logo: "/images/wix/logo-motor-rental-penang.png", url: "https://sewamotorpenang.my", dark: true },
+  { name: "BatuRingan", logo: "/images/wix/logo-batu-ringan.png", url: "https://baturingan.my", dark: false },
+  { name: "Lampu Jaundice", logo: "/images/wix/logo-lampu-jaundice.png", url: "https://lampujaundice.my", dark: false },
+  { name: "Rev City Tour", logo: "/images/wix/logo-rev-city-tour.png", url: "https://revcitytour.my", dark: false },
+  { name: "Glass House", logo: "/images/wix/logo-glass-house.png", url: "https://glasshouse.my", dark: false },
+  { name: "Butik Glam", logo: "/images/wix/logo-butik-glam.png", url: "https://sewabaju.com.my", dark: false },
+  { name: "Car Penang", logo: "/images/wix/logo-car-rental-penang.png", url: "https://sewacarpenang.my", dark: true },
 ];
 
 export default function OperatorCredibility() {
@@ -75,7 +80,7 @@ export default function OperatorCredibility() {
               <p className="text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40 mb-6">
                 Our companies powered by AI
               </p>
-              <div className="grid grid-cols-3 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
+              <div className="grid grid-cols-4 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
                 {OUR_COMPANIES.map((c) => (
                   <a
                     key={c.name}
@@ -84,17 +89,17 @@ export default function OperatorCredibility() {
                     rel="noopener noreferrer"
                     className="flex flex-col items-center gap-2 p-3 rounded-2xl bg-white/[0.04] border border-white/[0.06] hover:bg-white/[0.08] hover:border-white/15 transition-colors"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden ${c.dark ? "bg-white/5" : "bg-white/10"}`}>
                       <Image
                         src={c.logo}
                         alt={c.name}
-                        width={24}
-                        height={24}
-                        className="object-contain"
+                        width={40}
+                        height={40}
+                        className={`object-contain ${c.dark ? "rounded-lg" : ""}`}
                         unoptimized
                       />
                     </div>
-                    <span className="text-[11px] font-medium text-white/60 text-center leading-tight">
+                    <span className="text-[10px] font-medium text-white/60 text-center leading-tight">
                       {c.name}
                     </span>
                   </a>

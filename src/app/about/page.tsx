@@ -31,20 +31,33 @@ const MILESTONES = [
 ];
 
 const COMPANIES = [
-  { name: "Utopia Co-Living", logo: "/images/client-logos/utopiacoliving-com.png", url: "https://utopiacoliving.com", industry: "Co-Living & Property", sites: 2, color: "#116dff" },
-  { name: "Encik Beku", logo: "/images/client-logos/aircondmalaysia-my.png", url: "https://aircondmalaysia.my", industry: "Home Services", sites: 27, color: "#0054a6" },
-  { name: "Ibnu Sina Care", logo: "/images/client-logos/ibnusinacare-com-my.png", url: "https://ibnusinacare.com.my", industry: "Healthcare", sites: 30, color: "#16a34a" },
-  { name: "Scaffolding Malaysia", logo: "/images/client-logos/scaffolding-my.png", url: "https://scaffolding.my", industry: "Construction & Equipment", sites: 25, color: "#f97316" },
-  { name: "Rev Move", logo: "/images/client-logos/sewamotor-my.png", url: "https://sewamotor.my", industry: "Vehicle Rental", sites: 22, color: "#7c3aed" },
-  { name: "Kak Kenduri", logo: "/images/client-logos/katering-my.png", url: "https://katering.my", industry: "Events & Catering", sites: 8, color: "#ec4899" },
-  { name: "Cold Truck MY", logo: "/images/client-logos/coldroom-my.png", url: "https://coldroom.my", industry: "Cold Chain", sites: 3, color: "#06b6d4" },
-  { name: "Mobile Wheeler", logo: "/images/client-logos/foodtruck-com-my.png", url: "https://foodtruck.com.my", industry: "Food Trucks & Mobile", sites: 4, color: "#f59e0b" },
-  { name: "Pulse Pilates", logo: "/images/client-logos/pilatesreformer-my.png", url: "https://pilatesreformer.my", industry: "Fitness & Wellness", sites: 3, color: "#a855f7" },
-  { name: "Merry Elderly Care", logo: "/images/client-logos/elderlycare-my.png", url: "https://elderlycare.my", industry: "Elderly Care", sites: 1, color: "#ef4444" },
-  { name: "Gula Melaka Kak Liah", logo: "/images/client-logos/gulamelaka-my.png", url: "https://gulamelaka.my", industry: "Food & FMCG", sites: 1, color: "#d97706" },
-  { name: "Jom Vend", logo: "/images/client-logos/vendingmachinemalaysia-my.png", url: "https://vendingmachinemalaysia.my", industry: "Vending Machines", sites: 1, color: "#059669" },
-  { name: "Butik Glam & Lux", logo: "/images/client-logos/sewabaju-com-my.png", url: "https://sewabaju.com.my", industry: "Fashion Rental", sites: 1, color: "#db2777" },
-  { name: "Uni Smart Express", logo: "/images/client-logos/termites-com-my.png", url: "https://termites.com.my", industry: "Pest Control", sites: 1, color: "#65a30d" },
+  { name: "Utopia Co-Living", logo: "/images/wix/logo-utopia-coliving.png", url: "https://utopiacoliving.com", industry: "Co-Living & Property", sites: 2, color: "#116dff", dark: false },
+  { name: "Encik Beku", logo: "/images/wix/logo-encik-beku.png", url: "https://aircondmalaysia.my", industry: "Home Services", sites: 27, color: "#0054a6", dark: true },
+  { name: "Ibnu Sina Care", logo: "/images/wix/logo-medbed.png", url: "https://ibnusinacare.com.my", industry: "Healthcare", sites: 30, color: "#16a34a", dark: false },
+  { name: "Scaffolding Malaysia", logo: "/images/wix/logo-scaffolding.png", url: "https://scaffolding.my", industry: "Construction & Equipment", sites: 25, color: "#f97316", dark: false },
+  { name: "RevBike", logo: "/images/wix/logo-revbike.png", url: "https://sewamotor.my", industry: "Vehicle Rental", sites: 22, color: "#7c3aed", dark: false },
+  { name: "Kak Kenduri", logo: "/images/wix/logo-kakkenduri.png", url: "https://katering.my", industry: "Events & Catering", sites: 8, color: "#ec4899", dark: false },
+  { name: "Cold Truck MY", logo: "/images/wix/logo-coldtruck.png", url: "https://coldroom.my", industry: "Cold Chain", sites: 3, color: "#06b6d4", dark: false },
+  { name: "YumTruck", logo: "/images/wix/logo-yumtruck.png", url: "https://foodtruck.com.my", industry: "Food Trucks & Mobile", sites: 4, color: "#f59e0b", dark: false },
+  { name: "Pulse Pilates", logo: "/images/wix/logo-pulse-pilates.png", url: "https://pilatesreformer.my", industry: "Fitness & Wellness", sites: 3, color: "#a855f7", dark: false },
+  { name: "Merry Elderly Care", logo: "/images/wix/logo-merry-elderly-care.png", url: "https://elderlycare.my", industry: "Elderly Care", sites: 1, color: "#ef4444", dark: false },
+  { name: "Gula Melaka Kak Liah", logo: "/images/wix/logo-kak-liah-gula-melaka.png", url: "https://gulamelaka.my", industry: "Food & FMCG", sites: 1, color: "#d97706", dark: true },
+  { name: "PotongPokok.my", logo: "/images/wix/logo-potong-pokok.png", url: "https://cuttree.my", industry: "Tree Services", sites: 1, color: "#065f46", dark: true },
+  { name: "Butik Glam", logo: "/images/wix/logo-butik-glam.png", url: "https://sewabaju.com.my", industry: "Fashion Rental", sites: 1, color: "#db2777", dark: false },
+  { name: "Motorhome MY", logo: "/images/wix/logo-motorhome-rental.png", url: "https://motorhome.my", industry: "Motorhome Rental", sites: 1, color: "#2563eb", dark: true },
+  { name: "BatuRingan", logo: "/images/wix/logo-batu-ringan.png", url: "https://baturingan.my", industry: "Construction Materials", sites: 1, color: "#f97316", dark: false },
+  { name: "Glass House Events", logo: "/images/wix/logo-glass-house.png", url: "https://glasshouse.my", industry: "Event Space", sites: 1, color: "#065f46", dark: false },
+  { name: "Rev City Tour", logo: "/images/wix/logo-rev-city-tour.png", url: "https://revcitytour.my", industry: "Tourism", sites: 1, color: "#ea580c", dark: false },
+  { name: "Lampu Jaundice", logo: "/images/wix/logo-lampu-jaundice.png", url: "https://lampujaundice.my", industry: "Medical Equipment", sites: 1, color: "#2563eb", dark: false },
+];
+
+const BUSINESS_PHOTOS = [
+  { src: "/images/wix/photo-pulse-studio-3women.png", alt: "Pulse Pilates studio session" },
+  { src: "/images/wix/photo-revbike-showroom-girl.png", alt: "RevBike motorcycle showroom" },
+  { src: "/images/wix/photo-ibnu-sina-showroom.jpg", alt: "Ibnu Sina Care medical showroom" },
+  { src: "/images/wix/photo-reno-technician-fan.png", alt: "Reno.my technician at work" },
+  { src: "/images/wix/photo-coliving-girl-laptop.png", alt: "Utopia Co-Living resident" },
+  { src: "/images/wix/photo-scaffolding-warehouse.jpg", alt: "Scaffolding warehouse operations" },
 ];
 
 const AI_PRODUCTS = [
@@ -152,7 +165,16 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Team photo gallery — 4x2 grid, no orphans */}
+          {/* Full team group photo */}
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto mb-4">
+              <div className="team-photo aspect-[21/9] border border-[var(--color-border)] overflow-hidden">
+                <Image src="/images/wix/photo-team-group-hands-up.jpg" alt="Full Utopia Group team — 400+ staff across 35+ companies" width={1200} height={500} className="w-full h-full object-cover" unoptimized />
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Team photo gallery — 4x2 grid */}
           <div className="max-w-4xl mx-auto mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { src: "/images/team/feed-13.jpg", alt: "Creative & marketing team at Utopia office" },
@@ -266,7 +288,7 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Top 5 companies — large bento cards */}
+          {/* Top 3 companies — large bento cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-4">
             {COMPANIES.slice(0, 3).map((c, i) => (
               <ScrollReveal key={c.name} delay={i * 80}>
@@ -276,8 +298,8 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="card h-full flex items-center gap-4 hover:border-[var(--color-brand)]"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0">
-                    <Image src={c.logo} alt={c.name} width={36} height={36} className="object-contain" unoptimized />
+                  <div className={`w-16 h-16 rounded-2xl border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0 ${c.dark ? "bg-gray-900" : "bg-[var(--color-bg-soft)]"}`}>
+                    <Image src={c.logo} alt={c.name} width={48} height={48} className="object-contain" unoptimized />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
@@ -300,8 +322,8 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="card h-full flex items-center gap-4 hover:border-[var(--color-brand)]"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0">
-                    <Image src={c.logo} alt={c.name} width={36} height={36} className="object-contain" unoptimized />
+                  <div className={`w-16 h-16 rounded-2xl border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden shrink-0 ${c.dark ? "bg-gray-900" : "bg-[var(--color-bg-soft)]"}`}>
+                    <Image src={c.logo} alt={c.name} width={48} height={48} className="object-contain" unoptimized />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
@@ -315,7 +337,7 @@ export default function AboutPage() {
               </ScrollReveal>
             ))}
           </div>
-          {/* Remaining companies — compact grid */}
+          {/* Remaining companies — compact grid with proper logos */}
           <div className="grid grid-cols-3 md:grid-cols-5 gap-3 max-w-5xl mx-auto mb-8">
             {COMPANIES.slice(5).map((c, i) => (
               <ScrollReveal key={c.name} delay={(i + 5) * 40}>
@@ -325,8 +347,8 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="card-flat h-full flex flex-col items-center text-center gap-2 py-4 px-3 hover:shadow-md transition-shadow"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--color-bg-soft)] border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden">
-                    <Image src={c.logo} alt={c.name} width={24} height={24} className="object-contain" unoptimized />
+                  <div className={`w-12 h-12 rounded-xl border border-[var(--color-border-soft)] flex items-center justify-center overflow-hidden ${c.dark ? "bg-gray-900" : "bg-[var(--color-bg-soft)]"}`}>
+                    <Image src={c.logo} alt={c.name} width={36} height={36} className="object-contain" unoptimized />
                   </div>
                   <span className="font-medium text-[12px] text-[var(--color-text-primary)] leading-tight">{c.name}</span>
                   <span className="text-[10px] font-semibold" style={{ color: c.color }}>
@@ -336,6 +358,25 @@ export default function AboutPage() {
               </ScrollReveal>
             ))}
           </div>
+
+          {/* Businesses in Action — real photos from operations */}
+          <ScrollReveal delay={100}>
+            <div className="text-center mb-6 mt-4">
+              <h3 className="heading-md text-[20px]">Our Businesses in Action</h3>
+              <p className="text-[var(--color-text-muted)] text-[14px]">
+                Real operations, real teams, real customers
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-5xl mx-auto">
+              {BUSINESS_PHOTOS.map((photo, i) => (
+                <ScrollReveal key={photo.src} delay={i * 60}>
+                  <div className="team-photo aspect-[4/3] border border-[var(--color-border)] overflow-hidden">
+                    <Image src={photo.src} alt={photo.alt} width={500} height={375} className="w-full h-full object-cover" unoptimized />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
 
           {/* AI Products */}
           <ScrollReveal delay={200}>
@@ -392,14 +433,17 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Photo strip */}
+          {/* Photo strip — real locations */}
           <ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10">
+            <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
               <div className="team-photo h-48 border border-[var(--color-border)]">
                 <Image src="/images/team/feed-23.jpg" alt="Utopia Group KL office — dev team at work" width={600} height={340} className="w-full h-full object-cover" unoptimized />
               </div>
               <div className="team-photo h-48 border border-[var(--color-border)]">
-                <Image src="/images/team/feed-46.jpg" alt="Utopia Group team on site visit" width={600} height={340} className="w-full h-full object-cover" unoptimized />
+                <Image src="/images/wix/photo-scaffolding-warehouse.jpg" alt="Scaffolding warehouse with forklift" width={600} height={340} className="w-full h-full object-cover" unoptimized />
+              </div>
+              <div className="team-photo h-48 border border-[var(--color-border)]">
+                <Image src="/images/wix/photo-revbike-warehouse.jpg" alt="RevBike motorcycle fleet warehouse" width={600} height={340} className="w-full h-full object-cover" unoptimized />
               </div>
             </div>
           </ScrollReveal>
