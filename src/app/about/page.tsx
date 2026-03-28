@@ -83,7 +83,7 @@ export default function AboutPage() {
           className="bg-image-hero"
           style={{ backgroundImage: "url('/hero/bg-team.png')" }}
         />
-        <div className="absolute inset-0 z-[1] bg-[#0f2027]/35" />
+        <div className="absolute inset-0 z-[1] bg-[#0f2027]/55" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
           <div className="section-inner text-center">
             <ScrollReveal>
@@ -130,6 +130,70 @@ export default function AboutPage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ THE TEAM ═══ */}
+      <section id="team" className="section-padding bg-white bg-dotted">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <span className="pill mb-4 inline-block">Our Team</span>
+              <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
+                Built by{" "}
+                <span className="gradient-text font-extrabold">
+                  people who ship
+                </span>
+              </h2>
+              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
+                400+ staff across 35+ companies. An 18-person AI team building
+                the products that power everything.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Team photo gallery — 4x2 grid, no orphans */}
+          <div className="max-w-4xl mx-auto mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { src: "/images/team/feed-13.jpg", alt: "Creative & marketing team at Utopia office" },
+              { src: "/images/team/feed-23.jpg", alt: "Dev team with laptops in office" },
+              { src: "/images/team/feed-05.jpg", alt: "Team group outing at restaurant" },
+              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching company tees" },
+              { src: "/images/team/feed-15.jpg", alt: "Team members working at Utopia office" },
+              { src: "/images/team/feed-07.jpg", alt: "Team dinner together" },
+              { src: "/images/team/feed-22.jpg", alt: "Office birthday celebration" },
+              { src: "/images/team/feed-17.jpg", alt: "Team photo at doodle wall" },
+            ].map((photo, i) => (
+              <ScrollReveal key={photo.src} delay={i * 60}>
+                <div className="team-photo aspect-[4/3] border border-[var(--color-border)]">
+                  <Image src={photo.src} alt={photo.alt} width={400} height={300} className="w-full h-full object-cover" unoptimized />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal delay={200}>
+            <div className="text-center">
+              <a
+                href="https://www.linkedin.com/company/utopiagroupmy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-[var(--color-border)] hover:shadow-lg transition-shadow"
+              >
+                <svg className="w-6 h-6 text-[#0A66C2]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                <div className="text-left">
+                  <span className="font-semibold text-[15px] text-[var(--color-text-primary)] block">
+                    Meet the full team on LinkedIn
+                  </span>
+                  <span className="text-[12px] text-[var(--color-text-muted)]">
+                    400+ staff · Utopia Group of Companies
+                  </span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-[var(--color-text-soft)]" />
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -315,70 +379,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ THE TEAM ═══ */}
-      <section id="team" className="section-padding bg-white bg-dotted">
-        <div className="section-inner">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Our Team</span>
-              <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Built by{" "}
-                <span className="gradient-text font-extrabold">
-                  people who ship
-                </span>
-              </h2>
-              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                400+ staff across 35+ companies. An 18-person AI team building
-                the products that power everything.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Team photo gallery — 4x2 grid, no orphans */}
-          <div className="max-w-4xl mx-auto mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              { src: "/images/team/feed-13.jpg", alt: "Creative & marketing team at Utopia office" },
-              { src: "/images/team/feed-23.jpg", alt: "Dev team with laptops in office" },
-              { src: "/images/team/feed-05.jpg", alt: "Team group outing at restaurant" },
-              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching company tees" },
-              { src: "/images/team/feed-15.jpg", alt: "Team members working at Utopia office" },
-              { src: "/images/team/feed-07.jpg", alt: "Team dinner together" },
-              { src: "/images/team/feed-22.jpg", alt: "Office birthday celebration" },
-              { src: "/images/team/feed-17.jpg", alt: "Team photo at doodle wall" },
-            ].map((photo, i) => (
-              <ScrollReveal key={photo.src} delay={i * 60}>
-                <div className="team-photo aspect-[4/3] border border-[var(--color-border)]">
-                  <Image src={photo.src} alt={photo.alt} width={400} height={300} className="w-full h-full object-cover" unoptimized />
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={200}>
-            <div className="text-center">
-              <a
-                href="https://www.linkedin.com/company/utopiagroupmy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white border border-[var(--color-border)] hover:shadow-lg transition-shadow"
-              >
-                <svg className="w-6 h-6 text-[#0A66C2]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                <div className="text-left">
-                  <span className="font-semibold text-[15px] text-[var(--color-text-primary)] block">
-                    Meet the full team on LinkedIn
-                  </span>
-                  <span className="text-[12px] text-[var(--color-text-muted)]">
-                    400+ staff · Utopia Group of Companies
-                  </span>
-                </div>
-                <ArrowRight className="w-4 h-4 text-[var(--color-text-soft)]" />
-              </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ═══ OUR LOCATIONS ═══ */}
       <section className="section-padding bg-[var(--color-bg-soft)]">
         <div className="section-inner">
@@ -396,7 +396,7 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-10">
               <div className="team-photo h-48 border border-[var(--color-border)]">
-                <Image src="/images/team/feed-25.jpg" alt="Utopia Group KL office — developers at work" width={600} height={340} className="w-full h-full object-cover" unoptimized />
+                <Image src="/images/team/feed-23.jpg" alt="Utopia Group KL office — dev team at work" width={600} height={340} className="w-full h-full object-cover" unoptimized />
               </div>
               <div className="team-photo h-48 border border-[var(--color-border)]">
                 <Image src="/images/team/feed-46.jpg" alt="Utopia Group team on site visit" width={600} height={340} className="w-full h-full object-cover" unoptimized />
@@ -460,25 +460,6 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Contact */}
-          <ScrollReveal delay={300}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10">
-              <a
-                href={ABOUT_WA}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp !text-[14px]"
-              >
-                WhatsApp Us
-              </a>
-              <a
-                href="mailto:hello@utopiagroup.com.my"
-                className="btn-secondary !text-[14px]"
-              >
-                hello@utopiagroup.com.my
-              </a>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
