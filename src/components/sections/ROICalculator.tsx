@@ -122,14 +122,8 @@ export default function ROICalculator() {
                   </div>
                 </div>
 
-                {/* Step 2: Slider (appears after selection) */}
-                <div
-                  className={`overflow-hidden transition-[max-height,opacity] duration-500 ${
-                    selectedType
-                      ? "max-h-[500px] opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
+                {/* Step 2: Slider + Results (always visible, grayed out until selection) */}
+                <div className={`${!selectedType ? "opacity-40 pointer-events-none select-none" : ""}`}>
                   <div className="border-t border-[var(--color-border)] pt-6 mb-6">
                     <div className="flex justify-between items-end mb-3">
                       <label className="text-sm font-semibold text-[var(--color-text-primary)]">
@@ -161,7 +155,7 @@ export default function ROICalculator() {
                   {/* Result */}
                   <div className="bg-green-50 border border-green-100 rounded-2xl p-6 text-center mb-6">
                     <p className="text-sm font-medium text-[var(--color-success)] mb-2">
-                      Estimated annual savings for your {biz?.label.toLowerCase()}
+                      {biz ? `Estimated annual savings for your ${biz.label.toLowerCase()}` : "Select a business type above to see your savings"}
                     </p>
                     <div className="font-bold text-4xl md:text-5xl text-[var(--color-success)] tracking-tight">
                       RM{annualSavings.toLocaleString()}
