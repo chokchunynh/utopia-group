@@ -6,8 +6,18 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden pt-28 md:pt-40 pb-0">
-      {/* Cloud background image */}
-      <div className="bg-image-hero" />
+      {/* Cloud background — static image on mobile, video on desktop */}
+      <div className="bg-image-hero md:hidden" />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/hero/bg-light.png"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover z-0 bg-video-hero"
+      >
+        <source src="/hero/hero-video.mp4" type="video/mp4" />
+      </video>
 
       {/* Dark overlay for text contrast */}
       <div className="absolute inset-0 z-[1] bg-[#0f2027]/40" />
