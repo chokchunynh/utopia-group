@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
-import MobileCTABar from "@/components/layout/MobileCTABar";
 import GoogleAnalytics from "@/components/layout/GoogleAnalytics";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -59,7 +58,6 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppFAB />
-        <MobileCTABar />
       </body>
     </html>
   );
