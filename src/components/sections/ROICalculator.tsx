@@ -104,17 +104,17 @@ export default function ROICalculator() {
                         key={btype.id}
                         type="button"
                         onClick={() => setSelectedType(btype.id)}
-                        className={`text-left p-3 rounded-2xl border transition-transform transition-shadow duration-200 ${
+                        className={`text-left p-3 rounded-2xl border h-full flex flex-col transition-transform transition-shadow duration-200 ${
                           selectedType === btype.id
                             ? "border-[var(--color-brand)] bg-[var(--color-bg-muted)] shadow-md scale-[1.02]"
                             : "border-[var(--color-border)] hover:border-[var(--color-brand-light)] hover:shadow-sm"
                         }`}
                       >
-                        <btype.icon className={`w-5 h-5 mb-1 ${selectedType === btype.id ? "text-[var(--color-brand)]" : "text-[var(--color-text-muted)]"}`} />
+                        <btype.icon className={`w-5 h-5 mb-1.5 ${selectedType === btype.id ? "text-[var(--color-brand)]" : "text-[var(--color-text-muted)]"}`} />
                         <span className="text-[13px] font-semibold text-[var(--color-text-primary)] block">
                           {btype.label}
                         </span>
-                        <span className="text-[11px] text-[var(--color-text-muted)]">
+                        <span className="text-[11px] text-[var(--color-text-muted)] mt-auto">
                           {btype.desc}
                         </span>
                       </button>

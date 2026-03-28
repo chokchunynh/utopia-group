@@ -61,10 +61,7 @@ export default function TrueAISection() {
   }, [showDemo]);
 
   return (
-    <section id="trueai" className="relative bg-[#0f1729]">
-      {/* Smooth top transition */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-[1] -translate-y-full" />
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#0f1729]/0 to-[#0f1729]" />
+    <section id="trueai" className="bg-[#0f1729]">
       <div className="section-padding !py-16 md:!py-24">
         <div className="section-inner">
           <ScrollReveal>

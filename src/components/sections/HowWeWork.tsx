@@ -7,7 +7,7 @@ const STEPS = [
     number: "01",
     title: "Audit",
     description: "We study your business. Find at least 5 areas where AI saves time or makes money.",
-    detail: "1-2 weeks",
+    detail: "Week 1-2",
     color: "#116dff",
   },
   {
@@ -15,7 +15,7 @@ const STEPS = [
     number: "02",
     title: "Build",
     description: "We set up a machine in your office, build your AI tools, and connect to your systems.",
-    detail: "2-4 weeks",
+    detail: "Week 3-4",
     color: "#8B5CF6",
   },
   {
@@ -23,7 +23,7 @@ const STEPS = [
     number: "03",
     title: "Deploy",
     description: "Go live. Your team starts using AI daily. We train your staff and monitor results.",
-    detail: "1 week",
+    detail: "Week 5",
     color: "#25D366",
   },
   {
@@ -31,7 +31,7 @@ const STEPS = [
     number: "04",
     title: "Support",
     description: "Monthly optimization, new AI features, and ongoing support. AI keeps getting smarter.",
-    detail: "Ongoing",
+    detail: "Week 6+",
     color: "#EC4899",
   },
 ];

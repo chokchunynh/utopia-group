@@ -204,7 +204,7 @@ export default function TestimonialScroll() {
       </div>
 
       {/* Scrolling row 2 — right to left */}
-      <div className="relative mb-12 md:mb-16 overflow-hidden">
+      <div className="relative mb-16 md:mb-20 overflow-hidden">
         <div className="flex gap-4 animate-scroll-right w-max">
           {[...TESTIMONIALS.slice(6), ...TESTIMONIALS.slice(6)].map((t, i) => (
             <TestimonialCard key={`row2-${i}`} t={t} />

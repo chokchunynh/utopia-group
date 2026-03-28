@@ -44,7 +44,7 @@ export default function ProofBar() {
               <p className="text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-text-soft)] mb-5">
                 We build with the tools that matter
               </p>
-              <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
+              <div className="flex items-center justify-center gap-x-5 gap-y-3 md:gap-6 flex-wrap px-2">
                 {AI_TOOLS.map((tool) => (
                   <div
                     key={tool.name}

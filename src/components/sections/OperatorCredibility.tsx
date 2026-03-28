@@ -23,9 +23,6 @@ const OUR_COMPANIES = [
 export default function OperatorCredibility() {
   return (
     <section className="relative bg-[#0f1729]">
-      {/* Smooth transitions */}
-      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-[#0f1729]" />
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--color-bg-soft)] to-[#0f1729]" />
       <div className="relative z-[1] section-padding">
         <div className="section-inner">
           {/* ── Left-aligned heading ── */}
@@ -56,11 +53,7 @@ export default function OperatorCredibility() {
             <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-5">
               {OPERATOR_RESULTS.map((result, i) => (
                 <ScrollReveal key={result.industry} delay={i * 120}>
-                  <div
-                    className={`p-6 rounded-3xl border border-white/10 bg-white/[0.05] ${
-                      i === 1 ? "md:translate-y-6" : ""
-                    }`}
-                  >
+                  <div className="p-6 rounded-3xl border border-white/10 bg-white/[0.05]">
                     <div className="font-bold text-3xl text-[var(--color-brand-light)] mb-2 tracking-tight">
                       {result.stat}
                     </div>
