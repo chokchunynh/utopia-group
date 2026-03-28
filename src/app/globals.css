@@ -234,16 +234,6 @@ h1, h2, h3 { text-wrap: balance; }
   background-repeat: no-repeat;
   background-size: cover;
   animation: ken-burns 20s ease-in-out infinite alternate;
-}
-
-@keyframes ken-burns {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.08);
-  }
-}
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%, rgba(0,0,0,.99) 18%, rgba(0,0,0,.95) 34%,
@@ -260,6 +250,15 @@ h1, h2, h3 { text-wrap: balance; }
     rgba(0,0,0,.35) 88%, rgba(0,0,0,.26) 91%, rgba(0,0,0,.18) 93%,
     rgba(0,0,0,.10) 95%, rgba(0,0,0,.05) 97%, transparent 100%
   );
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 .bg-video-hero {
