@@ -69,7 +69,7 @@ export default function DepartmentReveal() {
                           <HeroIcon className="w-5 h-5" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-[17px] text-[var(--color-text-primary)]">
+                          <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">
                             {heroDept.name}
                           </h3>
                           <span className="text-[11px] font-semibold text-[var(--color-whatsapp)] uppercase tracking-wider">
