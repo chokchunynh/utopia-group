@@ -94,7 +94,7 @@ export default function DepartmentReveal() {
                       </div>
                     </div>
                     <a
-                      href="#trueai"
+                      href="/#trueai"
                       className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-[var(--color-whatsapp)] text-white hover:opacity-90 transition-opacity shrink-0"
                     >
                       See TrueAI Demo

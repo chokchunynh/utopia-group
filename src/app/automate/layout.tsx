@@ -23,8 +23,8 @@ export default function AutomateLayout({
     <>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Home", href: "https://utopiagroup.com.my" },
-          { name: "AI Tools", href: "https://utopiagroup.com.my/automate" },
+          { name: "Home", href: "/" },
+          { name: "AI Tools", href: "/automate" },
         ])}
       />
       {children}

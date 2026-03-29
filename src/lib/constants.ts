@@ -114,9 +114,9 @@ export const DEPARTMENTS = [
     name: "Sales & WhatsApp",
     icon: "message-circle",
     tools: [
-      { name: "TrueAI Agent", url: "#trueai", logo: "/images/client-logos/trueai-icon.svg", desc: "Fully autonomous AI that handles WhatsApp chats, qualifies leads, sends photos, and closes deals 24/7." },
-      { name: "Lead Scoring", url: "#trueai", logo: "/images/client-logos/leadscore-icon.svg", desc: "AI ranks your leads by buying intent so your team focuses on the hottest prospects first." },
-      { name: "Conversation Audit", url: "#trueai", logo: "/images/client-logos/convo-audit-icon.svg", desc: "AI reviews every sales conversation and flags missed opportunities, slow replies, and dropped leads." },
+      { name: "TrueAI Agent", url: "/#trueai", logo: "/images/client-logos/trueai-icon.svg", desc: "Fully autonomous AI that handles WhatsApp chats, qualifies leads, sends photos, and closes deals 24/7." },
+      { name: "Lead Scoring", url: "/#trueai", logo: "/images/client-logos/leadscore-icon.svg", desc: "AI ranks your leads by buying intent so your team focuses on the hottest prospects first." },
+      { name: "Conversation Audit", url: "/#trueai", logo: "/images/client-logos/convo-audit-icon.svg", desc: "AI reviews every sales conversation and flags missed opportunities, slow replies, and dropped leads." },
     ],
     description: "AI takes over WhatsApp chats, replies in seconds, qualifies leads, upsells, and closes — 24/7. Our #1 tool.",
     color: "#25D366",
@@ -138,8 +138,8 @@ export const DEPARTMENTS = [
     name: "Inventory & Purchasing",
     icon: "package",
     tools: [
-      { name: "Stock AI", url: "#tools", logo: "/images/client-logos/stockai-icon.svg", desc: "Predicts when you'll run out of stock and auto-generates purchase orders before it happens." },
-      { name: "PO Automation", url: "#tools", logo: "/images/client-logos/po-auto-icon.svg", desc: "Converts approved purchase requests into POs with supplier matching and price comparison." },
+      { name: "Stock AI", url: "/#tools", logo: "/images/client-logos/stockai-icon.svg", desc: "Predicts when you'll run out of stock and auto-generates purchase orders before it happens." },
+      { name: "PO Automation", url: "/#tools", logo: "/images/client-logos/po-auto-icon.svg", desc: "Converts approved purchase requests into POs with supplier matching and price comparison." },
     ],
     description: "AI predicts stock needs, auto-generates purchase orders, alerts for low stock. Never overstock or run out again.",
     color: "#06B6D4",
@@ -160,8 +160,8 @@ export const DEPARTMENTS = [
     name: "HR & Payroll",
     icon: "users",
     tools: [
-      { name: "Utopia Payroll", url: "#tools", logo: "/images/client-logos/payroll-icon.svg", desc: "GPS attendance tracking, automated salary calculation, EPF/SOCSO/EIS deductions — all in one." },
-      { name: "Ask Toppie", url: "#tools", logo: "/images/client-logos/toppie-icon.svg", desc: "AI-powered internal knowledge base. Staff ask questions, Toppie answers from your company docs." },
+      { name: "Utopia Payroll", url: "/#tools", logo: "/images/client-logos/payroll-icon.svg", desc: "GPS attendance tracking, automated salary calculation, EPF/SOCSO/EIS deductions — all in one." },
+      { name: "Ask Toppie", url: "/#tools", logo: "/images/client-logos/toppie-icon.svg", desc: "AI-powered internal knowledge base. Staff ask questions, Toppie answers from your company docs." },
     ],
     description: "GPS attendance, auto payroll calculation, AI scheduling, internal knowledge base. HR on autopilot.",
     color: "#F59E0B",
@@ -172,7 +172,7 @@ export const DEPARTMENTS = [
     icon: "settings",
     tools: [
       { name: "U-Stay", url: "https://u-stay.vercel.app", logo: "/images/client-logos/ustay-favicon.svg", desc: "Full tenant management — rooms, payments, maintenance requests, owner reports. All automated." },
-      { name: "Trip AI", url: "#tools", logo: "/images/client-logos/tripai-icon.svg", desc: "Smart trip assignment and GPS tracking for delivery fleets. Optimizes routes and reduces fuel costs." },
+      { name: "Trip AI", url: "/#tools", logo: "/images/client-logos/tripai-icon.svg", desc: "Smart trip assignment and GPS tracking for delivery fleets. Optimizes routes and reduces fuel costs." },
     ],
     description: "Tenant management, trip assignment, GPS tracking. AI handles the complexity so your team handles the customers.",
     color: "#EC4899",
@@ -216,7 +216,7 @@ export const PRICING = [
     sellingPoint: "Try the same tools our 35+ companies use daily. When you're ready, upgrade to get AI implemented across your entire business.",
     cta: "Try Free Tools",
     ctaStyle: "brand" as const,
-    ctaUrl: "#tools",
+    ctaUrl: "/#tools",
   },
   {
     name: "AI Starter",
@@ -267,15 +267,15 @@ export const PRICING = [
 // ─── Footer Links ───────────────────────────────────────────────
 export const FOOTER_LINKS = {
   navigate: [
-    { label: "TrueAI", href: "#trueai" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "TrueAI", href: "/#trueai" },
+    { label: "Pricing", href: "/how-we-charge" },
     { label: "About", href: "/about" },
   ],
   tools: [
     { label: "SlipMatch", href: "https://slipmatch.my" },
     { label: "AutoViral", href: "https://autopost-web-amber.vercel.app" },
-    { label: "U-Stay", href: "#tools" },
-    { label: "Utopia Payroll", href: "#tools" },
+    { label: "U-Stay", href: "/#tools" },
+    { label: "Utopia Payroll", href: "/#tools" },
   ],
   company: [
     { label: "About Us", href: "/about" },

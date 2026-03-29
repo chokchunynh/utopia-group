@@ -10,7 +10,7 @@ export const organizationSchema = {
   name: "Utopia Group",
   legalName: "Utopia Accelerator Sdn Bhd",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/favicon.png`,
   description:
     "Malaysia's #1 AI Implementation Partner — 35+ companies, 173 business units, 400+ staff. We build and deploy AI infrastructure for Malaysian businesses.",
   foundingDate: "2014",
@@ -49,14 +49,6 @@ export const websiteSchema = {
     "@type": "Organization",
     name: "Utopia Group",
     url: SITE_URL,
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
   },
 };
 

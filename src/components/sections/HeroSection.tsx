@@ -50,7 +50,7 @@ export default function HeroSection() {
           {/* Dual CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <a
-              href="#tools"
+              href="/#tools"
               className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold text-[15px] bg-white text-[var(--color-text-primary)] hover:bg-white/90 transition-opacity min-h-[48px] w-full sm:w-auto text-center shadow-lg"
             >
               Try Our Tools Free
