@@ -1,27 +1,30 @@
 # Next Session Spec
-## Context: 4 sessions of design polish — nav, mobile menu, dropdown, images, animations all done. Site live at utopia-group.vercel.app.
-## Task: GA4 setup + custom domain cutover (utopiagroup.com.my → Vercel)
+## Context: Session 4 — logo grid polish (cyan-50 bg, mobile truncation 8+12more), nav cleanup (Home added, Results removed), hamburger fix landed earlier.
+## Task: Visually verify cyan-50 logo backgrounds on live site (may need sky-100 tuning). Then resume Priority 1 (custom domain + GA4).
 
-## Immediate: GA4
-- CY creating GA4 property — needs G-XXXXXXXXXX measurement ID
-- Component already built (src/components/layout/GoogleAnalytics.tsx) — just needs env var + redeploy
+## GitHub Scout (pending CY decision):
+- #1 Evolution API (7.6k stars) — WhatsApp backbone
+- #2 Supabase Agent Skills (1.7k stars) — official AI agent package
+- #3 Easy Invoice PDF (550 stars) — exact stack for GetBill/e-invoice
 
-## Priority 1: Custom Domain (utopiagroup.com.my → Vercel)
-- Currently on Wix. DNS cutover timing needs CY approval.
-- Update metadataBase, OG URLs, sitemap
+## Priority 1: Custom Domain + GA4 (15 min, makes the site "real")
+- Connect utopiagroup.com.my to Vercel (currently on Wix)
+- Update metadataBase, OG URLs, sitemap to utopiagroup.com.my
 - Set up www → non-www redirect
+- Add GA4: get measurement ID from CY
 
-## Priority 2: Lead Funnel (Supabase + Resend)
-## Priority 3: Content (real testimonials, case studies, ebook)
-## Priority 4: Blog + Thought Leadership
+## Priority 2: LinkedIn MCP Team Photos
+## Priority 3: Lead Funnel (Supabase + Resend)
+## Priority 4: Content (real testimonials, real photos, case studies)
+## Priority 5: Blog + Thought Leadership
 
 ## Decisions already made:
-- Nav: Home / What We Automate / About / Career + More dropdown
-- Mobile More: flat links (AI Tools, How We Charge, AI Masterclass — Companies/Individuals)
-- Email: devteam.utopia@gmail.com | MDEC badge removed
-- 44 Wix images extracted, logos + photos populated across all pages
+- Hero video: Kling 3, Ken Burns mobile
+- Font: Inter | Accent: Cyan #06B6D4
+- Email changed to devteam.utopia@gmail.com
+- MDEC badge removed
 
 ## Open questions for CY:
-- GA4 measurement ID
-- Domain cutover timing
-- Real testimonial quotes + ebook topic
+- GA4 measurement ID for utopiagroup.com.my
+- Domain cutover timing (when to switch DNS from Wix)
+- Which GitHub Scout repos to ingest
