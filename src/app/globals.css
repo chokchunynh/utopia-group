@@ -437,15 +437,17 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
-  border-radius: 3px;
+  height: 8px;
+  border-radius: 4px;
   background: var(--color-border);
   outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--color-brand);
   cursor: pointer;
@@ -453,8 +455,8 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 2px 8px rgba(17, 109, 255, 0.3);
 }
 input[type="range"]::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--color-brand);
   cursor: pointer;
