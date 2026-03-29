@@ -89,7 +89,7 @@ export default function Navbar() {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className={`text-[14px] font-medium transition-colors duration-150 py-2 px-1 ${linkColor}`}
+              className={`text-[14px] font-medium transition-colors duration-150 py-3 px-2 ${linkColor}`}
             >
               {link.label}
             </a>
@@ -103,7 +103,7 @@ export default function Navbar() {
           >
             <button
               type="button"
-              className={`flex items-center gap-1 text-[14px] font-medium transition-colors duration-150 py-2 px-1 ${linkColor}`}
+              className={`flex items-center gap-1 text-[14px] font-medium transition-colors duration-150 py-3 px-2 ${linkColor}`}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
               {MORE_DROPDOWN.label}
