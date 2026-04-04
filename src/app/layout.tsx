@@ -4,9 +4,11 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
+import VoiceWidget from "@/components/layout/VoiceWidget";
 import GoogleAnalytics from "@/components/layout/GoogleAnalytics";
 import JsonLd from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { LanguageProvider } from "@/lib/language-context";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -43,7 +45,14 @@ export const metadata: Metadata = {
     description:
       "We run AI across 35+ companies with 400+ staff. Now we implement it for yours. From RM3,000/month.",
   },
-  icons: { icon: "/favicon.png", apple: "/favicon.png" },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -58,13 +67,16 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
       </head>
       <body className={`${inter.variable} antialiased`}>
-        <div className="overflow-x-hidden w-full">
-          <GoogleAnalytics />
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
-        <WhatsAppFAB />
+        <LanguageProvider>
+          <div className="overflow-x-hidden w-full">
+            <GoogleAnalytics />
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+          <VoiceWidget />
+          <WhatsAppFAB />
+        </LanguageProvider>
       </body>
     </html>
   );

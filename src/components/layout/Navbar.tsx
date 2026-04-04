@@ -3,13 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { NAV_LINKS, MORE_DROPDOWN, WHATSAPP_URL } from "@/lib/constants";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+  const { locale, setLocale } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -25,16 +27,17 @@ export default function Navbar() {
       const timer = setTimeout(() => {
         document.body.style.overflow = "";
       }, 400);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "";
+      };
     }
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
 
-  const linkColor = scrolled
-    ? "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]"
-    : "text-white/80 hover:text-white";
+  const linkColor = "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]";
 
   return (
     <nav
@@ -43,7 +46,7 @@ export default function Navbar() {
           ? "bg-transparent border-b-0"
           : scrolled
             ? "bg-white/90 backdrop-blur-xl border-b border-[var(--color-border)]"
-            : "bg-transparent"
+            : "bg-white/70 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-[72px]">
@@ -55,22 +58,14 @@ export default function Navbar() {
         >
           <span
             className={`font-bold text-lg tracking-tight transition-colors duration-300 ${
-              open
-                ? "text-white"
-                : scrolled
-                  ? "text-[var(--color-text-primary)]"
-                  : "text-white"
+              open ? "text-white" : "text-[var(--color-text-primary)]"
             }`}
           >
             UTOPIA
           </span>
           <span
             className={`font-normal text-lg tracking-tight transition-colors duration-300 ${
-              open
-                ? "text-white/60"
-                : scrolled
-                  ? "text-[var(--color-text-muted)]"
-                  : "text-white/70"
+              open ? "text-white/60" : "text-[var(--color-text-muted)]"
             }`}
           >
             GROUP
@@ -176,13 +171,19 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Language toggle */}
+          <button
+            type="button"
+            onClick={() => setLocale(locale === "en" ? "zh" : "en")}
+            className="inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-[12px] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-soft)] transition-colors"
+            aria-label="Toggle language"
+          >
+            <Globe size={14} />
+            {locale === "en" ? "中文" : "EN"}
+          </button>
           <Link
             href="/how-we-charge"
-            className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 ${
-              scrolled
-                ? "bg-white text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-soft)]"
-                : "bg-white/15 text-white border border-white/20 hover:bg-white/25"
-            }`}
+            className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 bg-white text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-soft)]"
           >
             How We Charge
           </Link>
@@ -190,11 +191,7 @@ export default function Navbar() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 ${
-              scrolled
-                ? "bg-[var(--color-text-primary)] text-white hover:opacity-85"
-                : "bg-white text-[var(--color-text-primary)] hover:bg-white/90"
-            }`}
+            className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 bg-[var(--color-text-primary)] text-white hover:opacity-85"
           >
             Start Free
           </a>
@@ -206,9 +203,7 @@ export default function Navbar() {
           className={`md:hidden p-3 transition-colors relative z-50 ${
             open
               ? "text-white/80 hover:text-white"
-              : scrolled
-                ? "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]"
-                : "text-white/80 hover:text-white"
+              : "text-[var(--color-text-body)] hover:text-[var(--color-text-primary)]"
           }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
