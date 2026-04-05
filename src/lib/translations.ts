@@ -156,6 +156,12 @@ export const translations = {
   "privacy.nda": { en: "NDA Signed", zh: "已签保密协议" },
   "privacy.revoke": { en: "Revoke Anytime", zh: "随时撤回" },
 
+  // Misc UI
+  "ui.seeExamples": { en: "See examples", zh: "查看例子" },
+  "ui.hideExamples": { en: "Hide examples", zh: "收起" },
+  "roi.savings": { en: "Boss OS costs RM{cost}/month. You save RM{savings}.", zh: "Boss OS 每月 RM{cost}。你省下 RM{savings}。" },
+  "pricing.saves": { en: "→ saves", zh: "→ 省下" },
+
   // Final CTA
   "cta.title": {
     en: "Your competitor already started.",

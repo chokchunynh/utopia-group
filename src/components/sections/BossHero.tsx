@@ -112,7 +112,7 @@ export default function BossHero() {
           <div className="text-center mb-6 md:mb-8">
             <span className="inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.15em] uppercase text-[var(--color-text-soft)]">
               <span className="w-8 h-px bg-[var(--color-border)]" />
-              Boss OS
+              {t("hero.pill")}
               <span className="w-8 h-px bg-[var(--color-border)]" />
             </span>
           </div>
@@ -121,9 +121,7 @@ export default function BossHero() {
         {/* Headline — editorial serif, the first impression */}
         <ScrollReveal delay={50}>
           <h1 className="heading-display text-[36px] md:text-[56px] lg:text-[72px] text-center max-w-3xl mx-auto mb-5">
-            Your entire business.{" "}
-            <span className="text-[var(--color-brand)]">One screen.</span>{" "}
-            Every morning.
+            {t("hero.tagline")}
           </h1>
         </ScrollReveal>
 

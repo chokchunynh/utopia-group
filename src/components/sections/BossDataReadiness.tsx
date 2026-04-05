@@ -72,7 +72,7 @@ export default function BossDataReadiness() {
                       {keys ? t(keys.desc) : source.description}
                     </p>
                     <div className="flex items-center gap-1 text-[11px] text-[var(--color-brand)] font-medium">
-                      {isOpen ? "Hide examples" : "See examples"}
+                      {isOpen ? t("ui.hideExamples") : t("ui.seeExamples")}
                       {isOpen ? (
                         <ChevronUp size={12} />
                       ) : (

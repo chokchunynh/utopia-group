@@ -107,8 +107,9 @@ export default function BossROICalculator() {
             {savings > 0 && (
               <div className="text-center">
                 <p className="text-[15px] font-semibold text-emerald-600">
-                  Boss OS costs RM{bossCost.toLocaleString()}/month. You save RM
-                  {savings.toLocaleString()}.
+                  {t("roi.savings")
+                    .replace("{cost}", bossCost.toLocaleString())
+                    .replace("{savings}", savings.toLocaleString())}
                 </p>
               </div>
             )}

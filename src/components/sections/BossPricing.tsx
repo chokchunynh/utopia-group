@@ -59,7 +59,7 @@ export default function BossPricing() {
                   </span>
                 </div>
                 <div className="text-[12px] font-semibold text-emerald-600 mb-5">
-                  → saves {plan.savings}
+                  {t("pricing.saves")} {plan.savings}
                 </div>
 
                 <ul className="space-y-2.5 mb-6">
