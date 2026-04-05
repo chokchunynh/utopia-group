@@ -5,7 +5,6 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { whatsappUrl } from "@/lib/constants";
 import {
-  Sparkles,
   Building2,
   TrendingUp,
   BookOpen,
@@ -20,14 +19,31 @@ import {
   ChevronDown,
   Mail,
   Users,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
+
+/* ── Types ────────────────────────────────────────────────────── */
+
+type Division = "Utopia Business" | "Utopia Intelligence";
+type Level = "Executive" | "Non-Executive";
+type FilterState = "All" | Division;
+
+interface Position {
+  title: string;
+  division: Division;
+  level: Level;
+  company: string;
+  location: string;
+  type: string;
+  description: string;
+}
 
 /* ── Data ─────────────────────────────────────────────────────── */
 
 const WHY_CARDS = [
   {
-    icon: Sparkles,
+    icon: Zap,
     title: "AI-First Culture",
     description:
       "Every team uses AI daily. We don't talk about AI — we ship it. You'll work with cutting-edge models, not PowerPoints.",
@@ -36,7 +52,7 @@ const WHY_CARDS = [
     icon: Building2,
     title: "35+ Real Businesses",
     description:
-      "Our AI runs across 35+ companies with 400+ staff. You'll see your work impact real operations, not just demos.",
+      "Our operations span 35+ companies with 400+ staff. You'll see your work impact real operations, not just demos.",
   },
   {
     icon: TrendingUp,
@@ -52,56 +68,151 @@ const WHY_CARDS = [
   },
 ] as const;
 
-const POSITIONS = [
+const POSITIONS: Position[] = [
+  /* ── Utopia Intelligence ── */
   {
-    title: "AI Engineer",
-    department: "Engineering",
+    title: "Software Developer",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Build and deploy AI models, LLM pipelines, and intelligent automation across our portfolio of 35+ businesses. You'll work with GPT-4, Claude, and custom fine-tuned models.",
+      "Build and maintain web applications, dashboards, and internal tools powering 35+ businesses. Work with Next.js, TypeScript, Supabase, and AI APIs in a fast-moving product environment.",
   },
   {
-    title: "Full-Stack Developer",
-    department: "Engineering",
+    title: "Company Secretary",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Ship production web apps using Next.js, TypeScript, and Supabase. You'll build dashboards, SaaS products, and AI-powered tools used by real businesses daily.",
+      "Handle statutory compliance, board meetings, corporate filings, and regulatory submissions for entities within the Utopia Group portfolio.",
   },
   {
-    title: "AI Sales Specialist",
-    department: "Sales",
+    title: "HR Business Partner",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Help Malaysian businesses understand and adopt AI. You'll demo our tools, run consultations, and close deals. No cold-calling — leads come to us.",
+      "Partner with business units across 35+ companies on talent acquisition, performance management, and HR operations supporting 400+ staff.",
   },
   {
-    title: "Content Strategist",
-    department: "Marketing",
+    title: "Senior Accountant",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Create AI-focused content for our brands — blogs, social media, video scripts, and SEO pages. Bilingual (BM/EN) is a strong plus.",
+      "Manage financial reporting, accounts payable/receivable, month-end close, and compliance across multiple business entities in the group.",
+  },
+  /* ── Utopia Business — Executive ── */
+  {
+    title: "Indoor Sales",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Georgetown, Penang & Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Drive sales for Utopia's service businesses — aircond, medical equipment, co-living, and more. Handle inbound leads, customer consultations, and closing.",
   },
   {
-    title: "Operations Manager",
-    department: "Operations",
+    title: "Customer Service",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Coordinate AI implementation across our 35+ companies. You'll manage timelines, client onboarding, and cross-team delivery.",
+      "Support customers across Utopia's businesses — handling inquiries, complaints, and service coordination via WhatsApp, phone, and email.",
   },
   {
-    title: "Product Designer",
-    department: "Design",
+    title: "Operation Efficiency",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Design beautiful, functional interfaces for AI-powered products. Figma proficiency required. You'll own the design system across multiple products.",
+      "Analyse and streamline operations across business units. Identify bottlenecks, implement SOPs, and coordinate cross-team workflow improvements.",
   },
-] as const;
+  {
+    title: "Telemarketer",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Reach out to potential customers for our service businesses — aircond, renovation, and medical equipment rentals. Script-supported with warm leads provided.",
+  },
+  {
+    title: "Quantity Surveyor",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Prepare cost estimates, BOQ, and manage procurement for renovation and construction projects across Encik Beku and Reno.my portfolios.",
+  },
+  {
+    title: "Tender Executive",
+    division: "Utopia Business",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Prepare and submit government and corporate tenders for services including medical equipment, renovation, transportation, and construction.",
+  },
+  /* ── Utopia Business — Non-Executive ── */
+  {
+    title: "Aircond Technician cum Driver",
+    division: "Utopia Business",
+    level: "Non-Executive",
+    company: "Encik Beku Aircond Sdn Bhd",
+    location: "Shah Alam · Butterworth Penang · Georgetown Penang · Johor Jaya JB",
+    type: "Contract (1 year)",
+    description:
+      "Install, maintain, and repair air conditioning systems at customer sites. Drive to job sites, communicate with customers, maintain service records, and handle emergency repairs. May assist with related duties assigned by management.",
+  },
+  {
+    title: "Service Crew",
+    division: "Utopia Business",
+    level: "Non-Executive",
+    company: "Mixue",
+    location: "SS19 Subang & Desa Petaling, KL",
+    type: "Full-time · Contract (3 months, renewable)",
+    description:
+      "Prepare beverages and desserts — fruit tea, milk tea, and ice cream. Deliver fast and accurate customer service, maintain outlet cleanliness, and work closely with the team for smooth daily operations.",
+  },
+  {
+    title: "Retail Assistant",
+    division: "Utopia Business",
+    level: "Non-Executive",
+    company: "Rev Move Sdn Bhd",
+    location: "Bukit Bintang, KL",
+    type: "Full-time",
+    description:
+      "Promote motorcycle rental packages, handle customer inquiries, and manage social media. Maintain customer records, oversee vehicle handovers, ensure shop cleanliness, and support daily operations.",
+  },
+  {
+    title: "Live Host (TikTok / Shopee)",
+    division: "Utopia Business",
+    level: "Non-Executive",
+    company: "Mandiri Lagenda Sdn Bhd",
+    location: "Kuala Lumpur",
+    type: "Contract (3 months, renewable)",
+    description:
+      "Conduct engaging live streams on TikTok and Shopee to promote products, demonstrate features, and interact with viewers in real time. Drive sales through active audience engagement and monitor live session metrics to improve performance.",
+  },
+];
 
 const BENEFITS = [
   { icon: Clock, title: "Flexible Hours", description: "Results matter, not clock-in time" },
@@ -112,15 +223,30 @@ const BENEFITS = [
   { icon: Rocket, title: "Career Growth", description: "Fast-track promotion for high performers" },
 ] as const;
 
-const CAREERS_WA = whatsappUrl("Hi! I'm interested in joining Utopia Group's AI team.");
+const CAREERS_WA = whatsappUrl("Hi! I'm interested in joining Utopia Group.");
+
+/* ── Division pill styles ─────────────────────────────────────── */
+
+const DIVISION_STYLES: Record<Division, string> = {
+  "Utopia Intelligence":
+    "bg-violet-50 text-violet-700 border border-violet-200",
+  "Utopia Business":
+    "bg-emerald-50 text-emerald-700 border border-emerald-200",
+};
 
 /* ── Components ───────────────────────────────────────────────── */
 
-function PositionCard({
-  position,
-}: {
-  position: (typeof POSITIONS)[number];
-}) {
+function DivisionBadge({ division }: { division: Division }) {
+  return (
+    <span
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${DIVISION_STYLES[division]}`}
+    >
+      {division}
+    </span>
+  );
+}
+
+function PositionCard({ position }: { position: Position }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -131,11 +257,20 @@ function PositionCard({
         aria-expanded={open}
       >
         <div className="flex-1 min-w-0">
-          <h3 className="heading-md text-lg mb-1">{position.title}</h3>
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+            <h3 className="heading-md text-lg">{position.title}</h3>
+            <DivisionBadge division={position.division} />
+          </div>
           <div className="flex flex-wrap gap-2 text-[13px]">
+            {position.company !== "Utopia Group" && (
+              <span className="pill">
+                <Building2 className="w-3.5 h-3.5" />
+                {position.company}
+              </span>
+            )}
             <span className="pill">
               <Briefcase className="w-3.5 h-3.5" />
-              {position.department}
+              {position.level}
             </span>
             <span className="pill">
               <MapPin className="w-3.5 h-3.5" />
@@ -158,7 +293,7 @@ function PositionCard({
           </p>
           <a
             href={whatsappUrl(
-              `Hi! I'm interested in the ${position.title} position at Utopia Group.`
+              `Hi! I'm interested in the ${position.title} position at ${position.company}.`
             )}
             target="_blank"
             rel="noopener noreferrer"
@@ -175,11 +310,18 @@ function PositionCard({
 /* ── Page ─────────────────────────────────────────────────────── */
 
 export default function CareerPage() {
+  const [filter, setFilter] = useState<FilterState>("All");
+
+  const filtered =
+    filter === "All" ? POSITIONS : POSITIONS.filter((p) => p.division === filter);
+
+  const tabs: FilterState[] = ["All", "Utopia Business", "Utopia Intelligence"];
+
   return (
     <main>
       {/* ─── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="bg-image-hero" style={{ backgroundImage: "url('/images/photos/team-working.webp')" }} />
+        <div className="bg-image-hero" style={{ backgroundImage: "url('/images/team/staff/masquerade-stage-group.webp')" }} />
         <div className="absolute inset-0 z-[1] bg-[#0f2027]/50" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
           <div className="section-inner text-center">
@@ -189,13 +331,12 @@ export default function CareerPage() {
                 We&apos;re Hiring
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                Build the Future of{" "}
-                <span className="gradient-text-hero font-extrabold">AI in Malaysia</span>
+                Grow With Us Across{" "}
+                <span className="gradient-text-hero font-extrabold">35+ Businesses</span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                Join 400+ people across 35+ companies building AI products that
-                real businesses use every day. We&apos;re not a lab — we&apos;re
-                operators, and we ship.
+                From AI engineers to aircond technicians — we&apos;re building the teams
+                that power Malaysia&apos;s fastest-growing group of businesses.
               </p>
             </ScrollReveal>
           </div>
@@ -214,8 +355,55 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* ─── Life at Utopia ─────────────────────────────────── */}
+      {/* ─── Two Divisions ───────────────────────────────────── */}
       <section className="section-padding bg-white">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <span className="pill mb-4 inline-block">Our Two Divisions</span>
+              <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
+                Find where you{" "}
+                <span className="gradient-text font-extrabold">fit best</span>
+              </h2>
+              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
+                Utopia runs two divisions under one roof — each with its own culture, team, and career path.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-4">
+            <ScrollReveal>
+              <div className="card h-full border-violet-200 bg-violet-50/30">
+                <div className="w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center mb-4">
+                  <Cpu className="w-5 h-5 text-violet-600" />
+                </div>
+                <h3 className="font-bold text-[18px] text-[var(--color-text-primary)] mb-2">
+                  Utopia Intelligence
+                </h3>
+                <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
+                  Our back office and tech arm. Software developers, AI engineers, accountants, HR, and company secretaries — the people who make the whole group run.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <div className="card h-full border-emerald-200 bg-emerald-50/30">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+                  <Building2 className="w-5 h-5 text-emerald-600" />
+                </div>
+                <h3 className="font-bold text-[18px] text-[var(--color-text-primary)] mb-2">
+                  Utopia Business
+                </h3>
+                <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
+                  Our operations arm. Sales, customer service, field technicians, retail, and live hosts — the people who serve our customers every day across 35+ businesses.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Life at Utopia ─────────────────────────────────── */}
+      <section className="section-padding bg-[var(--color-bg-soft)]">
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-10">
@@ -233,22 +421,22 @@ export default function CareerPage() {
           <ScrollReveal>
             <div className="max-w-4xl mx-auto mb-4">
               <div className="team-photo aspect-[21/9] border border-[var(--color-border)] overflow-hidden">
-                <Image src="/images/wix/photo-team-group-hands-up.jpg" alt="Full Utopia Group team celebration" width={1200} height={500} className="w-full h-full object-cover" unoptimized />
+                <Image src="/images/team/staff/group-photo-fun.webp" alt="Full Utopia Group team — fun group photo with peace signs" width={1200} height={500} className="w-full h-full object-cover" unoptimized />
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Mix of team life + real business operations */}
+          {/* Mix of team life — real staff events */}
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { src: "/images/team/feed-17.jpg", alt: "Team group photo" },
-              { src: "/images/wix/photo-encik-beku-team-3guys.jpg", alt: "Encik Beku aircond technicians" },
-              { src: "/images/team/feed-01.jpg", alt: "CNY celebration at office" },
-              { src: "/images/wix/photo-pulse-straps.jpg", alt: "Pulse Pilates equipment" },
-              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching tees" },
-              { src: "/images/wix/photo-coliving-room-tour.jpg", alt: "Utopia Co-Living room tour" },
-              { src: "/images/team/feed-09.jpg", alt: "Company football team" },
-              { src: "/images/team/feed-46.jpg", alt: "Team on-site visit" },
+              { src: "/images/team/staff/masquerade-stage-costumes.webp", alt: "Utopia Masquerade Night — team in costumes" },
+              { src: "/images/team/staff/team-dinner-banquet.webp", alt: "Team dinner at banquet hall" },
+              { src: "/images/team/staff/team-birthday-celebration.webp", alt: "Team birthday celebration" },
+              { src: "/images/team/staff/awards-ceremony.webp", alt: "Staff award ceremony on stage" },
+              { src: "/images/team/staff/team-durian-outing.webp", alt: "Team durian outing" },
+              { src: "/images/team/staff/team-durian-closeup.webp", alt: "Team enjoying durian together" },
+              { src: "/images/team/staff/company-dinner-buffet.webp", alt: "Staff at company dinner buffet" },
+              { src: "/images/team/staff/team-meeting-presentation.webp", alt: "Team meeting and presentation" },
             ].map((photo, i) => (
               <ScrollReveal key={photo.src} delay={i * 60}>
                 <div className="team-photo aspect-square border border-[var(--color-border)]">
@@ -260,62 +448,51 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* ─── What You'll Work On ─────────────────────────────── */}
-      <section className="section-padding bg-[var(--color-bg-soft)]">
-        <div className="section-inner">
-          <ScrollReveal>
-            <div className="text-center mb-10">
-              <span className="pill mb-4 inline-block">What You&apos;ll Work On</span>
-              <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                Real businesses.{" "}
-                <span className="gradient-text font-extrabold">Real impact.</span>
-              </h2>
-              <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                Your work powers 35+ companies across healthcare, transport, construction, fitness, co-living, and more.
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { src: "/images/wix/photo-encik-beku-team-3guys.jpg", label: "Encik Beku — 27 businesses", alt: "Encik Beku aircond technicians" },
-              { src: "/images/wix/photo-coliving-bedroom.jpeg", label: "Co-Living — 10K+ rooms", alt: "Utopia Co-Living styled room" },
-              { src: "/images/wix/photo-ibnu-sina-bed-setup.jpg", label: "Ibnu Sina — Healthcare", alt: "Hospital bed delivery and setup" },
-              { src: "/images/wix/photo-revbike-warehouse.jpg", label: "RevBike — 150K+ rentals", alt: "RevBike fleet warehouse" },
-              { src: "/images/wix/photo-ibnu-sina-showroom-small.png", label: "MedBed — #1 Hospital Bed", alt: "MedBed showroom" },
-              { src: "/images/wix/photo-reno-technician-fan.png", label: "Reno.my — 50K+ projects", alt: "Technician installing fan" },
-            ].map((item, i) => (
-              <ScrollReveal key={item.src} delay={i * 60}>
-                <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] group">
-                  <div className="aspect-[4/3]">
-                    <Image src={item.src} alt={item.alt} width={500} height={375} className="w-full h-full object-cover" unoptimized />
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8">
-                    <span className="text-white text-[13px] font-semibold">{item.label}</span>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── Open Positions ───────────────────────────────────── */}
       <section className="section-padding">
         <div className="section-inner max-w-3xl">
           <ScrollReveal>
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
                 Open Positions
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-base">
-                All roles are based in Kuala Lumpur with flexible arrangements.
+                {POSITIONS.length} roles across our two divisions. Filter to find yours.
               </p>
             </div>
           </ScrollReveal>
 
+          {/* Filter tabs */}
+          <ScrollReveal>
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setFilter(tab)}
+                  className={`px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-150 ${
+                    filter === tab
+                      ? "bg-[var(--color-brand)] text-white shadow-sm"
+                      : "bg-[var(--color-bg-muted)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+                  }`}
+                >
+                  {tab}
+                  {tab === "All" && (
+                    <span className="ml-1.5 opacity-70">({POSITIONS.length})</span>
+                  )}
+                  {tab !== "All" && (
+                    <span className="ml-1.5 opacity-70">
+                      ({POSITIONS.filter((p) => p.division === tab).length})
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
+
           <div className="flex flex-col gap-4">
-            {POSITIONS.map((pos, i) => (
-              <ScrollReveal key={pos.title} delay={i * 80}>
+            {filtered.map((pos, i) => (
+              <ScrollReveal key={`${pos.title}-${pos.company}`} delay={i * 60}>
                 <PositionCard position={pos} />
               </ScrollReveal>
             ))}
@@ -323,8 +500,40 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* ─── Benefits ─────────────────────────────────────────── */}
+      {/* ─── Why Join ─────────────────────────────────────────── */}
       <section className="section-padding bg-[var(--color-bg-soft)]">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-10">
+              <span className="pill mb-4 inline-block">Why Utopia</span>
+              <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
+                Built different.{" "}
+                <span className="gradient-text font-extrabold">Built for growth.</span>
+              </h2>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {WHY_CARDS.map((card, i) => (
+              <ScrollReveal key={card.title} delay={i * 80}>
+                <div className="card h-full">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--color-bg-muted)] flex items-center justify-center mb-3">
+                    <card.icon className="w-5 h-5 text-[var(--color-brand)]" />
+                  </div>
+                  <h3 className="font-semibold text-[16px] text-[var(--color-text-primary)] mb-1">
+                    {card.title}
+                  </h3>
+                  <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Benefits ─────────────────────────────────────────── */}
+      <section className="section-padding bg-white">
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">

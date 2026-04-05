@@ -3,19 +3,19 @@ import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "About Utopia Group — 35+ Companies, 173 Business Units",
+  title: "About Us — Utopia Group | Malaysia's Frontier Company",
   description:
-    "From operators to AI builders. We run 35+ companies with 400+ staff across Malaysia. RM130M+ group revenue. See our story.",
+    "From digital marketing dominance to AI-powered operations. 35+ companies, 400+ staff, 27 partners built from within. We don't wait for the future — we build it.",
   openGraph: {
-    title: "About Utopia Group — 35+ Companies, 173 Business Units",
+    title: "About Us — Utopia Group | Malaysia's Frontier Company",
     description:
-      "From operators to AI builders. We run 35+ companies with 400+ staff across Malaysia. RM130M+ group revenue.",
+      "From digital marketing dominance to AI-powered operations. 35+ companies, 400+ staff, 27 partners built from within.",
     url: "/about",
   },
   twitter: {
-    title: "About Utopia Group — 35+ Companies, 173 Business Units",
+    title: "About Us — Utopia Group | Malaysia's Frontier Company",
     description:
-      "From operators to AI builders. We run 35+ companies with 400+ staff across Malaysia. RM130M+ group revenue.",
+      "From digital marketing dominance to AI-powered operations. 35+ companies, 400+ staff, 27 partners built from within.",
   },
 };
 
@@ -29,7 +29,7 @@ export default function AboutLayout({
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", href: "/" },
-          { name: "About", href: "/about" },
+          { name: "About Us", href: "/about" },
         ])}
       />
       {children}

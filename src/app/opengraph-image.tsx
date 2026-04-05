@@ -17,32 +17,33 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#ffffff",
+          background: "linear-gradient(135deg, #0f1729 0%, #1a2744 40%, #0d3b66 100%)",
           fontFamily: "sans-serif",
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Top accent bar */}
+        {/* Ambient glow */}
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 6,
-            background: "linear-gradient(90deg, #116dff 0%, #3d8bff 50%, #06B6D4 100%)",
+            top: -100,
+            right: -100,
+            width: 500,
+            height: 500,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(17,109,255,0.3) 0%, transparent 70%)",
           }}
         />
-
-        {/* Subtle dot pattern overlay */}
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "radial-gradient(circle, #e5e7eb 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-            opacity: 0.4,
+            bottom: -80,
+            left: -80,
+            width: 400,
+            height: 400,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%)",
           }}
         />
 
@@ -54,43 +55,66 @@ export default async function Image() {
             alignItems: "center",
             justifyContent: "center",
             zIndex: 10,
-            padding: "60px",
+            padding: "48px 60px",
           }}
         >
+          {/* Pill badge */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 20px",
+              borderRadius: 999,
+              border: "1px solid rgba(6,182,212,0.4)",
+              backgroundColor: "rgba(6,182,212,0.1)",
+              marginBottom: 28,
+            }}
+          >
+            <div
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                backgroundColor: "#06B6D4",
+              }}
+            />
+            <span
+              style={{
+                fontSize: 18,
+                fontWeight: 600,
+                color: "#67e8f9",
+                letterSpacing: "0.5px",
+              }}
+            >
+              We Operate 173 Business Units on AI
+            </span>
+          </div>
+
           {/* Logo text */}
           <div
             style={{
-              fontSize: 72,
+              fontSize: 80,
               fontWeight: 800,
-              letterSpacing: "-2px",
-              color: "#0a0a0a",
+              letterSpacing: "-3px",
+              color: "#ffffff",
               lineHeight: 1,
-              marginBottom: 24,
+              marginBottom: 16,
             }}
           >
             UTOPIA GROUP
           </div>
 
-          {/* Divider */}
-          <div
-            style={{
-              width: 80,
-              height: 4,
-              borderRadius: 2,
-              background: "#116dff",
-              marginBottom: 24,
-            }}
-          />
-
           {/* Subtitle */}
           <div
             style={{
-              fontSize: 32,
+              fontSize: 28,
               fontWeight: 500,
-              color: "#4b5563",
+              color: "rgba(255,255,255,0.7)",
               textAlign: "center",
-              lineHeight: 1.3,
-              maxWidth: 800,
+              lineHeight: 1.4,
+              maxWidth: 700,
+              marginBottom: 40,
             }}
           >
             {"Malaysia's #1 AI Implementation Partner"}
@@ -100,14 +124,13 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
-              gap: 48,
-              marginTop: 40,
+              gap: 56,
             }}
           >
             {[
+              { value: "RM130M+", label: "Group Revenue" },
               { value: "35+", label: "Companies" },
-              { value: "173", label: "Business Units" },
-              { value: "400+", label: "Staff" },
+              { value: "400+", label: "Staff on AI" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -119,7 +142,7 @@ export default async function Image() {
               >
                 <div
                   style={{
-                    fontSize: 36,
+                    fontSize: 40,
                     fontWeight: 800,
                     color: "#116dff",
                     lineHeight: 1,
@@ -129,9 +152,10 @@ export default async function Image() {
                 </div>
                 <div
                   style={{
-                    fontSize: 16,
-                    color: "#6b7280",
-                    marginTop: 4,
+                    fontSize: 15,
+                    color: "rgba(255,255,255,0.5)",
+                    marginTop: 6,
+                    fontWeight: 500,
                   }}
                 >
                   {stat.label}
@@ -149,7 +173,7 @@ export default async function Image() {
             left: 0,
             right: 0,
             height: 48,
-            background: "#116dff",
+            background: "linear-gradient(90deg, #116dff 0%, #3d8bff 50%, #06B6D4 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -159,8 +183,8 @@ export default async function Image() {
             style={{
               color: "#ffffff",
               fontSize: 18,
-              fontWeight: 600,
-              letterSpacing: "0.5px",
+              fontWeight: 700,
+              letterSpacing: "1px",
             }}
           >
             utopiagroup.com.my
@@ -168,8 +192,6 @@ export default async function Image() {
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size }
   );
 }

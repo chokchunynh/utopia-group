@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
-/* Prevent mobile overscroll bounce + horizontal scroll */
-html, body {
+/* Prevent mobile overscroll bounce */
+html {
   overscroll-behavior: none;
-  overflow-x: hidden;
+}
+body {
+  overscroll-behavior: none;
   width: 100%;
 }
 
@@ -351,6 +353,16 @@ h1, h2, h3 { text-wrap: balance; }
 /* ===== GRADIENT CTA BAND (Mintlify footer) ===== */
 .gradient-cta-band {
   background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-white) 100%);
+}
+
+/* ===== VOICE WIDGET ===== */
+@keyframes voice-pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes voice-btn-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(17, 109, 255, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(17, 109, 255, 0); }
 }
 
 /* ===== WHATSAPP PULSE ===== */

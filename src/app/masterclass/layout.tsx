@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, masterclassCompanySchema } from "@/lib/schema";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "AI Masterclass for Companies — On-Site Training",
+  title: "AI Masterclass — Training for Companies & Individuals",
   description:
-    "AI training from operators who saved RM3M+ across 35+ companies. Half-day crash course or 2-week full program. On-site at your office.",
+    "AI training from operators who saved RM3M+ across 35+ companies. Programs for corporate teams and individual professionals.",
   openGraph: {
-    title: "AI Masterclass for Companies — On-Site Training",
+    title: "AI Masterclass — Training for Companies & Individuals",
     description:
-      "AI training from operators who saved RM3M+ across 35+ companies. Half-day crash course or 2-week full program.",
+      "AI training from operators who saved RM3M+ across 35+ companies. Programs for corporate teams and individual professionals.",
     url: "/masterclass",
   },
   twitter: {
-    title: "AI Masterclass for Companies — On-Site Training",
+    title: "AI Masterclass — Training for Companies & Individuals",
     description:
-      "AI training from operators who saved RM3M+ across 35+ companies. Half-day crash course or 2-week full program.",
+      "AI training from operators who saved RM3M+ across 35+ companies. Programs for corporate teams and individual professionals.",
   },
 };
 
@@ -32,7 +32,6 @@ export default function MasterclassLayout({
           { name: "AI Masterclass", href: "/masterclass" },
         ])}
       />
-      <JsonLd data={masterclassCompanySchema} />
       {children}
     </>
   );

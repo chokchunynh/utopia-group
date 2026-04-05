@@ -10,7 +10,6 @@ import {
   Building2,
   Users,
   TrendingUp,
-  Calendar,
   Briefcase,
   MapPin,
   ExternalLink,
@@ -21,13 +20,28 @@ const ABOUT_WA = whatsappUrl(
   "Hi! I'd like to learn more about Utopia Group and how you can help my business with AI."
 );
 
-const MILESTONES = [
-  { year: "2014", title: "Founded", desc: "Utopia Holiday Sdn Bhd established — co-living and property management" },
-  { year: "2018", title: "Multi-Industry", desc: "Expanded to healthcare, construction, transport, events, F&B" },
-  { year: "2022", title: "AI Adoption", desc: "Started implementing AI tools internally across all companies" },
-  { year: "2024", title: "AI Products", desc: "Built SlipMatch, RecurPay, GetBill, AutoViral — our own AI products" },
-  { year: "2025", title: "173 Businesses", desc: "173 businesses powered by AI across 35+ companies with 400+ staff" },
-  { year: "2026", title: "AI for Everyone", desc: "Utopia AI Masterclass launched — teaching businesses and individuals" },
+const CHAPTERS = [
+  {
+    era: "2014 – 2021",
+    title: "The Growth Engine",
+    copy: "We started with one co-living business and a belief: traditional Malaysian businesses were sitting on untapped growth. We became the growth engine they didn't know they needed. Hyper-targeted digital campaigns. SEO dominance across hundreds of keywords. High-exposure advertising that put businesses on the map overnight. We didn't just market — we engineered visibility at scale. By 2021, we'd built 35+ companies across healthcare, construction, transport, events, and F&B — all powered by relentless digital strategy.",
+    photo: "/images/team/staff/team-meeting-presentation.webp",
+    photoAlt: "Utopia team strategy meeting",
+  },
+  {
+    era: "2022 – Now",
+    title: "The AI Shift",
+    copy: "When the world started talking about AI, we were already shipping it. We deployed AI across every company in the group — automating operations, eliminating manual work, building products that didn't exist yet. SlipMatch for bank reconciliation. RecurPay for collections. GetBill for utility extraction. Kreativ for design. We don't sell AI theory. We sell battle-tested tools forged inside real businesses with real revenue.",
+    photo: "/images/team/staff/awards-ceremony.webp",
+    photoAlt: "Utopia staff award ceremony",
+  },
+  {
+    era: "The Frontier",
+    title: "Built by People Who Became Partners",
+    copy: "Frontier means you go where others won't. 27 of our people became partners — they joined as staff, proved themselves in the trenches, and now run their own businesses under Utopia. That's not a hiring stat. That's a growth philosophy. We believe the best companies aren't built by founders alone. They're built by people who are hungry enough to become founders themselves. 400+ staff. 27 partners. One mission: build what's next.",
+    photo: "/images/team/staff/group-photo-fun.webp",
+    photoAlt: "Utopia Group team celebrating together",
+  },
 ];
 
 const COMPANIES = [
@@ -81,10 +95,10 @@ const WAREHOUSES = [
 ];
 
 const STATS = [
-  { value: "RM130M+", label: "Group Revenue", icon: TrendingUp },
   { value: "35+", label: "Companies", icon: Briefcase },
   { value: "173", label: "Business Units", icon: Building2 },
   { value: "400+", label: "Staff", icon: Users },
+  { value: "27", label: "Partners", icon: TrendingUp },
 ];
 
 export default function AboutPage() {
@@ -94,7 +108,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden">
         <div
           className="bg-image-hero"
-          style={{ backgroundImage: "url('/hero/bg-team.png')" }}
+          style={{ backgroundImage: "url('/images/team/staff/group-photo-formal.webp')" }}
         />
         <div className="absolute inset-0 z-[1] bg-[#0f2027]/55" />
         <div className="relative z-10 section-padding !pt-32 md:!pt-44 !pb-16 md:!pb-24">
@@ -102,18 +116,18 @@ export default function AboutPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white/90 border border-white/10 mb-6">
                 <Building2 className="w-3.5 h-3.5" />
-                About Utopia Group
+                About Us
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                The Team Behind{" "}
+                We Don&apos;t Wait for the Future.{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  173 AI-Powered Businesses
+                  We Build It.
                 </span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                We didn&apos;t start as an AI company. We started as business
-                operators — then we built AI to solve our own problems. Now
-                we solve yours.
+                From digital marketing dominance to AI-powered operations —
+                Utopia Group is Malaysia&apos;s frontier company. We break
+                through. We scale. We never stop.
               </p>
             </ScrollReveal>
           </div>
@@ -146,6 +160,55 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ═══ OUR STORY ═══ */}
+      <section className="section-padding bg-white bg-dotted">
+        <div className="section-inner">
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <span className="pill mb-4 inline-block">Our Story</span>
+              <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
+                Three eras.{" "}
+                <span className="gradient-text font-extrabold">
+                  One relentless mission.
+                </span>
+              </h2>
+              <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-[15px] leading-relaxed">
+                Every chapter of Utopia starts the same way — someone said
+                it couldn&apos;t be done, and we did it anyway.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Brand Story Chapters */}
+          <div className="max-w-5xl mx-auto flex flex-col gap-16 md:gap-20">
+            {CHAPTERS.map((ch, i) => (
+              <ScrollReveal key={ch.title} delay={i * 100}>
+                <div className={`flex flex-col ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} gap-8 md:gap-12 items-center`}>
+                  {/* Photo */}
+                  <div className="w-full md:w-1/2">
+                    <div className="team-photo aspect-[4/3] border border-[var(--color-border)] overflow-hidden">
+                      <Image src={ch.photo} alt={ch.photoAlt} width={600} height={450} className="w-full h-full object-cover" unoptimized />
+                    </div>
+                  </div>
+                  {/* Text */}
+                  <div className="w-full md:w-1/2">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-[var(--color-bg-muted)] text-[var(--color-brand)] border border-[var(--color-border)] mb-4">
+                      {ch.era}
+                    </span>
+                    <h3 className="heading-lg text-[22px] md:text-[28px] mb-4">
+                      {ch.title}
+                    </h3>
+                    <p className="text-[var(--color-text-body)] text-[15px] leading-[1.8]">
+                      {ch.copy}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ THE TEAM ═══ */}
       <section id="team" className="section-padding bg-white bg-dotted">
         <div className="section-inner">
@@ -165,26 +228,33 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* Full team group photo */}
+          {/* Full team group photo + masquerade stage */}
           <ScrollReveal>
-            <div className="max-w-4xl mx-auto mb-4">
-              <div className="team-photo aspect-[21/9] border border-[var(--color-border)] overflow-hidden">
-                <Image src="/images/wix/photo-team-group-hands-up.jpg" alt="Full Utopia Group team — 400+ staff across 35+ companies" width={1200} height={500} className="w-full h-full object-cover" unoptimized />
+            <div className="max-w-4xl mx-auto mb-4 grid md:grid-cols-2 gap-3">
+              <div className="team-photo aspect-[16/10] border border-[var(--color-border)] overflow-hidden">
+                <Image src="/images/team/staff/group-photo-fun.webp" alt="Full Utopia Group team — 40+ staff with fun peace sign poses" width={1200} height={750} className="w-full h-full object-cover" unoptimized />
+              </div>
+              <div className="team-photo aspect-[16/10] border border-[var(--color-border)] overflow-hidden">
+                <Image src="/images/team/staff/masquerade-stage-group.webp" alt="Utopia Masquerade Night — full team on stage in costume" width={1200} height={750} className="w-full h-full object-cover" unoptimized />
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Team photo gallery — 4x2 grid */}
+          {/* Team photo gallery — 4x3 grid (landscape photos only) */}
           <div className="max-w-4xl mx-auto mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { src: "/images/team/feed-13.jpg", alt: "Creative & marketing team at Utopia office" },
-              { src: "/images/team/feed-23.jpg", alt: "Dev team with laptops in office" },
-              { src: "/images/team/feed-05.jpg", alt: "Team group outing at restaurant" },
-              { src: "/images/team/feed-44.jpg", alt: "Team outing in matching company tees" },
-              { src: "/images/team/feed-15.jpg", alt: "Team members working at Utopia office" },
-              { src: "/images/team/feed-07.jpg", alt: "Team dinner together" },
-              { src: "/images/team/feed-22.jpg", alt: "Office birthday celebration" },
-              { src: "/images/team/feed-17.jpg", alt: "Team photo at doodle wall" },
+              { src: "/images/team/staff/group-photo-formal.webp", alt: "Full Utopia Group team formal photo" },
+              { src: "/images/team/staff/awards-ceremony.webp", alt: "Staff award ceremony — team holding certificates on stage" },
+              { src: "/images/team/staff/team-dinner-banquet.webp", alt: "Team dinner at banquet hall" },
+              { src: "/images/team/staff/team-birthday-celebration.webp", alt: "Team birthday celebration with cake" },
+              { src: "/images/team/staff/team-durian-outing.webp", alt: "Team durian outing together" },
+              { src: "/images/team/staff/masquerade-dinner-crowd.webp", alt: "Utopia Masquerade Night dinner — full crowd" },
+              { src: "/images/team/staff/masquerade-stage-costumes.webp", alt: "Masquerade Night — staff in elaborate costumes on stage" },
+              { src: "/images/team/staff/team-meeting-presentation.webp", alt: "Team meeting and presentation in conference room" },
+              { src: "/images/team/staff/company-dinner-buffet.webp", alt: "Company dinner at outdoor buffet" },
+              { src: "/images/team/staff/team-event-seated.webp", alt: "Team seated at company event" },
+              { src: "/images/team/staff/team-outing-group.webp", alt: "Team group outing" },
+              { src: "/images/team/staff/event-browsing.webp", alt: "Staff at company event" },
             ].map((photo, i) => (
               <ScrollReveal key={photo.src} delay={i * 60}>
                 <div className="team-photo aspect-[4/3] border border-[var(--color-border)]">
@@ -216,57 +286,6 @@ export default function AboutPage() {
               </a>
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ═══ OUR STORY ═══ */}
-      <section className="section-padding bg-white bg-dotted">
-        <div className="section-inner">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Our Journey</span>
-              <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                From operators to{" "}
-                <span className="gradient-text font-extrabold">
-                  AI builders
-                </span>
-              </h2>
-              <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-[15px] leading-relaxed">
-                We started by running real businesses — co-living, healthcare,
-                construction, transport. When we needed AI, nothing on the
-                market worked for Malaysian SMEs. So we built our own.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Timeline */}
-          <div className="max-w-2xl mx-auto">
-            {MILESTONES.map((m, i) => (
-              <ScrollReveal key={m.year} delay={i * 80}>
-                <div className="flex gap-4 mb-8 last:mb-0">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-[var(--color-brand)] text-white flex items-center justify-center text-[12px] font-bold shrink-0">
-                      {m.year.slice(-2)}
-                    </div>
-                    {i < MILESTONES.length - 1 && (
-                      <div className="w-px flex-1 bg-[var(--color-border)] mt-2" />
-                    )}
-                  </div>
-                  <div className="pb-8">
-                    <span className="text-[12px] font-semibold text-[var(--color-brand)]">
-                      {m.year}
-                    </span>
-                    <h3 className="font-semibold text-[16px] text-[var(--color-text-primary)]">
-                      {m.title}
-                    </h3>
-                    <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
-                      {m.desc}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 

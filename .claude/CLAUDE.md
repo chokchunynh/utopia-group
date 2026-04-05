@@ -43,7 +43,7 @@ Stack: Next.js 16 + Tailwind 4 + TypeScript. Deployed on Vercel.
 - [ ] Add MDEC badge SVG
 - [ ] Add real team/office photos
 - [ ] SEO optimization + schema markup
-- [ ] Custom domain: utopiagroup.com.my → Vercel
+- [ ] Custom domain: utopiagroup.com.my → Vercel (NS changed 2026-03-29, awaiting propagation)
 - [ ] Add Google Analytics / Plausible
 - [ ] Blog section for AI content marketing
 
@@ -57,3 +57,8 @@ Stack: Next.js 16 + Tailwind 4 + TypeScript. Deployed on Vercel.
 - 2026-03-29 (session 2): Fixed broken Johor flag (was HTML file, replaced with real PNG). Removed duplicate WhatsApp/email CTAs from About page warehouses section. Changed all emails to devteam.utopia@gmail.com. Deployed to production.
 - 2026-03-29 (session 3): Fixed hamburger menu close animation — was scrolling page behind overlay instead of lightbox behavior. Delayed overflow:hidden removal + added overscroll-contain. Deployed.
 - 2026-03-29 (session 4): Logo grid: cyan-50 backgrounds (match hero sky), mobile truncation (8 shown + "+12 more"), nav cleanup (Home link added, Results removed). Deployed.
+- 2026-03-29 (session 5): DNS fix — utopiagroup.com.my nameservers changed from Wix back to Exabytes defaults (ns184-186.mschosting.com). A record (76.76.21.21) and www CNAME already correct in Exabytes DNS zone. Awaiting propagation.
+- 2026-03-30 (session 6): Gemini Live voice widget — real-time voice chat via WebSocket. Architecture: browser mic → 16kHz PCM → Gemini 3.1 Flash Live → 24kHz audio playback. Ephemeral tokens via @google/genai SDK. Avatar: "Ms Hui Yi" (AI-generated Chinese Malaysian). Features: scroll-to-hide, suggestion pills, page nav links, 3min session cap, silence auto-end. Also: redesigned OG image (dark gradient + stats), fixed favicon (removed SVG override, proper multi-size PNG). Env: GOOGLE_AI_API_KEY on Vercel. 6 deploys.
+- 2026-03-30 (session 7): Fixed Telegram notification — summarizeTranscript() model name was `gemini-2.0-flash-lite` (invalid), changed to `gemini-2.0-flash`. Fixed X button transparency (cooldown disabled:opacity-50 removed). 2 deploys.
+- 2026-03-30 (session 8): HOTFIX — space.utopiagroup.com.my + asktoppie.utopiagroup.com.my both NXDOMAIN after NS migration from Wix to Exabytes. Root cause: CNAME records only existed in Wix DNS, never recreated in Exabytes. Added both CNAMEs via Playwright automation of Exabytes DNS Manager. Both verified resolving via dig @8.8.8.8.
+- 2026-04-03 (session 9): Staff photos + brand story. 24 photos from ~/Desktop/staff pic/ converted to WebP (PIL exif_transpose for rotation). Added to About (14-photo gallery + 3 chapter photos), Career (hero + 8-photo gallery), Home (new TeamCulture section, 6 photos). About Us page rewritten: "About" → "About Us" everywhere (nav, breadcrumb, meta). Brand story: 3 chapters (Growth Engine 2014-2021, AI Shift 2022-Now, Partners/Frontier) with alternating text+photo layout. Stats bar: removed RM130M revenue, added 27 Partners. SEO meta updated. ~8 deploys.
