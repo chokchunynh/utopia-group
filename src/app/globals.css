@@ -42,13 +42,14 @@ body {
   --color-success: #22c55e;
   --color-warning: #f59e0b;
 
-  /* Font — Inter only, like Mintlify */
+  /* Font */
   --font-sans: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
 
   /* Radius */
   --radius-pill: 9999px;
-  --radius-card: 24px;
-  --radius-sm: 12px;
+  --radius-card: 16px;
+  --radius-sm: 10px;
 }
 
 html { scroll-behavior: smooth; }
@@ -61,12 +62,12 @@ body {
   line-height: 1.6;
 }
 
-/* ===== TYPOGRAPHY (all Inter, like Mintlify) ===== */
+/* ===== TYPOGRAPHY (Inter + Instrument Serif) ===== */
 .heading-display {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
   color: var(--color-text-primary);
   text-wrap: balance;
 }
