@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DATA_SOURCES } from "@/lib/boss-os";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import {
   Receipt,
@@ -11,6 +12,7 @@ import {
   ChevronUp,
   Database,
 } from "lucide-react";
+import type { TranslationKey } from "@/lib/translations";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Receipt,
@@ -18,8 +20,15 @@ const ICON_MAP: Record<string, React.ElementType> = {
   BookOpen,
 };
 
+const DATA_KEYS: Record<string, { name: TranslationKey; desc: TranslationKey }> = {
+  sales: { name: "data.sales", desc: "data.sales.desc" },
+  hr: { name: "data.hr", desc: "data.hr.desc" },
+  accounting: { name: "data.accounting", desc: "data.accounting.desc" },
+};
+
 export default function BossDataReadiness() {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   return (
     <section className="section-padding bg-[var(--color-bg-soft)]">
@@ -32,10 +41,10 @@ export default function BossDataReadiness() {
               </div>
             </div>
             <h2 className="heading-lg text-[28px] md:text-[36px] mb-2">
-              You don&apos;t need perfect data. You need 30%.
+              {t("data.title")}
             </h2>
             <p className="text-[var(--color-text-muted)] text-[15px]">
-              If you have ANY of these, we can build your Boss OS:
+              {t("data.subtitle")}
             </p>
           </div>
         </ScrollReveal>
@@ -44,6 +53,7 @@ export default function BossDataReadiness() {
           {DATA_SOURCES.map((source, i) => {
             const Icon = ICON_MAP[source.icon] || Receipt;
             const isOpen = expanded === source.id;
+            const keys = DATA_KEYS[source.id];
 
             return (
               <ScrollReveal key={source.id} delay={i * 80}>
@@ -56,10 +66,10 @@ export default function BossDataReadiness() {
                       <Icon size={24} className="text-[var(--color-brand)]" />
                     </div>
                     <h3 className="font-bold text-[15px] text-[var(--color-text-primary)] mb-1">
-                      {source.name}
+                      {keys ? t(keys.name) : source.name}
                     </h3>
                     <p className="text-[12px] text-[var(--color-text-muted)] leading-relaxed mb-2">
-                      {source.description}
+                      {keys ? t(keys.desc) : source.description}
                     </p>
                     <div className="flex items-center gap-1 text-[11px] text-[var(--color-brand)] font-medium">
                       {isOpen ? "Hide examples" : "See examples"}
@@ -98,8 +108,7 @@ export default function BossDataReadiness() {
           <div className="text-center">
             <div className="inline-block rounded-xl bg-[var(--color-bg-muted)] px-5 py-3">
               <p className="text-[14px] text-[var(--color-brand)] font-medium">
-                Have at least one? That&apos;s enough. We handle the rest during
-                setup.
+                {t("data.enough")}
               </p>
             </div>
           </div>

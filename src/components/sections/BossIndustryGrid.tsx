@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { INDUSTRIES } from "@/lib/boss-os";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import {
   Car,
@@ -26,16 +27,18 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function BossIndustryGrid() {
+  const { t } = useLanguage();
+
   return (
-    <section className="section-padding">
+    <section id="industries" className="section-padding">
       <div className="section-inner">
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="heading-lg text-[28px] md:text-[36px] mb-2">
-              Boss OS works across industries
+              {t("industry.title")}
             </h2>
             <p className="text-[var(--color-text-muted)] text-[15px]">
-              Click your industry to see exactly what we built.
+              {t("industry.subtitle")}
             </p>
           </div>
         </ScrollReveal>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { PHONE_MOCKUPS } from "@/lib/boss-os";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/language-context";
@@ -93,6 +94,16 @@ export default function BossHero() {
 
   return (
     <section className="relative overflow-hidden pt-24 md:pt-36 pb-12 md:pb-20 bg-gradient-to-br from-[#f8fafc] to-[#f0f4ff]">
+      {/* Background hero image (subtle) */}
+      <div className="absolute inset-0 opacity-[0.06]">
+        <Image
+          src="/images/boss-os/boss-hero.webp"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
       {/* Ambient orb */}
       <div className="ambient-orb -top-40 -right-40 opacity-50" />
 

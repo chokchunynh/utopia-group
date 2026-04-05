@@ -1,16 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { CASE_STUDIES } from "@/lib/boss-os";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Car, Sparkles, Leaf, TrendingUp } from "lucide-react";
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  Car,
-  Sparkles,
-  Leaf,
-};
+import { TrendingUp } from "lucide-react";
 
 export default function BossCaseStudies() {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding">
       <div className="section-inner">
@@ -22,25 +20,27 @@ export default function BossCaseStudies() {
               </div>
             </div>
             <h2 className="heading-lg text-[28px] md:text-[36px] mb-2">
-              Real results from real bosses
+              {t("cases.title")}
             </h2>
             <p className="text-[var(--color-text-muted)] text-[15px]">
-              Before and after Boss OS. Numbers don&apos;t lie.
+              {t("cases.subtitle")}
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
           {CASE_STUDIES.map((study, i) => {
-            const Icon = ICON_MAP[study.icon] || Car;
             return (
               <ScrollReveal key={study.name} delay={i * 100}>
                 <div className="card">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--color-bg-muted)] flex items-center justify-center">
-                      <Icon
-                        size={16}
-                        className="text-[var(--color-brand)]"
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                      <Image
+                        src={study.image}
+                        alt={`${study.name} — ${study.industry}`}
+                        width={48}
+                        height={48}
+                        className="object-cover w-full h-full"
                       />
                     </div>
                     <div>
@@ -57,7 +57,7 @@ export default function BossCaseStudies() {
                   <div className="flex gap-2 mb-3">
                     <div className="flex-1 rounded-xl bg-red-50 p-3 text-center">
                       <div className="text-[10px] font-semibold text-red-800 uppercase tracking-wider">
-                        Before
+                        {t("cases.before")}
                       </div>
                       <div className="text-[18px] font-extrabold text-red-600">
                         {study.before.value}
@@ -68,7 +68,7 @@ export default function BossCaseStudies() {
                     </div>
                     <div className="flex-1 rounded-xl bg-emerald-50 p-3 text-center">
                       <div className="text-[10px] font-semibold text-emerald-800 uppercase tracking-wider">
-                        After
+                        {t("cases.after")}
                       </div>
                       <div className="text-[18px] font-extrabold text-emerald-600">
                         {study.after.value}

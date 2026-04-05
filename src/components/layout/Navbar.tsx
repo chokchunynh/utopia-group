@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NAV_LINKS, MORE_DROPDOWN, WHATSAPP_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/language-context";
-import { Menu, X, ChevronDown, Globe } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +13,8 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const { locale, setLocale } = useLanguage();
+  const pathname = usePathname();
+  const isBossOS = pathname.startsWith("/boss-os");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -181,16 +184,34 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Language toggle */}
-          <button
-            type="button"
-            onClick={() => setLocale(locale === "en" ? "zh" : "en")}
-            className="inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-[12px] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-soft)] transition-colors"
-            aria-label="Toggle language"
-          >
-            <Globe size={14} />
-            {locale === "en" ? "中文" : "EN"}
-          </button>
+          {/* Language toggle — only on Boss OS pages */}
+          {isBossOS && (
+            <button
+              type="button"
+              onClick={() => setLocale(locale === "en" ? "zh" : "en")}
+              className="inline-flex items-center gap-1.5 h-8 rounded-full bg-[var(--color-bg-soft)] border border-[var(--color-border)] px-1 cursor-pointer"
+              aria-label="Toggle language"
+            >
+              <span
+                className={`px-2 py-0.5 rounded-full text-[11px] font-semibold transition-colors ${
+                  locale === "en"
+                    ? "bg-white text-[var(--color-text-primary)] shadow-sm"
+                    : "text-[var(--color-text-muted)]"
+                }`}
+              >
+                EN
+              </span>
+              <span
+                className={`px-2 py-0.5 rounded-full text-[11px] font-semibold transition-colors ${
+                  locale === "zh"
+                    ? "bg-white text-[var(--color-text-primary)] shadow-sm"
+                    : "text-[var(--color-text-muted)]"
+                }`}
+              >
+                中文
+              </span>
+            </button>
+          )}
           <Link
             href="/how-we-charge"
             className={`inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 ${

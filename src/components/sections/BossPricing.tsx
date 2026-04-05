@@ -1,20 +1,23 @@
 "use client";
 
 import { BOSS_OS_PRICING } from "@/lib/boss-os";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Check, Award } from "lucide-react";
 
 export default function BossPricing() {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding bg-[var(--color-bg-soft)]">
       <div className="section-inner">
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="heading-lg text-[28px] md:text-[36px] mb-2">
-              Cheaper than one admin staff.
+              {t("pricing.title")}
             </h2>
             <p className="text-[var(--color-text-muted)] text-[15px]">
-              Boss OS works 24/7, never takes MC, manages 5 departments at once.
+              {t("pricing.subtitle")}
             </p>
           </div>
         </ScrollReveal>
@@ -46,7 +49,7 @@ export default function BossPricing() {
                   {plan.setup}
                 </div>
                 <div className="text-[12px] text-[var(--color-text-muted)] mb-1">
-                  one-time setup
+                  {t("pricing.setup")}
                 </div>
 
                 <div className="text-[22px] font-bold text-[var(--color-text-primary)] mt-2">
@@ -97,11 +100,11 @@ export default function BossPricing() {
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-4 py-2">
               <Award size={16} className="text-emerald-600" />
               <span className="text-[12px] text-emerald-700 font-medium">
-                Eligible for MDEC / SME Corp Digitalization Grant (RM5,000–RM100,000)
+                {t("pricing.grant")}
               </span>
             </div>
             <p className="text-[12px] text-[var(--color-text-soft)] mt-2">
-              No lock-in. Cancel anytime.
+              {t("pricing.cancel")}
             </p>
           </div>
         </ScrollReveal>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CORE_FEATURES } from "@/lib/boss-os";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import {
   BarChart3,
@@ -9,6 +10,7 @@ import {
   Wallet,
   Users,
 } from "lucide-react";
+import type { TranslationKey } from "@/lib/translations";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   BarChart3,
@@ -18,17 +20,27 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Users,
 };
 
+const FEATURE_KEYS: Record<string, { name: TranslationKey; desc: TranslationKey }> = {
+  "sales-command": { name: "feature.sales", desc: "feature.sales.desc" },
+  "whatsapp-ai": { name: "feature.whatsapp", desc: "feature.whatsapp.desc" },
+  "ai-insights": { name: "feature.insights", desc: "feature.insights.desc" },
+  "cashflow": { name: "feature.cashflow", desc: "feature.cashflow.desc" },
+  "staff-ops": { name: "feature.staff", desc: "feature.staff.desc" },
+};
+
 export default function BossCoreFeatures() {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding">
       <div className="section-inner">
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="heading-lg text-[28px] md:text-[36px] mb-2">
-              5 things Boss OS handles from Day 1
+              {t("features.title")}
             </h2>
             <p className="text-[var(--color-text-muted)] text-[15px]">
-              Every feature below is live in your system within 2 weeks.
+              {t("features.subtitle")}
             </p>
           </div>
         </ScrollReveal>
@@ -36,6 +48,7 @@ export default function BossCoreFeatures() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {CORE_FEATURES.map((feature, i) => {
             const Icon = ICON_MAP[feature.icon] || BarChart3;
+            const keys = FEATURE_KEYS[feature.id];
             return (
               <ScrollReveal key={feature.id} delay={i * 80}>
                 <div
@@ -51,10 +64,10 @@ export default function BossCoreFeatures() {
                     <Icon size={20} style={{ color: feature.color }} />
                   </div>
                   <h3 className="font-bold text-[16px] text-[var(--color-text-primary)] mb-2">
-                    {feature.name}
+                    {keys ? t(keys.name) : feature.name}
                   </h3>
                   <p className="text-[14px] text-[var(--color-text-body)] leading-relaxed">
-                    {feature.description}
+                    {keys ? t(keys.desc) : feature.description}
                   </p>
                 </div>
               </ScrollReveal>

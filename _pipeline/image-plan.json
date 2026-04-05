@@ -1,0 +1,66 @@
+{
+  "project": "utopia-group-boss-os",
+  "date": "2026-04-05",
+  "total_images": 4,
+  "ready_to_generate": 4,
+  "on_hold": 0,
+  "estimated_cost_usd": 0.85,
+  "images": [
+    {
+      "id": "boss-hero-01",
+      "section": "Boss OS Hero",
+      "tier": "hero",
+      "model": "nb2",
+      "aspect": "16:9",
+      "status": "ready",
+      "prompt": "Malaysian Chinese businessman in his 40s wearing crisp white polo shirt, sitting at modern cafe table with morning coffee, looking confidently at smartphone showing colorful dashboard app with sales graphs and green metrics. Modern Malaysian kopitiam interior with warm natural morning light streaming through large glass windows. Canon EOS R5, 35mm lens, shallow depth of field, subject in left third leaving space on right for text overlay. Photorealistic, natural skin texture, candid editorial style. No watermarks, no extra fingers, no stock photo pose, no laptop.",
+      "human_in_image": true,
+      "transparent": false,
+      "copyright_status": "safe",
+      "slop_check": ["finger count", "phone screen clarity", "face naturalness"],
+      "filename": "boss-hero.png"
+    },
+    {
+      "id": "case-car-rental",
+      "section": "Case Study - Car Rental",
+      "tier": "landing",
+      "model": "nb2",
+      "aspect": "1:1",
+      "status": "ready",
+      "prompt": "Malay man in his late 30s named Encik Ali, wearing dark blue polo shirt with company logo, standing in front of row of white Perodua Myvi and Proton Saga cars in outdoor car lot. Kuala Lumpur suburban setting, morning golden hour light. Medium shot, Canon EOS R5, 85mm, shallow DOF, confident smile. Photorealistic, natural Malaysian skin tone, candid business portrait feel. No watermarks, no extra fingers, no sunglasses.",
+      "human_in_image": true,
+      "transparent": false,
+      "copyright_status": "safe",
+      "slop_check": ["face naturalness", "car proportions", "hand position"],
+      "filename": "case-car-rental.png"
+    },
+    {
+      "id": "case-cleaning",
+      "section": "Case Study - Cleaning",
+      "tier": "landing",
+      "model": "nb2",
+      "aspect": "1:1",
+      "status": "ready",
+      "prompt": "Malaysian Chinese woman in her mid 30s named Puan Sarah, wearing teal company uniform polo, standing in lobby of modern Malaysian office building she manages cleaning for. Clean, bright commercial interior with marble floor. Medium shot, Canon EOS R5, 85mm, shallow DOF, warm professional smile, arms crossed confidently. Photorealistic, natural skin texture, business portrait. No watermarks, no extra fingers.",
+      "human_in_image": true,
+      "transparent": false,
+      "copyright_status": "safe",
+      "slop_check": ["face naturalness", "uniform details", "hand position"],
+      "filename": "case-cleaning.png"
+    },
+    {
+      "id": "case-produce",
+      "section": "Case Study - Fresh Produce",
+      "tier": "landing",
+      "model": "nb2",
+      "aspect": "1:1",
+      "status": "ready",
+      "prompt": "Indian Malaysian man in his 50s named Ah Kow, wearing casual checked shirt with sleeves rolled up, standing at his fresh produce wholesale stall with crates of red tomatoes, green vegetables, and tropical fruits behind him. Malaysian wet market or wholesale market setting, bright fluorescent and natural mix lighting. Medium shot, Canon EOS R5, 50mm, natural DOF. Photorealistic, weathered hands, genuine warm smile, candid market vendor portrait. No watermarks, no extra fingers.",
+      "human_in_image": true,
+      "transparent": false,
+      "copyright_status": "safe",
+      "slop_check": ["face naturalness", "produce realism", "hand grip"],
+      "filename": "case-produce.png"
+    }
+  ]
+}
