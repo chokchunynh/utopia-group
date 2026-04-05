@@ -17,8 +17,9 @@ export const WHATSAPP_FAB_URL = whatsappUrl(
 // ─── Navigation ─────────────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Boss OS", href: "/boss-os" },
   { label: "What We Automate", href: "/automate" },
-  { label: "About", href: "/about" },
+  { label: "About Us", href: "/about" },
   { label: "Career", href: "/career" },
 ] as const;
 
@@ -32,7 +33,7 @@ export const MORE_DROPDOWN = {
       href: "/masterclass",
       description: "AI training programs",
       children: [
-        { label: "AI Masterclass — Companies", href: "/masterclass", description: "On-site team training" },
+        { label: "AI Masterclass — Companies", href: "/masterclass/company", description: "On-site team training" },
         { label: "AI Masterclass — Individuals", href: "/masterclass/individual", description: "RM299/session × 8" },
       ],
     },
@@ -269,7 +270,7 @@ export const FOOTER_LINKS = {
   navigate: [
     { label: "TrueAI", href: "/#trueai" },
     { label: "Pricing", href: "/how-we-charge" },
-    { label: "About", href: "/about" },
+    { label: "About Us", href: "/about" },
   ],
   tools: [
     { label: "SlipMatch", href: "https://slipmatch.my" },
