@@ -93,102 +93,107 @@ export default function BossHero() {
   const currentPhones = sets[activeSet];
 
   return (
-    <section className="relative overflow-hidden pt-24 md:pt-36 pb-12 md:pb-20 bg-gradient-to-br from-[#f8fafc] to-[#f0f4ff]">
-      {/* Background hero image (subtle) */}
-      <div className="absolute inset-0 opacity-[0.06]">
+    <section className="relative overflow-hidden">
+      {/* Hero image banner — full width, visible */}
+      <div className="relative w-full h-[280px] md:h-[400px]">
         <Image
           src="/images/boss-os/boss-hero.webp"
-          alt=""
+          alt="Malaysian business owner checking Boss OS dashboard on phone"
           fill
           className="object-cover"
           priority
         />
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white" />
+        {/* Top padding for navbar */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-transparent h-24" />
       </div>
-      {/* Ambient orb */}
-      <div className="ambient-orb -top-40 -right-40 opacity-50" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          {/* Left: Copy */}
-          <div className="flex-1 text-center md:text-left">
-            <ScrollReveal>
-              <span className="pill mb-4 inline-flex">{t("hero.pill")}</span>
-              <h1 className="heading-display text-[32px] md:text-[48px] lg:text-[56px] mb-4">
-                {t("hero.tagline")}
-              </h1>
-              <p className="text-[16px] md:text-[18px] text-[var(--color-text-body)] leading-relaxed max-w-lg mb-5">
-                {t("hero.subtitle")}
-              </p>
-              <p className="text-[15px] font-semibold text-emerald-600 mb-6">
-                {t("hero.roi")}
-              </p>
+      {/* Content section — overlaps the hero image slightly */}
+      <div className="relative -mt-16 md:-mt-24 z-10 pb-12 md:pb-20 bg-gradient-to-b from-transparent via-white to-[#f8fafc]">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 pt-8">
+            {/* Left: Copy */}
+            <div className="flex-1 text-center md:text-left">
+              <ScrollReveal>
+                <span className="pill mb-4 inline-flex">{t("hero.pill")}</span>
+                <h1 className="heading-display text-[32px] md:text-[48px] lg:text-[56px] mb-4">
+                  {t("hero.tagline")}
+                </h1>
+                <p className="text-[16px] md:text-[18px] text-[var(--color-text-body)] leading-relaxed max-w-lg mb-5">
+                  {t("hero.subtitle")}
+                </p>
+                <p className="text-[15px] font-semibold text-emerald-600 mb-6">
+                  {t("hero.roi")}
+                </p>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-5">
-                <a href={WHATSAPP_URL} className="btn-whatsapp">
-                  {t("hero.cta.whatsapp")}
-                </a>
-                <a href="#roi-calculator" className="btn-secondary">
-                  {t("hero.cta.see")}
-                  <ArrowDown size={16} />
-                </a>
-              </div>
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-5">
+                  <a href={WHATSAPP_URL} className="btn-whatsapp">
+                    {t("hero.cta.whatsapp")}
+                  </a>
+                  <a href="#roi-calculator" className="btn-secondary">
+                    {t("hero.cta.see")}
+                    <ArrowDown size={16} />
+                  </a>
+                </div>
 
-              {/* Trust bar */}
-              <div className="flex gap-4 justify-center md:justify-start text-[13px] text-[var(--color-text-muted)]">
-                <span className="flex items-center gap-1">
-                  <Check size={14} className="text-emerald-500" />
-                  {t("hero.trust.companies")}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Check size={14} className="text-emerald-500" />
-                  {t("hero.trust.staff")}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Check size={14} className="text-emerald-500" />
-                  {t("hero.trust.setup")}
-                </span>
-              </div>
-            </ScrollReveal>
-          </div>
+                {/* Trust bar */}
+                <div className="flex gap-4 justify-center md:justify-start text-[13px] text-[var(--color-text-muted)]">
+                  <span className="flex items-center gap-1">
+                    <Check size={14} className="text-emerald-500" />
+                    {t("hero.trust.companies")}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Check size={14} className="text-emerald-500" />
+                    {t("hero.trust.staff")}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Check size={14} className="text-emerald-500" />
+                    {t("hero.trust.setup")}
+                  </span>
+                </div>
+              </ScrollReveal>
+            </div>
 
-          {/* Right: 3 phones */}
-          <div className="flex-1 flex justify-center">
-            <ScrollReveal delay={200}>
-              <div className="flex items-end gap-3 md:gap-4">
-                <PhoneCard
-                  mockup={PHONE_MOCKUPS[currentPhones[0]]}
-                  size="sm"
-                  rotation={-5}
-                />
-                <PhoneCard
-                  mockup={PHONE_MOCKUPS[currentPhones[1]]}
-                  size="md"
-                  rotation={0}
-                />
-                <PhoneCard
-                  mockup={PHONE_MOCKUPS[currentPhones[2]]}
-                  size="sm"
-                  rotation={5}
-                />
-              </div>
-
-              {/* Industry switcher dots */}
-              <div className="flex justify-center gap-2 mt-4">
-                {sets.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveSet(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      activeSet === i
-                        ? "bg-[var(--color-brand)]"
-                        : "bg-[var(--color-border)]"
-                    }`}
-                    aria-label={`Show industry set ${i + 1}`}
+            {/* Right: 3 phones */}
+            <div className="flex-1 flex justify-center">
+              <ScrollReveal delay={200}>
+                <div className="flex items-end gap-3 md:gap-4">
+                  <PhoneCard
+                    mockup={PHONE_MOCKUPS[currentPhones[0]]}
+                    size="sm"
+                    rotation={-5}
                   />
-                ))}
-              </div>
-            </ScrollReveal>
+                  <PhoneCard
+                    mockup={PHONE_MOCKUPS[currentPhones[1]]}
+                    size="md"
+                    rotation={0}
+                  />
+                  <PhoneCard
+                    mockup={PHONE_MOCKUPS[currentPhones[2]]}
+                    size="sm"
+                    rotation={5}
+                  />
+                </div>
+
+                {/* Industry switcher dots */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {sets.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveSet(i)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                        activeSet === i
+                          ? "bg-[var(--color-brand)]"
+                          : "bg-[var(--color-border)]"
+                      }`}
+                      aria-label={`Show industry set ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </div>
