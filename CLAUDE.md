@@ -13,7 +13,7 @@ Next.js 16 + Tailwind 4 + TypeScript
 
 ## Lifecycle
 - **Status:** Active
-- **Last Active:** 2026-04-05
+- **Last Active:** 2026-04-09
 - **Client:** Utopia Group (corporate site)
 - **End User:** Malaysian SME owners (Towkays), potential hires, partners
 - **Language:** EN + CN toggle
@@ -29,37 +29,67 @@ npm run build        # MUST pass before declaring done
 
 ## Architecture
 - `src/app/` — App Router pages (home, about, career, automate, etc.)
-- `src/components/sections/` — Page sections (Hero, TeamCulture, etc.)
-- `src/lib/constants.ts` — All site content (testimonials, FAQ, apps, pricing)
-- `public/images/team/staff/*.webp` — 24 staff photos (PIL exif_transpose)
+- `src/app/boss-os/page.tsx` — BossOS "moving brochure" (7 sections)
+- `src/components/sections/Boss*.tsx` — BossOS section components
+- `src/lib/boss-os.ts` — All BossOS data (pricing, showcase, quiz, timeline, proof stats)
+- `src/lib/translations.ts` — EN + CN translations (~180 keys)
+- `src/lib/constants.ts` — Site identity, nav, footer links
+- `public/images/boss-os/` — Dashboard mockups, logos, hero images
 
 ## Code Conventions
 - MUST use key numbers from data, not hardcoded: 35+ companies, 400+ staff, 173 units, 27 partners
-- MUST NOT add dark sections — clean white theme only
-- MUST use `.card` class (white bg, 16px radius, #E2E8F0 border, hover lift)
+- MUST use `.card` or `.card-warm` class for cards
+- Custom CSS classes: NEVER prefix with `bg-` (Tailwind 4 purges them). Use `premium-grid`, `grain-overlay`, `card-warm`, `gradient-text-warm`, `ambient-orb-warm`
+- Background patterns: use `premium-grid` class at `opacity-[0.5]`+ (cross-hatch grid)
+- All headings: `heading-display` (Inter 700) — NOT Instrument Serif
 
 ## Brand Assets
 - **Color:** #116dff (brand), Cyan #06B6D4, Violet #8B5CF6, Emerald #10B981, Amber #F59E0B
-- **CTA:** Fuchsia #D946EF, WhatsApp #25D366
-- **Font:** Bricolage Grotesque (headings 700) + Plus Jakarta Sans (body)
+- **Warm palette (BossOS):** #faf7f2 (cream bg), #b8860b (gold), #1a1612 (warm dark), #e8e2d9 (warm border)
+- **CTA:** WhatsApp #25D366
+- **Font:** Inter (headings 700 + body 400) — single font family sitewide
 - **Key Numbers:** 35+ companies, 400+ staff, 173 business units, 27 partners, Founded 2014
+
+## BossOS Page Structure (revamped 2026-04-09)
+1. BossHero — warm cream bg, hero image, "Your whole business. One screen."
+2. BossProofStrip — 3 auto-rotating result stats (DKing, Scaffolding, RevMove)
+3. BossTimeline — "Your First Week" (Day 1 → Week 2+)
+4. BossShowcase — 4 case studies (DKing, Scaffolding, Kak Kenduri, Ibnu Sina) + TV Wall
+5. BossPricing — 3 tiers (Starter RM1,800/mo, Command Center RM2,800/mo, Ultra Mode custom)
+6. BossQuiz — 3-question self-qualify → recommended tier → pre-filled WhatsApp
+7. BossFinalCTA — simplified warm gradient CTA
+
+## Boss OS Pricing (3-tier)
+- Starter: From RM8,000 setup + RM1,800/mo (< 20% digital)
+- Command Center: From RM18,000 setup + RM2,800/mo (20-50% digital) — HIGHLIGHTED
+- Ultra Mode: Custom (50%+ digital, AI decisions)
 
 ## Roadmap
 - [x] Homepage + all pages live
 - [x] Brand story redesign (3-chapter narrative)
 - [x] 24 staff photo galleries
-- [ ] Supabase for lead storage + Resend for ebook delivery
+- [x] BossOS scroll-driven brochure revamp (7 sections)
+- [x] 3-tier pricing with self-qualify quiz
+- [x] 4 showcase case studies with real logos
+- [x] Homepage results CTA strip
+- [x] Always-visible navbar
+- [x] Premium cross-hatch background pattern
+- [ ] Supabase for lead storage (quiz results + WhatsApp clicks)
 - [ ] GA4 / Plausible setup
-- [ ] SEO + schema markup
+- [ ] SEO + schema markup on BossOS page
 - [ ] Blog section
+- [ ] More showcase examples (RevGo, etc.)
 
 ## Gotchas
-- **Staff photo rotation** — some portrait photos display wrong in landscape grids. Always use PIL exif_transpose() when converting.
-- **DNS** — A record 76.76.21.21, www CNAME cname.vercel-dns.com (Exabytes DNS, not Wix)
-- **Subdomains** — space.utopiagroup.com.my + asktoppie.utopiagroup.com.my need CNAME in Exabytes
+- **Tailwind 4 class purging** — custom CSS classes starting with `bg-` get purged. Use plain names like `premium-grid`, NOT `bg-dotted-warm`.
+- **Background pattern visibility** — dots need 1px+ radius and 0.5+ opacity to be visible. Cross-hatch grid lines at 0.5px work at 0.5 opacity.
+- **Staff photo rotation** — use PIL exif_transpose() when converting.
+- **DNS** — A record 76.76.21.21, www CNAME cname.vercel-dns.com (Exabytes DNS)
 
 ## Verification
 - `npm run build` MUST pass
 - Mobile-first: test at 375px
-- Staff photos display correctly (no rotation issues)
+- All 5 showcase logos load (DKing, Scaffolding, Kak Kenduri/Sewa Kerusi Meja, RevMove/Sewa Motor, Ibnu Sina)
+- Quiz flow: 3 questions → result → WhatsApp pre-filled
+- Language toggle: EN/CN on all sections
 - Deploy and output live URL

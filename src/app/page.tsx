@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
+import BossResultsCTA from "@/components/sections/BossResultsCTA";
 import ProofBar from "@/components/sections/ProofBar";
 import TrueAISection from "@/components/sections/TrueAISection";
 import WeUseItSection from "@/components/sections/WeUseItSection";
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
+      <BossResultsCTA />
       <ProofBar />
       <TrueAISection />
       <WeUseItSection />

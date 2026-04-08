@@ -206,49 +206,200 @@ export const INDUSTRIES = [
   { id: "fnb", name: "F&B", icon: "UtensilsCrossed" as const, slug: "fnb" },
 ] as const;
 
-// ─── Pricing ────────────────────────────────────────────────────
+// ─── Pricing (3 Tiers — Data Readiness Based) ──────────────────
 
 export const BOSS_OS_PRICING = [
   {
+    id: "starter",
     name: "Starter",
-    target: "Best for: 1-10 staff, single location",
-    setup: "RM5,000",
-    monthly: "RM1,500",
-    savings: "~RM4,000/month",
+    who: "< 20% digital. Excel, paper, WhatsApp.",
+    setup: "From RM8,000",
+    monthly: "RM1,800",
+    resultPromise: "Stop flying blind",
     badge: null,
     features: [
-      "Sales Command",
+      "Sales Command dashboard",
       "WhatsApp AI (1 number)",
       "Cash Flow View",
       "Monthly AI report",
     ],
     cta: "WhatsApp Us",
     ctaUrl: whatsappUrl(
-      "Hi! I'm interested in the Boss OS Starter plan (RM5K setup + RM1.5K/month). My company has about [X] staff in [industry]."
+      "Hi! I'm interested in the Boss OS Starter plan (RM1,800/month). My company has about [X] staff in [industry]."
     ),
     highlighted: false,
   },
   {
-    name: "Full Boss OS",
-    target: "Best for: 10-50 staff, growing business",
-    setup: "RM12,000",
-    monthly: "RM3,000",
-    savings: "~RM8,000-15,000/month",
-    badge: "MOST POPULAR",
+    id: "command-center",
+    name: "Command Center",
+    who: "20–50% digital. Has POS or accounting.",
+    setup: "From RM18,000",
+    monthly: "RM2,800",
+    resultPromise: "40% margin improvement in 90 days",
+    badge: "MOST BUSINESSES START HERE",
     features: [
       "All 5 core features",
       "WhatsApp AI (3 numbers)",
       "Weekly AI insights",
       "Staff & Ops tracker",
+      "All system integrations",
       "Dedicated support",
     ],
     cta: "WhatsApp Us",
     ctaUrl: whatsappUrl(
-      "Hi! I'm interested in the Full Boss OS plan (RM12K setup + RM3K/month). My company has about [X] staff in [industry]."
+      "Hi! I'm interested in the Boss OS Command Center plan (RM2,800/month). My company has about [X] staff in [industry]."
     ),
     highlighted: true,
   },
+  {
+    id: "ultra",
+    name: "Ultra Mode",
+    who: "50%+ digital or graduating from Command Center.",
+    setup: "Let's talk",
+    monthly: "Custom",
+    resultPromise: "AI runs alongside you",
+    badge: null,
+    features: [
+      "Everything in Command Center",
+      "AI decision module",
+      "Anomaly detection alerts",
+      '"What you\'re missing" insights',
+      "Predictive analytics",
+      "Priority support + quarterly review",
+    ],
+    cta: "Let's Talk",
+    ctaUrl: whatsappUrl(
+      "Hi! I'm interested in Boss OS Ultra Mode. My company has about [X] staff in [industry] and we already have digital systems in place."
+    ),
+    highlighted: false,
+  },
 ] as const;
+
+// ─── Proof Strip Stats ─────────────────────────────────────────
+
+export const BOSS_PROOF_STATS = [
+  { value: "RM14,000", label: "saved per month", source: "DKing Durian" },
+  { value: "94%", label: "on-time delivery", source: "Scaffolding.my" },
+  { value: "30 min", label: "daily admin — down from 4 hours", source: "RevMove Fleet" },
+] as const;
+
+// ─── Your First Week Timeline ──────────────────────────────────
+
+export const BOSS_TIMELINE_STEPS = [
+  {
+    day: "Day 1",
+    icon: "Search" as const,
+    titleKey: "boss.timeline.day1.title" as const,
+    copyKey: "boss.timeline.day1.copy" as const,
+  },
+  {
+    day: "Day 2",
+    icon: "Target" as const,
+    titleKey: "boss.timeline.day2.title" as const,
+    copyKey: "boss.timeline.day2.copy" as const,
+  },
+  {
+    day: "Day 3–4",
+    icon: "Wrench" as const,
+    titleKey: "boss.timeline.day3.title" as const,
+    copyKey: "boss.timeline.day3.copy" as const,
+  },
+  {
+    day: "Day 5",
+    icon: "Rocket" as const,
+    titleKey: "boss.timeline.day5.title" as const,
+    copyKey: "boss.timeline.day5.copy" as const,
+  },
+  {
+    day: "Week 2+",
+    icon: "Sparkles" as const,
+    titleKey: "boss.timeline.week2.title" as const,
+    copyKey: "boss.timeline.week2.copy" as const,
+  },
+] as const;
+
+// ─── Live Showcase Cases ───────────────────────────────────────
+
+export const BOSS_SHOWCASE_CASES = [
+  {
+    id: "dking",
+    name: "DKing Durian",
+    industry: "Durian",
+    logo: "/images/boss-os/logo-dking.png",
+    image: "/images/boss-os/dking-dashboard.webp",
+    copyKey: "boss.showcase.dking.copy" as const,
+    before: { metric: "Stock waste", value: "12%", detail: "RM14,000 lost/month" },
+    after: { metric: "Stock waste", value: "3%", detail: "RM2,100 lost/month" },
+    saved: "RM11,900/month",
+  },
+  {
+    id: "scaffolding",
+    name: "Scaffolding.my",
+    industry: "Scaffolding",
+    logo: "/images/boss-os/logo-scaffolding.png",
+    image: "/images/boss-os/scaffolding-heatmap.webp",
+    copyKey: "boss.showcase.scaffolding.copy" as const,
+    before: { metric: "On-time delivery", value: "71%", detail: "3 untracked drivers" },
+    after: { metric: "On-time delivery", value: "94%", detail: "0 untracked" },
+    saved: "+RM22,000/month",
+  },
+  {
+    id: "kak-kenduri",
+    name: "Kak Kenduri",
+    industry: "Event Rental & Catering",
+    logo: "/images/boss-os/logo-kakkenduri.png",
+    image: "/images/boss-os/kak-kenduri-dashboard.webp",
+    copyKey: "boss.showcase.kakkenduri.copy" as const,
+    before: { metric: "Booking conflicts", value: "8/month", detail: "Double-booked events" },
+    after: { metric: "Booking conflicts", value: "0", detail: "Zero overlap" },
+    saved: "RM9,500/month",
+  },
+  {
+    id: "ibnu-sina",
+    name: "Ibnu Sina Care",
+    industry: "Healthcare",
+    logo: "/images/boss-os/logo-ibnusina.png",
+    image: "/images/boss-os/ibnu-sina-dashboard.webp",
+    copyKey: "boss.showcase.ibnusina.copy" as const,
+    before: { metric: "Patient wait time", value: "45 min", detail: "Manual scheduling" },
+    after: { metric: "Patient wait time", value: "12 min", detail: "AI-optimized slots" },
+    saved: "+35% patient throughput",
+  },
+] as const;
+
+// ─── Quiz Questions ────────────────────────────────────────────
+
+export interface QuizQuestion {
+  titleKey: string;
+  answers: { textKey: string; tierSignal: 1 | 2 | 3 }[];
+}
+
+export const BOSS_QUIZ_QUESTIONS: QuizQuestion[] = [
+  {
+    titleKey: "boss.quiz.q1.title",
+    answers: [
+      { textKey: "boss.quiz.q1.a", tierSignal: 1 },
+      { textKey: "boss.quiz.q1.b", tierSignal: 2 },
+      { textKey: "boss.quiz.q1.c", tierSignal: 3 },
+    ],
+  },
+  {
+    titleKey: "boss.quiz.q2.title",
+    answers: [
+      { textKey: "boss.quiz.q2.a", tierSignal: 1 },
+      { textKey: "boss.quiz.q2.b", tierSignal: 2 },
+      { textKey: "boss.quiz.q2.c", tierSignal: 3 },
+    ],
+  },
+  {
+    titleKey: "boss.quiz.q3.title",
+    answers: [
+      { textKey: "boss.quiz.q3.a", tierSignal: 1 },
+      { textKey: "boss.quiz.q3.b", tierSignal: 2 },
+      { textKey: "boss.quiz.q3.c", tierSignal: 3 },
+    ],
+  },
+];
 
 // ─── Case Studies ───────────────────────────────────────────────
 

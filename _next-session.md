@@ -1,6 +1,6 @@
 # Next Session Spec
-## Context: Redesigned About Us page with 3-chapter brand story + added 24 staff photos across home/about/career pages
-## Task: QA the live site on mobile (375px) — check all staff photos display correctly, brand story chapter layout reads well on small screens, no horizontal scroll
-## Files to touch: src/app/about/page.tsx, src/app/career/page.tsx, src/components/sections/TeamCulture.tsx
-## Decisions already made: Landscape-only photos in grids, alternating chapter layout, "About Us" naming, 27 Partners in stats bar
-## Open questions: CY may want to swap specific photos or adjust brand story copy after seeing it live on mobile
+## Context: BossOS landing page revamp shipped — 7-section scroll-driven brochure with 3-tier pricing, self-qualify quiz, 4 showcase case studies with real logos, premium warm aesthetic
+## Task: Visual QA polish pass — browse the live site on desktop + mobile, fix any layout/spacing inconsistencies, verify all animations work smoothly, check image quality
+## Files to touch: src/components/sections/Boss*.tsx, src/app/globals.css
+## Decisions already made: Inter 700 for all headings, premium cross-hatch grid pattern, warm cream/gold palette, 3-tier pricing (Starter/Command Center/Ultra), DKing+Scaffolding+KakKenduri+IbnuSina showcases
+## Open questions: RevMove logo says "Sewa Motor KL" not "RevMove" — CY may want a different logo. Old BossOS section files (BossROICalculator, BossCoreFeatures, etc.) still exist as dead code — clean up?

@@ -47,7 +47,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-2 inline-block"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-2 inline-block"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 py-2 inline-block"
+                    className="text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text-primary)] transition-colors duration-150 min-h-[44px] inline-flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                   href="https://wa.me/60146869468"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[var(--color-text-primary)] transition-colors duration-150 py-1.5 inline-block"
+                  className="hover:text-[var(--color-text-primary)] transition-colors duration-150 min-h-[44px] inline-flex items-center"
                 >
                   +6014-686 9468
                 </a>
@@ -113,7 +113,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:devteam.utopia@gmail.com"
-                  className="hover:text-[var(--color-text-primary)] transition-colors duration-150 break-all py-1.5 inline-block"
+                  className="hover:text-[var(--color-text-primary)] transition-colors duration-150 break-all min-h-[44px] inline-flex items-center"
                 >
                   devteam.utopia@gmail.com
                 </a>

@@ -3,34 +3,46 @@
 import { WHATSAPP_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 
 export default function BossFinalCTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="section-padding bg-gradient-to-br from-[var(--color-bg-muted)] to-[#fdf2f8]">
-      <div className="section-inner max-w-xl text-center">
+    <section className="section-padding bg-gradient-to-b from-[var(--color-warm-bg)] to-white relative">
+      <div className="grain-overlay" />
+      <div className="section-inner max-w-xl text-center relative z-10">
         <ScrollReveal>
-          <h2 className="heading-lg text-[28px] md:text-[36px] mb-3">
-            {t("cta.title")}
+          <h2 className="heading-display text-[28px] md:text-[40px] mb-8">
+            {t("boss.finalcta.title")}
           </h2>
-          <p className="text-[15px] text-[var(--color-text-body)] mb-8">
-            {t("cta.subtitle")}
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp text-[15px] px-6 py-3.5 min-h-[48px] inline-flex items-center justify-center gap-2"
+            >
+              <MessageCircle size={18} />
+              {t("boss.finalcta.cta.whatsapp")}
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-[15px] px-6 py-3.5 min-h-[48px] inline-flex items-center justify-center gap-2"
+            >
+              <Phone size={18} />
+              {t("boss.finalcta.cta.call")}
+            </a>
+          </div>
+
+          <p className="text-[14px] font-medium text-[var(--color-gold)] mt-6">
+            {t("boss.finalcta.trust")}
           </p>
-
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp text-[16px] px-8 py-4 inline-flex"
-          >
-            <MessageCircle size={20} />
-            {t("cta.button")}
-          </a>
-
-          <p className="text-[12px] text-[var(--color-text-soft)] mt-4">
-            {t("cta.note")}
+          <p className="text-[12px] text-[var(--color-text-soft)] mt-1">
+            {t("boss.finalcta.privacy")}
           </p>
         </ScrollReveal>
       </div>

@@ -179,6 +179,202 @@ export const translations = {
     en: "No commitment. No hard sell. Just a 15-minute chat about your business.",
     zh: "不需要承诺。不会硬销。只是聊15分钟关于你的生意。",
   },
+
+  // ─── NEW: Boss OS Revamp ─────────────────────────────────────
+
+  // Hero (new)
+  "boss.hero.headline": {
+    en: "Your whole business.\nOne screen. Every morning.",
+    zh: "你的整盘生意。\n一个画面。每天早上。",
+  },
+  "boss.hero.subhead": {
+    en: "Sales, staff, cash, customers — all connected. AI tells you what to fix before you sit down.",
+    zh: "销售、员工、现金、客户——全部连接。AI 在你坐下之前就告诉你该处理什么。",
+  },
+  "boss.hero.cta.primary": { en: "See How It Works", zh: "看看怎么运作" },
+  "boss.hero.cta.secondary": { en: "WhatsApp Us", zh: "WhatsApp 我们" },
+  "boss.hero.trust": {
+    en: "35+ companies · 400+ staff · First system live in 5 days",
+    zh: "35+ 家公司 · 400+ 员工 · 5天内系统上线",
+  },
+
+  // Proof Strip
+  "boss.proof.saved": { en: "saved per month", zh: "每月节省" },
+  "boss.proof.ontime": { en: "on-time delivery", zh: "准时交付" },
+  "boss.proof.admin": { en: "daily admin — down from 4 hours", zh: "每日行政——从4小时降至" },
+
+  // Timeline — Your First Week
+  "boss.timeline.title": { en: "Your First Week", zh: "你的第一周" },
+  "boss.timeline.subtitle": {
+    en: "From zero to a working command center in 5 days.",
+    zh: "从零到运作的指挥中心，只需5天。",
+  },
+  "boss.timeline.day1.title": { en: "We Map Your Business", zh: "我们梳理你的生意" },
+  "boss.timeline.day1.copy": {
+    en: "2-hour sit-down. We review every touchpoint — sales, WhatsApp, invoices, staff handoffs. Most bosses find 3–5 blind spots they didn't know existed.",
+    zh: "2小时面谈。我们审查每一个接触点——销售、WhatsApp、发票、员工交接。大多数老板发现3-5个他们不知道的盲点。",
+  },
+  "boss.timeline.day2.title": { en: "You Tell Us Your Goal", zh: "你告诉我们目标" },
+  "boss.timeline.day2.copy": {
+    en: "Increase sales? Cut waste? Replace manual follow-up? We pick one first win and build toward it.",
+    zh: "增加销售？减少浪费？取代手动跟进？我们选一个最快见效的目标来做。",
+  },
+  "boss.timeline.day3.title": { en: "We Build", zh: "我们开工" },
+  "boss.timeline.day3.copy": {
+    en: "Your command center takes shape. Connected to your actual data — POS, WhatsApp, Excel, accounting software, whatever you have.",
+    zh: "你的指挥中心成型。连接你的实际数据——POS、WhatsApp、Excel、会计软件，你有什么我们就接什么。",
+  },
+  "boss.timeline.day5.title": { en: "First Drop", zh: "第一版交付" },
+  "boss.timeline.day5.copy": {
+    en: "Your first working system. Real numbers. Your business on one screen.",
+    zh: "你的第一个可运作系统。真实数据。你的生意在一个画面上。",
+  },
+  "boss.timeline.week2.title": { en: "Ultra Mode Begins", zh: "Ultra 模式启动" },
+  "boss.timeline.week2.copy": {
+    en: "AI starts doing more. Decision alerts. Anomaly detection. Insights you never thought to ask for.",
+    zh: "AI 开始做更多。决策警报。异常检测。你从没想过要问的洞察。",
+  },
+  "boss.timeline.speed": {
+    en: "Most competitors quote 3–6 months. We deliver working software in 5 days.",
+    zh: "大多数竞争对手报价3-6个月。我们5天交付可运作的系统。",
+  },
+
+  // Showcase
+  "boss.showcase.title": { en: "See It Working", zh: "看看实际效果" },
+  "boss.showcase.dking.copy": {
+    en: "39 durian varieties. 139 suppliers. AI tells you which ones cost money before you know it.",
+    zh: "39种榴莲品种。139个供应商。AI 在你察觉之前就告诉你哪些在亏钱。",
+  },
+  "boss.showcase.scaffolding.copy": {
+    en: "Drivers skipping trips? Late deliveries? Boss OS flags it. On-time jumped 23 points in 6 weeks.",
+    zh: "司机跳过行程？延迟交付？Boss OS 标记出来。准时率在6周内提升了23个百分点。",
+  },
+  "boss.showcase.kakkenduri.copy": {
+    en: "Trips, debtors, bookings — all on one screen. AI flags double-booked dates before your team even notices.",
+    zh: "行程、欠款、预订——全在一个画面。AI 在你的团队察觉之前就标记出重复预订的日期。",
+  },
+  "boss.showcase.ibnusina.copy": {
+    en: "Patient scheduling, staff rostering, inventory tracking. AI cuts wait times by optimizing appointment slots automatically.",
+    zh: "患者排期、员工排班、库存追踪。AI 自动优化预约时段，缩短等候时间。",
+  },
+  "boss.showcase.tv.headline": {
+    en: "Every Boss OS client gets this.",
+    zh: "每个 Boss OS 客户都有这个。",
+  },
+  "boss.showcase.tv.subhead": {
+    en: "A live wall display for your office. Your operation, running 24/7.",
+    zh: "办公室的实时大屏幕。你的运营，全天候运作。",
+  },
+  "boss.showcase.tv.detail": {
+    en: "Works on any TV. Auto-refreshes. Even works offline.",
+    zh: "任何电视都能用。自动刷新。断网也能运作。",
+  },
+  "boss.showcase.before": { en: "Before", zh: "之前" },
+  "boss.showcase.after": { en: "After", zh: "之后" },
+  "boss.showcase.saved": { en: "Saved", zh: "节省" },
+
+  // Pricing (new 3-tier)
+  "boss.pricing.title": {
+    en: "Cheaper than one admin staff. Smarter than five.",
+    zh: "比一个行政人员便宜。比五个还聪明。",
+  },
+  "boss.pricing.subtitle": {
+    en: "Pick your starting point. Upgrade anytime.",
+    zh: "选择你的起点。随时可以升级。",
+  },
+  "boss.pricing.setup": { en: "one-time setup", zh: "一次性设置费" },
+  "boss.pricing.perMonth": { en: "/mo", zh: "/月" },
+  "boss.pricing.derisk": {
+    en: "Setup pays for itself in month 3. No lock-in, cancel anytime.",
+    zh: "设置费在第3个月回本。不绑约，随时取消。",
+  },
+  "boss.pricing.grant": {
+    en: "Eligible for MDEC / SME Corp Digitalization Grant (RM5,000–RM100,000)",
+    zh: "符合 MDEC / SME Corp 数字化津贴资格 (RM5,000–RM100,000)",
+  },
+  "boss.pricing.conversion": {
+    en: "Clients who move to Command Center see an average 40% margin improvement in 90 days.",
+    zh: "升级到 Command Center 的客户在90天内平均利润率提升40%。",
+  },
+
+  // Quiz
+  "boss.quiz.title": {
+    en: "Which Boss OS is right for your business?",
+    zh: "哪个 Boss OS 适合你的生意？",
+  },
+  "boss.quiz.subtitle": {
+    en: "3 questions. 30 seconds. No signup.",
+    zh: "3个问题。30秒。不用注册。",
+  },
+  "boss.quiz.q1.title": {
+    en: "How does your business track sales today?",
+    zh: "你的生意现在怎么记录销售？",
+  },
+  "boss.quiz.q1.a": { en: "Paper, WhatsApp, or memory", zh: "纸张、WhatsApp 或记忆" },
+  "boss.quiz.q1.b": { en: "Excel or basic POS", zh: "Excel 或基本 POS" },
+  "boss.quiz.q1.c": { en: "Accounting software + POS integrated", zh: "会计软件 + POS 已整合" },
+  "boss.quiz.q2.title": {
+    en: "What do you want AI to do first?",
+    zh: "你想让 AI 先做什么？",
+  },
+  "boss.quiz.q2.a": {
+    en: "Show me my numbers — I'm flying blind",
+    zh: "让我看到数字——我现在完全摸黑",
+  },
+  "boss.quiz.q2.b": {
+    en: "Connect my systems and give me weekly insights",
+    zh: "连接我的系统，给我每周洞察",
+  },
+  "boss.quiz.q2.c": {
+    en: "Tell me what I'm missing and help me decide",
+    zh: "告诉我我错过了什么，帮我做决定",
+  },
+  "boss.quiz.q3.title": { en: "How many staff do you manage?", zh: "你管多少员工？" },
+  "boss.quiz.q3.a": { en: "1–10", zh: "1–10" },
+  "boss.quiz.q3.b": { en: "10–50", zh: "10–50" },
+  "boss.quiz.q3.c": { en: "50+", zh: "50+" },
+  "boss.quiz.result.starter": {
+    en: "Based on your answers, Starter is the best starting point.",
+    zh: "根据你的回答，Starter 是最佳起步方案。",
+  },
+  "boss.quiz.result.command": {
+    en: "Based on your answers, Command Center is the best starting point.",
+    zh: "根据你的回答，Command Center 是最佳起步方案。",
+  },
+  "boss.quiz.result.ultra": {
+    en: "Based on your answers, Ultra Mode will take your business to the next level.",
+    zh: "根据你的回答，Ultra Mode 将把你的生意提升到下一个层次。",
+  },
+  "boss.quiz.cta": { en: "WhatsApp Us About This Plan", zh: "WhatsApp 咨询这个方案" },
+  "boss.quiz.retake": { en: "Retake quiz", zh: "重做测试" },
+
+  // Final CTA (new)
+  "boss.finalcta.title": {
+    en: "Ready to see your business on one screen?",
+    zh: "准备好在一个画面看到你的整盘生意？",
+  },
+  "boss.finalcta.cta.whatsapp": { en: "WhatsApp Us", zh: "WhatsApp 我们" },
+  "boss.finalcta.cta.call": { en: "Book a Call", zh: "预约通话" },
+  "boss.finalcta.trust": {
+    en: "First system live in 5 days. From RM2,800/mo.",
+    zh: "5天内系统上线。每月 RM2,800 起。",
+  },
+  "boss.finalcta.privacy": {
+    en: "Your data stays yours. PDPA compliant.",
+    zh: "你的数据永远是你的。符合 PDPA。",
+  },
+
+  // Homepage Results CTA
+  "homepage.resultscta.eyebrow": {
+    en: "Companies using Boss OS right now",
+    zh: "正在使用 Boss OS 的公司",
+  },
+  "homepage.resultscta.headline": {
+    en: "Want results like this?",
+    zh: "想要这样的成果？",
+  },
+  "homepage.resultscta.cta": { en: "See How It Works", zh: "看看怎么运作" },
+  "homepage.resultscta.price": { en: "From RM2,800/mo", zh: "每月 RM2,800 起" },
 } as const;
 
 export type TranslationKey = keyof typeof translations;

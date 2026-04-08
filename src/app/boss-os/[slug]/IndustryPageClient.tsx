@@ -285,7 +285,7 @@ export default function IndustryPageClient({ page }: { page: IndustryPage }) {
                     </span>
                   </div>
                   <div className="text-[12px] font-semibold text-emerald-600 mb-4">
-                    → saves {plan.savings}
+                    {plan.resultPromise}
                   </div>
                   <ul className="space-y-2 mb-5">
                     {plan.features.map((f) => (

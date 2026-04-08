@@ -1,28 +1,26 @@
 import type { Metadata } from "next";
 import BossHero from "@/components/sections/BossHero";
-import BossROICalculator from "@/components/sections/BossROICalculator";
-import BossCoreFeatures from "@/components/sections/BossCoreFeatures";
-import BossDataReadiness from "@/components/sections/BossDataReadiness";
-import BossIndustryGrid from "@/components/sections/BossIndustryGrid";
+import BossProofStrip from "@/components/sections/BossProofStrip";
+import BossTimeline from "@/components/sections/BossTimeline";
+import BossShowcase from "@/components/sections/BossShowcase";
 import BossPricing from "@/components/sections/BossPricing";
-import BossCaseStudies from "@/components/sections/BossCaseStudies";
-import BossDataPrivacy from "@/components/sections/BossDataPrivacy";
+import BossQuiz from "@/components/sections/BossQuiz";
 import BossFinalCTA from "@/components/sections/BossFinalCTA";
 
 export const metadata: Metadata = {
-  title: "Boss OS — Your Entire Business. One Screen. | Utopia Group",
+  title: "Boss OS — Your Whole Business. One Screen. Every Morning. | Utopia Group",
   description:
-    "Boss OS is a command center built for Malaysian SMEs. Sales, cash flow, staff, WhatsApp AI — all in one screen. Setup from RM5,000. Most clients save RM8,000-15,000/month.",
+    "Boss OS is a command center built for Malaysian SMEs. Sales, cash flow, staff, WhatsApp AI — one screen. First system live in 5 days. From RM2,800/mo.",
   openGraph: {
-    title: "Boss OS — Your Entire Business. One Screen.",
+    title: "Boss OS — Your Whole Business. One Screen. Every Morning.",
     description:
-      "Command center for Malaysian SMEs. Sales, cash flow, staff, WhatsApp AI. Setup from RM5,000. Save RM8,000-15,000/month.",
+      "Command center for Malaysian SMEs. First system live in 5 days. From RM2,800/mo. 40% margin improvement in 90 days.",
     url: "/boss-os",
   },
   twitter: {
-    title: "Boss OS — Your Entire Business. One Screen.",
+    title: "Boss OS — Your Whole Business. One Screen. Every Morning.",
     description:
-      "Command center for Malaysian SMEs. Sales, cash flow, staff, WhatsApp AI. Setup from RM5,000.",
+      "Command center for Malaysian SMEs. First system live in 5 days. From RM2,800/mo.",
   },
 };
 
@@ -30,13 +28,11 @@ export default function BossOSPage() {
   return (
     <main>
       <BossHero />
-      <BossROICalculator />
-      <BossCoreFeatures />
-      <BossDataReadiness />
-      <BossIndustryGrid />
+      <BossProofStrip />
+      <BossTimeline />
+      <BossShowcase />
       <BossPricing />
-      <BossCaseStudies />
-      <BossDataPrivacy />
+      <BossQuiz />
       <BossFinalCTA />
     </main>
   );
