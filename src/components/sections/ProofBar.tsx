@@ -1,6 +1,9 @@
+"use client";
+
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { PROOF_STATS } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 
 function ClaudeIcon() {
   return (
@@ -42,6 +45,7 @@ const AI_TOOLS = [
 ];
 
 export default function ProofBar() {
+  const { t } = useLanguage();
   return (
     <section className="bg-white border-b border-[var(--color-border)]">
       <div className="section-padding !py-10 md:!py-14">
@@ -68,7 +72,7 @@ export default function ProofBar() {
           <ScrollReveal delay={300}>
             <div className="border-t border-[var(--color-border)] pt-8">
               <p className="text-center text-[12px] font-semibold uppercase tracking-[0.15em] text-[var(--color-text-soft)] mb-5">
-                We build with the tools that matter
+                {t("home.proof.tools")}
               </p>
               <div className="flex items-center justify-center gap-x-4 gap-y-3 md:gap-6 flex-wrap">
                 {AI_TOOLS.map((tool) => (

@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Utopia AI Audit — Sample Reports</title>
+<style>
+  :root {
+    --indigo: #1E1B4B;
+    --indigo-2: #312E81;
+    --amber: #F59E0B;
+    --amber-dark: #B45309;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50: #F9FAFB;
+    --hairline: #E5E7EB;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f0f0f3;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--gray-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* A4 page: 210mm × 297mm. We render at a fixed px size for screenshot consistency. */
+  .page {
+    width: 827px;          /* 210mm @ 96dpi */
+    min-height: 1169px;    /* 297mm @ 96dpi */
+    background: #fff;
+    margin: 24px auto;
+    padding: 48px 56px 40px 56px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: relative;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--gray-700);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== HEADER ===== */
+  .hdr {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hdr-left { flex: 1; min-width: 0; }
+  .title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--indigo);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 6px 0;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin: 0;
+    font-weight: 500;
+  }
+  .hdr-right {
+    text-align: right;
+    min-width: 200px;
+  }
+  .wordmark {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--indigo);
+    letter-spacing: -0.03em;
+    margin: 0 0 8px 0;
+  }
+  .meta {
+    font-size: 9px;
+    color: var(--gray-500);
+    line-height: 1.55;
+  }
+  .meta-strong { color: var(--gray-700); font-weight: 600; }
+
+  /* ===== SNAPSHOT STRIP ===== */
+  .snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 10px;
+    color: var(--gray-700);
+  }
+  .snap-cell {
+    padding: 0 18px;
+    border-right: 1px solid var(--hairline);
+  }
+  .snap-cell:first-child { padding-left: 0; }
+  .snap-cell:last-child { border-right: none; padding-right: 0; }
+  .snap-label {
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* ===== FINDINGS ===== */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--indigo);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 18px 0 10px 0;
+  }
+  .findings {
+    display: flex;
+    flex-direction: column;
+  }
+  .finding {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .finding:last-child { border-bottom: none; }
+  .f-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--indigo);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .f-body { min-width: 0; }
+  .f-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--indigo);
+    margin: 2px 0 4px 0;
+    line-height: 1.3;
+  }
+  .f-desc {
+    font-size: 9.5px;
+    color: var(--gray-700);
+    line-height: 1.55;
+    margin: 0 0 6px 0;
+  }
+  .f-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 9.5px;
+    color: var(--gray-500);
+    padding-top: 2px;
+  }
+  .f-metric b { color: var(--gray-900); font-weight: 600; }
+  .f-saving b { color: var(--amber-dark); font-weight: 700; }
+
+  /* ===== IMPACT BOX ===== */
+  .impact {
+    margin-top: 18px;
+    border: 1.5px solid var(--amber);
+    border-radius: 6px;
+    padding: 16px 20px;
+    background: #FFFBEB;
+  }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 6px;
+    column-gap: 24px;
+    font-size: 10.5px;
+    color: var(--gray-700);
+    align-items: baseline;
+  }
+  .impact-grid .v { font-weight: 600; color: var(--gray-900); text-align: right; }
+  .impact-divider {
+    height: 1px;
+    background: var(--amber);
+    opacity: 0.35;
+    margin: 10px 0;
+  }
+  .net-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .net-label {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--indigo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .net-value {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .payback {
+    margin-top: 10px;
+    font-size: 10px;
+    color: var(--gray-700);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .payback b { color: var(--gray-900); font-weight: 600; }
+
+  /* ===== ENGAGEMENT TERMS ===== */
+  .terms {
+    margin-top: 18px;
+  }
+  .terms-grid {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .terms-row {
+    display: contents;
+  }
+  .terms-label, .terms-content {
+    padding: 10px 14px;
+    font-size: 9.5px;
+    line-height: 1.55;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .terms-row:last-child .terms-label,
+  .terms-row:last-child .terms-content {
+    border-bottom: none;
+  }
+  .terms-label {
+    background: var(--gray-50);
+    font-weight: 700;
+    color: var(--indigo);
+    border-right: 1px solid var(--hairline);
+  }
+  .terms-label .amt {
+    display: block;
+    font-size: 13px;
+    color: var(--indigo);
+    margin-top: 2px;
+    letter-spacing: -0.01em;
+  }
+  .terms-content ul {
+    margin: 0;
+    padding-left: 16px;
+  }
+  .terms-content li { margin-bottom: 3px; }
+  .terms-content li:last-child { margin-bottom: 0; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--hairline);
+    font-size: 8.5px;
+    color: var(--gray-500);
+    text-align: center;
+    line-height: 1.6;
+  }
+  .footer-strong { color: var(--gray-700); font-weight: 600; }
+  .footer-tiny { font-size: 7.5px; margin-top: 4px; color: #9CA3AF; }
+
+  /* Screen-only spacer between pages */
+  @media screen {
+    .page + .page { margin-top: 32px; }
+  }
+
+  /* Print / screenshot */
+  @media print {
+    body { background: #fff; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PAGE 1 — KEDAI KOPI AH SENG                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-kopi">
+
+  <div class="hdr">
+    <div class="hdr-left">
+      <h1 class="title">AI Audit — Kedai Kopi Ah Seng</h1>
+      <p class="subtitle">3 outlets · Petaling Jaya / Subang Jaya / Klang</p>
+    </div>
+    <div class="hdr-right">
+      <div class="wordmark">utopia.</div>
+      <div class="meta">
+        <div class="meta-strong">Prepared by Utopia AI Team</div>
+        <div>Utopia Accelerator Sdn Bhd (1547823-K)</div>
+        <div>Engagement: RM500 · 15 Apr 2026</div>
+        <div>Report ref: UAA-2026-008</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snapshot">
+    <div class="snap-cell">
+      <div class="snap-label">Operation</div>
+      3 outlets · 42 staff<br>(28 kitchen/service, 8 cashier, 6 admin)
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Volume</div>
+      RM380k/mo revenue · 2,400 orders/day<br>60% dine-in / 40% delivery
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Current stack</div>
+      Loyverse POS · Excel inventory ·<br>WhatsApp coordination · manual payroll
+    </div>
+  </div>
+
+  <div class="section-label">Top 5 findings</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="f-num">1</div>
+      <div class="f-body">
+        <div class="f-title">Daily stock count eats 14 staff-hours/week</div>
+        <div class="f-desc">Each outlet manager counts 47 SKUs by hand at opening, WhatsApps a photo of the tally sheet to HQ, ops admin re-types into Excel. Errors surface 3–5 days late when variance is reconciled. 20 hrs/week lost across the operation, ~RM2k/month in stock shrinkage caught too late.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM15,600/yr</b></span>
+          <span class="f-metric">Fix: <b>RM3,800</b> + RM180/mo</span>
+          <span class="f-metric">Payback: <b>3 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">2</div>
+      <div class="f-body">
+        <div class="f-title">WhatsApp order chaos — 11% of delivery orders mis-keyed</div>
+        <div class="f-desc">Grab, Foodpanda, and walk-in WhatsApp orders funnel to one cashier phone. Cashier manually retypes into POS. 11% have wrong items or missing modifiers ("kurang manis", "tambah ais", "bungkus"). RM13k/yr in remakes + est. RM40k/yr delivery churn from 1-star reviews citing wrong orders.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM53,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM6,500</b> + RM450/mo</span>
+          <span class="f-metric">Payback: <b>4 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">3</div>
+      <div class="f-body">
+        <div class="f-title">Payroll takes 2.5 days/month — PCB errors on 3 of last 6 months</div>
+        <div class="f-desc">Admin calculates OT, allowances, EPF/SOCSO/PCB in Excel. Three recent months had PCB under-deduction flagged by accountant (RM800–2,100 each). LHDN penalty exposure plus monthly accountant clean-up fees of RM400.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM8,400/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,400</b> + RM120/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">4</div>
+      <div class="f-body">
+        <div class="f-title">No margin visibility — 2 bestsellers losing money per plate</div>
+        <div class="f-desc">POS tracks revenue per item but not food cost per item. Spot-check on 12 items found Nasi Lemak Ayam and Mee Goreng Mamak are negative-margin after current santan/chicken/oil cost. Repricing by RM1.50 or removing recovers RM2,800/month.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM33,600/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,200</b> + RM80/mo</span>
+          <span class="f-metric">Payback: <b>1 month</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">5</div>
+      <div class="f-body">
+        <div class="f-title">Unverified OT claims — 18% of March OT had no POS activity</div>
+        <div class="f-desc">Staff write OT on paper, manager signs, admin enters to payroll. No geo-fence or clock-in photo. March 2026 audit: 18% of claimed OT hours had no corresponding POS transactions during the claimed window. Same 6 staff consistently top OT claims.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM28,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM1,800</b> + RM60/mo</span>
+          <span class="f-metric">Payback: <b>1 month</b></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="impact">
+    <div class="impact-grid">
+      <div>Time saved</div><div class="v">780 hrs/year (~0.4 FTE)</div>
+      <div>Money saved / recovered</div><div class="v">RM99,400/year</div>
+      <div>Our cost (setup + 12 months service)</div><div class="v">RM25,480</div>
+    </div>
+    <div class="impact-divider"></div>
+    <div class="net-row">
+      <div class="net-label">Net year-1 gain</div>
+      <div class="net-value">RM73,920</div>
+    </div>
+    <div class="payback">
+      <span>Payback on full engagement</span>
+      <span><b>~3 months</b></span>
+    </div>
+  </div>
+
+  <div class="section-label">Engagement terms</div>
+  <div class="terms">
+    <div class="terms-grid">
+      <div class="terms-row">
+        <div class="terms-label">Full rollout<span class="amt">RM25,480</span></div>
+        <div class="terms-content">
+          <ul>
+            <li><b>50% upfront on confirmation:</b> RM12,740</li>
+            <li><b>6-month installment:</b> RM2,123/month (Months 1–6)</li>
+            <li><b>Total collected by Month 6</b> — service continues through Month 12 at no extra cost</li>
+          </ul>
+        </div>
+      </div>
+      <div class="terms-row">
+        <div class="terms-label">Pilot option</div>
+        <div class="terms-content">Start with any 1 finding: 50% upfront + 6-month installment on that finding's setup fee. <b>50% refund</b> if payback misses projection by Month 3.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div><span class="footer-strong">Utopia Accelerator Sdn Bhd</span> · utopia.my · CY Ng · +60 12-xxx xxxx</div>
+    <div class="footer-tiny">© 2026 Utopia Accelerator Sdn Bhd. This document is confidential and prepared for the named client only. Projections are estimates based on observed data during the audit period and are not guaranteed.</div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PAGE 2 — KLINIK MEDIK SEJAHTERA                                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-clinic">
+
+  <div class="hdr">
+    <div class="hdr-left">
+      <h1 class="title">AI Audit — Klinik Medik Sejahtera</h1>
+      <p class="subtitle">3 doctors · 8 staff · Bandar Baru Bangi + Kajang</p>
+    </div>
+    <div class="hdr-right">
+      <div class="wordmark">utopia.</div>
+      <div class="meta">
+        <div class="meta-strong">Prepared by Utopia AI Team</div>
+        <div>Utopia Accelerator Sdn Bhd (1547823-K)</div>
+        <div>Engagement: RM500 · 15 Apr 2026</div>
+        <div>Report ref: UAA-2026-014</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snapshot">
+    <div class="snap-cell">
+      <div class="snap-label">Operation</div>
+      2 clinic locations · 3 GPs · 8 support staff<br>(4 reception, 2 nurse, 2 dispensary)
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Volume</div>
+      ~1,600 patients/month · RM220k/mo revenue<br>62% panel / 38% walk-in
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Current stack</div>
+      ClinicPro (local install) · paper patient cards<br>Manual panel claim forms · WhatsApp appts
+    </div>
+  </div>
+
+  <div class="section-label">Top 5 findings</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="f-num">1</div>
+      <div class="f-body">
+        <div class="f-title">Panel claim submissions — 28 days avg turnaround, 14% rejected</div>
+        <div class="f-desc">Claim forms handwritten, photocopied, couriered to 9 panels (PMCare, AIA, Great Eastern, Allianz, etc.). 14% bounce back for missing IC copy, wrong diagnosis code, or illegible handwriting. Average RM38k in claims outstanding past 60 days at any time.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM42,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM4,200</b> + RM220/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">2</div>
+      <div class="f-body">
+        <div class="f-title">Appointment no-shows at 23% — no reminder system</div>
+        <div class="f-desc">Patients book via WhatsApp or walk-in, no automated reminder. 23% no-show rate on 380 weekly bookings = ~87 wasted slots/week. Doctors idle during no-show windows; panel patients unable to re-book get turned away.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM31,200/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,800</b> + RM150/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">3</div>
+      <div class="f-body">
+        <div class="f-title">Medicine inventory — RM18k/yr expired stock written off</div>
+        <div class="f-desc">Dispensary tracks stock on Excel, updated weekly. No batch or expiry tracking. March 2026 write-off: RM4,200 of antibiotics, insulin, and eye drops expired before use. Over-ordering slow-movers while fast-movers stock out.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM18,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM3,400</b> + RM160/mo</span>
+          <span class="f-metric">Payback: <b>3 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">4</div>
+      <div class="f-body">
+        <div class="f-title">MC and referral letters — 45 min/day doctor admin time</div>
+        <div class="f-desc">Doctors handwrite MCs and referral letters between consults. 15 MCs + 4 referrals/day × ~2 min each = 45 min of doctor time lost daily. Template exists in Word but not linked to patient record or auto-populated with diagnosis codes.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM28,800/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,200</b> + RM90/mo</span>
+          <span class="f-metric">Payback: <b>1.5 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">5</div>
+      <div class="f-body">
+        <div class="f-title">Cash reconciliation — RM600–1,800/mo unexplained variance</div>
+        <div class="f-desc">End-of-day till count vs ClinicPro report shows consistent variance. No audit trail on cash refunds or manual discounts. Receptionists have full edit rights in ClinicPro, no approval workflow on price overrides.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM14,400/yr</b></span>
+          <span class="f-metric">Fix: <b>RM1,900</b> + RM70/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="impact">
+    <div class="impact-grid">
+      <div>Time saved</div><div class="v">620 hrs/year (~0.3 FTE)</div>
+      <div>Money saved / recovered</div><div class="v">RM134,400/year</div>
+      <div>Our cost (setup + 12 months service)</div><div class="v">RM22,060</div>
+    </div>
+    <div class="impact-divider"></div>
+    <div class="net-row">
+      <div class="net-label">Net year-1 gain</div>
+      <div class="net-value">RM112,340</div>
+    </div>
+    <div class="payback">
+      <span>Payback on full engagement</span>
+      <span><b>~2 months</b></span>
+    </div>
+  </div>
+
+  <div class="section-label">Engagement terms</div>
+  <div class="terms">
+    <div class="terms-grid">
+      <div class="terms-row">
+        <div class="terms-label">Full rollout<span class="amt">RM22,060</span></div>
+        <div class="terms-content">
+          <ul>
+            <li><b>50% upfront on confirmation:</b> RM11,030</li>
+            <li><b>6-month installment:</b> RM1,838/month (Months 1–6)</li>
+            <li><b>Total collected by Month 6</b> — service continues through Month 12 at no extra cost</li>
+          </ul>
+        </div>
+      </div>
+      <div class="terms-row">
+        <div class="terms-label">Pilot option</div>
+        <div class="terms-content">Start with any 1 finding: 50% upfront + 6-month installment on that finding's setup fee. <b>50% refund</b> if payback misses projection by Month 3.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div><span class="footer-strong">Utopia Accelerator Sdn Bhd</span> · utopia.my · CY Ng · +60 12-xxx xxxx</div>
+    <div class="footer-tiny">© 2026 Utopia Accelerator Sdn Bhd. This document is confidential and prepared for the named client only. Projections are estimates based on observed data during the audit period and are not guaranteed.</div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PAGE 3 — RESIDENSI HARMONI MANAGEMENT                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="page" id="page-property">
+
+  <div class="hdr">
+    <div class="hdr-left">
+      <h1 class="title">AI Audit — Residensi Harmoni Management</h1>
+      <p class="subtitle">4 condominiums · 120 units · Mont Kiara / Cheras / Puchong / Shah Alam</p>
+    </div>
+    <div class="hdr-right">
+      <div class="wordmark">utopia.</div>
+      <div class="meta">
+        <div class="meta-strong">Prepared by Utopia AI Team</div>
+        <div>Utopia Accelerator Sdn Bhd (1547823-K)</div>
+        <div>Engagement: RM500 · 15 Apr 2026</div>
+        <div>Report ref: UAA-2026-021</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="snapshot">
+    <div class="snap-cell">
+      <div class="snap-label">Portfolio</div>
+      4 strata properties · 120 rental units<br>94% occupancy · 2 full-time admin
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Volume</div>
+      RM540k/mo rental revenue<br>RM78k/mo maintenance collected
+    </div>
+    <div class="snap-cell">
+      <div class="snap-label">Current stack</div>
+      Google Sheets rent roll · WhatsApp tenant groups<br>Manual invoice PDFs · Maybank2U Biz
+    </div>
+  </div>
+
+  <div class="section-label">Top 5 findings</div>
+  <div class="findings">
+
+    <div class="finding">
+      <div class="f-num">1</div>
+      <div class="f-body">
+        <div class="f-title">Late rent chasing — 38 days avg collection cycle, RM82k always outstanding</div>
+        <div class="f-desc">Admin manually WhatsApps each late tenant. No automated reminder ladder (day 3 / day 7 / day 14 / day 21). 23% of tenants consistently pay 2+ weeks late. No credit record kept — same late payers renewed year after year without rent adjustment.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM46,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM3,800</b> + RM180/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">2</div>
+      <div class="f-body">
+        <div class="f-title">Maintenance tickets — 6.4 days avg resolution, 22% lost in WhatsApp</div>
+        <div class="f-desc">Tenants WhatsApp complaints to 3 different numbers (admin, security guard, owner). No ticketing system. Random tenant survey: 22% of reported issues never actioned. Aircon and plumbing complaints average 6.4 days to close, driving renewal churn.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM24,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM4,200</b> + RM260/mo</span>
+          <span class="f-metric">Payback: <b>3 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">3</div>
+      <div class="f-body">
+        <div class="f-title">Utility reconciliation — RM3,200/mo under-billed on TNB + water</div>
+        <div class="f-desc">Common area utilities (corridor lights, lift, pool pump) split across units on flat rate. Spot-check on 2 properties shows actual usage 18% higher than billed. Owner silently absorbing the gap — never reviewed since 2022 rate changes.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM38,400/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,600</b> + RM110/mo</span>
+          <span class="f-metric">Payback: <b>1 month</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">4</div>
+      <div class="f-body">
+        <div class="f-title">Tenant screening — no background checks, 3 evictions in 2025</div>
+        <div class="f-desc">Current process: IC copy + payslip photo. No CCRIS/CTOS check, no prior-landlord reference, no employment verification call. 3 evictions in 2025 cost RM38k combined (unpaid rent + legal + repair). All 3 had red flags missable only via proper screening.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM28,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM2,400</b> + RM90/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding">
+      <div class="f-num">5</div>
+      <div class="f-body">
+        <div class="f-title">Inspection reports — inconsistent, RM12k disputed deposits in 2025</div>
+        <div class="f-desc">Move-in/move-out inspections done on paper with photos on personal phones in various formats. 7 deposit disputes in 2025; 4 ruled against landlord at Tribunal Tuntutan Pengguna Malaysia for insufficient evidence. No timestamped condition record per unit.</div>
+        <div class="f-metrics">
+          <span class="f-metric f-saving">Saving: <b>RM12,000/yr</b></span>
+          <span class="f-metric">Fix: <b>RM1,800</b> + RM80/mo</span>
+          <span class="f-metric">Payback: <b>2 months</b></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="impact">
+    <div class="impact-grid">
+      <div>Time saved</div><div class="v">840 hrs/year (~0.4 FTE)</div>
+      <div>Money saved / recovered</div><div class="v">RM148,400/year</div>
+      <div>Our cost (setup + 12 months service)</div><div class="v">RM22,280</div>
+    </div>
+    <div class="impact-divider"></div>
+    <div class="net-row">
+      <div class="net-label">Net year-1 gain</div>
+      <div class="net-value">RM126,120</div>
+    </div>
+    <div class="payback">
+      <span>Payback on full engagement</span>
+      <span><b>~2 months</b></span>
+    </div>
+  </div>
+
+  <div class="section-label">Engagement terms</div>
+  <div class="terms">
+    <div class="terms-grid">
+      <div class="terms-row">
+        <div class="terms-label">Full rollout<span class="amt">RM22,280</span></div>
+        <div class="terms-content">
+          <ul>
+            <li><b>50% upfront on confirmation:</b> RM11,140</li>
+            <li><b>6-month installment:</b> RM1,857/month (Months 1–6)</li>
+            <li><b>Total collected by Month 6</b> — service continues through Month 12 at no extra cost</li>
+          </ul>
+        </div>
+      </div>
+      <div class="terms-row">
+        <div class="terms-label">Pilot option</div>
+        <div class="terms-content">Start with any 1 finding: 50% upfront + 6-month installment on that finding's setup fee. <b>50% refund</b> if payback misses projection by Month 3.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div><span class="footer-strong">Utopia Accelerator Sdn Bhd</span> · utopia.my · CY Ng · +60 12-xxx xxxx</div>
+    <div class="footer-tiny">© 2026 Utopia Accelerator Sdn Bhd. This document is confidential and prepared for the named client only. Projections are estimates based on observed data during the audit period and are not guaranteed.</div>
+  </div>
+
+</section>
+
+</body>
+</html>

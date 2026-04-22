@@ -1,31 +1,17 @@
-import type { Metadata } from "next";
-import { WHATSAPP_URL } from "@/lib/constants";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact Utopia Group — WhatsApp Us",
-  description:
-    "Get in touch with Utopia Group. WhatsApp us for AI implementation, masterclass bookings, or partnerships. We reply within 24 hours.",
-  openGraph: {
-    title: "Contact Utopia Group — WhatsApp Us",
-    description:
-      "Get in touch with Utopia Group. WhatsApp us for AI implementation, masterclass bookings, or partnerships.",
-    url: "/contact",
-  },
-  twitter: {
-    title: "Contact Utopia Group — WhatsApp Us",
-    description:
-      "Get in touch with Utopia Group. WhatsApp us for AI implementation, masterclass bookings, or partnerships.",
-  },
-};
+import { WHATSAPP_URL } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 
 export default function Page() {
+  const { t } = useLanguage();
   return (
     <main className="min-h-screen flex items-center justify-center section-padding">
       <div className="text-center">
-        <h1 className="heading-lg text-3xl mb-4">Coming Soon</h1>
-        <p className="text-[var(--color-text-muted)] mb-6">This page is being rebuilt.</p>
+        <h1 className="heading-lg text-3xl mb-4">{t("comingSoon.title")}</h1>
+        <p className="text-[var(--color-text-muted)] mb-6">{t("comingSoon.sub")}</p>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-          WhatsApp Us
+          {t("comingSoon.whatsapp")}
         </a>
       </div>
     </main>

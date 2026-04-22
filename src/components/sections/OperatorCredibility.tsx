@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { OPERATOR_RESULTS } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 
 const OUR_COMPANIES = [
   { name: "Utopia Co-Living", logo: "/images/wix/logo-utopia-coliving.png", url: "https://utopiacoliving.com", dark: false },
@@ -26,6 +29,20 @@ const OUR_COMPANIES = [
 ];
 
 export default function OperatorCredibility() {
+  const { t } = useLanguage();
+
+  const industryLabels: Record<string, string> = {
+    "Co-Living": t("home.operator.coLiving"),
+    "Healthcare": t("home.operator.healthcare"),
+    "Scaffolding": t("home.operator.scaffolding"),
+  };
+
+  const resultDescriptions: Record<number, string> = {
+    0: t("home.operator.result1"),
+    1: t("home.operator.result2"),
+    2: t("home.operator.result3"),
+  };
+
   return (
     <section className="relative bg-[#0f1729]">
       <div className="relative z-[1] section-padding">
@@ -36,17 +53,15 @@ export default function OperatorCredibility() {
               <div className="md:grid md:grid-cols-[1.2fr_1fr] md:gap-12 md:items-end">
                 <div>
                   <h2 className="text-[28px] md:text-[40px] font-bold tracking-tight leading-tight text-white mb-4 md:mb-0">
-                    We&apos;re not consultants. We&apos;re not software developers.{" "}
+                    {t("home.operator.title")}{" "}
                     <span className="gradient-text-hero font-extrabold">
-                      We&apos;re business owners.
+                      {t("home.operator.title2")}
                     </span>
                   </h2>
                 </div>
                 <div>
                   <p className="text-[#b0bec5] text-[15px] leading-relaxed">
-                    Every AI tool we sell, we use first. Across 173 business units
-                    with 400+ staff. If it doesn&apos;t work for us, we don&apos;t
-                    sell it to you.
+                    {t("home.operator.sub")}
                   </p>
                 </div>
               </div>
@@ -63,10 +78,10 @@ export default function OperatorCredibility() {
                       {result.stat}
                     </div>
                     <div className="font-semibold text-white text-[15px] mb-1">
-                      {result.industry}
+                      {industryLabels[result.industry] || result.industry}
                     </div>
                     <p className="text-[#b0bec5] text-[14px] leading-relaxed mt-auto">
-                      {result.description}
+                      {resultDescriptions[i] || result.description}
                     </p>
                   </div>
                 </ScrollReveal>
@@ -78,7 +93,7 @@ export default function OperatorCredibility() {
           <ScrollReveal delay={300}>
             <div className="border-t border-white/10 pt-10">
               <p className="text-center text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40 mb-6">
-                Our companies powered by AI
+                {t("home.operator.powered")}
               </p>
               <div className="grid grid-cols-4 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
                 {OUR_COMPANIES.map((c, i) => (
@@ -106,7 +121,7 @@ export default function OperatorCredibility() {
                 ))}
               </div>
               <p className="text-center text-[11px] text-white/30 mt-3 md:hidden">
-                +{OUR_COMPANIES.length - 8} more companies
+                +{OUR_COMPANIES.length - 8} {t("home.operator.moreCompanies")}
               </p>
             </div>
           </ScrollReveal>

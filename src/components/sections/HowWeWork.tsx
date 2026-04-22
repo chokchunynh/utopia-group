@@ -1,42 +1,50 @@
+"use client";
+
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Search, Cpu, Rocket, HeadphonesIcon } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
-const STEPS = [
-  {
-    icon: Search,
-    number: "01",
-    title: "Audit",
-    description: "We study your business. Find at least 5 areas where AI saves time or makes money.",
-    detail: "Week 1-2",
-    color: "#116dff",
-  },
-  {
-    icon: Cpu,
-    number: "02",
-    title: "Build",
-    description: "We set up a machine in your office, build your AI tools, and connect to your systems.",
-    detail: "Week 3-4",
-    color: "#8B5CF6",
-  },
-  {
-    icon: Rocket,
-    number: "03",
-    title: "Deploy",
-    description: "Go live. Your team starts using AI daily. We train your staff and monitor results.",
-    detail: "Week 5",
-    color: "#25D366",
-  },
-  {
-    icon: HeadphonesIcon,
-    number: "04",
-    title: "Support",
-    description: "Monthly optimization, new AI features, and ongoing support. AI keeps getting smarter.",
-    detail: "Week 6+",
-    color: "#EC4899",
-  },
-];
+const STEP_ICONS = [Search, Cpu, Rocket, HeadphonesIcon];
+const STEP_COLORS = ["#116dff", "#8B5CF6", "#25D366", "#EC4899"];
+const STEP_NUMBERS = ["01", "02", "03", "04"];
 
 export default function HowWeWork() {
+  const { t } = useLanguage();
+
+  const STEPS = [
+    {
+      icon: STEP_ICONS[0],
+      number: STEP_NUMBERS[0],
+      title: t("home.howwework.s1.title"),
+      description: t("home.howwework.s1.desc"),
+      detail: t("home.howwework.s1.detail"),
+      color: STEP_COLORS[0],
+    },
+    {
+      icon: STEP_ICONS[1],
+      number: STEP_NUMBERS[1],
+      title: t("home.howwework.s2.title"),
+      description: t("home.howwework.s2.desc"),
+      detail: t("home.howwework.s2.detail"),
+      color: STEP_COLORS[1],
+    },
+    {
+      icon: STEP_ICONS[2],
+      number: STEP_NUMBERS[2],
+      title: t("home.howwework.s3.title"),
+      description: t("home.howwework.s3.desc"),
+      detail: t("home.howwework.s3.detail"),
+      color: STEP_COLORS[2],
+    },
+    {
+      icon: STEP_ICONS[3],
+      number: STEP_NUMBERS[3],
+      title: t("home.howwework.s4.title"),
+      description: t("home.howwework.s4.desc"),
+      detail: t("home.howwework.s4.detail"),
+      color: STEP_COLORS[3],
+    },
+  ];
   return (
     <section className="relative bg-white overflow-hidden">
       {/* Ambient gradient orb */}
@@ -46,10 +54,10 @@ export default function HowWeWork() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="pill mb-4 inline-block">How We Work</span>
+              <span className="pill mb-4 inline-block">{t("home.howwework.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                From audit to autopilot in{" "}
-                <span className="gradient-text font-extrabold">4 steps</span>
+                {t("home.howwework.title")}{" "}
+                <span className="gradient-text font-extrabold">{t("home.howwework.title2")}</span>
               </h2>
             </div>
           </ScrollReveal>

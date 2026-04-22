@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { ArrowRight, Users } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 const PHOTOS = [
   { src: "/images/team/staff/group-photo-fun.webp", alt: "Utopia Group team fun group photo" },
@@ -15,18 +16,19 @@ const PHOTOS = [
 ];
 
 export default function TeamCulture() {
+  const { t } = useLanguage();
   return (
     <section className="section-padding bg-white">
       <div className="section-inner">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <span className="pill mb-4 inline-block">Our Team</span>
+            <span className="pill mb-4 inline-block">{t("home.team.pill")}</span>
             <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-              400+ people.{" "}
-              <span className="gradient-text font-extrabold">One mission.</span>
+              {t("home.team.title")}{" "}
+              <span className="gradient-text font-extrabold">{t("home.team.title2")}</span>
             </h2>
             <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-              From masquerade nights to durian outings — we build together, celebrate together.
+              {t("home.team.sub")}
             </p>
           </div>
         </ScrollReveal>
@@ -55,14 +57,14 @@ export default function TeamCulture() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-bg-muted)] text-[var(--color-text-primary)] font-semibold text-[14px] hover:shadow-md transition-shadow"
             >
               <Users className="w-4 h-4" />
-              Meet the Team
+              {t("home.team.meetTeam")}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/career"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] font-semibold text-[14px] hover:shadow-md transition-shadow"
             >
-              View Open Positions
+              {t("home.team.viewPositions")}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useLanguage } from "@/lib/language-context";
 
 const TESTIMONIALS = [
   {
@@ -170,22 +171,22 @@ function TestimonialCard({ t }: { t: (typeof TESTIMONIALS)[number] }) {
 }
 
 export default function TestimonialScroll() {
+  const { t } = useLanguage();
   return (
     <section className="bg-white overflow-hidden">
       <div className="section-padding !pb-8 md:!pb-12">
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Real Results</span>
+              <span className="pill mb-4 inline-block">{t("home.testimonials.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                AI empowering{" "}
+                {t("home.testimonials.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  173 business units across 35+ companies
+                  {t("home.testimonials.title2")}
                 </span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                Real numbers from real businesses. Not case studies — these are
-                our own companies.
+                {t("home.testimonials.sub")}
               </p>
             </div>
           </ScrollReveal>

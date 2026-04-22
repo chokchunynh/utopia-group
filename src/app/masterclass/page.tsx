@@ -1,6 +1,7 @@
 "use client";
 
 import { whatsappUrl } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DashedGrid from "@/components/ui/DashedGrid";
 import Image from "next/image";
@@ -23,6 +24,7 @@ const MASTERCLASS_WA = whatsappUrl(
 );
 
 export default function MasterclassChooserPage() {
+  const { t } = useLanguage();
   return (
     <main>
       {/* ══════════════ HERO ══════════════ */}
@@ -37,20 +39,19 @@ export default function MasterclassChooserPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/10 text-white/90 border border-white/10 mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                AI Training Program
+                {t("mc.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[56px] font-bold tracking-tight leading-[1.1] text-white mb-4">
-                Utopia AI{" "}
+                {t("mc.hero.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  Masterclass
+                  {t("mc.hero.title2")}
                 </span>
               </h1>
               <p className="text-[18px] md:text-[22px] font-semibold text-white/90 mb-4 max-w-2xl mx-auto leading-snug">
-                AI Training From A Company That Uses It Daily
+                {t("mc.hero.sub1")}
               </p>
               <p className="text-[#94a3b8] max-w-xl mx-auto text-[16px] leading-relaxed mb-10">
-                We saved RM3M+ with AI across our own 35+ companies. Now we
-                teach your team — or you — to do the same.
+                {t("mc.hero.sub2")}
               </p>
             </ScrollReveal>
           </div>
@@ -168,12 +169,10 @@ export default function MasterclassChooserPage() {
                     <Building2 className="w-7 h-7 text-[var(--color-brand)]" />
                   </div>
                   <h3 className="heading-md text-[22px] mb-2">
-                    For Companies
+                    {t("mc.company.title")}
                   </h3>
                   <p className="text-[var(--color-text-body)] text-[15px] leading-relaxed mb-5 flex-1">
-                    On-site team training tailored to your business. We come to
-                    your office, train your team, and build AI tools for your
-                    actual workflows.
+                    {t("mc.company.sub")}
                   </p>
 
                   <ul className="space-y-2.5 mb-6">
@@ -209,12 +208,10 @@ export default function MasterclassChooserPage() {
                     <User className="w-7 h-7 text-[#8B5CF6]" />
                   </div>
                   <h3 className="heading-md text-[22px] mb-2">
-                    For Individuals
+                    {t("mc.individual.title")}
                   </h3>
                   <p className="text-[var(--color-text-body)] text-[15px] leading-relaxed mb-5 flex-1">
-                    Personal AI mastery program. Learn Claude Code, ChatGPT,
-                    Gemini, and the full AI ecosystem at your own pace with
-                    weekly live sessions.
+                    {t("mc.individual.sub")}
                   </p>
 
                   <ul className="space-y-2.5 mb-6">

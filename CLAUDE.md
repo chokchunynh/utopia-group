@@ -13,7 +13,7 @@ Next.js 16 + Tailwind 4 + TypeScript
 
 ## Lifecycle
 - **Status:** Active
-- **Last Active:** 2026-04-09
+- **Last Active:** 2026-04-22
 - **Client:** Utopia Group (corporate site)
 - **End User:** Malaysian SME owners (Towkays), potential hires, partners
 - **Language:** EN + CN toggle

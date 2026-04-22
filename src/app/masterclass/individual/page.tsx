@@ -1,6 +1,7 @@
 "use client";
 
 import { whatsappUrl, INDIVIDUAL_PRICING } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DashedGrid from "@/components/ui/DashedGrid";
 import {
@@ -181,6 +182,26 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default function IndividualMasterclassPage() {
+  const { t } = useLanguage();
+
+  const AUDIENCE_ITEMS = [
+    {
+      icon: GraduationCap,
+      title: t("mci.audience.grad"),
+      body: t("mci.audience.grad.desc"),
+    },
+    {
+      icon: Briefcase,
+      title: t("mci.audience.pro"),
+      body: t("mci.audience.pro.desc"),
+    },
+    {
+      icon: Rocket,
+      title: t("mci.audience.entrepreneur"),
+      body: t("mci.audience.entrepreneur.desc"),
+    },
+  ];
+
   return (
     <main>
       {/* ══════════════ 1. HERO ══════════════ */}
@@ -203,21 +224,20 @@ export default function IndividualMasterclassPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/10 text-white/90 border border-white/10 mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                Individual AI Training
+                {t("mci.hero.pill")}
               </span>
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <h1 className="heading-display text-[28px] md:text-[52px] text-white mb-5 max-w-3xl mx-auto">
-                Learn AI From The People Who{" "}
+                {t("mci.hero.title")}{" "}
                 <span className="gradient-text-hero">
-                  Actually Use It Daily
+                  {t("mci.hero.title2")}
                 </span>
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p className="text-[17px] md:text-[20px] text-[#cbd5e1] max-w-2xl mx-auto leading-relaxed mb-10">
-                Sit with our coders. Watch how we build. Leave with skills that
-                add RM4,000-5,000 to your salary.
+                {t("mci.hero.sub")}
               </p>
             </ScrollReveal>
             <ScrollReveal delay={300}>
@@ -229,14 +249,14 @@ export default function IndividualMasterclassPage() {
                   className="btn-whatsapp text-base px-8 py-4"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
-                  Join Next Session
+                  {t("mci.hero.cta1")}
                 </a>
                 <a
                   href="#schedule"
                   className="btn-secondary !bg-transparent !text-white !border-white/20 hover:!bg-white/10 text-base px-8 py-4"
                 >
                   <CalendarDays className="w-5 h-5" />
-                  View Schedule
+                  {t("mci.hero.cta2")}
                 </a>
               </div>
               <p className="text-[14px] text-[#94a3b8]">
@@ -253,14 +273,13 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">Curriculum</span>
+              <span className="pill mb-4">{t("mci.curriculum.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                What You&apos;ll{" "}
-                <span className="gradient-text">Master</span>
+                {t("mci.curriculum.title")}{" "}
+                <span className="gradient-text">{t("mci.curriculum.title2")}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[16px] leading-relaxed">
-                6 core AI skills across 8 hands-on sessions. Every tool the
-                industry is hiring for.
+                {t("mci.curriculum.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -293,10 +312,10 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">The Promise</span>
+              <span className="pill mb-4">{t("mci.promise.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                What AI Skills{" "}
-                <span className="gradient-text">Actually Get You</span>
+                {t("mci.promise.title")}{" "}
+                <span className="gradient-text">{t("mci.promise.title2")}</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -327,12 +346,12 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">Process</span>
+              <span className="pill mb-4">{t("mci.process.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                How It Works
+                {t("mci.process.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[16px] leading-relaxed">
-                From sign-up to certification in 8 weeks.
+                {t("mci.process.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -377,12 +396,12 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">Before You Start</span>
+              <span className="pill mb-4">{t("mci.prereq.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Prerequisites
+                {t("mci.prereq.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[16px] leading-relaxed">
-                Everything you need ready before your first session.
+                {t("mci.prereq.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -435,10 +454,10 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">Investment</span>
+              <span className="pill mb-4">{t("mci.pricing.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Simple{" "}
-                <span className="gradient-text">Pricing</span>
+                {t("mci.pricing.title")}{" "}
+                <span className="gradient-text">{t("mci.pricing.title2")}</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -446,19 +465,19 @@ export default function IndividualMasterclassPage() {
           <ScrollReveal delay={100}>
             <div className="card max-w-md mx-auto !p-8 border-2 border-[var(--color-brand)] relative">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-0.5 rounded-full text-[12px] font-semibold bg-[var(--color-brand)] text-white whitespace-nowrap">
-                8-Session Pack
+                {t("mci.pricing.pack")}
               </span>
 
               <div className="text-center mb-6 pt-2">
                 <h3 className="heading-md text-[20px] mb-4">
-                  8-Session AI Masterclass
+                  {t("mci.pricing.packTitle")}
                 </h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-[48px] md:text-[56px] font-extrabold tracking-tight text-[var(--color-text-primary)] leading-none">
                     RM{INDIVIDUAL_PRICING.pricePerSession}
                   </span>
                   <span className="text-[16px] text-[var(--color-text-muted)]">
-                    /session
+                    {t("mci.pricing.perSession")}
                   </span>
                 </div>
                 <p className="text-[15px] text-[var(--color-text-body)] mt-2">
@@ -488,7 +507,7 @@ export default function IndividualMasterclassPage() {
                 className="btn-whatsapp w-full text-[15px] py-4"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                Reserve Your Spot
+                {t("mci.pricing.reserve")}
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
@@ -496,7 +515,7 @@ export default function IndividualMasterclassPage() {
 
           <ScrollReveal delay={200}>
             <p className="text-center text-[14px] text-[var(--color-text-soft)] mt-6">
-              Next session starts soon. Limited spots.
+              {t("mci.pricing.next")}
             </p>
           </ScrollReveal>
         </div>
@@ -507,16 +526,16 @@ export default function IndividualMasterclassPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4">For You</span>
+              <span className="pill mb-4">{t("mci.audience.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Who This Is{" "}
-                <span className="gradient-text">For</span>
+                {t("mci.audience.title")}{" "}
+                <span className="gradient-text">{t("mci.audience.title2")}</span>
               </h2>
             </div>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {AUDIENCE_CARDS.map((card, i) => {
+            {AUDIENCE_ITEMS.map((card, i) => {
               const Icon = card.icon;
               return (
                 <ScrollReveal key={card.title} delay={i * 100}>
@@ -545,12 +564,11 @@ export default function IndividualMasterclassPage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <h2 className="heading-display text-[28px] md:text-[44px] mb-4">
-                Ready to{" "}
-                <span className="gradient-text">Level Up?</span>
+                {t("mci.cta.title")}{" "}
+                <span className="gradient-text">{t("mci.cta.title2")}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] mb-8 max-w-md mx-auto text-[16px] leading-relaxed">
-                Your competitors are already learning AI. Don&apos;t get left
-                behind.
+                {t("mci.cta.sub")}
               </p>
               <a
                 href={INDIVIDUAL_WA}
@@ -559,7 +577,7 @@ export default function IndividualMasterclassPage() {
                 className="btn-whatsapp text-base px-10 py-4"
               >
                 <WhatsAppIcon className="w-5 h-5" />
-                Join the Next Session
+                {t("mci.cta.join")}
               </a>
               <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-[13px] text-[var(--color-text-soft)]">
                 <span>

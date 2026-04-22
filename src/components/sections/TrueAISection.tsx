@@ -8,6 +8,7 @@ import {
 } from "@/lib/constants";
 import Image from "next/image";
 import { Zap, ToggleRight, Server, Brain, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 const FEATURE_ICONS = [Zap, ToggleRight, Server, Brain];
 
@@ -22,8 +23,22 @@ const CHAT_MESSAGES = [
 ];
 
 export default function TrueAISection() {
+  const { t } = useLanguage();
   const [showDemo, setShowDemo] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState(0);
+
+  const featureTitles = [
+    t("home.trueai.f1.title"),
+    t("home.trueai.f2.title"),
+    t("home.trueai.f3.title"),
+    t("home.trueai.f4.title"),
+  ];
+  const featureDescs = [
+    t("home.trueai.f1.desc"),
+    t("home.trueai.f2.desc"),
+    t("home.trueai.f3.desc"),
+    t("home.trueai.f4.desc"),
+  ];
 
   useEffect(() => {
     if (!showDemo) return;
@@ -47,18 +62,16 @@ export default function TrueAISection() {
             <div className="text-center mb-12">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/10 text-white/90 border border-white/10 mb-4">
                 <Zap className="w-3.5 h-3.5 text-yellow-400" />
-                Our Flagship Product
+                {t("home.trueai.pill")}
               </span>
               <h2 className="text-[28px] md:text-[44px] font-bold tracking-tight leading-tight text-white mb-4">
-                TrueAI — Your 24/7{" "}
+                {t("home.trueai.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  AI Sales Agent
+                  {t("home.trueai.title2")}
                 </span>
               </h2>
               <p className="text-[#94a3b8] max-w-2xl mx-auto text-[15px] leading-relaxed">
-                Not a chatbot with canned responses. A fully autonomous AI that
-                learns your business, handles WhatsApp conversations, sends
-                photos, and closes deals while you sleep.
+                {t("home.trueai.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -77,10 +90,10 @@ export default function TrueAISection() {
                         </div>
                         <div>
                           <h3 className="font-semibold text-white mb-1">
-                            {feature.title}
+                            {featureTitles[i] || feature.title}
                           </h3>
                           <p className="text-sm text-[#94a3b8] leading-relaxed">
-                            {feature.description}
+                            {featureDescs[i] || feature.description}
                           </p>
                         </div>
                       </div>
@@ -121,17 +134,17 @@ export default function TrueAISection() {
                           <Zap className="w-7 h-7 text-[var(--color-whatsapp)]" />
                         </div>
                         <p className="text-sm text-gray-600 mb-1 font-medium">
-                          Real conversation from Encik Beku Aircond
+                          {t("home.trueai.demo.title")}
                         </p>
                         <p className="text-xs text-gray-400 mb-5">
-                          Watch TrueAI handle a customer enquiry
+                          {t("home.trueai.demo.sub")}
                         </p>
                         <button
                           type="button"
                           onClick={() => setShowDemo(true)}
                           className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold bg-[var(--color-whatsapp)] text-white"
                         >
-                          ▶ Play Demo
+                          ▶ {t("home.trueai.demo.play")}
                         </button>
                       </div>
                     ) : (
@@ -190,9 +203,7 @@ export default function TrueAISection() {
                             style={{ opacity: 0, animation: "bubble-in 0.3s ease-out 0.3s forwards" }}
                           >
                             <p className="text-[11px] text-[var(--color-brand)] font-medium">
-                              ⚡ Replied in 3 seconds. Booked the appointment.
-                              Upsold leak inspection. Sent technician profile.
-                              Your sales team was asleep.
+                              {t("home.trueai.demo.result")}
                             </p>
                           </div>
                         )}
@@ -210,7 +221,7 @@ export default function TrueAISection() {
                       rel="noopener noreferrer"
                       className="btn-whatsapp w-full !text-sm"
                     >
-                      Get TrueAI for Your Business
+                      {t("home.trueai.cta")}
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   </div>

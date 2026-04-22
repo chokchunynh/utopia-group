@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { whatsappUrl } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import {
   Building2,
   TrendingUp,
@@ -41,48 +42,43 @@ interface Position {
 
 /* ── Data ─────────────────────────────────────────────────────── */
 
-const WHY_CARDS = [
-  {
-    icon: Zap,
-    title: "AI-First Culture",
-    description:
-      "Every team uses AI daily. We don't talk about AI — we ship it. You'll work with cutting-edge models, not PowerPoints.",
-  },
-  {
-    icon: Building2,
-    title: "35+ Real Businesses",
-    description:
-      "Our operations span 35+ companies with 400+ staff. You'll see your work impact real operations, not just demos.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth Opportunity",
-    description:
-      "We're scaling fast across Southeast Asia. Early joiners get outsized responsibility and career trajectory.",
-  },
-  {
-    icon: BookOpen,
-    title: "Learning Environment",
-    description:
-      "Dedicated learning budget, internal AI workshops, and direct access to the latest tools and research.",
-  },
-] as const;
+/* WHY_CARDS moved inside component to access t() */
 
 const POSITIONS: Position[] = [
   /* ── Utopia Intelligence ── */
   {
-    title: "Software Developer",
+    title: "Product Engineer",
     division: "Utopia Intelligence",
     level: "Executive",
     company: "Utopia Group",
     location: "Kuala Lumpur",
     type: "Full-time",
     description:
-      "Build and maintain web applications, dashboards, and internal tools powering 35+ businesses. Work with Next.js, TypeScript, Supabase, and AI APIs in a fast-moving product environment.",
+      "Ship internal web apps and tools end-to-end for 35+ businesses using AI-native coding workflows — Claude Code, Codex, Cursor, and CLI-first development. This is vibe coding at production scale: you scope with the operator, prompt + orchestrate agents to build, review the diff, deploy to Vercel, and hotfix live. Stack: Next.js, TypeScript, Supabase. No hand-offs, no tickets — idea to live in days, not weeks. Taste for clean UX and a bias for shipping matter more than traditional CS credentials.",
+  },
+  {
+    title: "Adoption Engineer",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Drive real-world usage of internal tools across 35+ businesses. Embed with operators during new tool rollouts, run UAT, write SOPs, record walkthroughs, track weekly active users, and channel feedback to the build team. Part business analyst, part trainer, part product owner — you own the 'do they actually use it' outcome. Bahasa Malaysia + English essential; Mandarin/Cantonese a big plus.",
+  },
+  {
+    title: "Context Engineer",
+    division: "Utopia Intelligence",
+    level: "Executive",
+    company: "Utopia Group",
+    location: "Kuala Lumpur",
+    type: "Full-time",
+    description:
+      "Build and curate the knowledge layer that powers every AI tool at Utopia Group — the context feeding Claude Code, Codex, and our internal agents. Collect, clean, tag, and structure SOPs, business data, customer records, and operational knowledge into queryable systems (knowledge graphs, RAG pipelines, vector stores). Comfortable with Python, SQL, and CLI-first workflows; you use AI coding tools to build data pipelines, not hand-written scripts. The librarian of the AI era — a natural organiser who hates messy data and loves clean taxonomies.",
   },
   {
     title: "Company Secretary",
-    division: "Utopia Intelligence",
+    division: "Utopia Business",
     level: "Executive",
     company: "Utopia Group",
     location: "Kuala Lumpur",
@@ -92,7 +88,7 @@ const POSITIONS: Position[] = [
   },
   {
     title: "HR Business Partner",
-    division: "Utopia Intelligence",
+    division: "Utopia Business",
     level: "Executive",
     company: "Utopia Group",
     location: "Kuala Lumpur",
@@ -102,7 +98,7 @@ const POSITIONS: Position[] = [
   },
   {
     title: "Senior Accountant",
-    division: "Utopia Intelligence",
+    division: "Utopia Business",
     level: "Executive",
     company: "Utopia Group",
     location: "Kuala Lumpur",
@@ -214,14 +210,7 @@ const POSITIONS: Position[] = [
   },
 ];
 
-const BENEFITS = [
-  { icon: Clock, title: "Flexible Hours", description: "Results matter, not clock-in time" },
-  { icon: Cpu, title: "AI Tools Provided", description: "Full access to GPT-4, Claude & more" },
-  { icon: GraduationCap, title: "Learning Budget", description: "Annual budget for courses & conferences" },
-  { icon: HeartPulse, title: "Health Insurance", description: "Medical & dental coverage for you" },
-  { icon: PartyPopper, title: "Team Events", description: "Monthly team activities & retreats" },
-  { icon: Rocket, title: "Career Growth", description: "Fast-track promotion for high performers" },
-] as const;
+/* BENEFITS moved inside component to access t() */
 
 const CAREERS_WA = whatsappUrl("Hi! I'm interested in joining Utopia Group.");
 
@@ -246,7 +235,7 @@ function DivisionBadge({ division }: { division: Division }) {
   );
 }
 
-function PositionCard({ position }: { position: Position }) {
+function PositionCard({ position, applyLabel }: { position: Position; applyLabel: string }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -299,7 +288,7 @@ function PositionCard({ position }: { position: Position }) {
             rel="noopener noreferrer"
             className="btn-primary text-sm"
           >
-            Apply via WhatsApp
+            {applyLabel}
           </a>
         </div>
       )}
@@ -310,7 +299,40 @@ function PositionCard({ position }: { position: Position }) {
 /* ── Page ─────────────────────────────────────────────────────── */
 
 export default function CareerPage() {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState<FilterState>("All");
+
+  const WHY_CARDS = [
+    {
+      icon: Zap,
+      title: t("career.why.aiFirst"),
+      description: t("career.why.aiFirst.desc"),
+    },
+    {
+      icon: Building2,
+      title: t("career.why.realBiz"),
+      description: t("career.why.realBiz.desc"),
+    },
+    {
+      icon: TrendingUp,
+      title: t("career.why.growth"),
+      description: t("career.why.growth.desc"),
+    },
+    {
+      icon: BookOpen,
+      title: t("career.why.learning"),
+      description: t("career.why.learning.desc"),
+    },
+  ];
+
+  const BENEFITS = [
+    { icon: Clock, title: t("career.benefits.flexible"), description: t("career.benefits.flexible.desc") },
+    { icon: Cpu, title: t("career.benefits.ai"), description: t("career.benefits.ai.desc") },
+    { icon: GraduationCap, title: t("career.benefits.learning"), description: t("career.benefits.learning.desc") },
+    { icon: HeartPulse, title: t("career.benefits.health"), description: t("career.benefits.health.desc") },
+    { icon: PartyPopper, title: t("career.benefits.events"), description: t("career.benefits.events.desc") },
+    { icon: Rocket, title: t("career.benefits.career"), description: t("career.benefits.career.desc") },
+  ];
 
   const filtered =
     filter === "All" ? POSITIONS : POSITIONS.filter((p) => p.division === filter);
@@ -328,15 +350,14 @@ export default function CareerPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white/90 border border-white/10 mb-6">
                 <Users className="w-3.5 h-3.5" />
-                We&apos;re Hiring
+                {t("career.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                Grow With Us Across{" "}
-                <span className="gradient-text-hero font-extrabold">35+ Businesses</span>
+                {t("career.hero.title")}{" "}
+                <span className="gradient-text-hero font-extrabold">{t("career.hero.title2")}</span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                From AI engineers to aircond technicians — we&apos;re building the teams
-                that power Malaysia&apos;s fastest-growing group of businesses.
+                {t("career.hero.sub")}
               </p>
             </ScrollReveal>
           </div>
@@ -347,9 +368,9 @@ export default function CareerPage() {
       <section className="section-padding !py-8 md:!py-10 bg-[var(--color-bg-muted)]">
         <div className="section-inner text-center">
           <p className="text-[14px] text-[var(--color-text-muted)]">
-            35+ companies · 173 business units · 400+ staff · RM130M+ revenue ·{" "}
+            {t("career.banner")}{" "}
             <Link href="/about" className="text-[var(--color-brand)] font-semibold hover:underline">
-              Learn more about us →
+              {t("career.banner.learn")}
             </Link>
           </p>
         </div>
@@ -360,13 +381,13 @@ export default function CareerPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="pill mb-4 inline-block">Our Two Divisions</span>
+              <span className="pill mb-4 inline-block">{t("career.divisions.pill")}</span>
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                Find where you{" "}
-                <span className="gradient-text font-extrabold">fit best</span>
+                {t("career.divisions.title")}{" "}
+                <span className="gradient-text font-extrabold">{t("career.divisions.title2")}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                Utopia runs two divisions under one roof — each with its own culture, team, and career path.
+                {t("career.divisions.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -378,10 +399,10 @@ export default function CareerPage() {
                   <Cpu className="w-5 h-5 text-violet-600" />
                 </div>
                 <h3 className="font-bold text-[18px] text-[var(--color-text-primary)] mb-2">
-                  Utopia Intelligence
+                  {t("career.intelligence.title")}
                 </h3>
                 <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
-                  Our back office and tech arm. Software developers, AI engineers, accountants, HR, and company secretaries — the people who make the whole group run.
+                  {t("career.intelligence.desc")}
                 </p>
               </div>
             </ScrollReveal>
@@ -391,10 +412,10 @@ export default function CareerPage() {
                   <Building2 className="w-5 h-5 text-emerald-600" />
                 </div>
                 <h3 className="font-bold text-[18px] text-[var(--color-text-primary)] mb-2">
-                  Utopia Business
+                  {t("career.business.title")}
                 </h3>
                 <p className="text-[14px] text-[var(--color-text-muted)] leading-relaxed">
-                  Our operations arm. Sales, customer service, field technicians, retail, and live hosts — the people who serve our customers every day across 35+ businesses.
+                  {t("career.business.desc")}
                 </p>
               </div>
             </ScrollReveal>
@@ -407,13 +428,13 @@ export default function CareerPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="pill mb-4 inline-block">Life at Utopia</span>
+              <span className="pill mb-4 inline-block">{t("career.life.pill")}</span>
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                More than just{" "}
-                <span className="gradient-text font-extrabold">a workplace</span>
+                {t("career.life.title")}{" "}
+                <span className="gradient-text font-extrabold">{t("career.life.title2")}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                Team dinners, sports nights, birthday celebrations, and building things that matter — together.
+                {t("career.life.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -454,10 +475,10 @@ export default function CareerPage() {
           <ScrollReveal>
             <div className="text-center mb-8">
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                Open Positions
+                {t("career.positions.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-base">
-                {POSITIONS.length} roles across our two divisions. Filter to find yours.
+                {POSITIONS.length} {t("career.positions.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -476,7 +497,7 @@ export default function CareerPage() {
                       : "bg-[var(--color-bg-muted)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
                   }`}
                 >
-                  {tab}
+                  {tab === "All" ? t("career.positions.all") : tab}
                   {tab === "All" && (
                     <span className="ml-1.5 opacity-70">({POSITIONS.length})</span>
                   )}
@@ -493,7 +514,7 @@ export default function CareerPage() {
           <div className="flex flex-col gap-4">
             {filtered.map((pos, i) => (
               <ScrollReveal key={`${pos.title}-${pos.company}`} delay={i * 60}>
-                <PositionCard position={pos} />
+                <PositionCard position={pos} applyLabel={t("career.positions.apply")} />
               </ScrollReveal>
             ))}
           </div>
@@ -505,10 +526,10 @@ export default function CareerPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="pill mb-4 inline-block">Why Utopia</span>
+              <span className="pill mb-4 inline-block">{t("career.why.pill")}</span>
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                Built different.{" "}
-                <span className="gradient-text font-extrabold">Built for growth.</span>
+                {t("career.why.title")}{" "}
+                <span className="gradient-text font-extrabold">{t("career.why.title2")}</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -538,7 +559,7 @@ export default function CareerPage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="heading-lg text-[26px] md:text-[38px] mb-3">
-                Perks &amp; Benefits
+                {t("career.benefits.title")}
               </h2>
             </div>
           </ScrollReveal>
@@ -569,11 +590,10 @@ export default function CareerPage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <h2 className="heading-display text-[28px] md:text-[44px] mb-4">
-                Ready to join?
+                {t("career.cta.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] mb-8 max-w-md mx-auto text-base">
-                Send us a message on WhatsApp or email your resume. We respond
-                within 24 hours.
+                {t("career.cta.sub")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <a
@@ -589,7 +609,7 @@ export default function CareerPage() {
                   >
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                   </svg>
-                  WhatsApp Us
+                  {t("career.cta.whatsapp")}
                 </a>
                 <a
                   href="mailto:careers@utopiagroup.com.my"
@@ -603,7 +623,7 @@ export default function CareerPage() {
                 href="/about#team"
                 className="text-[var(--color-brand)] text-sm font-semibold hover:underline"
               >
-                Meet the team →
+                {t("career.cta.meetTeam")}
               </Link>
             </ScrollReveal>
           </div>

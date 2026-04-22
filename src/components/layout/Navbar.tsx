@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { NAV_LINKS, MORE_DROPDOWN, WHATSAPP_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/language-context";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -12,8 +11,6 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const { locale, setLocale } = useLanguage();
-  const pathname = usePathname();
-  const isBossOS = pathname.startsWith("/boss-os");
 
   useEffect(() => {
     if (open) {
@@ -165,9 +162,8 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Language toggle — only on Boss OS pages */}
-          {isBossOS && (
-            <button
+          {/* Language toggle */}
+          <button
               type="button"
               onClick={() => setLocale(locale === "en" ? "zh" : "en")}
               className="inline-flex items-center gap-1.5 h-8 rounded-full bg-[var(--color-bg-soft)] border border-[var(--color-border)] px-1 cursor-pointer"
@@ -192,7 +188,6 @@ export default function Navbar() {
                 中文
               </span>
             </button>
-          )}
           <Link
             href="/how-we-charge"
             className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-full font-semibold text-[13px] min-h-[40px] transition-colors duration-150 bg-white text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-bg-soft)]"

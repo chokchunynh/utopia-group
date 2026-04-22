@@ -5,6 +5,7 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { whatsappUrl } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import DashedGrid from "@/components/ui/DashedGrid";
 import {
   Building2,
@@ -20,29 +21,7 @@ const ABOUT_WA = whatsappUrl(
   "Hi! I'd like to learn more about Utopia Group and how you can help my business with AI."
 );
 
-const CHAPTERS = [
-  {
-    era: "2014 – 2021",
-    title: "The Growth Engine",
-    copy: "We started with one co-living business and a belief: traditional Malaysian businesses were sitting on untapped growth. We became the growth engine they didn't know they needed. Hyper-targeted digital campaigns. SEO dominance across hundreds of keywords. High-exposure advertising that put businesses on the map overnight. We didn't just market — we engineered visibility at scale. By 2021, we'd built 35+ companies across healthcare, construction, transport, events, and F&B — all powered by relentless digital strategy.",
-    photo: "/images/team/staff/team-meeting-presentation.webp",
-    photoAlt: "Utopia team strategy meeting",
-  },
-  {
-    era: "2022 – Now",
-    title: "The AI Shift",
-    copy: "When the world started talking about AI, we were already shipping it. We deployed AI across every company in the group — automating operations, eliminating manual work, building products that didn't exist yet. SlipMatch for bank reconciliation. RecurPay for collections. GetBill for utility extraction. Kreativ for design. We don't sell AI theory. We sell battle-tested tools forged inside real businesses with real revenue.",
-    photo: "/images/team/staff/awards-ceremony.webp",
-    photoAlt: "Utopia staff award ceremony",
-  },
-  {
-    era: "The Frontier",
-    title: "Built by People Who Became Partners",
-    copy: "Frontier means you go where others won't. 27 of our people became partners — they joined as staff, proved themselves in the trenches, and now run their own businesses under Utopia. That's not a hiring stat. That's a growth philosophy. We believe the best companies aren't built by founders alone. They're built by people who are hungry enough to become founders themselves. 400+ staff. 27 partners. One mission: build what's next.",
-    photo: "/images/team/staff/group-photo-fun.webp",
-    photoAlt: "Utopia Group team celebrating together",
-  },
-];
+/* CHAPTERS and STATS moved inside component to access t() */
 
 const COMPANIES = [
   { name: "Utopia Co-Living", logo: "/images/wix/logo-utopia-coliving.png", url: "https://utopiacoliving.com", industry: "Co-Living & Property", sites: 2, color: "#116dff", dark: false },
@@ -94,14 +73,42 @@ const WAREHOUSES = [
   { location: "Ipoh, Perak", count: 1, flag: "/images/flags/perak.png" },
 ];
 
-const STATS = [
-  { value: "35+", label: "Companies", icon: Briefcase },
-  { value: "173", label: "Business Units", icon: Building2 },
-  { value: "400+", label: "Staff", icon: Users },
-  { value: "27", label: "Partners", icon: TrendingUp },
-];
+/* STATS moved inside component to access t() */
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const STATS = [
+    { value: "35+", label: t("about.stats.companies"), icon: Briefcase },
+    { value: "173", label: t("about.stats.units"), icon: Building2 },
+    { value: "400+", label: t("about.stats.staff"), icon: Users },
+    { value: "27", label: t("about.stats.partners"), icon: TrendingUp },
+  ];
+
+  const CHAPTERS = [
+    {
+      era: t("about.story.era1"),
+      title: t("about.story.era1.title"),
+      copy: t("about.story.era1.copy"),
+      photo: "/images/team/staff/team-meeting-presentation.webp",
+      photoAlt: "Utopia team strategy meeting",
+    },
+    {
+      era: t("about.story.era2"),
+      title: t("about.story.era2.title"),
+      copy: t("about.story.era2.copy"),
+      photo: "/images/team/staff/awards-ceremony.webp",
+      photoAlt: "Utopia staff award ceremony",
+    },
+    {
+      era: t("about.story.era3"),
+      title: t("about.story.era3.title"),
+      copy: t("about.story.era3.copy"),
+      photo: "/images/team/staff/group-photo-fun.webp",
+      photoAlt: "Utopia Group team celebrating together",
+    },
+  ];
+
   return (
     <main>
       {/* ═══ HERO ═══ */}
@@ -116,18 +123,16 @@ export default function AboutPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white/90 border border-white/10 mb-6">
                 <Building2 className="w-3.5 h-3.5" />
-                About Us
+                {t("about.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                We Don&apos;t Wait for the Future.{" "}
+                {t("about.hero.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  We Build It.
+                  {t("about.hero.title2")}
                 </span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                From digital marketing dominance to AI-powered operations —
-                Utopia Group is Malaysia&apos;s frontier company. We break
-                through. We scale. We never stop.
+                {t("about.hero.sub")}
               </p>
             </ScrollReveal>
           </div>
@@ -165,16 +170,15 @@ export default function AboutPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-14">
-              <span className="pill mb-4 inline-block">Our Story</span>
+              <span className="pill mb-4 inline-block">{t("about.story.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Three eras.{" "}
+                {t("about.story.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  One relentless mission.
+                  {t("about.story.title2")}
                 </span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-[15px] leading-relaxed">
-                Every chapter of Utopia starts the same way — someone said
-                it couldn&apos;t be done, and we did it anyway.
+                {t("about.story.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -214,16 +218,15 @@ export default function AboutPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Our Team</span>
+              <span className="pill mb-4 inline-block">{t("about.team.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Built by{" "}
+                {t("about.team.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  people who ship
+                  {t("about.team.title2")}
                 </span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                400+ staff across 35+ companies. An 18-person AI team building
-                the products that power everything.
+                {t("about.team.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -276,10 +279,10 @@ export default function AboutPage() {
                 </svg>
                 <div className="text-left">
                   <span className="font-semibold text-[15px] text-[var(--color-text-primary)] block">
-                    Meet the full team on LinkedIn
+                    {t("about.team.linkedin")}
                   </span>
                   <span className="text-[12px] text-[var(--color-text-muted)]">
-                    400+ staff · Utopia Group of Companies
+                    {t("about.team.linkedinSub")}
                   </span>
                 </div>
                 <ArrowRight className="w-4 h-4 text-[var(--color-text-soft)]" />
@@ -294,15 +297,15 @@ export default function AboutPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Our Portfolio</span>
+              <span className="pill mb-4 inline-block">{t("about.portfolio.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                35+ companies.{" "}
+                {t("about.portfolio.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  173 business units.
+                  {t("about.portfolio.title2")}
                 </span>
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                Every company runs on our AI. Every tool we sell, we use first.
+                {t("about.portfolio.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -324,7 +327,7 @@ export default function AboutPage() {
                     <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
                     <p className="text-[12px] text-[var(--color-text-muted)]">{c.industry}</p>
                     <span className="text-[12px] font-semibold mt-0.5 inline-block" style={{ color: c.color }}>
-                      {c.sites} businesses
+                      {c.sites} {t("about.portfolio.businesses")}
                     </span>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-soft)] shrink-0" />
@@ -348,7 +351,7 @@ export default function AboutPage() {
                     <h3 className="font-semibold text-[15px] text-[var(--color-text-primary)]">{c.name}</h3>
                     <p className="text-[12px] text-[var(--color-text-muted)]">{c.industry}</p>
                     <span className="text-[12px] font-semibold mt-0.5 inline-block" style={{ color: c.color }}>
-                      {c.sites} businesses
+                      {c.sites} {t("about.portfolio.businesses")}
                     </span>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-soft)] shrink-0" />
@@ -371,7 +374,7 @@ export default function AboutPage() {
                   </div>
                   <span className="font-medium text-[12px] text-[var(--color-text-primary)] leading-tight">{c.name}</span>
                   <span className="text-[10px] font-semibold" style={{ color: c.color }}>
-                    {c.sites} {c.sites === 1 ? "business" : "businesses"}
+                    {c.sites} {c.sites === 1 ? t("about.portfolio.business") : t("about.portfolio.businesses")}
                   </span>
                 </a>
               </ScrollReveal>
@@ -381,9 +384,9 @@ export default function AboutPage() {
           {/* Businesses in Action — real photos from operations */}
           <ScrollReveal delay={100}>
             <div className="text-center mb-6 mt-4">
-              <h3 className="heading-md text-[20px]">Our Businesses in Action</h3>
+              <h3 className="heading-md text-[20px]">{t("about.portfolio.inAction")}</h3>
               <p className="text-[var(--color-text-muted)] text-[14px]">
-                Real operations, real teams, real customers
+                {t("about.portfolio.inAction.sub")}
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-5xl mx-auto">
@@ -400,9 +403,9 @@ export default function AboutPage() {
           {/* AI Products */}
           <ScrollReveal delay={200}>
             <div className="text-center mb-6 mt-12">
-              <h3 className="heading-md text-[20px]">Our AI Products</h3>
+              <h3 className="heading-md text-[20px]">{t("about.portfolio.aiProducts")}</h3>
               <p className="text-[var(--color-text-muted)] text-[14px]">
-                Built by Utopia Accelerator Sdn Bhd
+                {t("about.portfolio.aiProducts.sub")}
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto">
@@ -444,10 +447,10 @@ export default function AboutPage() {
         <div className="section-inner">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Our Locations</span>
+              <span className="pill mb-4 inline-block">{t("about.locations.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[36px] mb-4">
-                Offices &{" "}
-                <span className="gradient-text font-extrabold">Warehouses</span>
+                {t("about.locations.offices")}{" "}
+                <span className="gradient-text font-extrabold">{t("about.locations.warehouses")}</span>
               </h2>
             </div>
           </ScrollReveal>
@@ -493,7 +496,7 @@ export default function AboutPage() {
           <ScrollReveal delay={200}>
             <div className="max-w-3xl mx-auto">
               <h3 className="text-center font-semibold text-[16px] text-[var(--color-text-primary)] mb-4">
-                8 Warehouses Across Malaysia
+                {t("about.locations.warehouseCount")}
               </h3>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 {WAREHOUSES.map((wh) => (
@@ -533,9 +536,9 @@ export default function AboutPage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <h2 className="heading-lg text-[28px] md:text-[36px] mb-4">
-                Want to work with us or{" "}
+                {t("about.cta.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  join the team?
+                  {t("about.cta.title2")}
                 </span>
               </h2>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -545,10 +548,10 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   className="btn-whatsapp"
                 >
-                  Talk to Us
+                  {t("about.cta.talkToUs")}
                 </a>
                 <Link href="/career" className="btn-secondary">
-                  View Open Positions
+                  {t("about.cta.viewPositions")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

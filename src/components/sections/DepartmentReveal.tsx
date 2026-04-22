@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { DEPARTMENTS } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import {
   MessageCircle,
   Calculator,
@@ -26,6 +27,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 export default function DepartmentReveal() {
+  const { t } = useLanguage();
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const heroDept = DEPARTMENTS[0]; // Sales & WhatsApp — #1 product
@@ -39,14 +41,13 @@ export default function DepartmentReveal() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <span className="pill mb-4 inline-block">
-                Areas of AI Improvement
+                {t("home.dept.pill")}
               </span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Average client: 6 areas. All-In clients: 15 areas.
+                {t("home.dept.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                We find every part of your business where AI can save time, cut
-                costs, or make money.
+                {t("home.dept.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -73,7 +74,7 @@ export default function DepartmentReveal() {
                             {heroDept.name}
                           </h3>
                           <span className="text-[11px] font-semibold text-[var(--color-whatsapp)] uppercase tracking-wider">
-                            Our #1 Tool
+                            {t("home.dept.our1")}
                           </span>
                         </div>
                       </div>
@@ -97,7 +98,7 @@ export default function DepartmentReveal() {
                       href="/#trueai"
                       className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-[var(--color-whatsapp)] text-white hover:opacity-90 transition-opacity shrink-0"
                     >
-                      See TrueAI Demo
+                      {t("home.dept.demo")}
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   </div>

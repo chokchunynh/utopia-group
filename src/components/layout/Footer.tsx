@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { FOOTER_LINKS } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-white border-t border-[var(--color-border)]">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-14">
@@ -17,9 +21,9 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-[var(--color-text-soft)] text-sm mt-3 leading-relaxed">
-              We Run AI.
+              {t("footer.tagline1")}
               <br />
-              You Run Your Business.
+              {t("footer.tagline2")}
             </p>
             {/* Social links */}
             <div className="flex items-center gap-3 mt-4">
@@ -40,7 +44,7 @@ export default function Footer() {
           {/* Navigate */}
           <div>
             <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
-              Explore
+              {t("footer.explore")}
             </h4>
             <ul className="space-y-1">
               {FOOTER_LINKS.navigate.map((link) => (
@@ -59,7 +63,7 @@ export default function Footer() {
           {/* Tools */}
           <div>
             <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
-              Our Tools
+              {t("footer.ourTools")}
             </h4>
             <ul className="space-y-1">
               {FOOTER_LINKS.tools.map((link) => (
@@ -78,7 +82,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
-              Company
+              {t("footer.company")}
             </h4>
             <ul className="space-y-1">
               {FOOTER_LINKS.company.map((link) => (
@@ -97,7 +101,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-semibold text-[13px] text-[var(--color-text-primary)] mb-3 uppercase tracking-wide">
-              Contact
+              {t("footer.contact")}
             </h4>
             <ul className="space-y-1.5 text-sm text-[var(--color-text-soft)]">
               <li>
@@ -132,11 +136,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[13px] text-[var(--color-text-soft)]">
-            Built in Malaysia for Malaysian businesses.
+            {t("footer.built")}
           </p>
           <p className="text-[13px] text-[var(--color-text-soft)]">
-            &copy; {new Date().getFullYear()} Utopia Group Sdn Bhd. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Utopia Group Sdn Bhd. {t("footer.rights")}
           </p>
         </div>
       </div>

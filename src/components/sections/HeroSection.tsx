@@ -2,8 +2,10 @@
 
 import { WHATSAPP_URL } from "@/lib/constants";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useLanguage } from "@/lib/language-context";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section className="relative overflow-hidden pt-28 md:pt-40 pb-0">
       {/* Cloud background — static image on mobile, video on desktop */}
@@ -28,23 +30,21 @@ export default function HeroSection() {
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white backdrop-blur-sm border border-[var(--color-accent)]/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] inline-block" />
-              We Operate 173 Business Units on AI
+              {t("home.hero.pill")}
             </span>
           </div>
 
           {/* Headline — Inter semibold, white on dark */}
           <h1 className="text-[36px] md:text-[52px] lg:text-[60px] font-bold tracking-tight leading-[1.1] mb-5 px-2 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-            We Run AI Across 173 Business Units.{" "}
+            {t("home.hero.headline")}{" "}
             <span className="gradient-text-hero font-extrabold">
-              Now We&apos;ll Run It For Yours.
+              {t("home.hero.headline2")}
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-[16px] md:text-[18px] text-white/90 leading-relaxed max-w-2xl mx-auto mb-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]">
-            We don&apos;t just consult on AI. We set up a machine in your
-            office, build your custom dashboard, and automate your
-            operations — from day one.
+            {t("home.hero.sub")}
           </p>
 
           {/* Dual CTAs */}
@@ -53,7 +53,7 @@ export default function HeroSection() {
               href="/#tools"
               className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold text-[15px] bg-white text-[var(--color-text-primary)] hover:bg-white/90 transition-opacity min-h-[48px] w-full sm:w-auto text-center shadow-lg"
             >
-              Try Our Tools Free
+              {t("home.hero.cta1")}
             </a>
             <a
               href={WHATSAPP_URL}
@@ -62,14 +62,13 @@ export default function HeroSection() {
               className="btn-whatsapp text-center w-full sm:w-auto shadow-lg"
             >
               <WhatsAppIcon />
-              WhatsApp Us
+              {t("home.hero.cta2")}
             </a>
           </div>
 
           {/* Trust line */}
           <p className="text-[13px] text-white/60 mb-12 md:mb-16">
-            No credit card. No sign-up. See AI work before you pay a single
-            ringgit.
+            {t("home.hero.trust")}
           </p>
         </ScrollReveal>
 

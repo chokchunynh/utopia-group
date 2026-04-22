@@ -1,6 +1,7 @@
 "use client";
 
 import { whatsappUrl } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DashedGrid from "@/components/ui/DashedGrid";
 import {
@@ -116,6 +117,7 @@ const STEPS = [
 ] as const;
 
 export default function MasterclassPage() {
+  const { t } = useLanguage();
   return (
     <main>
       {/* ══════════════ 1. HERO ══════════════ */}
@@ -128,12 +130,12 @@ export default function MasterclassPage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/10 text-white/90 border border-white/10 mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-                AI Training Program
+                {t("mc.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[56px] font-bold tracking-tight leading-[1.1] text-white mb-4">
-                Utopia AI{" "}
+                {t("mc.hero.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  Masterclass
+                  {t("mc.hero.title2")}
                 </span>
               </h1>
               <p className="text-[18px] md:text-[22px] font-semibold text-white/90 mb-4 max-w-2xl mx-auto leading-snug">

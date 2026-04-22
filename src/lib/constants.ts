@@ -26,6 +26,7 @@ export const NAV_LINKS = [
 export const MORE_DROPDOWN = {
   label: "More",
   items: [
+    { label: "Our AI Story", href: "/ai", description: "How we made AI everyone's job — from accountant to sales manager" },
     { label: "AI Tools", href: "/automate", description: "8+ live AI products — SlipMatch, TrueAI, GetBill & more" },
     { label: "How We Charge", href: "/how-we-charge", description: "Transparent pricing — start free" },
     {

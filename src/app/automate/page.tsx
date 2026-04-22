@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useLanguage } from "@/lib/language-context";
 import { DEPARTMENTS, whatsappUrl } from "@/lib/constants";
 import {
   MessageCircle,
@@ -30,6 +31,7 @@ const TOOLS_WA = whatsappUrl(
 );
 
 export default function AutomatePage() {
+  const { t } = useLanguage();
   return (
     <main>
       {/* ─── Hero ─── */}
@@ -44,18 +46,16 @@ export default function AutomatePage() {
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white/90 border border-white/10 mb-6">
                 <Sparkles className="w-3.5 h-3.5" />
-                Our AI Tools
+                {t("automate.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                Every Tool We Sell,{" "}
+                {t("automate.hero.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  We Use First
+                  {t("automate.hero.title2")}
                 </span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                8 live AI products powering 35+ companies daily. Built by
-                business owners who needed these tools — then made them
-                available to you.
+                {t("automate.hero.sub")}
               </p>
             </ScrollReveal>
           </div>
@@ -68,22 +68,22 @@ export default function AutomatePage() {
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-center">
             <div>
               <div className="font-bold text-xl text-[var(--color-text-primary)]">8+</div>
-              <p className="text-[12px] text-[var(--color-text-muted)]">Live AI Tools</p>
+              <p className="text-[12px] text-[var(--color-text-muted)]">{t("automate.stats.tools")}</p>
             </div>
             <div className="w-px h-8 bg-[var(--color-border)] hidden md:block" />
             <div>
               <div className="font-bold text-xl text-[var(--color-text-primary)]">35+</div>
-              <p className="text-[12px] text-[var(--color-text-muted)]">Companies Using Them</p>
+              <p className="text-[12px] text-[var(--color-text-muted)]">{t("automate.stats.companies")}</p>
             </div>
             <div className="w-px h-8 bg-[var(--color-border)] hidden md:block" />
             <div>
               <div className="font-bold text-xl text-[var(--color-text-primary)]">400+</div>
-              <p className="text-[12px] text-[var(--color-text-muted)]">Daily Users</p>
+              <p className="text-[12px] text-[var(--color-text-muted)]">{t("automate.stats.users")}</p>
             </div>
             <div className="w-px h-8 bg-[var(--color-border)] hidden md:block" />
             <div>
               <div className="font-bold text-xl text-[var(--color-text-primary)]">70%</div>
-              <p className="text-[12px] text-[var(--color-text-muted)]">Earnings Improvement</p>
+              <p className="text-[12px] text-[var(--color-text-muted)]">{t("automate.stats.improvement")}</p>
             </div>
           </div>
         </div>
@@ -190,12 +190,11 @@ export default function AutomatePage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <h2 className="heading-display text-[28px] md:text-[40px] mb-4">
-                Want these tools in{" "}
-                <span className="gradient-text font-extrabold">your business?</span>
+                {t("automate.cta.title")}{" "}
+                <span className="gradient-text font-extrabold">{t("automate.cta.title2")}</span>
               </h2>
               <p className="text-[var(--color-text-muted)] mb-8 max-w-md mx-auto text-[15px]">
-                We find at least 5 areas where AI can improve your business.
-                Average client gets 6. All-In clients get 15.
+                {t("automate.cta.sub")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
@@ -204,10 +203,10 @@ export default function AutomatePage() {
                   rel="noopener noreferrer"
                   className="btn-whatsapp"
                 >
-                  WhatsApp Us
+                  {t("automate.cta.whatsapp")}
                 </a>
                 <Link href="/how-we-charge" className="btn-secondary">
-                  See Pricing
+                  {t("automate.cta.pricing")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
