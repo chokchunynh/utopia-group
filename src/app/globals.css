@@ -196,6 +196,32 @@ h1, h2, h3 { text-wrap: balance; }
   color: var(--color-brand);
 }
 
+/* ===== SHINE PILL (category pills on audit samples) ===== */
+.shine-pill {
+  position: relative;
+  overflow: hidden;
+}
+.shine-pill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  animation: shinePillSweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shinePillSweep {
+  0% { left: -100%; }
+  40%, 100% { left: 200%; }
+}
+
 /* ===== CARDS (Mintlify rounded-3xl, flat) ===== */
 .card {
   background: var(--color-white);

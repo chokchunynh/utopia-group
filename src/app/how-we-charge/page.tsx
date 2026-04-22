@@ -2,6 +2,7 @@
 
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import DashedGrid from "@/components/ui/DashedGrid";
+import { useLanguage } from "@/lib/language-context";
 import { PRICING, whatsappUrl } from "@/lib/constants";
 import { Check, HelpCircle, ArrowRight } from "lucide-react";
 
@@ -9,34 +10,18 @@ const CHARGE_WA = whatsappUrl(
   "Hi! I'd like to understand more about your pricing and how AI implementation works for my business."
 );
 
-const FAQ = [
-  {
-    q: "Why is the setup cost RM12,000?",
-    a: "We install a physical Mac Mini in your office, set up your custom AI dashboard, build your knowledge base, and deploy TrueAI on your WhatsApp. This isn't a subscription toggle — it's real infrastructure built specifically for your business.",
-  },
-  {
-    q: "What does the RM3,000/month cover?",
-    a: "Monthly AI optimization, support, server costs, and continuous improvement of your AI systems. It's cheaper than one junior staff member — and AI never sleeps or takes leave.",
-  },
-  {
-    q: "Can I start without paying anything?",
-    a: "Yes. Our free tools (SlipMatch, AutoViral, RecurPay) require no signup and no credit card. Use them first, see the value, then decide if you want full implementation.",
-  },
-  {
-    q: "How long until I see ROI?",
-    a: "Most clients see ROI within the first month. Our SME clients save an average of RM15,000/month. The RM12,000 setup pays for itself in under 30 days for most businesses.",
-  },
-  {
-    q: "What if it doesn't work for my business?",
-    a: "We offer a 30-day money-back guarantee. If you don't see measurable improvement within the first month, we refund your setup fee. No questions asked.",
-  },
-  {
-    q: "Why is this cheaper than other AI companies?",
-    a: "Because we built these tools for ourselves first. We run 35+ companies on the same AI. You're not paying for R&D — you're paying for battle-tested systems that already work.",
-  },
-];
-
 export default function HowWeChargePage() {
+  const { t } = useLanguage();
+
+  const FAQ = [
+    { q: t("charge.faq.q1"), a: t("charge.faq.a1") },
+    { q: t("charge.faq.q2"), a: t("charge.faq.a2") },
+    { q: t("charge.faq.q3"), a: t("charge.faq.a3") },
+    { q: t("charge.faq.q4"), a: t("charge.faq.a4") },
+    { q: t("charge.faq.q5"), a: t("charge.faq.a5") },
+    { q: t("charge.faq.q6"), a: t("charge.faq.a6") },
+  ];
+
   return (
     <main>
       {/* ═══ HERO ═══ */}
@@ -50,19 +35,26 @@ export default function HowWeChargePage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-semibold bg-white/15 text-white/90 border border-white/10 mb-6">
-                Transparent Pricing
+                {t("charge.hero.pill")}
               </span>
               <h1 className="text-[32px] md:text-[52px] font-bold tracking-tight leading-[1.1] text-white mb-5 max-w-3xl mx-auto">
-                How We{" "}
+                {t("charge.hero.title")}{" "}
                 <span className="gradient-text-hero font-extrabold">
-                  Charge
+                  {t("charge.hero.title2")}
                 </span>
               </h1>
               <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                We&apos;re not a SaaS subscription. We&apos;re operators who
-                build real AI infrastructure in your office. Here&apos;s
-                exactly what you pay — no hidden fees.
+                {t("charge.hero.sub")}
               </p>
+              <div className="mt-6">
+                <a
+                  href="/audit-samples"
+                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-white/90 bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 rounded-full transition-colors"
+                >
+                  See sample audit deliverables{" "}
+                  <ArrowRight size={14} />
+                </a>
+              </div>
             </ScrollReveal>
           </div>
         </div>
@@ -74,11 +66,10 @@ export default function HowWeChargePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Our model is simple
+                {t("charge.model.title")}
               </h2>
               <p className="text-[var(--color-text-muted)] max-w-lg mx-auto text-[15px]">
-                One-time setup to build your AI infrastructure. Low monthly fee
-                to keep it running and improving.
+                {t("charge.model.sub")}
               </p>
             </div>
           </ScrollReveal>
@@ -90,10 +81,10 @@ export default function HowWeChargePage() {
                   1
                 </div>
                 <h3 className="font-semibold text-[16px] text-[var(--color-text-primary)] mb-2">
-                  Try Free
+                  {t("charge.model.s1.title")}
                 </h3>
                 <p className="text-[14px] text-[var(--color-text-muted)]">
-                  Use our AI tools at no cost. See value before committing.
+                  {t("charge.model.s1.desc")}
                 </p>
               </div>
             </ScrollReveal>
@@ -103,10 +94,10 @@ export default function HowWeChargePage() {
                   2
                 </div>
                 <h3 className="font-semibold text-[16px] text-[var(--color-text-primary)] mb-2">
-                  Setup
+                  {t("charge.model.s2.title")}
                 </h3>
                 <p className="text-[14px] text-[var(--color-text-muted)]">
-                  We install AI in your office. One-time fee, real infrastructure.
+                  {t("charge.model.s2.desc")}
                 </p>
               </div>
             </ScrollReveal>
@@ -116,10 +107,10 @@ export default function HowWeChargePage() {
                   3
                 </div>
                 <h3 className="font-semibold text-[16px] text-[var(--color-text-primary)] mb-2">
-                  Maintain
+                  {t("charge.model.s3.title")}
                 </h3>
                 <p className="text-[14px] text-[var(--color-text-muted)]">
-                  Low monthly fee. AI keeps learning. We keep optimizing.
+                  {t("charge.model.s3.desc")}
                 </p>
               </div>
             </ScrollReveal>
@@ -133,7 +124,7 @@ export default function HowWeChargePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Choose your starting point
+                {t("charge.pricing.title")}
               </h2>
             </div>
           </ScrollReveal>
@@ -220,9 +211,9 @@ export default function HowWeChargePage() {
         <div className="section-inner max-w-3xl">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="pill mb-4 inline-block">Common Questions</span>
+              <span className="pill mb-4 inline-block">{t("charge.faq.pill")}</span>
               <h2 className="heading-lg text-[28px] md:text-[40px] mb-4">
-                Frequently Asked
+                {t("charge.faq.title")}
               </h2>
             </div>
           </ScrollReveal>
@@ -256,14 +247,13 @@ export default function HowWeChargePage() {
           <div className="section-inner text-center">
             <ScrollReveal>
               <h2 className="heading-lg text-[28px] md:text-[36px] mb-4">
-                Still have questions about{" "}
+                {t("charge.cta.title")}{" "}
                 <span className="gradient-text font-extrabold">
-                  pricing?
+                  {t("charge.cta.title2")}
                 </span>
               </h2>
               <p className="text-[var(--color-text-muted)] mb-8 max-w-md mx-auto text-[15px]">
-                One WhatsApp message. We&apos;ll walk you through exactly
-                what your business needs and what it costs.
+                {t("charge.cta.sub")}
               </p>
               <a
                 href={CHARGE_WA}
@@ -271,7 +261,7 @@ export default function HowWeChargePage() {
                 rel="noopener noreferrer"
                 className="btn-whatsapp"
               >
-                WhatsApp Us — Let&apos;s Talk
+                {t("charge.cta.button")}
                 <ArrowRight className="w-4 h-4" />
               </a>
             </ScrollReveal>

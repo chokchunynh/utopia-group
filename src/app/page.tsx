@@ -6,6 +6,7 @@ import TrueAISection from "@/components/sections/TrueAISection";
 import WeUseItSection from "@/components/sections/WeUseItSection";
 import DepartmentReveal from "@/components/sections/DepartmentReveal";
 import HowWeWork from "@/components/sections/HowWeWork";
+import AuditSamples from "@/components/sections/AuditSamples";
 import ROICalculator from "@/components/sections/ROICalculator";
 import TestimonialScroll from "@/components/sections/TestimonialScroll";
 import TeamCulture from "@/components/sections/TeamCulture";
@@ -39,6 +40,7 @@ export default function Home() {
       <WeUseItSection />
       <DepartmentReveal />
       <HowWeWork />
+      <AuditSamples />
       <ROICalculator />
       <TestimonialScroll />
       <TeamCulture />
